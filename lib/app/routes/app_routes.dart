@@ -6,6 +6,10 @@ abstract class Routes {
   static const HOME = _Paths.HOME;
   static const SPLASHSCREEN = _Paths.SPLASHSCREEN;
   static const LOGIN = _Paths.LOGIN;
+  static const LIST_BERITA = _Paths.LIST_BERITA;
+  static const LIST_TOPIK_BERITA = _Paths.LIST_TOPIK_BERITA;
+  static const TOPIK_BERITA = _Paths.TOPIK_BERITA;
+  static const DETAIL_BERITA = _Paths.DETAIL_BERITA;
 }
 
 abstract class _Paths {
@@ -13,4 +17,8 @@ abstract class _Paths {
   static const HOME = '/home';
   static const SPLASHSCREEN = '/splashscreen';
   static const LOGIN = '/login';
+  static const LIST_BERITA = '/list-berita';
+  static const LIST_TOPIK_BERITA = '/list-topik-berita';
+  static const TOPIK_BERITA = '/topik-berita';
+  static const DETAIL_BERITA = '/detail-berita';
 }
