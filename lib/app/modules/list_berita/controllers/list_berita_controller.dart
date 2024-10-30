@@ -1,11 +1,15 @@
+import 'dart:convert';
+
 import 'package:get/get.dart';
+import 'package:flutter/services.dart' show rootBundle;
+import 'package:newcity/model.dart';
 
 class ListBeritaController extends GetxController {
-  //TODO: Implement ListBeritaController
-
+  Rx<AllBerita> allBerita = AllBerita().obs;
   final count = 0.obs;
   @override
   void onInit() {
+    readJson();
     super.onInit();
   }
 
@@ -20,4 +24,13 @@ class ListBeritaController extends GetxController {
   }
 
   void increment() => count.value++;
+  void readJson() async {
+    try {
+      var feedLoadedData = await rootBundle.loadString("assets/berita.json");
+      allBerita.value = AllBerita.fromJson(jsonDecode(feedLoadedData));
+    } catch (e) {
+      Get.snackbar("Server Error", "error in getting stock data");
+      print("feed value error" + e.toString());
+    }
+  }
 }
