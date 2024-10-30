@@ -12,7 +12,7 @@ class SplashscreenView extends GetView<SplashscreenController> {
     Future.delayed(const Duration(seconds: 2)).then((value) {
       Navigator.of(context).pushAndRemoveUntil(
           MaterialPageRoute(
-            builder: (context) => const WelcomepageView(),
+            builder: (context) => WelcomepageView(),
           ),
           (route) => false);
     });

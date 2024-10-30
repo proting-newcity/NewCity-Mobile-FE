@@ -1,9 +1,35 @@
 import 'package:get/get.dart';
 
 class WelcomepageController extends GetxController {
-  //TODO: Implement WelcomepageController
+  static final List<Map> list = [
+    {
+      "image": "assets/images/img_welcomepage1.png",
+      "title": "Selamat Datang!",
+      "description":
+          "Bersama NewCity, jadilah bagian dari\nkomunitas yang aktif dan saling terhubung!",
+    },
+    {
+      "image": "assets/images/img_welcomepage2.png",
+      "title": "Setiap laporan\nAnda berharga!",
+      "description":
+          "Semakin banyak Anda melapor, semakin\nbanyak informasi yang kita kumpulkan,\nsemakin cepat kita menyelesaikan masalah.",
+    },
+    {
+      "image": "assets/images/img_welcomepage3.png",
+      "title": "Informasi Real-Time\nyang terjangkau",
+      "description":
+          "NewCity menyediakan akses cepat dan\nmudah dijangkau terhadap data dan berita\nterbaru.",
+    }
+  ];
 
-  final count = 0.obs;
+  // Menggunakan Rx untuk merespon perubahan pada UI
+  var currentIndex = 0.obs;
+
+  void nextContent() {
+    // Increment indeks jika belum mencapai akhir list, atau kembali ke awal
+    currentIndex.value = (currentIndex.value + 1) % list.length;
+  }
+
   @override
   void onInit() {
     super.onInit();
@@ -18,6 +44,4 @@ class WelcomepageController extends GetxController {
   void onClose() {
     super.onClose();
   }
-
-  void increment() => count.value++;
 }
