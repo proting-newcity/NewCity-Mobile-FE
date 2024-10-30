@@ -14,13 +14,15 @@ import '../modules/splashscreen/bindings/splashscreen_binding.dart';
 import '../modules/splashscreen/views/splashscreen_view.dart';
 import '../modules/topik_berita/bindings/topik_berita_binding.dart';
 import '../modules/topik_berita/views/topik_berita_view.dart';
+import '../modules/welcomepage/bindings/welcomepage_binding.dart';
+import '../modules/welcomepage/views/welcomepage_view.dart';
 
 part 'app_routes.dart';
 
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.HOME;
+  static const INITIAL = Routes.SPLASHSCREEN;
 
   static final routes = [
     GetPage(
@@ -57,6 +59,11 @@ class AppPages {
       name: _Paths.DETAIL_BERITA,
       page: () => const DetailBeritaView(),
       binding: DetailBeritaBinding(),
+    ),
+    GetPage(
+      name: _Paths.WELCOMEPAGE,
+      page: () => WelcomepageView(),
+      binding: WelcomepageBinding(),
     ),
   ];
 }
