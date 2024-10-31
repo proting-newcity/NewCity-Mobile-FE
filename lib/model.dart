@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-// Parse JSON data into AllBerita
+// Parse JSON data ke AllBerita
 AllBerita beritaFromJson(String str) => AllBerita.fromJson(json.decode(str));
 
 String beritaToJson(AllBerita data) => json.encode(data.toJson());
@@ -15,20 +15,20 @@ class AllBerita {
   });
 
   factory AllBerita.fromJson(Map<String, dynamic> json) {
-    var kategoriMap =
-        <String, Kategori>{}; // Map to hold unique categories by title
+    var kategoriMap = <String, Kategori>{}; // nge-map kategori
 
     return AllBerita(
+      // populate list berita
       berita: json["berita"] == null
           ? []
           : List<Berita>.from(json["berita"].map((x) {
-              // Use the map to find or add a unique Kategori
+              // cari & tambah kategori unik
               var kategoriTitle = x["kategori"];
               var kategori = kategoriMap.putIfAbsent(
                   kategoriTitle, () => Kategori(judul: kategoriTitle));
               return Berita.fromJson(x, kategori);
             })),
-      kategoriList: kategoriMap.values.toList(), // Extract unique categories
+      kategoriList: kategoriMap.values.toList(), // ubah dari map ke list
     );
   }
 
@@ -38,22 +38,6 @@ class AllBerita {
             : List<dynamic>.from(berita!.map((x) => x.toJson())),
         "kategori": List<dynamic>.from(kategoriList!.map((x) => x.toJson())),
       };
-
-  // Helper method to add unique Kategori to kategoriList
-  static Kategori _addKategori(List<Kategori> kategoriList, String judul) {
-    // Check if the category already exists
-    var existingKategori = kategoriList.firstWhere(
-        (kategori) => kategori.judul == judul,
-        orElse: () => Kategori(judul: judul));
-
-    if (existingKategori.judul == judul) {
-      return existingKategori;
-    } else {
-      var kategori = Kategori(judul: judul);
-      kategoriList.add(kategori);
-      return kategori;
-    }
-  }
 }
 
 class Berita {
