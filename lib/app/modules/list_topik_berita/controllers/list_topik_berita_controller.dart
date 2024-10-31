@@ -1,8 +1,6 @@
 import 'package:get/get.dart';
 
 class ListTopikBeritaController extends GetxController {
-  //TODO: Implement ListTopikBeritaController
-
   final count = 0.obs;
   @override
   void onInit() {

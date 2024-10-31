@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 import '../controllers/list_berita_controller.dart';
+import 'package:newcity/model.dart';
 
 class ListBeritaView extends GetView<ListBeritaController> {
   const ListBeritaView({super.key});
@@ -69,25 +70,27 @@ class ListBeritaView extends GetView<ListBeritaController> {
   }
 
   Widget _appBarTopik() {
-    var topics = controller.topics;
-    return SizedBox(
-      height: 150,
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: topics.length,
-        itemBuilder: (context, index) {
-          return _topikTile(topics[index]);
-        },
-      ),
-    );
+    return Obx(() {
+      var kategoriList = controller.allBerita.value.kategoriList;
+      return SizedBox(
+        height: 150,
+        child: ListView.builder(
+          scrollDirection: Axis.horizontal,
+          itemCount: kategoriList!.length,
+          itemBuilder: (context, index) {
+            return _topikTile(kategoriList[index]);
+          },
+        ),
+      );
+    });
   }
 
-  Widget _topikTile(Map<String, dynamic> topic) {
+  Widget _topikTile(Kategori kategori) {
     return Container(
       width: 150,
       margin: EdgeInsets.symmetric(horizontal: 8),
       decoration: BoxDecoration(
-        color: topic['color'],
+        color: Colors.red,
         borderRadius: BorderRadius.circular(16),
       ),
       child: Container(
@@ -105,7 +108,7 @@ class ListBeritaView extends GetView<ListBeritaController> {
           ),
         ),
         child: Text(
-          topic['title']!,
+          kategori.judul,
           style: TextStyle(
             color: Colors.white,
             fontSize: 16,
