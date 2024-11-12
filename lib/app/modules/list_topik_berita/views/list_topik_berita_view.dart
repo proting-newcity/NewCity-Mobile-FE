@@ -29,33 +29,38 @@ class ListTopikBeritaView extends GetView<ListTopikBeritaController> {
 }
 
 Widget TopikTile({required Kategori kategori}) {
-  return Container(
-    height: 150,
-    margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-    decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(16),
-      color: Colors.blue,
-    ),
+  return GestureDetector(
+    onTap: () {
+      Get.toNamed('/topik-berita', arguments: kategori);
+    },
     child: Container(
-      alignment: Alignment.center,
-      padding: EdgeInsets.all(8),
+      height: 150,
+      margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
-        gradient: LinearGradient(
-          colors: [
-            Colors.black.withOpacity(0.6),
-            Colors.transparent,
-          ],
-          begin: Alignment.bottomCenter,
-          end: Alignment.topCenter,
-        ),
+        color: Colors.blue,
       ),
-      child: Text(
-        kategori.judul,
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 20,
-          fontWeight: FontWeight.bold,
+      child: Container(
+        alignment: Alignment.center,
+        padding: EdgeInsets.all(8),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(16),
+          gradient: LinearGradient(
+            colors: [
+              Colors.black.withOpacity(0.6),
+              Colors.transparent,
+            ],
+            begin: Alignment.bottomCenter,
+            end: Alignment.topCenter,
+          ),
+        ),
+        child: Text(
+          kategori.judul,
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
     ),

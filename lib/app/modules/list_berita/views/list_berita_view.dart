@@ -27,12 +27,28 @@ class ListBeritaView extends GetView<ListBeritaController> {
             ),
             Padding(
               padding: const EdgeInsets.all(18.0),
-              child: Text(
-                "Topik Terkenal",
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Topik Terkenal",
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  TextButton(
+                      onPressed: () {
+                        Get.toNamed("/list-topik-berita");
+                      },
+                      child: Text(
+                        "Topik lainnya",
+                        style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.green),
+                      ))
+                ],
               ),
             ),
             _appBarTopik(),
@@ -86,33 +102,38 @@ class ListBeritaView extends GetView<ListBeritaController> {
   }
 
   Widget _topikTile(Kategori kategori) {
-    return Container(
-      width: 150,
-      margin: EdgeInsets.symmetric(horizontal: 8),
-      decoration: BoxDecoration(
-        color: Colors.red,
-        borderRadius: BorderRadius.circular(16),
-      ),
+    return GestureDetector(
+      onTap: () {
+        Get.toNamed('/topik-berita', arguments: kategori);
+      },
       child: Container(
-        alignment: Alignment.bottomCenter,
-        padding: EdgeInsets.all(8),
+        width: 150,
+        margin: EdgeInsets.symmetric(horizontal: 8),
         decoration: BoxDecoration(
+          color: Colors.red,
           borderRadius: BorderRadius.circular(16),
-          gradient: LinearGradient(
-            colors: [
-              Colors.black.withOpacity(0.6),
-              Colors.transparent,
-            ],
-            begin: Alignment.bottomCenter,
-            end: Alignment.topCenter,
-          ),
         ),
-        child: Text(
-          kategori.judul,
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
+        child: Container(
+          alignment: Alignment.bottomCenter,
+          padding: EdgeInsets.all(8),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(16),
+            gradient: LinearGradient(
+              colors: [
+                Colors.black.withOpacity(0.6),
+                Colors.transparent,
+              ],
+              begin: Alignment.bottomCenter,
+              end: Alignment.topCenter,
+            ),
+          ),
+          child: Text(
+            kategori.judul,
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
       ),
@@ -120,52 +141,58 @@ class ListBeritaView extends GetView<ListBeritaController> {
   }
 
   _beritaTile(beritaData, index) {
-    return Card(
-      elevation: 3,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Row(
-          children: [
-            // Image Section
-            CircleAvatar(
-              backgroundColor: Colors.red,
-              radius: 40,
-              child: Icon(
-                Icons.article,
-                color: Colors.white,
-                size: 30,
+    return GestureDetector(
+      onTap: () {
+        Get.toNamed('/detail-berita', arguments: beritaData);
+      },
+      child: Card(
+        elevation: 3,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Row(
+            children: [
+              // Image Section
+              CircleAvatar(
+                backgroundColor: Colors.red,
+                radius: 40,
+                child: Icon(
+                  Icons.article,
+                  color: Colors.white,
+                  size: 30,
+                ),
               ),
-            ),
-            SizedBox(
-              width: 16,
-            ),
-            // Text section
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    beritaData.judul,
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  SizedBox(height: 8),
-                  Text(
-                    DateFormat('yyyy-MM-dd – kk:mm').format(beritaData.tanggal),
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: Colors.grey[600],
-                    ),
-                  ),
-                ],
+              SizedBox(
+                width: 16,
               ),
-            ),
-          ],
+              // Text section
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      beritaData.judul,
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(height: 8),
+                    Text(
+                      DateFormat('yyyy-MM-dd – kk:mm')
+                          .format(beritaData.tanggal),
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Colors.grey[600],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
