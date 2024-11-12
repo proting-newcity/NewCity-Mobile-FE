@@ -14,7 +14,7 @@ class ListBeritaView extends GetView<ListBeritaController> {
       appBar: AppBar(
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
-          onPressed: () => Navigator.pop(context),
+          onPressed: () => Get.back(),
         ),
         title: Text(
           "Berita",
@@ -108,6 +108,7 @@ class ListBeritaView extends GetView<ListBeritaController> {
       child: Container(
         width: 150,
         margin: EdgeInsets.symmetric(horizontal: 8),
+        // placeholder gambar
         decoration: BoxDecoration(
           color: Colors.red,
           borderRadius: BorderRadius.circular(16),
@@ -126,6 +127,7 @@ class ListBeritaView extends GetView<ListBeritaController> {
               end: Alignment.topCenter,
             ),
           ),
+          // judul topik
           child: Text(
             kategori.judul,
             style: TextStyle(
@@ -153,7 +155,7 @@ class ListBeritaView extends GetView<ListBeritaController> {
           padding: const EdgeInsets.all(16),
           child: Row(
             children: [
-              // Image Section
+              // placeholder gambar
               CircleAvatar(
                 backgroundColor: Colors.red,
                 radius: 40,

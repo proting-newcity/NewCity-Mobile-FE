@@ -32,6 +32,7 @@ class TopikBeritaController extends GetxController {
     }
   }
 
+  // filter buat nampilin list berita berdasarkan judul kategori
   List<Berita> getBeritaByKategori(String judulKategori) {
     return allBerita.value.berita?.where((berita) {
           return berita.kategori.judul.toLowerCase() ==

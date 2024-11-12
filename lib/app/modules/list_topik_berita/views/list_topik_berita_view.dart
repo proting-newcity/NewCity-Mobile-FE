@@ -13,7 +13,7 @@ class ListTopikBeritaView extends GetView<ListTopikBeritaController> {
       appBar: AppBar(
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
-          onPressed: () => Navigator.pop(context),
+          onPressed: () => Get.back(),
         ),
         title: Text(
           "Topik Berita",
@@ -39,6 +39,7 @@ Widget TopikTile({required Kategori kategori}) {
     child: Container(
       height: 150,
       margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      // placeholder gambar
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
         color: Colors.blue,
@@ -57,6 +58,7 @@ Widget TopikTile({required Kategori kategori}) {
             end: Alignment.topCenter,
           ),
         ),
+        // judul kategori
         child: Text(
           kategori.judul,
           style: TextStyle(

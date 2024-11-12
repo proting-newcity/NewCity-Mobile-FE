@@ -17,7 +17,7 @@ class DetailBeritaView extends GetView<DetailBeritaController> {
             children: [
               Stack(
                 children: [
-                  // Placeholder untuk gambar di bagian atas
+                  // placeholder gambar
                   ColorFiltered(
                     colorFilter: ColorFilter.mode(
                       Colors.black.withOpacity(0.3),
@@ -39,21 +39,17 @@ class DetailBeritaView extends GetView<DetailBeritaController> {
                       children: [
                         Row(
                           children: [
-                            // Icon back arrow
                             IconButton(
                               icon: Icon(Icons.arrow_back, color: Colors.white),
-                              onPressed: () {
-                                Get.back(); // Kembali ke halaman sebelumnya
-                              },
+                              onPressed: () => Get.back(),
                             ),
-                            // Text judul
                             Expanded(
                               child: Text(
                                 Get.arguments.judul,
                                 style: TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold,
-                                  color: Colors.white70,
+                                  color: Colors.white,
                                 ),
                               ),
                             ),
@@ -71,15 +67,16 @@ class DetailBeritaView extends GetView<DetailBeritaController> {
                                 DateFormat('yyyy-MM-dd – kk:mm')
                                     .format(Get.arguments.tanggal),
                                 style: TextStyle(
-                                    fontSize: 14, color: Colors.white70),
+                                    fontSize: 14, color: Colors.white),
                               ),
                               const SizedBox(height: 16),
                               Row(
-                                children: const [
-                                  Icon(Icons.person, color: Colors.white70),
-                                  SizedBox(width: 4),
-                                  Text('Anonymous',
-                                      style: TextStyle(color: Colors.white70)),
+                                children: [
+                                  const Icon(Icons.person, color: Colors.white),
+                                  const SizedBox(width: 4),
+                                  Text(Get.arguments.editor,
+                                      style:
+                                          const TextStyle(color: Colors.white)),
                                 ],
                               ),
                               const SizedBox(height: 16),

@@ -53,7 +53,7 @@ _beritaTile(beritaData, index) {
         padding: const EdgeInsets.all(16),
         child: Row(
           children: [
-            // Image Section
+            // Placeholder gambar
             CircleAvatar(
               backgroundColor: Colors.red,
               radius: 40,
