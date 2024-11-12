@@ -6,7 +6,7 @@ import 'package:newcity/model.dart';
 
 class ListBeritaController extends GetxController {
   Rx<AllBerita> allBerita = AllBerita().obs;
-  final count = 0.obs;
+
   @override
   void onInit() {
     readJson();
@@ -23,7 +23,6 @@ class ListBeritaController extends GetxController {
     super.onClose();
   }
 
-  void increment() => count.value++;
   void readJson() async {
     try {
       var feedLoadedData = await rootBundle.loadString("assets/berita.json");

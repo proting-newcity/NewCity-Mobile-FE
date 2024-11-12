@@ -15,7 +15,10 @@ class ListTopikBeritaView extends GetView<ListTopikBeritaController> {
           icon: Icon(Icons.arrow_back),
           onPressed: () => Navigator.pop(context),
         ),
-        title: Text("Topik Berita"),
+        title: Text(
+          "Topik Berita",
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
       ),
       body: Obx(() => ListView.builder(
             itemCount: controller.allBerita.value.kategoriList!.length,

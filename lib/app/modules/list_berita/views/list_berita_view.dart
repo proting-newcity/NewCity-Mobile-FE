@@ -10,77 +10,76 @@ class ListBeritaView extends GetView<ListBeritaController> {
   const ListBeritaView({super.key});
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(18.0),
-              child: Text(
-                "Berita",
-                style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.w800,
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(18.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "Topik Terkenal",
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  TextButton(
-                      onPressed: () {
-                        Get.toNamed("/list-topik-berita");
-                      },
-                      child: Text(
-                        "Topik lainnya",
-                        style: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.green),
-                      ))
-                ],
-              ),
-            ),
-            _appBarTopik(),
-            Padding(
-              padding: const EdgeInsets.all(18.0),
-              child: Text(
-                "Berita Untukmu",
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            Expanded(
-              child: Obx(
-                () => controller.allBerita.value.berita != null
-                    ? ListView(
-                        children: [
-                          for (var index = 0;
-                              index < controller.allBerita.value.berita!.length;
-                              index++)
-                            _beritaTile(
-                              controller.allBerita.value.berita![index],
-                              index,
-                            ),
-                        ],
-                      )
-                    : Wrap(),
-              ),
-            ),
-          ],
+    return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () => Navigator.pop(context),
         ),
+        title: Text(
+          "Berita",
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
+      ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding:
+                const EdgeInsets.only(left: 18.0, right: 18.0, bottom: 18.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "Topik Terkenal",
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                TextButton(
+                    onPressed: () {
+                      Get.toNamed("/list-topik-berita");
+                    },
+                    child: Text(
+                      "Topik lainnya",
+                      style: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.green),
+                    ))
+              ],
+            ),
+          ),
+          _appBarTopik(),
+          Padding(
+            padding: const EdgeInsets.all(18.0),
+            child: Text(
+              "Berita Untukmu",
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          Expanded(
+            child: Obx(
+              () => controller.allBerita.value.berita != null
+                  ? ListView(
+                      children: [
+                        for (var index = 0;
+                            index < controller.allBerita.value.berita!.length;
+                            index++)
+                          _beritaTile(
+                            controller.allBerita.value.berita![index],
+                            index,
+                          ),
+                      ],
+                    )
+                  : Wrap(),
+            ),
+          ),
+        ],
       ),
     );
   }
