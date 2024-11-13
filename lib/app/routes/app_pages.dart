@@ -12,6 +12,8 @@ import '../modules/list_topik_berita/bindings/list_topik_berita_binding.dart';
 import '../modules/list_topik_berita/views/list_topik_berita_view.dart';
 import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
+import '../modules/register/bindings/register_binding.dart';
+import '../modules/register/views/register_view.dart';
 import '../modules/splashscreen/bindings/splashscreen_binding.dart';
 import '../modules/splashscreen/views/splashscreen_view.dart';
 import '../modules/topik_berita/bindings/topik_berita_binding.dart';
@@ -71,6 +73,11 @@ class AppPages {
       name: _Paths.GOVERMENT,
       page: () => GovermentView(),
       binding: GovermentBinding(),
+    ),
+    GetPage(
+      name: _Paths.REGISTER,
+      page: () => const RegisterView(),
+      binding: RegisterBinding(),
     ),
   ];
 }

@@ -12,6 +12,7 @@ abstract class Routes {
   static const DETAIL_BERITA = _Paths.DETAIL_BERITA;
   static const WELCOMEPAGE = _Paths.WELCOMEPAGE;
   static const GOVERMENT = _Paths.GOVERMENT;
+  static const REGISTER = _Paths.REGISTER;
 }
 
 abstract class _Paths {
@@ -25,4 +26,5 @@ abstract class _Paths {
   static const DETAIL_BERITA = '/detail-berita';
   static const WELCOMEPAGE = '/welcomepage';
   static const GOVERMENT = '/goverment';
+  static const REGISTER = '/register';
 }
