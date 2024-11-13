@@ -68,7 +68,9 @@ class WelcomepageView extends GetView<WelcomepageController> {
                           ),
                         ),
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Get.toNamed("/login");
+                          },
                           child: Text(
                             "Masuk",
                             style: TextStyle(color: Colors.white),
