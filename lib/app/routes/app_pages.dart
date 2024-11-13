@@ -1,9 +1,13 @@
 import 'package:get/get.dart';
-import 'package:newcity/app/modules/goverment/bindings/goverment_binding.dart';
-import 'package:newcity/app/modules/goverment/views/goverment_view.dart';
 
+import '../modules/biodata_page/bindings/biodata_page_binding.dart';
+import '../modules/biodata_page/views/biodata_page_view.dart';
 import '../modules/detail_berita/bindings/detail_berita_binding.dart';
 import '../modules/detail_berita/views/detail_berita_view.dart';
+import '../modules/edit_akun/bindings/edit_akun_binding.dart';
+import '../modules/edit_akun/views/edit_akun_view.dart';
+import '../modules/goverment/bindings/goverment_binding.dart';
+import '../modules/goverment/views/goverment_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/list_berita/bindings/list_berita_binding.dart';
@@ -26,7 +30,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.GOVERMENT;
+  static const INITIAL = Routes.BIODATA_PAGE;
 
   static final routes = [
     GetPage(
@@ -78,6 +82,16 @@ class AppPages {
       name: _Paths.REGISTER,
       page: () => const RegisterView(),
       binding: RegisterBinding(),
+    ),
+    GetPage(
+      name: _Paths.BIODATA_PAGE,
+      page: () => const BiodataPageView(),
+      binding: BiodataPageBinding(),
+    ),
+    GetPage(
+      name: _Paths.EDIT_AKUN,
+      page: () => const EditAkunView(),
+      binding: EditAkunBinding(),
     ),
   ];
 }
