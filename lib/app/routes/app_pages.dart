@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import 'package:newcity/app/modules/goverment/bindings/goverment_binding.dart';
+import 'package:newcity/app/modules/goverment/views/goverment_view.dart';
 
 import '../modules/detail_berita/bindings/detail_berita_binding.dart';
 import '../modules/detail_berita/views/detail_berita_view.dart';
@@ -22,7 +24,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.SPLASHSCREEN;
+  static const INITIAL = Routes.GOVERMENT;
 
   static final routes = [
     GetPage(
@@ -64,6 +66,11 @@ class AppPages {
       name: _Paths.WELCOMEPAGE,
       page: () => WelcomepageView(),
       binding: WelcomepageBinding(),
+    ),
+    GetPage(
+      name: _Paths.GOVERMENT,
+      page: () => GovermentView(),
+      binding: GovermentBinding(),
     ),
   ];
 }
