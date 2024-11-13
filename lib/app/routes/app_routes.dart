@@ -13,6 +13,8 @@ abstract class Routes {
   static const WELCOMEPAGE = _Paths.WELCOMEPAGE;
   static const GOVERMENT = _Paths.GOVERMENT;
   static const REGISTER = _Paths.REGISTER;
+  static const BIODATA_PAGE = _Paths.BIODATA_PAGE;
+  static const EDIT_AKUN = _Paths.EDIT_AKUN;
 }
 
 abstract class _Paths {
@@ -27,4 +29,6 @@ abstract class _Paths {
   static const WELCOMEPAGE = '/welcomepage';
   static const GOVERMENT = '/goverment';
   static const REGISTER = '/register';
+  static const BIODATA_PAGE = '/biodata-page';
+  static const EDIT_AKUN = '/edit-akun';
 }
