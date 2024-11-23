@@ -8,6 +8,7 @@ environment:
   sdk: ^3.5.4
 
 dependencies:
+  # google_fonts: ^6.2.1
   flutter:
     sdk: flutter
     
