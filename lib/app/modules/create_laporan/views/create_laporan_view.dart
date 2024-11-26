@@ -25,28 +25,34 @@ class CreateLaporanView extends GetView<CreateLaporanController> {
         child: ListView(
           children: [
             Text("Data Diri", style: TextStyle(fontWeight: FontWeight.bold)),
-            SizedBox(height: 10),
+            SizedBox(height: 18),
+            Text("Nama"),
             TextField(
               decoration: InputDecoration(
-                labelText: "Nama",
                 hintText: "Masukkan nama",
-                border: OutlineInputBorder(),
+                enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Color(0xFF588157), width: 2),
+                    borderRadius: BorderRadius.circular(10)),
               ),
             ),
-            SizedBox(height: 10),
+            SizedBox(height: 18),
+            Text("Nomor Telepon"),
             TextField(
               decoration: InputDecoration(
-                labelText: "Nomor Telepon",
                 hintText: "Masukkan nomor telepon",
-                border: OutlineInputBorder(),
+                enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Color(0xFF588157), width: 2),
+                    borderRadius: BorderRadius.circular(10)),
               ),
             ),
-            SizedBox(height: 10),
+            SizedBox(height: 18),
+            Text("Email"),
             TextField(
               decoration: InputDecoration(
-                labelText: "Email",
                 hintText: "Masukkan email",
-                border: OutlineInputBorder(),
+                enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Color(0xFF588157), width: 2),
+                    borderRadius: BorderRadius.circular(10)),
               ),
             ),
             SizedBox(height: 10),
@@ -58,32 +64,41 @@ class CreateLaporanView extends GetView<CreateLaporanController> {
             ),
             SizedBox(height: 20),
             Text("Deskripsi", style: TextStyle(fontWeight: FontWeight.bold)),
-            SizedBox(height: 10),
+            SizedBox(height: 18),
             Container(
               height: 150,
               decoration: BoxDecoration(
-                border: Border.all(color: Colors.grey),
-                borderRadius: BorderRadius.circular(5),
-              ),
+                  border: Border.all(color: Color(0xFF588157), width: 2),
+                  borderRadius: BorderRadius.circular(10)),
               child: Center(
-                child: Icon(Icons.camera_alt, color: Colors.green),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.camera_alt, color: Colors.green),
+                    Text("Unggah gambar/video")
+                  ],
+                ),
               ),
             ),
             SizedBox(height: 20),
+            Text("Lokasi"),
             TextField(
               decoration: InputDecoration(
-                labelText: "Lokasi",
                 hintText: "Masukkan lokasi",
-                border: OutlineInputBorder(),
+                enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Color(0xFF588157), width: 2),
+                    borderRadius: BorderRadius.circular(10)),
               ),
             ),
-            SizedBox(height: 10),
+            SizedBox(height: 18),
+            Text("Detail Laporan"),
             TextField(
               maxLines: 5,
               decoration: InputDecoration(
-                labelText: "Detail Laporan",
                 hintText: "Masukkan detail dari laporan mu disini",
-                border: OutlineInputBorder(),
+                enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Color(0xFF588157), width: 2),
+                    borderRadius: BorderRadius.circular(10)),
               ),
             ),
             SizedBox(height: 20),
@@ -108,9 +123,13 @@ class CreateLaporanView extends GetView<CreateLaporanController> {
             ElevatedButton(
               onPressed: () {},
               style: ElevatedButton.styleFrom(
-                minimumSize: Size(double.infinity, 50),
+                  minimumSize: Size(double.infinity, 50),
+                  backgroundColor: Color(0xFF588157)),
+              child: Text(
+                "Berikutnya",
+                style:
+                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
               ),
-              child: Text("Berikutnya"),
             ),
           ],
         ),
@@ -120,7 +139,10 @@ class CreateLaporanView extends GetView<CreateLaporanController> {
 
   Widget _buildTopicChip(String label) {
     return ChoiceChip(
-      label: Text(label),
+      label: Text(
+        label,
+        style: TextStyle(color: Color(0xFF588157)),
+      ),
       selected: false,
       onSelected: (bool selected) {},
       backgroundColor: Colors.white,
@@ -128,7 +150,7 @@ class CreateLaporanView extends GetView<CreateLaporanController> {
       labelStyle: TextStyle(color: Colors.black),
       shape: RoundedRectangleBorder(
         side: BorderSide(color: Colors.green),
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(10),
       ),
     );
   }
