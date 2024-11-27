@@ -4,11 +4,10 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'package:newcity/model.dart';
 
 class ListTopikBeritaController extends GetxController {
-  Rx<AllBerita> allBerita = AllBerita().obs;
+  var allBerita = Rx<BeritaResponse>(BeritaResponse());
   final count = 0.obs;
   @override
   void onInit() {
-    readJson();
     super.onInit();
   }
 
@@ -23,14 +22,4 @@ class ListTopikBeritaController extends GetxController {
   }
 
   void increment() => count.value++;
-
-  void readJson() async {
-    try {
-      var feedLoadedData = await rootBundle.loadString("assets/berita.json");
-      allBerita.value = AllBerita.fromJson(jsonDecode(feedLoadedData));
-    } catch (e) {
-      Get.snackbar("Server Error", "error in getting berita data");
-      print("feed value error" + e.toString());
-    }
-  }
 }
