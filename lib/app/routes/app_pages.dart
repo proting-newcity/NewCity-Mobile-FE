@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 
 import '../modules/biodata_page/bindings/biodata_page_binding.dart';
 import '../modules/biodata_page/views/biodata_page_view.dart';
+import '../modules/create_laporan/bindings/create_laporan_binding.dart';
+import '../modules/create_laporan/views/create_laporan_view.dart';
 import '../modules/detail_berita/bindings/detail_berita_binding.dart';
 import '../modules/detail_berita/views/detail_berita_view.dart';
 import '../modules/edit_akun/bindings/edit_akun_binding.dart';
@@ -30,7 +32,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.BIODATA_PAGE;
+  static const INITIAL = Routes.CREATE_LAPORAN;
 
   static final routes = [
     GetPage(
@@ -92,6 +94,11 @@ class AppPages {
       name: _Paths.EDIT_AKUN,
       page: () => const EditAkunView(),
       binding: EditAkunBinding(),
+    ),
+    GetPage(
+      name: _Paths.CREATE_LAPORAN,
+      page: () => const CreateLaporanView(),
+      binding: CreateLaporanBinding(),
     ),
   ];
 }

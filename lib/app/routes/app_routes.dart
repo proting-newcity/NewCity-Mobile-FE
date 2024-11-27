@@ -15,6 +15,7 @@ abstract class Routes {
   static const REGISTER = _Paths.REGISTER;
   static const BIODATA_PAGE = _Paths.BIODATA_PAGE;
   static const EDIT_AKUN = _Paths.EDIT_AKUN;
+  static const CREATE_LAPORAN = _Paths.CREATE_LAPORAN;
 }
 
 abstract class _Paths {
@@ -31,4 +32,5 @@ abstract class _Paths {
   static const REGISTER = '/register';
   static const BIODATA_PAGE = '/biodata-page';
   static const EDIT_AKUN = '/edit-akun';
+  static const CREATE_LAPORAN = '/create-laporan';
 }

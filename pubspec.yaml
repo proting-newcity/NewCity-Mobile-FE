@@ -16,6 +16,8 @@ dependencies:
   get: ^4.6.6
   get_cli: ^1.8.1
   intl: ^0.19.0
+  image_picker: ^1.1.2
+  dio: ^5.7.0
 
 dev_dependencies:
   flutter_test:
@@ -27,3 +29,8 @@ flutter:
   assets:
     - assets/
     - assets/images/
+    
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/Poppins-Regular.ttf
