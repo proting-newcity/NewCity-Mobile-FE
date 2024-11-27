@@ -1,6 +1,4 @@
-// my_camera_delegate.dart
-import 'package:image_picker/image_picker.dart'; // For image picker
-import 'dart:io'; // To work with file paths
+import 'package:image_picker/image_picker.dart';
 import 'package:image_picker_platform_interface/image_picker_platform_interface.dart';
 
 class MyCameraDelegate extends ImagePickerCameraDelegate {

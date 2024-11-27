@@ -21,17 +21,17 @@ class ListTopikBeritaView extends GetView<ListTopikBeritaController> {
         ),
       ),
       body: Obx(() => ListView.builder(
-            itemCount: controller.allBerita.value.kategoriList!.length,
+            // itemCount: controller.allBerita.value.kategoriList!.length,
             itemBuilder: (context, index) {
-              final kategori = controller.allBerita.value.kategoriList![index];
-              return TopikTile(kategori: kategori);
+              // final kategori = controller.allBerita.value.kategoriList![index];
+              // return TopikTile(kategori: kategori);
             },
           )),
     );
   }
 }
 
-Widget TopikTile({required Kategori kategori}) {
+Widget TopikTile({required KategoriBerita kategori}) {
   return GestureDetector(
     onTap: () {
       Get.toNamed('/topik-berita', arguments: kategori);
@@ -59,14 +59,14 @@ Widget TopikTile({required Kategori kategori}) {
           ),
         ),
         // judul kategori
-        child: Text(
-          kategori.judul,
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
+        // child: Text(
+        //   kategori.title,
+        //   style: TextStyle(
+        //     color: Colors.white,
+        //     fontSize: 20,
+        //     fontWeight: FontWeight.bold,
+        //   ),
+        // ),
       ),
     ),
   );

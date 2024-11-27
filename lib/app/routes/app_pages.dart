@@ -32,7 +32,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.CREATE_LAPORAN;
+  static const INITIAL = Routes.LIST_BERITA;
 
   static final routes = [
     GetPage(

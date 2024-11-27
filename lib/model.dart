@@ -1,93 +1,109 @@
-import 'dart:convert';
+class BeritaResponse {
+  List<Berita> berita; // List of Berita objects, not KategoriBerita
 
-// Parse JSON data ke AllBerita
-AllBerita beritaFromJson(String str) => AllBerita.fromJson(json.decode(str));
-
-String beritaToJson(AllBerita data) => json.encode(data.toJson());
-
-class AllBerita {
-  List<Berita>? berita;
-  List<Kategori>? kategoriList;
-
-  AllBerita({
-    this.berita,
-    this.kategoriList = const [],
+  BeritaResponse({
+    this.berita = const [],
   });
 
-  factory AllBerita.fromJson(Map<String, dynamic> json) {
-    var kategoriMap = <String, Kategori>{}; // nge-map kategori
-
-    return AllBerita(
-      // populate list berita
-      berita: json["berita"] == null
-          ? []
-          : List<Berita>.from(json["berita"].map((x) {
-              // cari & tambah kategori unik
-              var kategoriTitle = x["kategori"];
-              var kategori = kategoriMap.putIfAbsent(
-                  kategoriTitle, () => Kategori(judul: kategoriTitle));
-              return Berita.fromJson(x, kategori);
-            })),
-      kategoriList: kategoriMap.values.toList(), // ubah dari map ke list
+  factory BeritaResponse.fromJson(Map<String, dynamic> json) {
+    return BeritaResponse(
+      berita: (json['data'] as List)
+          .map((item) => Berita.fromJson(item))
+          .toList(), // Convert each item in 'data' to Berita
     );
   }
+}
 
-  Map<String, dynamic> toJson() => {
-        "berita": berita == null
-            ? []
-            : List<dynamic>.from(berita!.map((x) => x.toJson())),
-        "kategori": List<dynamic>.from(kategoriList!.map((x) => x.toJson())),
-      };
+class KategoriBeritaResponse {
+  final List<KategoriBerita> kategori;
+
+  KategoriBeritaResponse({this.kategori = const []});
+
+  factory KategoriBeritaResponse.fromJson(List<dynamic> json) {
+    return KategoriBeritaResponse(
+      kategori: json.map((item) => KategoriBerita.fromJson(item)).toList(),
+    );
+  }
 }
 
 class Berita {
-  String judul;
-  Kategori kategori;
-  String editor;
+  int id;
+  String title;
+  String content;
+  String foto;
   DateTime tanggal;
   String status;
+  int idKategori;
+  int idUser;
+  DateTime createdAt;
+  DateTime updatedAt;
+  KategoriBerita kategori;
+  User user;
 
   Berita({
-    required this.judul,
-    required this.kategori,
-    required this.editor,
+    required this.id,
+    required this.title,
+    required this.content,
+    required this.foto,
     required this.tanggal,
     required this.status,
+    required this.idKategori,
+    required this.idUser,
+    required this.createdAt,
+    required this.updatedAt,
+    required this.kategori,
+    required this.user,
   });
 
-  factory Berita.fromJson(Map<String, dynamic> json, Kategori kategori) =>
-      Berita(
-        judul: json["judul"],
-        kategori: kategori,
-        editor: json["editor"],
-        tanggal: DateTime.parse(json["tanggal"]),
-        status: json["status"],
-      );
-
-  Map<String, dynamic> toJson() => {
-        "judul": judul,
-        "kategori": kategori.toJson(),
-        "editor": editor,
-        "tanggal":
-            "${tanggal.year.toString().padLeft(4, '0')}-${tanggal.month.toString().padLeft(2, '0')}-${tanggal.day.toString().padLeft(2, '0')}",
-        "status": status,
-      };
+  factory Berita.fromJson(Map<String, dynamic> json) {
+    return Berita(
+      id: json['id'],
+      title: json['title'],
+      content: json['content'],
+      foto: json['foto'],
+      tanggal: DateTime.parse(json['tanggal']),
+      status: json['status'],
+      idKategori: json['id_kategori'],
+      idUser: json['id_user'],
+      createdAt: DateTime.parse(json['created_at']),
+      updatedAt: DateTime.parse(json['updated_at']),
+      kategori: KategoriBerita.fromJson(json['kategori']),
+      user: User.fromJson(json['user']),
+    );
+  }
 }
 
-class Kategori {
-  String judul;
+class KategoriBerita {
+  int id;
+  String name;
+  String foto;
 
-  Kategori({
-    required this.judul,
+  KategoriBerita({required this.id, required this.name, required this.foto});
+
+  factory KategoriBerita.fromJson(Map<String, dynamic> json) {
+    return KategoriBerita(
+      id: json['id'],
+      name: json['name'],
+      foto: json['foto'],
+    );
+  }
+}
+
+class User {
+  int id;
+  String name;
+
+  User({
+    required this.id,
+    required this.name,
   });
 
-  factory Kategori.fromJson(Map<String, dynamic> json) => Kategori(
-        judul: json["judul"],
-      );
-
-  Map<String, dynamic> toJson() => {
-        "judul": judul,
-      };
+  factory User.fromJson(Map<String, dynamic> json) {
+    return User(
+      id: json['id'],
+      name: json['name'],
+    );
+  }
 }
 
 class Report {

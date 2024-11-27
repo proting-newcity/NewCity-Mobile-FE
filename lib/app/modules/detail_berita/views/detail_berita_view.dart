@@ -45,7 +45,7 @@ class DetailBeritaView extends GetView<DetailBeritaController> {
                             ),
                             Expanded(
                               child: Text(
-                                Get.arguments.judul,
+                                Get.arguments.title,
                                 style: TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold,
@@ -74,7 +74,7 @@ class DetailBeritaView extends GetView<DetailBeritaController> {
                                 children: [
                                   const Icon(Icons.person, color: Colors.white),
                                   const SizedBox(width: 4),
-                                  Text(Get.arguments.editor,
+                                  Text(Get.arguments.user.name,
                                       style:
                                           const TextStyle(color: Colors.white)),
                                 ],
@@ -87,7 +87,7 @@ class DetailBeritaView extends GetView<DetailBeritaController> {
                                       Get.toNamed('/topik-berita',
                                           arguments: Get.arguments.kategori);
                                     },
-                                    child: Text(Get.arguments.kategori.judul),
+                                    child: Text(Get.arguments.kategori.name),
                                     style: ElevatedButton.styleFrom(),
                                   ),
                                   const Spacer(),
@@ -109,25 +109,15 @@ class DetailBeritaView extends GetView<DetailBeritaController> {
                   ),
                 ],
               ),
-              const Padding(
-                padding: EdgeInsets.all(16.0),
+              Padding(
+                padding: const EdgeInsets.all(16.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(height: 16),
+                    const SizedBox(height: 16),
                     // Placeholder text konten berita
                     Text(
-                      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-                      textAlign: TextAlign.justify,
-                    ),
-                    SizedBox(height: 16),
-                    Text(
-                      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-                      textAlign: TextAlign.justify,
-                    ),
-                    SizedBox(height: 16),
-                    Text(
-                      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                      Get.arguments.content,
                       textAlign: TextAlign.justify,
                     ),
                   ],

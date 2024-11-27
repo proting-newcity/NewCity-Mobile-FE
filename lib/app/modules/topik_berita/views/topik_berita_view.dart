@@ -12,29 +12,29 @@ class TopikBeritaView extends GetView<TopikBeritaController> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          Get.arguments.judul,
+          Get.arguments.name,
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
       ),
-      body: Obx(
-        () => controller.allBerita.value.berita != null
-            ? ListView(
-                children: [
-                  for (var index = 0;
-                      index <
-                          controller
-                              .getBeritaByKategori(Get.arguments.judul)
-                              .length;
-                      index++)
-                    _beritaTile(
-                      controller
-                          .getBeritaByKategori(Get.arguments.judul)[index],
-                      index,
-                    ),
-                ],
-              )
-            : Wrap(),
-      ),
+      // body: Obx(
+      //   () => controller.allBerita.value.berita != null
+      //       ? ListView(
+      //           children: [
+      //             for (var index = 0;
+      //                 index <
+      //                     controller
+      //                         .getBeritaByKategori(Get.arguments.judul)
+      //                         .length;
+      //                 index++)
+      //               _beritaTile(
+      //                 controller
+      //                     .getBeritaByKategori(Get.arguments.judul)[index],
+      //                 index,
+      //               ),
+      //           ],
+      //         )
+      //       : Wrap(),
+      // ),
     );
   }
 }

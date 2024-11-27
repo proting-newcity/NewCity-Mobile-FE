@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-
+import 'package:newcity/api.dart';
 import '../controllers/list_berita_controller.dart';
 import 'package:newcity/model.dart';
 
 class ListBeritaView extends GetView<ListBeritaController> {
   const ListBeritaView({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,19 +64,17 @@ class ListBeritaView extends GetView<ListBeritaController> {
           ),
           Expanded(
             child: Obx(
-              () => controller.allBerita.value.berita != null
-                  ? ListView(
-                      children: [
-                        for (var index = 0;
-                            index < controller.allBerita.value.berita!.length;
-                            index++)
-                          _beritaTile(
-                            controller.allBerita.value.berita![index],
-                            index,
-                          ),
-                      ],
+              () => controller.allBerita.value.berita.isNotEmpty
+                  ? ListView.builder(
+                      itemCount: controller.allBerita.value.berita.length,
+                      itemBuilder: (context, index) {
+                        return _beritaTile(
+                          controller.allBerita.value.berita[index],
+                          index,
+                        );
+                      },
                     )
-                  : Wrap(),
+                  : Center(child: CircularProgressIndicator()),
             ),
           ),
         ],
@@ -86,12 +84,12 @@ class ListBeritaView extends GetView<ListBeritaController> {
 
   Widget _appBarTopik() {
     return Obx(() {
-      var kategoriList = controller.allBerita.value.kategoriList;
+      var kategoriList = controller.allKategori.value.kategori;
       return SizedBox(
         height: 150,
         child: ListView.builder(
           scrollDirection: Axis.horizontal,
-          itemCount: kategoriList!.length,
+          itemCount: kategoriList.length,
           itemBuilder: (context, index) {
             return _topikTile(kategoriList[index]);
           },
@@ -100,7 +98,7 @@ class ListBeritaView extends GetView<ListBeritaController> {
     });
   }
 
-  Widget _topikTile(Kategori kategori) {
+  Widget _topikTile(KategoriBerita kategori) {
     return GestureDetector(
       onTap: () {
         Get.toNamed('/topik-berita', arguments: kategori);
@@ -108,9 +106,11 @@ class ListBeritaView extends GetView<ListBeritaController> {
       child: Container(
         width: 150,
         margin: EdgeInsets.symmetric(horizontal: 8),
-        // placeholder gambar
         decoration: BoxDecoration(
-          color: Colors.red,
+          image: DecorationImage(
+            image: ApiService.loadImage(kategori.foto),
+            fit: BoxFit.contain,
+          ),
           borderRadius: BorderRadius.circular(16),
         ),
         child: Container(
@@ -127,9 +127,8 @@ class ListBeritaView extends GetView<ListBeritaController> {
               end: Alignment.topCenter,
             ),
           ),
-          // judul topik
           child: Text(
-            kategori.judul,
+            kategori.name,
             style: TextStyle(
               color: Colors.white,
               fontSize: 16,
@@ -141,7 +140,7 @@ class ListBeritaView extends GetView<ListBeritaController> {
     );
   }
 
-  _beritaTile(beritaData, index) {
+  Widget _beritaTile(Berita beritaData, int index) {
     return GestureDetector(
       onTap: () {
         Get.toNamed('/detail-berita', arguments: beritaData);
@@ -156,13 +155,16 @@ class ListBeritaView extends GetView<ListBeritaController> {
           child: Row(
             children: [
               // placeholder gambar
-              CircleAvatar(
-                backgroundColor: Colors.red,
-                radius: 40,
-                child: Icon(
-                  Icons.article,
-                  color: Colors.white,
-                  size: 30,
+              Container(
+                width: 80,
+                height: 80,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8),
+                  image: DecorationImage(
+                    image: ApiService.loadImage(beritaData.foto), // Full URL
+                    fit: BoxFit
+                        .cover, // Ensures image fills the container while maintaining aspect ratio
+                  ),
                 ),
               ),
               SizedBox(
@@ -174,7 +176,7 @@ class ListBeritaView extends GetView<ListBeritaController> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      beritaData.judul,
+                      beritaData.title,
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,

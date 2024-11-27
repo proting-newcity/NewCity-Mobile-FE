@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:dio/dio.dart' as dio;
 import 'package:image_picker_platform_interface/image_picker_platform_interface.dart';
 import 'package:newcity/api.dart';
-import 'package:newcity/model.dart';
 import 'package:newcity/camera.dart';
 
 class CreateLaporanController extends GetxController {
@@ -18,12 +17,9 @@ class CreateLaporanController extends GetxController {
   final TextEditingController deskripsiController = TextEditingController();
   final selectedTopics = <String>[].obs;
 
-  late ApiService apiService;
-
   @override
   void onInit() {
     super.onInit();
-    apiService = ApiService();
   }
 
   @override
@@ -94,7 +90,7 @@ class CreateLaporanController extends GetxController {
       print('Form Files: ${formData.files}');
 
       // Make POST request
-      final response = await apiService.postReport(formData);
+      final response = await ApiService.postReport(formData);
 
       if (response.statusCode == 200 || response.statusCode == 201) {
         Get.snackbar("Success", "Report submitted successfully!",
