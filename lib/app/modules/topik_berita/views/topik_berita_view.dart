@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:newcity/api.dart';
+import 'package:newcity/model.dart';
 
 import '../controllers/topik_berita_controller.dart';
 
@@ -16,30 +18,26 @@ class TopikBeritaView extends GetView<TopikBeritaController> {
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
       ),
-      // body: Obx(
-      //   () => controller.allBerita.value.berita != null
-      //       ? ListView(
-      //           children: [
-      //             for (var index = 0;
-      //                 index <
-      //                     controller
-      //                         .getBeritaByKategori(Get.arguments.judul)
-      //                         .length;
-      //                 index++)
-      //               _beritaTile(
-      //                 controller
-      //                     .getBeritaByKategori(Get.arguments.judul)[index],
-      //                 index,
-      //               ),
-      //           ],
-      //         )
-      //       : Wrap(),
-      // ),
+      body: Obx(
+        () => controller.allBerita.value.berita != null
+            ? ListView(
+                children: [
+                  for (var index = 0;
+                      index < controller.allBerita.value.berita.length;
+                      index++)
+                    _beritaTile(
+                      controller.allBerita.value.berita[index],
+                      index,
+                    ),
+                ],
+              )
+            : Wrap(),
+      ),
     );
   }
 }
 
-_beritaTile(beritaData, index) {
+_beritaTile(Berita beritaData, index) {
   return GestureDetector(
     onTap: () {
       Get.toNamed('/detail-berita', arguments: beritaData);
@@ -53,14 +51,15 @@ _beritaTile(beritaData, index) {
         padding: const EdgeInsets.all(16),
         child: Row(
           children: [
-            // Placeholder gambar
-            CircleAvatar(
-              backgroundColor: Colors.red,
-              radius: 40,
-              child: Icon(
-                Icons.article,
-                color: Colors.white,
-                size: 30,
+            Container(
+              width: 80,
+              height: 80,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8),
+                image: DecorationImage(
+                  image: ApiService.loadImage(beritaData.foto),
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
             SizedBox(
@@ -72,7 +71,7 @@ _beritaTile(beritaData, index) {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    beritaData.judul,
+                    beritaData.title,
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,

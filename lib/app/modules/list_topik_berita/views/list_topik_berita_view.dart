@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:newcity/api.dart';
 
 import '../controllers/list_topik_berita_controller.dart';
 import 'package:newcity/model.dart';
@@ -21,10 +22,10 @@ class ListTopikBeritaView extends GetView<ListTopikBeritaController> {
         ),
       ),
       body: Obx(() => ListView.builder(
-            // itemCount: controller.allBerita.value.kategoriList!.length,
+            itemCount: controller.allKategori.value.kategori.length,
             itemBuilder: (context, index) {
-              // final kategori = controller.allBerita.value.kategoriList![index];
-              // return TopikTile(kategori: kategori);
+              final kategori = controller.allKategori.value.kategori[index];
+              return TopikTile(kategori: kategori);
             },
           )),
     );
@@ -41,8 +42,10 @@ Widget TopikTile({required KategoriBerita kategori}) {
       margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       // placeholder gambar
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16),
-        color: Colors.blue,
+        image: DecorationImage(
+          image: ApiService.loadImage(kategori.foto),
+          fit: BoxFit.fitWidth,
+        ),
       ),
       child: Container(
         alignment: Alignment.center,
@@ -58,15 +61,14 @@ Widget TopikTile({required KategoriBerita kategori}) {
             end: Alignment.topCenter,
           ),
         ),
-        // judul kategori
-        // child: Text(
-        //   kategori.title,
-        //   style: TextStyle(
-        //     color: Colors.white,
-        //     fontSize: 20,
-        //     fontWeight: FontWeight.bold,
-        //   ),
-        // ),
+        child: Text(
+          kategori.name,
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
     ),
   );

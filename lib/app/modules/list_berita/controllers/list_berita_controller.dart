@@ -1,12 +1,9 @@
-import 'dart:convert';
-
 import 'package:get/get.dart';
-import 'package:flutter/services.dart' show rootBundle;
 import 'package:newcity/api.dart';
 import 'package:newcity/model.dart';
 
 class ListBeritaController extends GetxController {
-  var allBerita = Rx<BeritaResponse>(BeritaResponse());
+  var allBerita = Rx<BeritaResponsePagination>(BeritaResponsePagination());
   var allKategori = Rx<KategoriBeritaResponse>(KategoriBeritaResponse());
   var isLoading = true.obs;
 
@@ -39,7 +36,6 @@ class ListBeritaController extends GetxController {
 
   void fetchKategori() async {
     try {
-      // Assuming ApiService().getBerita() returns a BeritaResponse
       var response = await ApiService.getKategori();
       allKategori.value = response!;
     } catch (e) {

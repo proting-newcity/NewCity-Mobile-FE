@@ -154,16 +154,14 @@ class ListBeritaView extends GetView<ListBeritaController> {
           padding: const EdgeInsets.all(16),
           child: Row(
             children: [
-              // placeholder gambar
               Container(
                 width: 80,
                 height: 80,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
                   image: DecorationImage(
-                    image: ApiService.loadImage(beritaData.foto), // Full URL
-                    fit: BoxFit
-                        .cover, // Ensures image fills the container while maintaining aspect ratio
+                    image: ApiService.loadImage(beritaData.foto),
+                    fit: BoxFit.cover,
                   ),
                 ),
               ),

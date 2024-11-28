@@ -1,12 +1,12 @@
-class BeritaResponse {
-  List<Berita> berita; // List of Berita objects, not KategoriBerita
+class BeritaResponsePagination {
+  List<Berita> berita;
 
-  BeritaResponse({
+  BeritaResponsePagination({
     this.berita = const [],
   });
 
-  factory BeritaResponse.fromJson(Map<String, dynamic> json) {
-    return BeritaResponse(
+  factory BeritaResponsePagination.fromJson(Map<String, dynamic> json) {
+    return BeritaResponsePagination(
       berita: (json['data'] as List)
           .map((item) => Berita.fromJson(item))
           .toList(), // Convert each item in 'data' to Berita

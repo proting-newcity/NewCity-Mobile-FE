@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:newcity/api.dart';
 
 import '../controllers/detail_berita_controller.dart';
 
@@ -18,14 +19,25 @@ class DetailBeritaView extends GetView<DetailBeritaController> {
               Stack(
                 children: [
                   // placeholder gambar
-                  ColorFiltered(
-                    colorFilter: ColorFilter.mode(
-                      Colors.black.withOpacity(0.3),
-                      BlendMode.colorBurn,
+                  Container(
+                    height: 225,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      image: DecorationImage(
+                        image: ApiService.loadImage(Get.arguments.foto),
+                        fit: BoxFit.cover,
+                      ),
                     ),
-                    child: Container(
-                      height: 225,
-                      decoration: BoxDecoration(color: Colors.red),
+                    child: Stack(
+                      children: [
+                        // The dark overlay
+                        Container(
+                          decoration: BoxDecoration(
+                            color: Colors.black.withOpacity(
+                                0.4), // Adjust opacity to control darkness
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                   // Konten teks di atas gambar
