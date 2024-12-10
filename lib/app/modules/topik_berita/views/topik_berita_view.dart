@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:newcity/api.dart';
+import 'package:newcity/model.dart';
 
 import '../controllers/topik_berita_controller.dart';
 
@@ -16,30 +18,22 @@ class TopikBeritaView extends GetView<TopikBeritaController> {
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
       ),
-      // body: Obx(
-      //   () => controller.allBerita.value.berita != null
-      //       ? ListView(
-      //           children: [
-      //             for (var index = 0;
-      //                 index <
-      //                     controller
-      //                         .getBeritaByKategori(Get.arguments.judul)
-      //                         .length;
-      //                 index++)
-      //               _beritaTile(
-      //                 controller
-      //                     .getBeritaByKategori(Get.arguments.judul)[index],
-      //                 index,
-      //               ),
-      //           ],
-      //         )
-      //       : Wrap(),
-      // ),
+      body: Obx(() => ListView(
+            children: [
+              for (var index = 0;
+                  index < controller.allBerita.value.berita.length;
+                  index++)
+                _beritaTile(
+                  controller.allBerita.value.berita[index],
+                  index,
+                ),
+            ],
+          )),
     );
   }
 }
 
-_beritaTile(beritaData, index) {
+Widget _beritaTile(Berita beritaData, int index) {
   return GestureDetector(
     onTap: () {
       Get.toNamed('/detail-berita', arguments: beritaData);
@@ -53,26 +47,51 @@ _beritaTile(beritaData, index) {
         padding: const EdgeInsets.all(16),
         child: Row(
           children: [
-            // Placeholder gambar
-            CircleAvatar(
-              backgroundColor: Colors.red,
-              radius: 40,
-              child: Icon(
-                Icons.article,
-                color: Colors.white,
-                size: 30,
-              ),
+            FutureBuilder<ImageProvider<Object>>(
+              future: ApiService.loadImage(beritaData.foto),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Container(
+                    width: 80,
+                    height: 80,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      color: Colors.grey[300],
+                    ),
+                    child: Center(child: CircularProgressIndicator()),
+                  );
+                } else if (snapshot.hasError) {
+                  return Container(
+                    width: 80,
+                    height: 80,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      color: Colors.grey[300],
+                    ),
+                    child: Icon(Icons.error, color: Colors.red),
+                  );
+                } else {
+                  return Container(
+                    width: 80,
+                    height: 80,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      image: DecorationImage(
+                        image: snapshot.data!,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  );
+                }
+              },
             ),
-            SizedBox(
-              width: 16,
-            ),
-            // Text section
+            SizedBox(width: 16),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    beritaData.judul,
+                    beritaData.title,
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,

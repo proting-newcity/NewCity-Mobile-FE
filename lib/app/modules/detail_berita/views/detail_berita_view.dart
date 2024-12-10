@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:newcity/api.dart';
 
 import '../controllers/detail_berita_controller.dart';
 
@@ -17,18 +18,52 @@ class DetailBeritaView extends GetView<DetailBeritaController> {
             children: [
               Stack(
                 children: [
-                  // placeholder gambar
-                  ColorFiltered(
-                    colorFilter: ColorFilter.mode(
-                      Colors.black.withOpacity(0.3),
-                      BlendMode.colorBurn,
-                    ),
-                    child: Container(
-                      height: 225,
-                      decoration: BoxDecoration(color: Colors.red),
-                    ),
+                  FutureBuilder<ImageProvider<Object>>(
+                    future: ApiService.loadImage(Get.arguments.foto),
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return Container(
+                          height: 225,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            color: Colors.grey[300],
+                          ),
+                          child: Center(child: CircularProgressIndicator()),
+                        );
+                      } else if (snapshot.hasError) {
+                        return Container(
+                          height: 225,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            color: Colors.grey[300],
+                          ),
+                          child: Center(
+                            child: Icon(Icons.error, color: Colors.red),
+                          ),
+                        );
+                      } else {
+                        return Container(
+                          height: 225,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            image: DecorationImage(
+                              image: snapshot.data!,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          child: Stack(
+                            children: [
+                              Container(
+                                decoration: BoxDecoration(
+                                  color: Colors.black.withOpacity(0.4),
+                                ),
+                              ),
+                            ],
+                          ),
+                        );
+                      }
+                    },
                   ),
-                  // Konten teks di atas gambar
                   Positioned(
                     left: 16,
                     right: 16,
@@ -57,9 +92,7 @@ class DetailBeritaView extends GetView<DetailBeritaController> {
                         ),
                         const SizedBox(height: 8),
                         Padding(
-                          padding: const EdgeInsets.only(
-                              left:
-                                  48.0), // Padding untuk menyamakan dengan posisi judul
+                          padding: const EdgeInsets.only(left: 48.0),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -67,16 +100,19 @@ class DetailBeritaView extends GetView<DetailBeritaController> {
                                 DateFormat('yyyy-MM-dd – kk:mm')
                                     .format(Get.arguments.tanggal),
                                 style: TextStyle(
-                                    fontSize: 14, color: Colors.white),
+                                  fontSize: 14,
+                                  color: Colors.white,
+                                ),
                               ),
                               const SizedBox(height: 16),
                               Row(
                                 children: [
                                   const Icon(Icons.person, color: Colors.white),
                                   const SizedBox(width: 4),
-                                  Text(Get.arguments.user.name,
-                                      style:
-                                          const TextStyle(color: Colors.white)),
+                                  Text(
+                                    Get.arguments.user.name,
+                                    style: const TextStyle(color: Colors.white),
+                                  ),
                                 ],
                               ),
                               const SizedBox(height: 16),
@@ -88,7 +124,6 @@ class DetailBeritaView extends GetView<DetailBeritaController> {
                                           arguments: Get.arguments.kategori);
                                     },
                                     child: Text(Get.arguments.kategori.name),
-                                    style: ElevatedButton.styleFrom(),
                                   ),
                                   const Spacer(),
                                   const Icon(Icons.thumb_up_alt_outlined,
@@ -115,7 +150,6 @@ class DetailBeritaView extends GetView<DetailBeritaController> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const SizedBox(height: 16),
-                    // Placeholder text konten berita
                     Text(
                       Get.arguments.content,
                       textAlign: TextAlign.justify,

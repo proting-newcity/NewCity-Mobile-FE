@@ -1,14 +1,14 @@
-import 'dart:convert';
 import 'package:get/get.dart';
-import 'package:flutter/services.dart' show rootBundle;
 import 'package:newcity/model.dart';
+import 'package:newcity/api.dart';
 
 class ListTopikBeritaController extends GetxController {
-  var allBerita = Rx<BeritaResponse>(BeritaResponse());
+  var allKategori = Rx<KategoriBeritaResponse>(KategoriBeritaResponse());
   final count = 0.obs;
   @override
   void onInit() {
     super.onInit();
+    fetchKategori();
   }
 
   @override
@@ -21,5 +21,12 @@ class ListTopikBeritaController extends GetxController {
     super.onClose();
   }
 
-  void increment() => count.value++;
+  void fetchKategori() async {
+    try {
+      var response = await ApiService.getKategori();
+      allKategori.value = response!;
+    } catch (e) {
+      print('Error fetching berita: $e');
+    }
+  }
 }

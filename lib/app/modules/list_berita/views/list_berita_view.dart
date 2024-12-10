@@ -8,6 +8,28 @@ import 'package:newcity/model.dart';
 class ListBeritaView extends GetView<ListBeritaController> {
   const ListBeritaView({super.key});
 
+  Future<List<ImageProvider<Object>>> loadImagesConcurrently(
+      List<Berita> beritaList) async {
+    List<Future<ImageProvider<Object>>> futures = [];
+
+    for (var berita in beritaList) {
+      futures.add(ApiService.loadImage(berita.foto));
+    }
+
+    return await Future.wait(futures);
+  }
+
+  Future<List<ImageProvider<Object>>> loadCategoryImages(
+      List<KategoriBerita> kategoriList) async {
+    List<Future<ImageProvider<Object>>> futures = [];
+
+    for (var kategori in kategoriList) {
+      futures.add(ApiService.loadImage(kategori.foto));
+    }
+
+    return await Future.wait(futures);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,19 +86,39 @@ class ListBeritaView extends GetView<ListBeritaController> {
           ),
           Expanded(
             child: Obx(
-              () => controller.allBerita.value.berita.isNotEmpty
-                  ? ListView.builder(
-                      itemCount: controller.allBerita.value.berita.length,
-                      itemBuilder: (context, index) {
-                        return _beritaTile(
-                          controller.allBerita.value.berita[index],
-                          index,
+              () {
+                if (controller.allBerita.value.berita.isNotEmpty) {
+                  return FutureBuilder<List<ImageProvider<Object>>>(
+                    future: loadImagesConcurrently(
+                        controller.allBerita.value.berita),
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return Center(child: CircularProgressIndicator());
+                      } else if (snapshot.hasError) {
+                        return Center(child: Text("Error loading images"));
+                      } else {
+                        List<ImageProvider<Object>> images =
+                            snapshot.data ?? [];
+
+                        return ListView.builder(
+                          itemCount: controller.allBerita.value.berita.length,
+                          itemBuilder: (context, index) {
+                            return _beritaTile(
+                              controller.allBerita.value.berita[index],
+                              index,
+                              images[index],
+                            );
+                          },
                         );
-                      },
-                    )
-                  : Center(child: CircularProgressIndicator()),
+                      }
+                    },
+                  );
+                } else {
+                  return Center(child: CircularProgressIndicator());
+                }
+              },
             ),
-          ),
+          )
         ],
       ),
     );
@@ -85,20 +127,38 @@ class ListBeritaView extends GetView<ListBeritaController> {
   Widget _appBarTopik() {
     return Obx(() {
       var kategoriList = controller.allKategori.value.kategori;
-      return SizedBox(
-        height: 150,
-        child: ListView.builder(
-          scrollDirection: Axis.horizontal,
-          itemCount: kategoriList.length,
-          itemBuilder: (context, index) {
-            return _topikTile(kategoriList[index]);
-          },
-        ),
+      if (kategoriList.isEmpty) {
+        return Center(child: CircularProgressIndicator());
+      }
+      return FutureBuilder<List<ImageProvider<Object>>>(
+        future: loadCategoryImages(kategoriList),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Center(child: CircularProgressIndicator());
+          } else if (snapshot.hasError) {
+            return Center(child: Text("Error loading images"));
+          } else if (!snapshot.hasData) {
+            return Center(child: Text("No data available"));
+          } else {
+            List<ImageProvider<Object>> categoryImages = snapshot.data ?? [];
+
+            return SizedBox(
+              height: 150,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: kategoriList.length,
+                itemBuilder: (context, index) {
+                  return _topikTile(kategoriList[index], categoryImages[index]);
+                },
+              ),
+            );
+          }
+        },
       );
     });
   }
 
-  Widget _topikTile(KategoriBerita kategori) {
+  Widget _topikTile(KategoriBerita kategori, ImageProvider<Object> image) {
     return GestureDetector(
       onTap: () {
         Get.toNamed('/topik-berita', arguments: kategori);
@@ -108,7 +168,7 @@ class ListBeritaView extends GetView<ListBeritaController> {
         margin: EdgeInsets.symmetric(horizontal: 8),
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: ApiService.loadImage(kategori.foto),
+            image: image,
             fit: BoxFit.contain,
           ),
           borderRadius: BorderRadius.circular(16),
@@ -140,7 +200,8 @@ class ListBeritaView extends GetView<ListBeritaController> {
     );
   }
 
-  Widget _beritaTile(Berita beritaData, int index) {
+  Widget _beritaTile(
+      Berita beritaData, int index, ImageProvider<Object> image) {
     return GestureDetector(
       onTap: () {
         Get.toNamed('/detail-berita', arguments: beritaData);
@@ -154,23 +215,18 @@ class ListBeritaView extends GetView<ListBeritaController> {
           padding: const EdgeInsets.all(16),
           child: Row(
             children: [
-              // placeholder gambar
               Container(
                 width: 80,
                 height: 80,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
                   image: DecorationImage(
-                    image: ApiService.loadImage(beritaData.foto), // Full URL
-                    fit: BoxFit
-                        .cover, // Ensures image fills the container while maintaining aspect ratio
+                    image: image,
+                    fit: BoxFit.cover,
                   ),
                 ),
               ),
-              SizedBox(
-                width: 16,
-              ),
-              // Text section
+              SizedBox(width: 16),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
