@@ -6,6 +6,8 @@ class ListBeritaController extends GetxController {
   var allBerita = Rx<BeritaResponsePagination>(BeritaResponsePagination());
   var allKategori = Rx<KategoriBeritaResponse>(KategoriBeritaResponse());
   var isLoading = true.obs;
+  var currentPage = 0.obs;
+  var hasReachedEnd = false.obs;
 
   @override
   void onInit() {
@@ -24,11 +26,14 @@ class ListBeritaController extends GetxController {
     super.onClose();
   }
 
-  // Fetch Berita data from the API
   void fetchBerita() async {
     try {
-      var response = await ApiService.getPaginationBerita();
+      var response = await ApiService.getPaginationBerita(currentPage.value);
       allBerita.value = response!;
+      currentPage++;
+      if (currentPage >= allBerita.value.lastPage!) {
+        hasReachedEnd.value = true;
+      }
     } catch (e) {
       print('Error fetching berita: $e');
     }

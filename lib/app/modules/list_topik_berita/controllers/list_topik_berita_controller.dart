@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:newcity/model.dart';
 import 'package:newcity/api.dart';

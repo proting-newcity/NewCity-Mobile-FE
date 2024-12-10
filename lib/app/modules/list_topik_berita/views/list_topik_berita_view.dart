@@ -40,35 +40,58 @@ Widget TopikTile({required KategoriBerita kategori}) {
     child: Container(
       height: 150,
       margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      // placeholder gambar
       decoration: BoxDecoration(
-        image: DecorationImage(
-          image: ApiService.loadImage(kategori.foto),
-          fit: BoxFit.fitWidth,
-        ),
+        borderRadius: BorderRadius.circular(16),
       ),
-      child: Container(
-        alignment: Alignment.center,
-        padding: EdgeInsets.all(8),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(16),
-          gradient: LinearGradient(
-            colors: [
-              Colors.black.withOpacity(0.6),
-              Colors.transparent,
-            ],
-            begin: Alignment.bottomCenter,
-            end: Alignment.topCenter,
-          ),
-        ),
-        child: Text(
-          kategori.name,
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
+      child: FutureBuilder<ImageProvider<Object>>(
+        future: ApiService.loadImage(kategori.foto),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          } else if (snapshot.hasError) {
+            return Container(
+              color: Colors.grey[300],
+              child: Center(
+                child: Icon(Icons.error, color: Colors.red),
+              ),
+            );
+          } else {
+            return Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(16),
+                image: DecorationImage(
+                  image: snapshot.data!,
+                  fit: BoxFit.fitWidth,
+                ),
+              ),
+              child: Container(
+                alignment: Alignment.center,
+                padding: EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(16),
+                  gradient: LinearGradient(
+                    colors: [
+                      Colors.black.withOpacity(0.6),
+                      Colors.transparent,
+                    ],
+                    begin: Alignment.bottomCenter,
+                    end: Alignment.topCenter,
+                  ),
+                ),
+                child: Text(
+                  kategori.name,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            );
+          }
+        },
       ),
     ),
   );

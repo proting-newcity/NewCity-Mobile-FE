@@ -1,15 +1,17 @@
 class BeritaResponsePagination {
   List<Berita> berita;
+  int? lastPage;
 
   BeritaResponsePagination({
     this.berita = const [],
+    this.lastPage,
   });
 
   factory BeritaResponsePagination.fromJson(Map<String, dynamic> json) {
     return BeritaResponsePagination(
-      berita: (json['data'] as List)
-          .map((item) => Berita.fromJson(item))
-          .toList(), // Convert each item in 'data' to Berita
+      berita:
+          (json['data'] as List).map((item) => Berita.fromJson(item)).toList(),
+      lastPage: json['last_page'],
     );
   }
 }
@@ -17,7 +19,9 @@ class BeritaResponsePagination {
 class KategoriBeritaResponse {
   final List<KategoriBerita> kategori;
 
-  KategoriBeritaResponse({this.kategori = const []});
+  KategoriBeritaResponse({
+    this.kategori = const [],
+  });
 
   factory KategoriBeritaResponse.fromJson(List<dynamic> json) {
     return KategoriBeritaResponse(
