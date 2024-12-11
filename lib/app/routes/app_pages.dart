@@ -1,4 +1,8 @@
 import 'package:get/get.dart';
+import 'package:newcity/app/modules/laporan_tersaring/bindings/laporan_tersaring_binding.dart';
+import 'package:newcity/app/modules/laporan_tersaring/views/laporan_tersaring_view.dart';
+import 'package:newcity/app/modules/status_laporan/bindings/status_laporan_binding.dart';
+import 'package:newcity/app/modules/status_laporan/views/status_laporan_view.dart';
 
 import '../modules/biodata_page/bindings/biodata_page_binding.dart';
 import '../modules/biodata_page/views/biodata_page_view.dart';
@@ -32,7 +36,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.LIST_BERITA;
+  static const INITIAL = Routes.LAPORAN_TERSARING;
 
   static final routes = [
     GetPage(
@@ -77,8 +81,18 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.GOVERMENT,
-      page: () => GovermentView(),
+      page: () => const GovermentView(),
       binding: GovermentBinding(),
+    ),
+    GetPage(
+      name: _Paths.STATUS_LAPORAN,
+      page: () => const StatusLaporanView(),
+      binding: StatusLaporanBinding(),
+    ),
+    GetPage(
+      name: _Paths.LAPORAN_TERSARING,
+      page: () => const LaporanTersaringView(),
+      binding: LaporanTersaringBinding(),
     ),
     GetPage(
       name: _Paths.REGISTER,
