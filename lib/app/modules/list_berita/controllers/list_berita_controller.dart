@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import 'package:newcity/api.dart';
-import 'package:newcity/model.dart';
+import 'package:newcity/models/berita.dart';
 
 class ListBeritaController extends GetxController {
   var allBerita = Rx<BeritaResponsePagination>(BeritaResponsePagination());

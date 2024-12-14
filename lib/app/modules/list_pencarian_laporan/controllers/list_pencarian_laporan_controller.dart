@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
-class PencarianLaporanController extends GetxController {
-  //TODO: Implement PencarianLaporanController
+class ListPencarianLaporanController extends GetxController {
+  //TODO: Implement ListPencarianLaporanController
 
   final count = 0.obs;
   @override

@@ -75,7 +75,7 @@ class CreateLaporanController extends GetxController {
         MapEntry("lokasi", lokasiController.text),
         MapEntry("status[]", '["open"]'),
         MapEntry("id_masyarakat", "1"), // Replace with actual value
-        MapEntry("id_kategori", "2"), // Replace with actual value
+        MapEntry("id_kategori", "1"), // Replace with actual value
       ]);
 
       if (photo.value != null) {

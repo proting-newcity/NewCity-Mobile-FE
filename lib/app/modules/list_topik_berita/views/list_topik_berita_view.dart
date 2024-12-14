@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:newcity/api.dart';
 
 import '../controllers/list_topik_berita_controller.dart';
-import 'package:newcity/model.dart';
+import 'package:newcity/models/berita.dart';
 
 class ListTopikBeritaView extends GetView<ListTopikBeritaController> {
   const ListTopikBeritaView({super.key});

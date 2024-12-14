@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_connect/connect.dart';
-import 'package:newcity/model.dart';
+import 'package:newcity/models/berita.dart';
 import 'package:retry/retry.dart';
 
 class ApiService extends GetConnect {

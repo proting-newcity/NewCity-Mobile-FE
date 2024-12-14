@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:newcity/model.dart';
+import 'package:newcity/models/berita.dart';
 import 'package:newcity/api.dart';
 
 class ListTopikBeritaController extends GetxController {
