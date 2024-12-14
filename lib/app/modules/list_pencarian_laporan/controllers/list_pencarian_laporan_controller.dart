@@ -1,16 +1,18 @@
 import 'package:get/get.dart';
 import 'package:newcity/api.dart';
-import 'package:newcity/models/berita.dart';
+import 'package:newcity/models/report.dart';
 
-class TopikBeritaController extends GetxController {
-  var allBerita = Rx<BeritaResponsePagination>(BeritaResponsePagination());
+class ListPencarianLaporanController extends GetxController {
+  var allReport = Rx<ReportResponsePagination>(ReportResponsePagination());
   var isLoading = true.obs;
   var currentPage = 0.obs;
   var hasReachedEnd = false.obs;
+
+  final count = 0.obs;
   @override
   void onInit() {
     super.onInit();
-    fetchBeritaByKategori(Get.arguments.id);
+    fetchReportbySearch(Get.arguments.keyword);
   }
 
   @override
@@ -23,18 +25,19 @@ class TopikBeritaController extends GetxController {
     super.onClose();
   }
 
-  void fetchBeritaByKategori(id) async {
+  void fetchReportbySearch(String keyword) async {
     if (hasReachedEnd.value) return;
 
     isLoading.value = true;
+
     try {
       var response =
-          await ApiService.getBeritaByKategori(currentPage.value, id);
+          await ApiService.getSearchedReport(currentPage.value, keyword);
       if (response != null) {
-        final currentBerita = allBerita.value.berita;
-        final newBerita = response.berita;
-        allBerita.update((val) {
-          val?.berita = List.from(currentBerita)..addAll(newBerita);
+        final currentReport = allReport.value.report;
+        final newReport = response.report;
+        allReport.update((val) {
+          val?.report = List.from(currentReport)..addAll(newReport);
           val?.lastPage = response.lastPage;
         });
         currentPage.value++;

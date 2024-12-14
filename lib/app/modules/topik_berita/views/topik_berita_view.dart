@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:intl/intl.dart';
-import 'package:newcity/api.dart';
-import 'package:newcity/model.dart';
+import 'package:newcity/widgets/berita_tile.dart';
 
 import '../controllers/topik_berita_controller.dart';
 
@@ -18,99 +16,40 @@ class TopikBeritaView extends GetView<TopikBeritaController> {
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
       ),
-      body: Obx(() => ListView(
-            children: [
-              for (var index = 0;
-                  index < controller.allBerita.value.berita.length;
-                  index++)
-                _beritaTile(
-                  controller.allBerita.value.berita[index],
-                  index,
-                ),
-            ],
-          )),
-    );
-  }
-}
+      body: Obx(
+        () {
+          if (controller.allBerita.value.berita.isEmpty) {
+            return Center(child: CircularProgressIndicator());
+          }
 
-Widget _beritaTile(Berita beritaData, int index) {
-  return GestureDetector(
-    onTap: () {
-      Get.toNamed('/detail-berita', arguments: beritaData);
-    },
-    child: Card(
-      elevation: 3,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Row(
-          children: [
-            FutureBuilder<ImageProvider<Object>>(
-              future: ApiService.loadImage(beritaData.foto),
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return Container(
-                    width: 80,
-                    height: 80,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      color: Colors.grey[300],
-                    ),
-                    child: Center(child: CircularProgressIndicator()),
-                  );
-                } else if (snapshot.hasError) {
-                  return Container(
-                    width: 80,
-                    height: 80,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      color: Colors.grey[300],
-                    ),
-                    child: Icon(Icons.error, color: Colors.red),
+          return NotificationListener<ScrollNotification>(
+            onNotification: (ScrollNotification scrollInfo) {
+              if (!controller.isLoading.value &&
+                  scrollInfo.metrics.pixels ==
+                      scrollInfo.metrics.maxScrollExtent) {
+                controller.fetchBeritaByKategori(Get.arguments.id);
+              }
+              return true;
+            },
+            child: ListView.builder(
+              itemCount: controller.allBerita.value.berita.length +
+                  (controller.hasReachedEnd.value
+                      ? 0
+                      : 1), // Add extra item for loading indicator
+              itemBuilder: (context, index) {
+                if (index < controller.allBerita.value.berita.length) {
+                  return BeritaTile(
+                    controller.allBerita.value.berita[index],
+                    index,
                   );
                 } else {
-                  return Container(
-                    width: 80,
-                    height: 80,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      image: DecorationImage(
-                        image: snapshot.data!,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  );
+                  return Center(child: CircularProgressIndicator());
                 }
               },
             ),
-            SizedBox(width: 16),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    beritaData.title,
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  SizedBox(height: 8),
-                  Text(
-                    DateFormat('yyyy-MM-dd – kk:mm').format(beritaData.tanggal),
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: Colors.grey[600],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
+          );
+        },
       ),
-    ),
-  );
+    );
+  }
 }

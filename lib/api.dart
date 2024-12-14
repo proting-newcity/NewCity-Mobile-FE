@@ -1,7 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_connect/connect.dart';
-import 'package:newcity/model.dart';
+import 'package:newcity/models/berita.dart';
+import 'package:newcity/models/report.dart';
 import 'package:retry/retry.dart';
 
 class ApiService extends GetConnect {
@@ -11,7 +12,7 @@ class ApiService extends GetConnect {
 
   static Dio createDio() {
     var dio = Dio(BaseOptions(
-      baseUrl: "http://10.0.2.2:8000/",
+      baseUrl: "http://192.168.1.4:8000/",
       connectTimeout: Duration(seconds: 15),
       receiveTimeout: Duration(seconds: 30),
     ));
@@ -33,6 +34,43 @@ class ApiService extends GetConnect {
     return response;
   }
 
+  static Future<ReportResponsePagination?> getPaginationReport(int page) async {
+    try {
+      final response = await dio.get(
+        'api/report',
+        queryParameters: {'page': page},
+      );
+      if (response.statusCode == 200) {
+        return ReportResponsePagination.fromJson(response.data);
+      } else {
+        throw Exception('Failed to load berita');
+      }
+    } catch (e) {
+      print("Error: $e");
+      return null;
+    }
+  }
+
+  static Future<ReportResponsePagination?> getSearchedReport(
+      int page, String keyword) async {
+    try {
+      final response = await dio.get(
+        'api/report/search',
+        queryParameters: {
+          'page': page,
+        },
+      );
+      if (response.statusCode == 200) {
+        return ReportResponsePagination.fromJson(response.data);
+      } else {
+        throw Exception('Failed to load berita');
+      }
+    } catch (e) {
+      print("Error: $e");
+      return null;
+    }
+  }
+
   static Future<BeritaResponsePagination?> getPaginationBerita(int page) async {
     try {
       final response = await dio.get(
@@ -50,9 +88,11 @@ class ApiService extends GetConnect {
     }
   }
 
-  static Future<BeritaResponsePagination?> getBeritaByKategori(id) async {
+  static Future<BeritaResponsePagination?> getBeritaByKategori(
+      int page, id) async {
     try {
-      final response = await dio.get('api/berita/category/$id');
+      final response = await dio
+          .get('api/berita/category/$id', queryParameters: {'page': page});
       if (response.statusCode == 200) {
         return BeritaResponsePagination.fromJson(response.data);
       } else {

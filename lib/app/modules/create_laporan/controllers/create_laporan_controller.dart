@@ -4,9 +4,9 @@ import 'package:dio/dio.dart' as dio;
 import 'package:image_picker_platform_interface/image_picker_platform_interface.dart';
 import 'package:newcity/api.dart';
 import 'package:newcity/camera.dart';
+import 'package:http_parser/http_parser.dart';
 
 class CreateLaporanController extends GetxController {
-  //TODO: Implement CreateLaporanController
   Rx<XFile?> photo = Rx<XFile?>(null);
   var isLoading = false.obs;
 
@@ -75,16 +75,17 @@ class CreateLaporanController extends GetxController {
         MapEntry("lokasi", lokasiController.text),
         MapEntry("status[]", '["open"]'),
         MapEntry("id_masyarakat", "1"), // Replace with actual value
-        MapEntry("id_kategori", "2"), // Replace with actual value
+        MapEntry("id_kategori", "1"), // Replace with actual value
       ]);
 
-      if (photo.value != null) {
-        formData.files.add(MapEntry(
-          "foto",
-          await dio.MultipartFile.fromFile(photo.value!.path,
-              filename: photo.value!.name),
-        ));
-      }
+      formData.files.add(MapEntry(
+        "foto",
+        await dio.MultipartFile.fromFile(
+          photo.value!.path,
+          filename: photo.value!.name,
+          contentType: MediaType('image', 'jpeg'),
+        ),
+      ));
 
       print('Form Data: ${formData.fields}');
       print('Form Files: ${formData.files}');
