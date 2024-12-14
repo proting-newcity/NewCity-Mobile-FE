@@ -56,7 +56,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.LIST_BERITA,
-      page: () => const ListBeritaView(),
+      page: () => ListBeritaView(),
       binding: ListBeritaBinding(),
     ),
     GetPage(

@@ -48,20 +48,21 @@ class ListBeritaView extends GetView<ListBeritaController> {
                   ),
                 ),
                 TextButton(
-                    onPressed: () {
-                      Get.toNamed("/list-topik-berita");
-                    },
-                    child: Text(
-                      "Topik lainnya",
-                      style: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.green),
-                    ))
+                  onPressed: () {
+                    Get.toNamed("/list-topik-berita");
+                  },
+                  child: Text(
+                    "Topik lainnya",
+                    style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.green),
+                  ),
+                )
               ],
             ),
           ),
-          _appBarTopik(),
+          _appBarTopik(), // Only listens to topik observables
           Padding(
             padding: const EdgeInsets.all(18.0),
             child: Text(
@@ -74,17 +75,38 @@ class ListBeritaView extends GetView<ListBeritaController> {
           ),
           Expanded(
             child: Obx(
-              () => controller.allBerita.value.berita.isNotEmpty
-                  ? ListView.builder(
-                      itemCount: controller.allBerita.value.berita.length,
-                      itemBuilder: (context, index) {
+              () {
+                if (controller.allBerita.value.berita.isEmpty) {
+                  return Center(child: CircularProgressIndicator());
+                }
+
+                return NotificationListener<ScrollNotification>(
+                  onNotification: (ScrollNotification scrollInfo) {
+                    if (!controller.isLoading.value &&
+                        scrollInfo.metrics.pixels ==
+                            scrollInfo.metrics.maxScrollExtent) {
+                      controller.fetchBerita();
+                    }
+                    return true;
+                  },
+                  child: ListView.builder(
+                    itemCount: controller.allBerita.value.berita.length +
+                        (controller.hasReachedEnd.value
+                            ? 0
+                            : 1), // Add extra item for loading indicator
+                    itemBuilder: (context, index) {
+                      if (index < controller.allBerita.value.berita.length) {
                         return BeritaTile(
                           controller.allBerita.value.berita[index],
                           index,
                         );
-                      },
-                    )
-                  : Center(child: CircularProgressIndicator()),
+                      } else {
+                        return Center(child: CircularProgressIndicator());
+                      }
+                    },
+                  ),
+                );
+              },
             ),
           ),
         ],
@@ -94,12 +116,11 @@ class ListBeritaView extends GetView<ListBeritaController> {
 
   Widget _appBarTopik() {
     return Obx(() {
-      var kategoriList = controller.allKategori.value.kategori;
-      if (kategoriList.isEmpty) {
+      if (controller.allKategori.value.kategori.isEmpty) {
         return Center(child: CircularProgressIndicator());
       }
       return FutureBuilder<List<ImageProvider<Object>>>(
-        future: loadCategoryImages(kategoriList),
+        future: loadCategoryImages(controller.allKategori.value.kategori),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());
@@ -114,9 +135,11 @@ class ListBeritaView extends GetView<ListBeritaController> {
               height: 150,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
-                itemCount: kategoriList.length,
+                itemCount: controller.allKategori.value.kategori.length,
                 itemBuilder: (context, index) {
-                  return _topikTile(kategoriList[index], categoryImages[index]);
+                  return _topikTile(
+                      controller.allKategori.value.kategori[index],
+                      categoryImages[index]);
                 },
               ),
             );

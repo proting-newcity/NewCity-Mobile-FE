@@ -16,17 +16,40 @@ class TopikBeritaView extends GetView<TopikBeritaController> {
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
       ),
-      body: Obx(() => ListView(
-            children: [
-              for (var index = 0;
-                  index < controller.allBerita.value.berita.length;
-                  index++)
-                BeritaTile(
-                  controller.allBerita.value.berita[index],
-                  index,
-                ),
-            ],
-          )),
+      body: Obx(
+        () {
+          if (controller.allBerita.value.berita.isEmpty) {
+            return Center(child: CircularProgressIndicator());
+          }
+
+          return NotificationListener<ScrollNotification>(
+            onNotification: (ScrollNotification scrollInfo) {
+              if (!controller.isLoading.value &&
+                  scrollInfo.metrics.pixels ==
+                      scrollInfo.metrics.maxScrollExtent) {
+                controller.fetchBeritaByKategori(Get.arguments.id);
+              }
+              return true;
+            },
+            child: ListView.builder(
+              itemCount: controller.allBerita.value.berita.length +
+                  (controller.hasReachedEnd.value
+                      ? 0
+                      : 1), // Add extra item for loading indicator
+              itemBuilder: (context, index) {
+                if (index < controller.allBerita.value.berita.length) {
+                  return BeritaTile(
+                    controller.allBerita.value.berita[index],
+                    index,
+                  );
+                } else {
+                  return Center(child: CircularProgressIndicator());
+                }
+              },
+            ),
+          );
+        },
+      ),
     );
   }
 }
