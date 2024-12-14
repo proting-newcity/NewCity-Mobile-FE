@@ -12,6 +12,8 @@ abstract class Routes {
   static const DETAIL_BERITA = _Paths.DETAIL_BERITA;
   static const WELCOMEPAGE = _Paths.WELCOMEPAGE;
   static const GOVERMENT = _Paths.GOVERMENT;
+  static const STATUS_LAPORAN = _Paths.STATUS_LAPORAN;
+  static const LAPORAN_TERSARING = _Paths.LAPORAN_TERSARING;
   static const REGISTER = _Paths.REGISTER;
   static const BIODATA_PAGE = _Paths.BIODATA_PAGE;
   static const EDIT_AKUN = _Paths.EDIT_AKUN;
@@ -32,6 +34,8 @@ abstract class _Paths {
   static const DETAIL_BERITA = '/detail-berita';
   static const WELCOMEPAGE = '/welcomepage';
   static const GOVERMENT = '/goverment';
+  static const STATUS_LAPORAN = '/status-laporan';
+  static const LAPORAN_TERSARING = '/laporan-tersaring';
   static const REGISTER = '/register';
   static const BIODATA_PAGE = '/biodata-page';
   static const EDIT_AKUN = '/edit-akun';
