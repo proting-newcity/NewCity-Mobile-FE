@@ -1,3 +1,21 @@
+class ReportResponsePagination {
+  List<Report> report;
+  int? lastPage;
+
+  ReportResponsePagination({
+    this.report = const [],
+    this.lastPage,
+  });
+
+  factory ReportResponsePagination.fromJson(Map<String, dynamic> json) {
+    return ReportResponsePagination(
+      report:
+          (json['data'] as List).map((item) => Report.fromJson(item)).toList(),
+      lastPage: json['last_page'],
+    );
+  }
+}
+
 class Report {
   int? id;
   String judul;

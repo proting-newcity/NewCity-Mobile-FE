@@ -16,6 +16,8 @@ import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/list_berita/bindings/list_berita_binding.dart';
 import '../modules/list_berita/views/list_berita_view.dart';
+import '../modules/list_laporan/bindings/list_laporan_binding.dart';
+import '../modules/list_laporan/views/list_laporan_view.dart';
 import '../modules/list_pencarian_laporan/bindings/list_pencarian_laporan_binding.dart';
 import '../modules/list_pencarian_laporan/views/list_pencarian_laporan_view.dart';
 import '../modules/list_topik_berita/bindings/list_topik_berita_binding.dart';
@@ -113,6 +115,11 @@ class AppPages {
       name: _Paths.DETAIL_LAPORAN,
       page: () => DetailLaporanView(),
       binding: DetailLaporanBinding(),
+    ),
+    GetPage(
+      name: _Paths.LIST_LAPORAN,
+      page: () => const ListLaporanView(),
+      binding: ListLaporanBinding(),
     ),
   ];
 }

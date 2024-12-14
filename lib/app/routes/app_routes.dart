@@ -18,6 +18,7 @@ abstract class Routes {
   static const CREATE_LAPORAN = _Paths.CREATE_LAPORAN;
   static const LIST_PENCARIAN_LAPORAN = _Paths.LIST_PENCARIAN_LAPORAN;
   static const DETAIL_LAPORAN = _Paths.DETAIL_LAPORAN;
+  static const LIST_LAPORAN = _Paths.LIST_LAPORAN;
 }
 
 abstract class _Paths {
@@ -37,4 +38,5 @@ abstract class _Paths {
   static const CREATE_LAPORAN = '/create-laporan';
   static const LIST_PENCARIAN_LAPORAN = '/list-pencarian-laporan';
   static const DETAIL_LAPORAN = '/detail-laporan';
+  static const LIST_LAPORAN = '/list-laporan';
 }
