@@ -42,11 +42,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-<<<<<<< HEAD
   static const INITIAL = Routes.GOVERMENT;
-=======
-  static const INITIAL = Routes.LIST_LAPORAN;
->>>>>>> origin
 
   static final routes = [
     GetPage(
