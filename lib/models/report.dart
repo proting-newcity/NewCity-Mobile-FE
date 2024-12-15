@@ -16,6 +16,20 @@ class ReportResponsePagination {
   }
 }
 
+class KategoriReportResponse {
+  final List<KategoriReport> kategori;
+
+  KategoriReportResponse({
+    this.kategori = const [],
+  });
+
+  factory KategoriReportResponse.fromJson(List<dynamic> json) {
+    return KategoriReportResponse(
+      kategori: json.map((item) => KategoriReport.fromJson(item)).toList(),
+    );
+  }
+}
+
 class Report {
   int? id;
   String judul;
@@ -94,4 +108,18 @@ class Report {
         "id_masyarakat": idMasyarakat,
         "id_kategori": idKategori,
       };
+}
+
+class KategoriReport {
+  int id;
+  String name;
+
+  KategoriReport({required this.id, required this.name});
+
+  factory KategoriReport.fromJson(Map<String, dynamic> json) {
+    return KategoriReport(
+      id: json['id'],
+      name: json['name'],
+    );
+  }
 }

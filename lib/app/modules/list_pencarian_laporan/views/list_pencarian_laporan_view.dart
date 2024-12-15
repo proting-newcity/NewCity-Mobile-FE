@@ -25,8 +25,14 @@ class ListPencarianLaporanView extends GetView<ListPencarianLaporanController> {
       ),
       body: Obx(
         () {
-          if (controller.allReport.value.report.isEmpty) {
+          if (controller.isLoading.value) {
             return Center(child: CircularProgressIndicator());
+          }
+
+          if (controller.allReport.value.report.isEmpty) {
+            return Center(
+              child: Text("Data tidak ditemukan!"),
+            );
           }
 
           return NotificationListener<ScrollNotification>(
