@@ -7,7 +7,7 @@ import 'package:newcity/api.dart';
 Widget reportTile(Report report) {
   return GestureDetector(
     onTap: () {
-      Get.toNamed('/detail-berita', arguments: report);
+      Get.toNamed('/detail-laporan', arguments: report.id);
     },
     child: Card(
       elevation: 3,

@@ -175,7 +175,6 @@ class GovermentView extends GetView<GovermentController> {
                   borderRadius: BorderRadius.all(
                     Radius.circular(25),
                   ),
-                  // color: Color.fromRGBO(249, 249, 249, 1),
                   border: Border.all(
                     color: Color.fromRGBO(88, 129, 87, 1),
                   ),
@@ -217,61 +216,57 @@ class GovermentView extends GetView<GovermentController> {
               child: SizedBox(
                 width: 280,
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Column(
-                      children: [
-                        CircleAvatar(
-                          radius: 32,
-                          backgroundColor: Color.fromRGBO(88, 129, 87, 1),
-                          child: Icon(
-                            Icons.file_copy,
-                            color: Colors.white,
+                    GestureDetector(
+                      onTap: () {
+                        Get.toNamed(
+                          '/status-laporan',
+                        );
+                      },
+                      child: Column(
+                        children: [
+                          CircleAvatar(
+                            radius: 32,
+                            backgroundColor: Color.fromRGBO(88, 129, 87, 1),
+                            child: Icon(
+                              Icons.check,
+                              color: Colors.white,
+                            ),
                           ),
-                        ),
-                        Text(
-                          'Laporan',
-                          style: TextStyle(
-                            color: Color.fromRGBO(88, 129, 87, 1),
+                          Text(
+                            'Status',
+                            style: TextStyle(
+                              color: Color.fromRGBO(88, 129, 87, 1),
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                    Column(
-                      children: [
-                        CircleAvatar(
-                          radius: 32,
-                          backgroundColor: Color.fromRGBO(88, 129, 87, 1),
-                          child: Icon(
-                            Icons.check,
-                            color: Colors.white,
+                    GestureDetector(
+                      onTap: () {
+                        Get.toNamed(
+                          '/biodata-page',
+                        );
+                      },
+                      child: Column(
+                        children: [
+                          CircleAvatar(
+                            radius: 32,
+                            backgroundColor: Color.fromRGBO(88, 129, 87, 1),
+                            child: Icon(
+                              Icons.person_outlined,
+                              color: Colors.white,
+                            ),
                           ),
-                        ),
-                        Text(
-                          'Konfirmasi',
-                          style: TextStyle(
-                            color: Color.fromRGBO(88, 129, 87, 1),
+                          Text(
+                            'Profil',
+                            style: TextStyle(
+                              color: Color.fromRGBO(88, 129, 87, 1),
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        CircleAvatar(
-                          radius: 32,
-                          backgroundColor: Color.fromRGBO(88, 129, 87, 1),
-                          child: Icon(
-                            Icons.person_outlined,
-                            color: Colors.white,
-                          ),
-                        ),
-                        Text(
-                          'Profil',
-                          style: TextStyle(
-                            color: Color.fromRGBO(88, 129, 87, 1),
-                          ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ],
                 ),
@@ -284,20 +279,25 @@ class GovermentView extends GetView<GovermentController> {
             ),
             SizedBox(height: 20),
             Expanded(
-              child: ListView.builder(
-                itemCount: GovermentController.listMap.length,
-                itemBuilder: (context, index) {
-                  return Column(
-                    children: [
-                      ReportFrame(
-                        data: GovermentController.listMap[index],
+              child: Obx(
+                () => ListView.builder(
+                  itemCount: GovermentController.listMap.length,
+                  itemBuilder: (context, index) {
+                    return GestureDetector(
+                      onTap: () {
+                        Get.toNamed(
+                          '/detail-laporan',
+                        );
+                      },
+                      child: Column(
+                        children: [
+                          ReportFrame(data: GovermentController.listMap[index]),
+                          SizedBox(height: 10)
+                        ],
                       ),
-                      SizedBox(
-                        height: 10,
-                      )
-                    ],
-                  );
-                },
+                    );
+                  },
+                ),
               ),
             ),
           ],

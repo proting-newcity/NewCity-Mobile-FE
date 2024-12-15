@@ -111,6 +111,22 @@ class ApiService extends GetConnect {
     }
   }
 
+  static Future<ReportResponse?> getReport(int id) async {
+    try {
+      final response = await dio.get(
+        'api/report/$id',
+      );
+      if (response.statusCode == 200) {
+        return ReportResponse.fromJson(response.data);
+      } else {
+        throw Exception('Failed to load berita');
+      }
+    } catch (e) {
+      print("Error: $e");
+      return null;
+    }
+  }
+
   static Future<ReportResponsePagination?> getReportByKategori(
       int page, id) async {
     try {
