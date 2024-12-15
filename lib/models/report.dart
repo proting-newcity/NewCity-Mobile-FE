@@ -16,6 +16,29 @@ class ReportResponsePagination {
   }
 }
 
+class ReportResponse {
+  Report report;
+  String masyarakatName;
+  String pemerintahName;
+  String kategoriName;
+
+  ReportResponse({
+    required this.report,
+    required this.masyarakatName,
+    required this.pemerintahName,
+    required this.kategoriName,
+  });
+
+  factory ReportResponse.fromJson(Map<String, dynamic> json) {
+    return ReportResponse(
+      report: Report.fromJson(json['report']),
+      masyarakatName: json['masyarakat']['name'],
+      pemerintahName: json['pemerintah']['name'] ?? "Unknown",
+      kategoriName: json['kategori']['name'],
+    );
+  }
+}
+
 class KategoriReportResponse {
   final List<KategoriReport> kategori;
 
@@ -57,19 +80,21 @@ class Report {
     required this.updatedAt,
   });
 
-  factory Report.fromJson(Map<String, dynamic> json) => Report(
-        id: json["id"],
-        judul: json["judul"],
-        deskripsi: json["deskripsi"],
-        lokasi: json["lokasi"],
-        status: List<String>.from(json["status"].map((x) => x)),
-        foto: json["foto"],
-        idMasyarakat: json["id_masyarakat"],
-        idPemerintah: json["id_pemerintah"],
-        idKategori: json["id_kategori"],
-        createdAt: DateTime.parse(json["created_at"]),
-        updatedAt: DateTime.parse(json["updated_at"]),
-      );
+  factory Report.fromJson(Map<String, dynamic> json) {
+    return Report(
+      id: json["id"],
+      judul: json["judul"],
+      deskripsi: json["deskripsi"],
+      lokasi: json["lokasi"],
+      status: List<String>.from(json["status"].map((x) => x)),
+      foto: json["foto"],
+      idMasyarakat: json["id_masyarakat"],
+      idPemerintah: json["id_pemerintah"],
+      idKategori: json["id_kategori"],
+      createdAt: DateTime.parse(json["created_at"]),
+      updatedAt: DateTime.parse(json["updated_at"]),
+    );
+  }
 
   factory Report.fromMap(Map<String, dynamic> map) => Report(
         id: map["id"],
