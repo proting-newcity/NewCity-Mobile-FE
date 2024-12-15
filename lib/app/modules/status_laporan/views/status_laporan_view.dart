@@ -127,29 +127,21 @@ class StatusLaporanView extends GetView<StatusLaporanController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () => Get.back(),
+        ),
+        title: Text(
+          "Status Laporan",
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
+      ),
       body: Container(
-        margin: EdgeInsets.only(left: 30, top: 55, right: 30),
+        margin: EdgeInsets.only(left: 30, right: 30),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              children: [
-                Icon(
-                  Icons.arrow_back_rounded,
-                  size: 30,
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Text(
-                  'Status Laporan',
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                  ),
-                )
-              ],
-            ),
             Center(
               child: Container(
                 margin: EdgeInsets.only(top: 20, bottom: 20),
@@ -203,21 +195,29 @@ class StatusLaporanView extends GetView<StatusLaporanController> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Expanded(
-                        child: Container(
-                          height: 35,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(10),
+                        child: GestureDetector(
+                          onTap: () {
+                            Get.toNamed(
+                              '/laporan-tersaring',
+                              arguments: 'Menunggu',
+                            );
+                          },
+                          child: Container(
+                            height: 35,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(10),
+                              ),
+                              color: Color.fromRGBO(102, 102, 102, 1),
                             ),
-                            color: Color.fromRGBO(102, 102, 102, 1),
-                          ),
-                          child: Center(
-                            child: Text(
-                              'Menunggu',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 15),
+                            child: Center(
+                              child: Text(
+                                'Menunggu',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 15),
+                              ),
                             ),
                           ),
                         ),
@@ -226,22 +226,29 @@ class StatusLaporanView extends GetView<StatusLaporanController> {
                         width: 10,
                       ),
                       Expanded(
-                        child: Container(
-                          // width: 170,
-                          height: 35,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(10),
+                        child: GestureDetector(
+                          onTap: () {
+                            Get.toNamed(
+                              '/laporan-tersaring',
+                              arguments: 'Tindak Lanjut',
+                            );
+                          },
+                          child: Container(
+                            height: 35,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(10),
+                              ),
+                              color: Color.fromRGBO(171, 192, 171, 1),
                             ),
-                            color: Color.fromRGBO(171, 192, 171, 1),
-                          ),
-                          child: Center(
-                            child: Text(
-                              'Tindak Lanjut',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 15),
+                            child: Center(
+                              child: Text(
+                                'Tindak Lanjut',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 15),
+                              ),
                             ),
                           ),
                         ),
@@ -255,21 +262,29 @@ class StatusLaporanView extends GetView<StatusLaporanController> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Expanded(
-                        child: Container(
-                          height: 35,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(10),
+                        child: GestureDetector(
+                          onTap: () {
+                            Get.toNamed(
+                              '/laporan-tersaring',
+                              arguments: 'Dalam Proses',
+                            );
+                          },
+                          child: Container(
+                            height: 35,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(10),
+                              ),
+                              color: Color.fromRGBO(250, 178, 45, 1),
                             ),
-                            color: Color.fromRGBO(250, 178, 45, 1),
-                          ),
-                          child: Center(
-                            child: Text(
-                              'Dalam Proses',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 15),
+                            child: Center(
+                              child: Text(
+                                'Dalam Proses',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 15),
+                              ),
                             ),
                           ),
                         ),
@@ -278,22 +293,29 @@ class StatusLaporanView extends GetView<StatusLaporanController> {
                         width: 10,
                       ),
                       Expanded(
-                        child: Container(
-                          // width: 170,
-                          height: 35,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(10),
+                        child: GestureDetector(
+                          onTap: () {
+                            Get.toNamed(
+                              '/laporan-tersaring',
+                              arguments: 'Selesai',
+                            );
+                          },
+                          child: Container(
+                            height: 35,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(10),
+                              ),
+                              color: Color.fromRGBO(58, 90, 64, 1),
                             ),
-                            color: Color.fromRGBO(58, 90, 64, 1),
-                          ),
-                          child: Center(
-                            child: Text(
-                              'Selesai',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 15),
+                            child: Center(
+                              child: Text(
+                                'Selesai',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 15),
+                              ),
                             ),
                           ),
                         ),
@@ -313,15 +335,22 @@ class StatusLaporanView extends GetView<StatusLaporanController> {
               child: ListView.builder(
                 itemCount: StatusLaporanController.listMap.length,
                 itemBuilder: (context, index) {
-                  return Column(
-                    children: [
-                      ReportFrame(
-                        data: StatusLaporanController.listMap[index],
-                      ),
-                      SizedBox(
-                        height: 10,
-                      )
-                    ],
+                  return GestureDetector(
+                    onTap: () {
+                      Get.toNamed(
+                        '/detail-laporan',
+                      );
+                    },
+                    child: Column(
+                      children: [
+                        ReportFrame(
+                          data: StatusLaporanController.listMap[index],
+                        ),
+                        SizedBox(
+                          height: 10,
+                        )
+                      ],
+                    ),
                   );
                 },
               ),
