@@ -38,7 +38,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.LIST_PENCARIAN_LAPORAN;
+  static const INITIAL = Routes.LIST_LAPORAN;
 
   static final routes = [
     GetPage(

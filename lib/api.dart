@@ -12,7 +12,7 @@ class ApiService extends GetConnect {
 
   static Dio createDio() {
     var dio = Dio(BaseOptions(
-      baseUrl: "http://192.168.1.4:8000/",
+      baseUrl: "http://10.0.2.2:8000/",
       connectTimeout: Duration(seconds: 15),
       receiveTimeout: Duration(seconds: 30),
     ));
@@ -104,11 +104,25 @@ class ApiService extends GetConnect {
     }
   }
 
-  static Future<KategoriBeritaResponse?> getKategori() async {
+  static Future<KategoriBeritaResponse?> getKategoriBerita() async {
     try {
       final response = await dio.get('api/kategori/berita');
       if (response.statusCode == 200) {
         return KategoriBeritaResponse.fromJson(response.data);
+      } else {
+        throw Exception('Failed to load kategori');
+      }
+    } catch (e) {
+      print("Error: $e");
+      return null;
+    }
+  }
+
+  static Future<KategoriReportResponse?> getKategoriReport() async {
+    try {
+      final response = await dio.get('api/kategori/report');
+      if (response.statusCode == 200) {
+        return KategoriReportResponse.fromJson(response.data);
       } else {
         throw Exception('Failed to load kategori');
       }

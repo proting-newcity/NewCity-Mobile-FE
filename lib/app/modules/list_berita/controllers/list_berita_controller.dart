@@ -55,7 +55,7 @@ class ListBeritaController extends GetxController {
 
   void fetchKategori() async {
     try {
-      var response = await ApiService.getKategori();
+      var response = await ApiService.getKategoriBerita();
       allKategori.value = response!;
     } catch (e) {
       print('Error fetching kategori: $e');
