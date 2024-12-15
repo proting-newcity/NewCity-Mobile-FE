@@ -4,11 +4,14 @@ import 'package:get/get.dart';
 
 import 'app/routes/app_pages.dart';
 
+import 'camera.dart';
+
 import 'theme.dart';
 
 import 'package:intl/date_symbol_data_local.dart';
 
 void main() async {
+  setUpCameraDelegate();
   WidgetsFlutterBinding.ensureInitialized();
   await initializeDateFormatting('id_ID', null);
   runApp(

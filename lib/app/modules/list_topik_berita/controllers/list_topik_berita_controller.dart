@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:newcity/model.dart';
+import 'package:newcity/models/berita.dart';
 import 'package:newcity/api.dart';
 
 class ListTopikBeritaController extends GetxController {
@@ -23,7 +23,7 @@ class ListTopikBeritaController extends GetxController {
 
   void fetchKategori() async {
     try {
-      var response = await ApiService.getKategori();
+      var response = await ApiService.getKategoriBerita();
       allKategori.value = response!;
     } catch (e) {
       print('Error fetching berita: $e');

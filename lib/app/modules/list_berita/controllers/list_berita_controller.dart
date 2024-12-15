@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import 'package:newcity/api.dart';
-import 'package:newcity/model.dart';
+import 'package:newcity/models/berita.dart';
 
 class ListBeritaController extends GetxController {
   var allBerita = Rx<BeritaResponsePagination>(BeritaResponsePagination());
@@ -27,24 +27,38 @@ class ListBeritaController extends GetxController {
   }
 
   void fetchBerita() async {
+    if (hasReachedEnd.value) return;
+
+    isLoading.value = true;
+
     try {
-      var response = await ApiService.getPaginationBerita(currentPage.value);
-      allBerita.value = response!;
-      currentPage++;
-      if (currentPage >= allBerita.value.lastPage!) {
-        hasReachedEnd.value = true;
+      var response =
+          await ApiService.getPaginationBerita(currentPage.value + 1);
+      if (response != null) {
+        final currentBerita = allBerita.value.berita;
+        final newBerita = response.berita;
+        allBerita.update((val) {
+          val?.berita = List.from(currentBerita)..addAll(newBerita);
+          val?.lastPage = response.lastPage;
+        });
+        currentPage.value++;
+        if (currentPage.value >= response.lastPage!) {
+          hasReachedEnd.value = true;
+        }
       }
     } catch (e) {
       print('Error fetching berita: $e');
+    } finally {
+      isLoading.value = false;
     }
   }
 
   void fetchKategori() async {
     try {
-      var response = await ApiService.getKategori();
+      var response = await ApiService.getKategoriBerita();
       allKategori.value = response!;
     } catch (e) {
-      print('Error fetching berita: $e');
+      print('Error fetching kategori: $e');
     }
   }
 }

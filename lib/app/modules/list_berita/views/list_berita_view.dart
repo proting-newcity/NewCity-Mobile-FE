@@ -1,24 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:intl/intl.dart';
+import 'package:newcity/widgets/berita_tile.dart';
 import 'package:newcity/api.dart';
 import '../controllers/list_berita_controller.dart';
-import 'package:newcity/model.dart';
+import 'package:newcity/models/berita.dart';
 
 class ListBeritaView extends GetView<ListBeritaController> {
   const ListBeritaView({super.key});
-
-  Future<List<ImageProvider<Object>>> loadImagesConcurrently(
-      List<Berita> beritaList) async {
-    List<Future<ImageProvider<Object>>> futures = [];
-
-    for (var berita in beritaList) {
-      futures.add(ApiService.loadImage(berita.foto));
-    }
-
-    return await Future.wait(futures);
-  }
-
   Future<List<ImageProvider<Object>>> loadCategoryImages(
       List<KategoriBerita> kategoriList) async {
     List<Future<ImageProvider<Object>>> futures = [];
@@ -60,20 +48,21 @@ class ListBeritaView extends GetView<ListBeritaController> {
                   ),
                 ),
                 TextButton(
-                    onPressed: () {
-                      Get.toNamed("/list-topik-berita");
-                    },
-                    child: Text(
-                      "Topik lainnya",
-                      style: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.green),
-                    ))
+                  onPressed: () {
+                    Get.toNamed("/list-topik-berita");
+                  },
+                  child: Text(
+                    "Topik lainnya",
+                    style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.green),
+                  ),
+                )
               ],
             ),
           ),
-          _appBarTopik(),
+          _appBarTopik(), // Only listens to topik observables
           Padding(
             padding: const EdgeInsets.all(18.0),
             child: Text(
@@ -87,38 +76,39 @@ class ListBeritaView extends GetView<ListBeritaController> {
           Expanded(
             child: Obx(
               () {
-                if (controller.allBerita.value.berita.isNotEmpty) {
-                  return FutureBuilder<List<ImageProvider<Object>>>(
-                    future: loadImagesConcurrently(
-                        controller.allBerita.value.berita),
-                    builder: (context, snapshot) {
-                      if (snapshot.connectionState == ConnectionState.waiting) {
-                        return Center(child: CircularProgressIndicator());
-                      } else if (snapshot.hasError) {
-                        return Center(child: Text("Error loading images"));
-                      } else {
-                        List<ImageProvider<Object>> images =
-                            snapshot.data ?? [];
-
-                        return ListView.builder(
-                          itemCount: controller.allBerita.value.berita.length,
-                          itemBuilder: (context, index) {
-                            return _beritaTile(
-                              controller.allBerita.value.berita[index],
-                              index,
-                              images[index],
-                            );
-                          },
-                        );
-                      }
-                    },
-                  );
-                } else {
+                if (controller.allBerita.value.berita.isEmpty) {
                   return Center(child: CircularProgressIndicator());
                 }
+
+                return NotificationListener<ScrollNotification>(
+                  onNotification: (ScrollNotification scrollInfo) {
+                    if (!controller.isLoading.value &&
+                        scrollInfo.metrics.pixels ==
+                            scrollInfo.metrics.maxScrollExtent) {
+                      controller.fetchBerita();
+                    }
+                    return true;
+                  },
+                  child: ListView.builder(
+                    itemCount: controller.allBerita.value.berita.length +
+                        (controller.hasReachedEnd.value
+                            ? 0
+                            : 1), // Add extra item for loading indicator
+                    itemBuilder: (context, index) {
+                      if (index < controller.allBerita.value.berita.length) {
+                        return BeritaTile(
+                          controller.allBerita.value.berita[index],
+                          index,
+                        );
+                      } else {
+                        return Center(child: CircularProgressIndicator());
+                      }
+                    },
+                  ),
+                );
               },
             ),
-          )
+          ),
         ],
       ),
     );
@@ -126,12 +116,11 @@ class ListBeritaView extends GetView<ListBeritaController> {
 
   Widget _appBarTopik() {
     return Obx(() {
-      var kategoriList = controller.allKategori.value.kategori;
-      if (kategoriList.isEmpty) {
+      if (controller.allKategori.value.kategori.isEmpty) {
         return Center(child: CircularProgressIndicator());
       }
       return FutureBuilder<List<ImageProvider<Object>>>(
-        future: loadCategoryImages(kategoriList),
+        future: loadCategoryImages(controller.allKategori.value.kategori),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());
@@ -146,9 +135,11 @@ class ListBeritaView extends GetView<ListBeritaController> {
               height: 150,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
-                itemCount: kategoriList.length,
+                itemCount: controller.allKategori.value.kategori.length,
                 itemBuilder: (context, index) {
-                  return _topikTile(kategoriList[index], categoryImages[index]);
+                  return _topikTile(
+                      controller.allKategori.value.kategori[index],
+                      categoryImages[index]);
                 },
               ),
             );
@@ -194,63 +185,6 @@ class ListBeritaView extends GetView<ListBeritaController> {
               fontSize: 16,
               fontWeight: FontWeight.bold,
             ),
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _beritaTile(
-      Berita beritaData, int index, ImageProvider<Object> image) {
-    return GestureDetector(
-      onTap: () {
-        Get.toNamed('/detail-berita', arguments: beritaData);
-      },
-      child: Card(
-        elevation: 3,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Row(
-            children: [
-              Container(
-                width: 80,
-                height: 80,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  image: DecorationImage(
-                    image: image,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-              SizedBox(width: 16),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      beritaData.title,
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    SizedBox(height: 8),
-                    Text(
-                      DateFormat('yyyy-MM-dd – kk:mm')
-                          .format(beritaData.tanggal),
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: Colors.grey[600],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
           ),
         ),
       ),

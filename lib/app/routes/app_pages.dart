@@ -10,6 +10,8 @@ import '../modules/create_laporan/bindings/create_laporan_binding.dart';
 import '../modules/create_laporan/views/create_laporan_view.dart';
 import '../modules/detail_berita/bindings/detail_berita_binding.dart';
 import '../modules/detail_berita/views/detail_berita_view.dart';
+import '../modules/detail_laporan/bindings/detail_laporan_binding.dart';
+import '../modules/detail_laporan/views/detail_laporan_view.dart';
 import '../modules/edit_akun/bindings/edit_akun_binding.dart';
 import '../modules/edit_akun/views/edit_akun_view.dart';
 import '../modules/goverment/bindings/goverment_binding.dart';
@@ -18,6 +20,10 @@ import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/list_berita/bindings/list_berita_binding.dart';
 import '../modules/list_berita/views/list_berita_view.dart';
+import '../modules/list_laporan/bindings/list_laporan_binding.dart';
+import '../modules/list_laporan/views/list_laporan_view.dart';
+import '../modules/list_pencarian_laporan/bindings/list_pencarian_laporan_binding.dart';
+import '../modules/list_pencarian_laporan/views/list_pencarian_laporan_view.dart';
 import '../modules/list_topik_berita/bindings/list_topik_berita_binding.dart';
 import '../modules/list_topik_berita/views/list_topik_berita_view.dart';
 import '../modules/login/bindings/login_binding.dart';
@@ -58,7 +64,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.LIST_BERITA,
-      page: () => const ListBeritaView(),
+      page: () => ListBeritaView(),
       binding: ListBeritaBinding(),
     ),
     GetPage(
@@ -115,6 +121,21 @@ class AppPages {
       name: _Paths.CREATE_LAPORAN,
       page: () => const CreateLaporanView(),
       binding: CreateLaporanBinding(),
+    ),
+    GetPage(
+      name: _Paths.LIST_PENCARIAN_LAPORAN,
+      page: () => const ListPencarianLaporanView(),
+      binding: ListPencarianLaporanBinding(),
+    ),
+    GetPage(
+      name: _Paths.DETAIL_LAPORAN,
+      page: () => DetailLaporanView(),
+      binding: DetailLaporanBinding(),
+    ),
+    GetPage(
+      name: _Paths.LIST_LAPORAN,
+      page: () => const ListLaporanView(),
+      binding: ListLaporanBinding(),
     ),
     GetPage(
       name: _Paths.BERANDA,
