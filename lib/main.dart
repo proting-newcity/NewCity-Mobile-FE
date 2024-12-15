@@ -8,8 +8,12 @@ import 'camera.dart';
 
 import 'theme.dart';
 
-void main() {
+import 'package:intl/date_symbol_data_local.dart';
+
+void main() async {
   setUpCameraDelegate();
+  WidgetsFlutterBinding.ensureInitialized();
+  await initializeDateFormatting('id_ID', null);
   runApp(
     GetMaterialApp(
       title: "Application",

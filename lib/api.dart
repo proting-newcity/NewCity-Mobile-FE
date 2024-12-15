@@ -1,14 +1,27 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_connect/connect.dart';
 import 'package:newcity/models/berita.dart';
 import 'package:newcity/models/report.dart';
 import 'package:retry/retry.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:newcity/models/user.dart';
 
 class ApiService extends GetConnect {
   static Dio dio = createDio();
   static String _token = "";
-  static String _apiKey = "";
+
+  _getToken() async {
+    SharedPreferences localStorage = await SharedPreferences.getInstance();
+    String? tokenString = localStorage.getString('token');
+    if (tokenString != null) {
+      _token = jsonDecode(tokenString)['token'];
+    } else {
+      _token = "";
+    }
+  }
 
   static Dio createDio() {
     var dio = Dio(BaseOptions(
@@ -21,6 +34,53 @@ class ApiService extends GetConnect {
       'Keep-Alive': 'timeout=5, max=1000',
     };
     return dio;
+  }
+
+  static Future<User?> login(String username, String password) async {
+    try {
+      final response = await dio.post(
+        'api/login',
+        data: {'username': username, 'password': password},
+        options: Options(headers: {
+          "Accept": "application/json",
+        }),
+      );
+      if (response.statusCode == 200) {
+        return User.fromJson(response.data);
+      } else {
+        throw Exception('Failed to login');
+      }
+    } catch (e) {
+      print("Error: $e");
+      return null;
+    }
+  }
+
+  static Future<User?> register(
+      String name, String username, String password) async {
+    try {
+      final response = await dio.post(
+        'api/register',
+        data: {
+          'name': name,
+          'username': username,
+          'password': password,
+          'password_confirmation': password,
+          'role': 'masyarakat',
+        },
+        options: Options(headers: {
+          "Accept": "application/json",
+        }),
+      );
+      if (response.statusCode == 200) {
+        return User.fromJson(response.data);
+      } else {
+        throw Exception('Failed to register');
+      }
+    } catch (e) {
+      print("Error: $e");
+      return null;
+    }
   }
 
   static Future<dynamic> postReport(var data) async {
