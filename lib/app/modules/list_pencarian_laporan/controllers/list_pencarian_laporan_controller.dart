@@ -12,7 +12,7 @@ class ListPencarianLaporanController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    fetchReportbySearch(Get.arguments.keyword);
+    fetchReportbySearch(Get.arguments);
   }
 
   @override

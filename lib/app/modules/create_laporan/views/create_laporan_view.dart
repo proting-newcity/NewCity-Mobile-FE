@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controllers/create_laporan_controller.dart';
+import 'package:newcity/widgets/topic_chip.dart';
 
 class CreateLaporanView extends GetView<CreateLaporanController> {
   const CreateLaporanView({super.key});
@@ -136,21 +137,19 @@ class CreateLaporanView extends GetView<CreateLaporanController> {
             SizedBox(height: 20),
             Text("Pilih Topik", style: TextStyle(fontWeight: FontWeight.bold)),
             SizedBox(height: 10),
-            Wrap(
-              spacing: 8.0,
-              runSpacing: 4.0,
-              children: [
-                _buildTopicChip("Keamanan"),
-                _buildTopicChip("Lalu Lintas"),
-                _buildTopicChip("Kebersihan"),
-                _buildTopicChip("Infrastruktur"),
-                _buildTopicChip("Banjir"),
-                _buildTopicChip("Jalan Rusak"),
-                _buildTopicChip("Transportasi Umum"),
-                _buildTopicChip("Kehilangan"),
-                _buildTopicChip("Lainnya..."),
-              ],
-            ),
+            Obx(() {
+              return Wrap(
+                spacing: 8.0,
+                runSpacing: 4.0,
+                children: List<Widget>.generate(
+                    controller.allKategori.value.kategori.length, (int index) {
+                  return TopicChip(
+                      controller.allKategori.value.kategori[index].name,
+                      index,
+                      controller.selectedTopics);
+                }),
+              );
+            }),
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () async {
@@ -167,24 +166,6 @@ class CreateLaporanView extends GetView<CreateLaporanController> {
             ),
           ],
         ),
-      ),
-    );
-  }
-
-  Widget _buildTopicChip(String label) {
-    return ChoiceChip(
-      label: Text(
-        label,
-        style: TextStyle(color: Color(0xFF588157)),
-      ),
-      selected: false,
-      onSelected: (bool selected) {},
-      backgroundColor: Colors.white,
-      selectedColor: Colors.green,
-      labelStyle: TextStyle(color: Colors.black),
-      shape: RoundedRectangleBorder(
-        side: BorderSide(color: Colors.green),
-        borderRadius: BorderRadius.circular(10),
       ),
     );
   }

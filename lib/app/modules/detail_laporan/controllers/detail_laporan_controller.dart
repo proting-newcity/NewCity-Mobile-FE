@@ -1,11 +1,14 @@
 import 'package:get/get.dart';
+import 'package:newcity/api.dart';
+import 'package:newcity/models/report.dart';
 
 class DetailLaporanController extends GetxController {
-  //TODO: Implement DetailLaporanController
+  var report = Rx<ReportResponse?>(null);
 
   final count = 0.obs;
   @override
   void onInit() {
+    fetchReport(Get.arguments);
     super.onInit();
   }
 
@@ -19,5 +22,12 @@ class DetailLaporanController extends GetxController {
     super.onClose();
   }
 
-  void increment() => count.value++;
+  void fetchReport(int id) async {
+    try {
+      var response = await ApiService.getReport(id);
+      report.value = response;
+    } catch (e) {
+      print('Error fetching berita: $e');
+    }
+  }
 }

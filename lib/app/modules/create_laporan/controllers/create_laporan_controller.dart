@@ -5,8 +5,10 @@ import 'package:image_picker_platform_interface/image_picker_platform_interface.
 import 'package:newcity/api.dart';
 import 'package:newcity/camera.dart';
 import 'package:http_parser/http_parser.dart';
+import 'package:newcity/models/report.dart';
 
 class CreateLaporanController extends GetxController {
+  var allKategori = Rx<KategoriReportResponse>(KategoriReportResponse());
   Rx<XFile?> photo = Rx<XFile?>(null);
   var isLoading = false.obs;
 
@@ -15,11 +17,12 @@ class CreateLaporanController extends GetxController {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController lokasiController = TextEditingController();
   final TextEditingController deskripsiController = TextEditingController();
-  final selectedTopics = <String>[].obs;
+  Rx<int> selectedTopics = Rx<int>(-1);
 
   @override
   void onInit() {
     super.onInit();
+    fetchKategori();
   }
 
   @override
@@ -32,15 +35,22 @@ class CreateLaporanController extends GetxController {
     super.onClose();
   }
 
+  void fetchKategori() async {
+    try {
+      var response = await ApiService.getKategoriReport();
+      allKategori.value = response!;
+      print(allKategori.value.kategori.length);
+    } catch (e) {
+      print('Error fetching Kategori: $e');
+    }
+  }
+
   Future<void> openCamera() async {
-    // Set up the camera delegate if it's not already set
     setUpCameraDelegate();
 
-    final cameraDelegate = MyCameraDelegate(); // Create the camera delegate
-    // Call takePhoto() to open the camera and take a photo
+    final cameraDelegate = MyCameraDelegate();
     photo.value = await cameraDelegate.takePhoto();
 
-    // Log the photo path or handle cancellation
     if (photo.value != null) {
       print('Photo taken: ${photo.value!.path}');
     } else {
@@ -48,7 +58,6 @@ class CreateLaporanController extends GetxController {
     }
   }
 
-  // Function to post the report
   Future<void> postReport() async {
     if (photo.value == null) {
       Get.snackbar("Error", "Please select an image!",
@@ -58,7 +67,8 @@ class CreateLaporanController extends GetxController {
 
     if (judulController.text.isEmpty ||
         lokasiController.text.isEmpty ||
-        deskripsiController.text.isEmpty) {
+        deskripsiController.text.isEmpty ||
+        selectedTopics.isNegative) {
       Get.snackbar("Error", "Please fill in all required fields!",
           snackPosition: SnackPosition.BOTTOM);
       return;
@@ -67,7 +77,6 @@ class CreateLaporanController extends GetxController {
     try {
       isLoading.value = true;
 
-      // Prepare form data
       dio.FormData formData = dio.FormData();
       formData.fields.addAll([
         MapEntry("judul", judulController.text),
@@ -75,7 +84,8 @@ class CreateLaporanController extends GetxController {
         MapEntry("lokasi", lokasiController.text),
         MapEntry("status[]", '["open"]'),
         MapEntry("id_masyarakat", "1"), // Replace with actual value
-        MapEntry("id_kategori", "1"), // Replace with actual value
+        MapEntry("id_kategori",
+            allKategori.value.kategori[selectedTopics.value].id.toString()),
       ]);
 
       formData.files.add(MapEntry(
@@ -90,7 +100,6 @@ class CreateLaporanController extends GetxController {
       print('Form Data: ${formData.fields}');
       print('Form Files: ${formData.files}');
 
-      // Make POST request
       final response = await ApiService.postReport(formData);
 
       if (response.statusCode == 200 || response.statusCode == 201) {
@@ -117,6 +126,6 @@ class CreateLaporanController extends GetxController {
     lokasiController.clear();
     deskripsiController.clear();
     photo.value = null;
-    selectedTopics.clear();
+    selectedTopics.value = -1;
   }
 }
