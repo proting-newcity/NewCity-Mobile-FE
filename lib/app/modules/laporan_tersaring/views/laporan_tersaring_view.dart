@@ -124,44 +124,37 @@ class ReportFrame extends StatelessWidget {
 
 class LaporanTersaringView extends GetView<LaporanTersaringController> {
   const LaporanTersaringView({super.key});
+
   @override
   Widget build(BuildContext context) {
+    final status = Get.arguments as String;
+    // Filter data sesuai status 'Menunggu'
+    controller.filterByStatus(status);
+
     return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () => Get.back(),
+        ),
+        title: Text(
+          "Laporan $status",
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
+      ),
       body: Container(
-        margin: EdgeInsets.only(left: 30, top: 55, right: 30),
+        margin: EdgeInsets.only(left: 30, right: 30),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              children: [
-                Icon(
-                  Icons.arrow_back_rounded,
-                  size: 30,
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Text(
-                  'Laporan Filtered',
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                  ),
-                )
-              ],
-            ),
             Center(
               child: Container(
-                margin: EdgeInsets.only(top: 20, bottom: 20),
+                margin: EdgeInsets.only(bottom: 20),
                 width: 350,
                 height: 50,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(25),
-                  ),
-                  border: Border.all(
-                    color: Color.fromRGBO(88, 129, 87, 1),
-                  ),
+                  borderRadius: BorderRadius.all(Radius.circular(25)),
+                  border: Border.all(color: Color.fromRGBO(88, 129, 87, 1)),
                 ),
                 child: Padding(
                   padding: EdgeInsets.only(left: 20, right: 20),
@@ -172,45 +165,47 @@ class LaporanTersaringView extends GetView<LaporanTersaringController> {
                         children: [
                           Padding(
                             padding: const EdgeInsets.only(right: 8),
-                            child: Icon(
-                              Icons.search,
-                              color: Color.fromRGBO(88, 129, 87, 1),
-                            ),
+                            child: Icon(Icons.search,
+                                color: Color.fromRGBO(88, 129, 87, 1)),
                           ),
                           Text(
                             'Cari Laporan',
                             style: TextStyle(
-                                color: Color.fromRGBO(88, 129, 87, 1),
-                                fontFamily: 'Poppins',
-                                fontSize: 15,
-                                fontStyle: FontStyle.italic),
+                              color: Color.fromRGBO(88, 129, 87, 1),
+                              fontFamily: 'Poppins',
+                              fontSize: 15,
+                              fontStyle: FontStyle.italic,
+                            ),
                           )
                         ],
                       ),
-                      Icon(
-                        Icons.filter_list,
-                        color: Color.fromRGBO(88, 129, 87, 1),
-                      )
+                      Icon(Icons.filter_list,
+                          color: Color.fromRGBO(88, 129, 87, 1)),
                     ],
                   ),
                 ),
               ),
             ),
             Expanded(
-              child: ListView.builder(
-                itemCount: LaporanTersaringController.listMap.length,
-                itemBuilder: (context, index) {
-                  return Column(
-                    children: [
-                      ReportFrame(
-                        data: LaporanTersaringController.listMap[index],
+              child: Obx(
+                () => ListView.builder(
+                  itemCount: controller.filteredList.length,
+                  itemBuilder: (context, index) {
+                    return GestureDetector(
+                      onTap: () {
+                        Get.toNamed(
+                          '/detail-laporan',
+                        );
+                      },
+                      child: Column(
+                        children: [
+                          ReportFrame(data: controller.filteredList[index]),
+                          SizedBox(height: 10),
+                        ],
                       ),
-                      SizedBox(
-                        height: 10,
-                      )
-                    ],
-                  );
-                },
+                    );
+                  },
+                ),
               ),
             ),
           ],

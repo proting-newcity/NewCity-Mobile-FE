@@ -49,7 +49,7 @@ class GovermentController extends GetxController {
       'status': 'Menunggu',
       'color': Color.fromRGBO(102, 102, 102, 1),
     },
-  ];
+  ].obs;
 
   final count = 0.obs;
   @override

@@ -51,6 +51,14 @@ class LaporanTersaringController extends GetxController {
     },
   ];
 
+  // Observable list untuk data yang difilter
+  final filteredList = <Map<String, dynamic>>[].obs;
+
+  void filterByStatus(String status) {
+    filteredList.value =
+        listMap.where((item) => item['status'] == status).toList();
+  }
+
   final count = 0.obs;
   @override
   void onInit() {

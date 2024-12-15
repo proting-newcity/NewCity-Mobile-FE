@@ -157,15 +157,156 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                               Row(
                                 children: [
                                   ElevatedButton(
-                                    onPressed: () {},
-                                    child: Obx(() {
-                                      return Text(
-                                        controller.report.value?.report
-                                                .status[0] ??
-                                            'Loading...',
+                                    onPressed: () {
+                                      Get.defaultDialog(
+                                        title: "Status Laporan",
+                                        content: Column(
+                                          children: [
+                                            Row(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Column(
+                                                  children: [
+                                                    Container(
+                                                      margin:
+                                                          EdgeInsets.symmetric(
+                                                              vertical: 5),
+                                                      height: 15,
+                                                      width: 15,
+                                                      decoration: BoxDecoration(
+                                                        color: Colors.amber,
+                                                        shape: BoxShape.circle,
+                                                      ),
+                                                    ),
+                                                    Container(
+                                                      height: 50,
+                                                      width: 2,
+                                                      color: Colors.grey[300],
+                                                    ),
+                                                  ],
+                                                ),
+                                                SizedBox(width: 10),
+                                                Expanded(
+                                                  child: Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      Text(
+                                                        'title',
+                                                        style: TextStyle(
+                                                          fontSize: 16,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                        ),
+                                                      ),
+                                                      SizedBox(height: 4),
+                                                      Text(
+                                                        'description',
+                                                        style: TextStyle(
+                                                          fontSize: 14,
+                                                          color:
+                                                              Colors.grey[700],
+                                                        ),
+                                                      ),
+                                                      SizedBox(height: 4),
+                                                      Text(
+                                                        'time',
+                                                        style: TextStyle(
+                                                          fontSize: 12,
+                                                          color: Colors.grey,
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                            Row(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Column(
+                                                  children: [
+                                                    Container(
+                                                      margin:
+                                                          EdgeInsets.symmetric(
+                                                              vertical: 5),
+                                                      height: 15,
+                                                      width: 15,
+                                                      decoration: BoxDecoration(
+                                                        color: Color.fromRGBO(
+                                                            171, 192, 171, 1),
+                                                        shape: BoxShape.circle,
+                                                      ),
+                                                    ),
+                                                    Container(
+                                                      height: 50,
+                                                      width: 2,
+                                                      color: Colors.grey[300],
+                                                    ),
+                                                  ],
+                                                ),
+                                                SizedBox(width: 10),
+                                                Expanded(
+                                                  child: Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      Text(
+                                                        'title',
+                                                        style: TextStyle(
+                                                          fontSize: 16,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                        ),
+                                                      ),
+                                                      SizedBox(height: 4),
+                                                      Text(
+                                                        'description',
+                                                        style: TextStyle(
+                                                          fontSize: 14,
+                                                          color:
+                                                              Colors.grey[700],
+                                                        ),
+                                                      ),
+                                                      SizedBox(height: 4),
+                                                      Text(
+                                                        'time',
+                                                        style: TextStyle(
+                                                          fontSize: 12,
+                                                          color: Colors.grey,
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
                                       );
-                                    }),
-                                    style: ElevatedButton.styleFrom(),
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                      foregroundColor: Colors.white,
+                                      backgroundColor:
+                                          Color.fromRGBO(88, 129, 87, 1),
+                                    ),
+                                    child: Row(
+                                      children: [
+                                        Text(
+                                          controller.report.value?.report
+                                                  .status[0] ??
+                                              'Loading...',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        SizedBox(width: 5),
+                                        Icon(Icons.arrow_forward)
+                                      ],
+                                    ),
                                   ),
                                 ],
                               ),
