@@ -75,6 +75,7 @@ class RegisterView extends GetView<RegisterController> {
                             prefixIcon: Icon(Icons.person_2_outlined),
                             border: OutlineInputBorder(),
                           ),
+                          controller: controller.namacontroller,
                         ),
                         SizedBox(height: 20),
                         TextField(
@@ -83,6 +84,7 @@ class RegisterView extends GetView<RegisterController> {
                             prefixIcon: Icon(Icons.phone),
                             border: OutlineInputBorder(),
                           ),
+                          controller: controller.notelpcontroller,
                         ),
                         SizedBox(height: 20),
                         TextField(
@@ -91,11 +93,13 @@ class RegisterView extends GetView<RegisterController> {
                             prefixIcon: Icon(Icons.email),
                             border: OutlineInputBorder(),
                           ),
+                          controller: controller.passwordcontroller,
                         ),
                         SizedBox(height: 30),
                         ElevatedButton(
                           onPressed: () {
-                            // Handle registration logic
+                            controller.Register();
+                            Get.toNamed('/login');
                           },
                           child: Text(
                             'Daftar',

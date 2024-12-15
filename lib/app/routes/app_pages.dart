@@ -30,13 +30,15 @@ import '../modules/topik_berita/bindings/topik_berita_binding.dart';
 import '../modules/topik_berita/views/topik_berita_view.dart';
 import '../modules/welcomepage/bindings/welcomepage_binding.dart';
 import '../modules/welcomepage/views/welcomepage_view.dart';
+import '../modules/beranda/views/beranda_view.dart';
+import '../modules/beranda/bindings/beranda_binding.dart';
 
 part 'app_routes.dart';
 
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.LAPORAN_TERSARING;
+  static const INITIAL = Routes.BERANDA;
 
   static final routes = [
     GetPage(
@@ -113,6 +115,11 @@ class AppPages {
       name: _Paths.CREATE_LAPORAN,
       page: () => const CreateLaporanView(),
       binding: CreateLaporanBinding(),
+    ),
+    GetPage(
+      name: _Paths.BERANDA,
+      page: () => const BerandaView(),
+      binding: BerandaBinding(),
     ),
   ];
 }
