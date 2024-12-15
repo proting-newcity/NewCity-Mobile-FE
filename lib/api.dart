@@ -51,6 +51,22 @@ class ApiService extends GetConnect {
     }
   }
 
+  static Future<ReportResponsePagination?> getReportByKategori(
+      int page, id) async {
+    try {
+      final response = await dio
+          .get('api/report/category/$id', queryParameters: {'page': page});
+      if (response.statusCode == 200) {
+        return ReportResponsePagination.fromJson(response.data);
+      } else {
+        throw Exception('Failed to load berita');
+      }
+    } catch (e) {
+      print("Error: $e");
+      return null;
+    }
+  }
+
   static Future<ReportResponsePagination?> getSearchedReport(
       int page, String keyword) async {
     try {
@@ -58,6 +74,7 @@ class ApiService extends GetConnect {
         'api/report/search',
         queryParameters: {
           'page': page,
+          'search': keyword,
         },
       );
       if (response.statusCode == 200) {
