@@ -68,6 +68,7 @@ class LoginView extends GetView<LoginController> {
                     child: Column(
                       children: [
                         TextField(
+                          controller: controller.usernameController,
                           decoration: InputDecoration(
                             hintText: 'Nama',
                             prefixIcon: Icon(Icons.person_2_outlined),
@@ -76,6 +77,7 @@ class LoginView extends GetView<LoginController> {
                         ),
                         SizedBox(height: 20),
                         TextField(
+                          controller: controller.passwordController,
                           decoration: InputDecoration(
                             hintText: 'Kata Sandi',
                             prefixIcon: Icon(Icons.lock_outline),
@@ -98,7 +100,8 @@ class LoginView extends GetView<LoginController> {
                         SizedBox(height: 10),
                         ElevatedButton(
                           onPressed: () {
-                            // Handle registration logic
+                            controller.login();
+                            Get.toNamed('/list-laporan');
                           },
                           child: Text(
                             'Masuk',

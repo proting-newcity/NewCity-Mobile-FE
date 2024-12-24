@@ -1,9 +1,10 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:newcity/api.dart';
 
 class LoginController extends GetxController {
-  //TODO: Implement LoginController
-
-  final count = 0.obs;
+  final TextEditingController usernameController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
   @override
   void onInit() {
     super.onInit();
@@ -19,5 +20,20 @@ class LoginController extends GetxController {
     super.onClose();
   }
 
-  void increment() => count.value++;
+  Future<void> login() async {
+    try {
+      final response = await ApiService.login(
+          usernameController.text, passwordController.text);
+      print(response);
+
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        Get.snackbar("Success", "Login success!",
+            snackPosition: SnackPosition.BOTTOM);
+      }
+    } catch (e) {
+      print("Error Login: $e");
+      Get.snackbar("Error", "Something went wrong. Please try again.",
+          snackPosition: SnackPosition.BOTTOM);
+    }
+  }
 }

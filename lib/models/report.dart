@@ -21,21 +21,22 @@ class ReportResponse {
   String masyarakatName;
   String pemerintahName;
   String kategoriName;
+  int like;
 
-  ReportResponse({
-    required this.report,
-    required this.masyarakatName,
-    required this.pemerintahName,
-    required this.kategoriName,
-  });
+  ReportResponse(
+      {required this.report,
+      required this.masyarakatName,
+      required this.pemerintahName,
+      required this.kategoriName,
+      required this.like});
 
   factory ReportResponse.fromJson(Map<String, dynamic> json) {
     return ReportResponse(
-      report: Report.fromJson(json['report']),
-      masyarakatName: json['masyarakat']['name'],
-      pemerintahName: json['pemerintah']['name'] ?? "Unknown",
-      kategoriName: json['kategori']['name'],
-    );
+        report: Report.fromJson(json['report']),
+        masyarakatName: json['masyarakat']['name'],
+        pemerintahName: json['pemerintah']['name'] ?? "Unknown",
+        kategoriName: json['kategori']['name'],
+        like: json['like']);
   }
 }
 
