@@ -1,9 +1,12 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_connect/connect.dart';
 import 'package:newcity/models/berita.dart';
 import 'package:newcity/models/report.dart';
 import 'package:retry/retry.dart';
+import 'package:newcity/models/user.dart';
 import 'package:get_storage/get_storage.dart';
 
 class ApiService extends GetConnect {
@@ -28,7 +31,7 @@ class ApiService extends GetConnect {
 
     return dio;
   }
-
+  
   static Future<void> saveAccessToken(String token) async {
     await storage.write('access_token', token);
   }
@@ -72,6 +75,33 @@ class ApiService extends GetConnect {
       }
     } catch (e) {
       print("Error during logout: $e");
+    }
+  }
+
+  static Future<User?> register(
+      String name, String username, String password) async {
+    try {
+      final response = await dio.post(
+        'api/register',
+        data: {
+          'name': name,
+          'username': username,
+          'password': password,
+          'password_confirmation': password,
+          'role': 'masyarakat',
+        },
+        options: Options(headers: {
+          "Accept": "application/json",
+        }),
+      );
+      if (response.statusCode == 200) {
+        return User.fromJson(response.data);
+      } else {
+        throw Exception('Failed to register');
+      }
+    } catch (e) {
+      print("Error: $e");
+      return null;
     }
   }
 
@@ -125,6 +155,23 @@ class ApiService extends GetConnect {
       final response = await dio
           .get('api/report/category/$id', queryParameters: {'page': page});
       if (response.statusCode == 200) {
+        return ReportResponsePagination.fromJson(response.data);
+      } else {
+        throw Exception('Failed to load berita');
+      }
+    } catch (e) {
+      print("Error: $e");
+      return null;
+    }
+  }
+
+  static Future<ReportResponsePagination?> getReportByStatus(
+      int page, status) async {
+    try {
+      final response = await dio
+          .get('api/report/status/$status', queryParameters: {'page': page});
+      if (response.statusCode == 200) {
+        print(response.data);
         return ReportResponsePagination.fromJson(response.data);
       } else {
         throw Exception('Failed to load berita');

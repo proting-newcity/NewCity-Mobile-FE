@@ -1,36 +1,39 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:newcity/widgets/report_tile_government.dart';
+import 'package:intl/intl.dart';
+import 'package:newcity/widgets/report_tile.dart';
+import 'package:newcity/widgets/icon_button.dart';
+import '../controllers/beranda_controller.dart';
 
-import '../controllers/laporan_tersaring_controller.dart';
-
-class LaporanTersaringView extends GetView<LaporanTersaringController> {
-  const LaporanTersaringView({super.key});
-
+class BerandaView extends GetView<BerandaController> {
+  const BerandaView({super.key});
   @override
   Widget build(BuildContext context) {
-    final status = Get.arguments as String;
     final ScrollController _scrollController = ScrollController();
+
     _scrollController.addListener(() {
       if (_scrollController.position.pixels ==
           _scrollController.position.maxScrollExtent) {
-        controller.fetchReportsbyStatus(status);
+        controller.fetchReports();
       }
     });
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () => Get.back(),
-        ),
-        title: Text(
-          "Laporan $status",
-          style: TextStyle(fontWeight: FontWeight.bold),
+        title: Column(
+          children: [
+            Text('Selamat datang!'),
+            Text(
+              DateFormat('EEEE dd MMMM yyyy', 'id_ID').format(DateTime.now()),
+              style: TextStyle(
+                fontSize: 12.0,
+              ),
+            ),
+          ],
         ),
       ),
-      body: Container(
-        margin: EdgeInsets.only(left: 30, right: 30),
+      body: Padding(
+        padding: EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -53,19 +56,39 @@ class LaporanTersaringView extends GetView<LaporanTersaringController> {
                 contentPadding: EdgeInsets.symmetric(vertical: 14),
               ),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 16.0),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                BuildIconButton("assets/images/icon_laporan.png", 'Laporan',
+                    '/list-laporan'),
+                BuildIconButton(
+                    "assets/images/icon_berita.png", 'Berita', '/list-berita'),
+                BuildIconButton("assets/images/icon_simpan.png", 'Simpan', ''),
+                BuildIconButton(
+                    "assets/images/icon_notifikasi.png", 'Notifikasi', ''),
+              ],
+            ),
+            SizedBox(height: 16.0),
+            Text(
+              'Rekomendasi Untukmu',
+              style: TextStyle(
+                fontSize: 18.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
             Expanded(
               child: Obx(() {
                 if (controller.isLoading.isTrue) {
                   return const Center(child: CircularProgressIndicator());
                 }
+
                 return ListView.builder(
                   controller: _scrollController,
                   itemCount: controller.filteredReports.length + 1,
                   itemBuilder: (context, index) {
                     if (index < controller.filteredReports.length) {
-                      return ReportTileGovernment(
-                          controller.filteredReports[index]);
+                      return reportTile(controller.filteredReports[index]);
                     } else {
                       return controller.isLoadingMore.isTrue
                           ? const Center(child: CircularProgressIndicator())
@@ -78,6 +101,14 @@ class LaporanTersaringView extends GetView<LaporanTersaringController> {
           ],
         ),
       ),
+      // bottomNavigationBar: BottomNavigationBar(
+      //   items: [
+      //     BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Beranda'),
+      //     BottomNavigationBarItem(icon: Icon(Icons.report), label: 'Lapor'),
+      //     BottomNavigationBarItem(
+      //         icon: Icon(Icons.account_circle), label: 'Akun'),
+      //   ],
+      // ),
     );
   }
 }

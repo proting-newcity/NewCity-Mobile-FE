@@ -1,9 +1,8 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:newcity/api.dart';
 import 'package:newcity/models/report.dart';
 
-class LaporanTersaringController extends GetxController {
+class BerandaController extends GetxController {
   var reports = <Report>[].obs;
   var filteredReports = <Report>[].obs;
   var isLoading = true.obs;
@@ -15,7 +14,7 @@ class LaporanTersaringController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    fetchReportsbyStatus(Get.arguments);
+    fetchReports();
   }
 
   @override
@@ -30,7 +29,7 @@ class LaporanTersaringController extends GetxController {
 
   void increment() => count.value++;
 
-  void fetchReportsbyStatus(status) async {
+  void fetchReports() async {
     if (isLastPage) return;
 
     try {
@@ -40,7 +39,7 @@ class LaporanTersaringController extends GetxController {
         isLoadingMore(true);
       }
 
-      final response = await ApiService.getReportByStatus(currentPage, status);
+      final response = await ApiService.getPaginationReport(currentPage);
       if (response != null) {
         if (response.report.isNotEmpty) {
           reports.addAll(response.report);

@@ -14,8 +14,8 @@ import '../modules/detail_laporan/bindings/detail_laporan_binding.dart';
 import '../modules/detail_laporan/views/detail_laporan_view.dart';
 import '../modules/edit_akun/bindings/edit_akun_binding.dart';
 import '../modules/edit_akun/views/edit_akun_view.dart';
-import '../modules/goverment/bindings/goverment_binding.dart';
-import '../modules/goverment/views/goverment_view.dart';
+import '../modules/government/bindings/government_binding.dart';
+import '../modules/government/views/government_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/list_berita/bindings/list_berita_binding.dart';
@@ -36,6 +36,8 @@ import '../modules/topik_berita/bindings/topik_berita_binding.dart';
 import '../modules/topik_berita/views/topik_berita_view.dart';
 import '../modules/welcomepage/bindings/welcomepage_binding.dart';
 import '../modules/welcomepage/views/welcomepage_view.dart';
+import '../modules/beranda/views/beranda_view.dart';
+import '../modules/beranda/bindings/beranda_binding.dart';
 
 part 'app_routes.dart';
 
@@ -86,9 +88,9 @@ class AppPages {
       binding: WelcomepageBinding(),
     ),
     GetPage(
-      name: _Paths.GOVERMENT,
-      page: () => const GovermentView(),
-      binding: GovermentBinding(),
+      name: _Paths.GOVERNMENT,
+      page: () => const GovernmentView(),
+      binding: GovernmentBinding(),
     ),
     GetPage(
       name: _Paths.STATUS_LAPORAN,
@@ -134,6 +136,11 @@ class AppPages {
       name: _Paths.LIST_LAPORAN,
       page: () => const ListLaporanView(),
       binding: ListLaporanBinding(),
+    ),
+    GetPage(
+      name: _Paths.BERANDA,
+      page: () => const BerandaView(),
+      binding: BerandaBinding(),
     ),
   ];
 }
