@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:newcity/api.dart';
+import 'package:newcity/widgets/comments.dart';
 
 import '../controllers/detail_laporan_controller.dart';
 
@@ -177,163 +178,119 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                   ),
                 ],
               ),
-              buildReportDetails(context),
+              Padding(
+                padding: EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Kategori',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
+                    ),
+                    SizedBox(height: 4),
+                    Obx(() {
+                      return Text(
+                        controller.report.value != null
+                            ? controller.report.value!.kategoriName
+                            : 'Loading...',
+                      );
+                    }),
+                    SizedBox(height: 16),
+                    Text(
+                      'Lokasi',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
+                    ),
+                    SizedBox(height: 4),
+                    Obx(() {
+                      return Text(
+                        controller.report.value != null
+                            ? controller.report.value!.report.lokasi
+                            : 'Loading...',
+                      );
+                    }),
+                    SizedBox(height: 16),
+                    Text(
+                      'Detail Laporan',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
+                    ),
+                    SizedBox(height: 8),
+                    Obx(() {
+                      return Text(
+                        controller.report.value?.report.deskripsi ??
+                            'Loading...',
+                        textAlign: TextAlign.justify,
+                      );
+                    }),
+                    SizedBox(height: 16),
+                    Row(
+                      children: [
+                        IconButton(
+                          icon: Icon(
+                            controller.isLiked.value
+                                ? Icons.favorite
+                                : Icons.favorite_border,
+                            color: controller.isLiked.value
+                                ? Colors.red
+                                : Colors.grey,
+                          ),
+                          onPressed: () {
+                            controller.toggleLike();
+                            (context as Element).markNeedsBuild();
+                            print(controller.isLiked.value);
+                          },
+                        ),
+                        Text(controller.likes.value.toString()),
+                        SizedBox(width: 16),
+                        IconButton(
+                          icon: Icon(Icons.comment, color: Colors.grey),
+                          onPressed: () {
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return Comment(context);
+                              },
+                            );
+                          },
+                        ),
+                        Text("3"),
+                        SizedBox(width: 16),
+                        IconButton(
+                          icon: Icon(Icons.share, color: Colors.grey),
+                          onPressed: () {},
+                        ),
+                        Text("10"),
+                        Spacer(),
+                        IconButton(
+                          icon: Icon(
+                            controller.isBookmarked.value
+                                ? Icons.bookmark
+                                : Icons.bookmark_border,
+                            color: controller.isBookmarked.value
+                                ? Colors.blue
+                                : Colors.grey,
+                          ),
+                          onPressed: () {
+                            controller.toggleBookmark();
+                            (context as Element).markNeedsBuild();
+                          },
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
             ],
           ),
         ),
-      ),
-    );
-  }
-
-  Widget buildReportDetails(BuildContext context) {
-    int likes = 88;
-    bool isLiked = false;
-    bool isBookmarked = false;
-
-    void toggleLike() {
-      if (isLiked) {
-        likes--;
-      } else {
-        likes++;
-      }
-      isLiked = !isLiked;
-    }
-
-    void toggleBookmark() {
-      isBookmarked = !isBookmarked;
-    }
-
-    void showComments() {
-      showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: Text("Comments"),
-            content: Text("Comments section goes here."),
-            actions: [
-              TextButton(
-                child: Text("Close"),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-              ),
-            ],
-          );
-        },
-      );
-    }
-
-    void showShareOptions() {
-      showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: Text("Share"),
-            content: Text("Share to social media options."),
-            actions: [
-              TextButton(
-                child: Text("Close"),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-              ),
-            ],
-          );
-        },
-      );
-    }
-
-    return Padding(
-      padding: EdgeInsets.all(16.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'Kategori',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 16,
-            ),
-          ),
-          SizedBox(height: 4),
-          Obx(() {
-            return Text(
-              controller.report.value != null
-                  ? controller.report.value!.kategoriName
-                  : 'Loading...',
-            );
-          }),
-          SizedBox(height: 16),
-          Text(
-            'Lokasi',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 16,
-            ),
-          ),
-          SizedBox(height: 4),
-          Obx(() {
-            return Text(
-              controller.report.value != null
-                  ? controller.report.value!.report.lokasi
-                  : 'Loading...',
-            );
-          }),
-          SizedBox(height: 16),
-          Text(
-            'Detail Laporan',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 16,
-            ),
-          ),
-          SizedBox(height: 8),
-          Obx(() {
-            return Text(
-              controller.report.value?.report.deskripsi ?? 'Loading...',
-              textAlign: TextAlign.justify,
-            );
-          }),
-          SizedBox(height: 16),
-          Row(
-            children: [
-              IconButton(
-                icon: Icon(
-                  isLiked ? Icons.favorite : Icons.favorite_border,
-                  color: isLiked ? Colors.red : Colors.grey,
-                ),
-                onPressed: () {
-                  toggleLike();
-                  (context as Element).markNeedsBuild();
-                },
-              ),
-              Text(likes.toString()),
-              SizedBox(width: 16),
-              IconButton(
-                icon: Icon(Icons.comment, color: Colors.grey),
-                onPressed: showComments,
-              ),
-              Text("3"),
-              SizedBox(width: 16),
-              IconButton(
-                icon: Icon(Icons.share, color: Colors.grey),
-                onPressed: showShareOptions,
-              ),
-              Text("10"),
-              Spacer(),
-              IconButton(
-                icon: Icon(
-                  isBookmarked ? Icons.bookmark : Icons.bookmark_border,
-                  color: isBookmarked ? Colors.blue : Colors.grey,
-                ),
-                onPressed: () {
-                  toggleBookmark();
-                  (context as Element).markNeedsBuild();
-                },
-              ),
-            ],
-          ),
-        ],
       ),
     );
   }

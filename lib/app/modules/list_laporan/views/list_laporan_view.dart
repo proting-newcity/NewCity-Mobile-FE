@@ -71,11 +71,6 @@ class ListLaporanView extends GetView<ListLaporanController> {
               ),
             ),
             const SizedBox(height: 20),
-            const Text(
-              'Pernah dilaporkan sebelumnya',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 10),
             Container(
               child: Obx(() {
                 return Wrap(
@@ -93,11 +88,6 @@ class ListLaporanView extends GetView<ListLaporanController> {
               }),
             ),
             const SizedBox(height: 20),
-            const Text(
-              'Pernah dilaporkan sebelumnya',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 10),
             Expanded(
               child: Obx(() {
                 if (controller.isLoading.isTrue) {
@@ -121,6 +111,20 @@ class ListLaporanView extends GetView<ListLaporanController> {
             ),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton.extended(
+        icon: Icon(
+          Icons.add,
+          color: Colors.white,
+        ),
+        label: Text(
+          "Tambah Laporan",
+          style: TextStyle(color: Colors.white),
+        ),
+        backgroundColor: Color(0xFF588157),
+        onPressed: () {
+          Get.toNamed('/create-laporan');
+        },
       ),
     );
   }

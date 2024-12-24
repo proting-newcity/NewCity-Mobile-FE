@@ -4,11 +4,11 @@ import 'package:get/get_connect/connect.dart';
 import 'package:newcity/models/berita.dart';
 import 'package:newcity/models/report.dart';
 import 'package:retry/retry.dart';
+import 'package:get_storage/get_storage.dart';
 
 class ApiService extends GetConnect {
   static Dio dio = createDio();
-  static String _token = "";
-  static String _apiKey = "";
+  static final GetStorage storage = GetStorage();
 
   static Dio createDio() {
     var dio = Dio(BaseOptions(
@@ -20,7 +20,59 @@ class ApiService extends GetConnect {
       'Connection': 'Keep-Alive',
       'Keep-Alive': 'timeout=5, max=1000',
     };
+
+    String? token = storage.read('access_token');
+    if (token != null) {
+      dio.options.headers['Authorization'] = 'Bearer $token';
+    }
+
     return dio;
+  }
+
+  static Future<void> saveAccessToken(String token) async {
+    await storage.write('access_token', token);
+  }
+
+  static Future<dynamic> login(String username, String password) async {
+    try {
+      final response = await dio.post(
+        'api/login',
+        data: {
+          'username': username,
+          'password': password,
+          'role': 'pemerintah',
+          "always_signed_in": true
+        },
+      );
+
+      if (response.statusCode == 200) {
+        final token = response.data['access_token'];
+        if (token != null) {
+          await saveAccessToken(token);
+          dio.options.headers['Authorization'] = 'Bearer $token';
+          print("Login successful, token saved. $token");
+        }
+      } else {
+        print("Login failed: ${response.data}");
+      }
+    } catch (e) {
+      print("Error during login: $e");
+    }
+  }
+
+  static Future<void> logout() async {
+    try {
+      final response = await dio.post(
+        'api/login',
+      );
+      if (response.statusCode == 200) {
+        await storage.remove('access_token');
+        dio.options.headers.remove('Authorization');
+        print("Logout successful.");
+      }
+    } catch (e) {
+      print("Error during logout: $e");
+    }
   }
 
   static Future<dynamic> postReport(var data) async {
