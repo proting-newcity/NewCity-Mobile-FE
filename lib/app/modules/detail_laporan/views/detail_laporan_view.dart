@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:newcity/api.dart';
 import 'package:newcity/widgets/comments.dart';
+import 'package:newcity/widgets/detail_status.dart';
 
 import '../controllers/detail_laporan_controller.dart';
 
@@ -161,133 +162,158 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                                     onPressed: () {
                                       Get.defaultDialog(
                                         title: "Status Laporan",
-                                        content: Column(
-                                          children: [
-                                            Row(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Column(
-                                                  children: [
-                                                    Container(
-                                                      margin:
-                                                          EdgeInsets.symmetric(
-                                                              vertical: 5),
-                                                      height: 15,
-                                                      width: 15,
-                                                      decoration: BoxDecoration(
-                                                        color: Colors.amber,
-                                                        shape: BoxShape.circle,
-                                                      ),
-                                                    ),
-                                                    Container(
-                                                      height: 50,
-                                                      width: 2,
-                                                      color: Colors.grey[300],
-                                                    ),
-                                                  ],
-                                                ),
-                                                SizedBox(width: 10),
-                                                Expanded(
-                                                  child: Column(
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      Text(
-                                                        'title',
-                                                        style: TextStyle(
-                                                          fontSize: 16,
-                                                          fontWeight:
-                                                              FontWeight.bold,
+                                        titlePadding: EdgeInsets.only(
+                                            top: 20, right: 100),
+                                        titleStyle: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold),
+                                        content: SizedBox(
+                                          width: 250,
+                                          height: 250,
+                                          child: ListView.builder(
+                                            reverse: true,
+                                            itemCount: 4,
+                                            itemBuilder: (context, index) {
+                                              return index <
+                                                      controller.report.value!
+                                                          .report.status.length
+                                                  ? DetailStatus(controller
+                                                      .report
+                                                      .value!
+                                                      .report
+                                                      .status[index])
+                                                  : Column(
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        Container(
+                                                          height: 23,
+                                                          width: 23,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            border: Border.all(
+                                                                color: controller
+                                                                    .getStatusState(
+                                                                        index)[0],
+                                                                width: 2),
+                                                            shape:
+                                                                BoxShape.circle,
+                                                          ),
+                                                          child: Container(
+                                                            margin: EdgeInsets
+                                                                .symmetric(
+                                                                    vertical:
+                                                                        5),
+                                                            height: 20,
+                                                            width: 20,
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              color: controller
+                                                                  .getStatusState(
+                                                                      index)[0],
+                                                              shape: BoxShape
+                                                                  .circle,
+                                                            ),
+                                                          ),
                                                         ),
-                                                      ),
-                                                      SizedBox(height: 4),
-                                                      Text(
-                                                        'description',
-                                                        style: TextStyle(
-                                                          fontSize: 14,
+                                                        Container(
+                                                          margin:
+                                                              EdgeInsets.only(
+                                                                  left: 10),
+                                                          height: 60,
+                                                          width: 2,
                                                           color:
-                                                              Colors.grey[700],
+                                                              Colors.grey[300],
                                                         ),
-                                                      ),
-                                                      SizedBox(height: 4),
-                                                      Text(
-                                                        'time',
-                                                        style: TextStyle(
-                                                          fontSize: 12,
-                                                          color: Colors.grey,
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                            Row(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Column(
-                                                  children: [
-                                                    Container(
-                                                      margin:
-                                                          EdgeInsets.symmetric(
-                                                              vertical: 5),
-                                                      height: 15,
-                                                      width: 15,
-                                                      decoration: BoxDecoration(
-                                                        color: Color.fromRGBO(
-                                                            171, 192, 171, 1),
-                                                        shape: BoxShape.circle,
-                                                      ),
-                                                    ),
-                                                    Container(
-                                                      height: 50,
-                                                      width: 2,
-                                                      color: Colors.grey[300],
-                                                    ),
-                                                  ],
-                                                ),
-                                                SizedBox(width: 10),
-                                                Expanded(
-                                                  child: Column(
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      Text(
-                                                        'title',
-                                                        style: TextStyle(
-                                                          fontSize: 16,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                        ),
-                                                      ),
-                                                      SizedBox(height: 4),
-                                                      Text(
-                                                        'description',
-                                                        style: TextStyle(
-                                                          fontSize: 14,
-                                                          color:
-                                                              Colors.grey[700],
-                                                        ),
-                                                      ),
-                                                      SizedBox(height: 4),
-                                                      Text(
-                                                        'time',
-                                                        style: TextStyle(
-                                                          fontSize: 12,
-                                                          color: Colors.grey,
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ],
+                                                      ],
+                                                    );
+                                            },
+                                          ),
                                         ),
+                                        confirm: controller.report.value!.report
+                                                    .status.length <
+                                                4
+                                            ? GestureDetector(
+                                                onTap: () {
+                                                  controller.addStatus(
+                                                      controller.report.value
+                                                              ?.report.id ??
+                                                          0,
+                                                      controller.getStatusState(
+                                                          controller
+                                                              .report
+                                                              .value!
+                                                              .report
+                                                              .status
+                                                              .length)[1]);
+                                                  controller.fetchReport(
+                                                      controller.report.value
+                                                              ?.report.id ??
+                                                          0);
+                                                  Get.back();
+                                                },
+                                                child: Container(
+                                                  height: 35,
+                                                  decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.all(
+                                                      Radius.circular(10),
+                                                    ),
+                                                    color: controller
+                                                        .getStatusState(
+                                                            controller
+                                                                .report
+                                                                .value!
+                                                                .report
+                                                                .status
+                                                                .length)[0],
+                                                  ),
+                                                  child: Center(
+                                                    child: Text(
+                                                      controller.getStatusState(
+                                                          controller
+                                                              .report
+                                                              .value!
+                                                              .report
+                                                              .status
+                                                              .length)[1],
+                                                      style: TextStyle(
+                                                          color: Colors.white,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontSize: 15),
+                                                    ),
+                                                  ),
+                                                ),
+                                              )
+                                            : Container(
+                                                height: 35,
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                    Radius.circular(10),
+                                                  ),
+                                                  color: Color.fromRGBO(
+                                                      58, 90, 64, 0.5),
+                                                ),
+                                                child: Center(
+                                                  child: Text(
+                                                    controller.getStatusState(
+                                                        controller
+                                                            .report
+                                                            .value!
+                                                            .report
+                                                            .status
+                                                            .length)[1],
+                                                    style: TextStyle(
+                                                        color: Colors.white,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontSize: 15),
+                                                  ),
+                                                ),
+                                              ),
                                       );
                                     },
                                     style: ElevatedButton.styleFrom(
@@ -297,13 +323,25 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                                     ),
                                     child: Row(
                                       children: [
-                                        Text(
-                                          controller.report.value?.report
-                                                  .status[0] ??
-                                              'Loading...',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold),
-                                        ),
+                                        Obx(() {
+                                          return Text(
+                                            controller
+                                                    .report
+                                                    .value
+                                                    ?.report
+                                                    .status[controller
+                                                            .report
+                                                            .value!
+                                                            .report
+                                                            .status
+                                                            .length -
+                                                        1]
+                                                    .status ??
+                                                'Loading...',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold),
+                                          );
+                                        }),
                                         SizedBox(width: 5),
                                         Icon(Icons.arrow_forward)
                                       ],

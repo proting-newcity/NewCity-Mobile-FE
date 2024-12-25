@@ -50,19 +50,19 @@ Widget ReportTileGovernment(Report report) {
                         overflow: TextOverflow.ellipsis,
                       ),
                       SizedBox(height: 5),
-                      Row(
-                        children: [
-                          Icon(Icons.person_pin_circle_outlined,
-                              color: Color.fromRGBO(88, 129, 87, 1)),
-                          Text(
-                            report.status[0],
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 2,
-                            style: TextStyle(fontSize: 12),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 5),
+                      // Row(
+                      //   children: [
+                      //     Icon(Icons.person_pin_circle_outlined,
+                      //         color: Color.fromRGBO(88, 129, 87, 1)),
+                      //     Text(
+                      //       report.status[0],
+                      //       overflow: TextOverflow.ellipsis,
+                      //       maxLines: 2,
+                      //       style: TextStyle(fontSize: 12),
+                      //     ),
+                      //   ],
+                      // ),
+                      // SizedBox(height: 5),
                       Row(
                         children: [
                           Icon(Icons.location_on_outlined,
@@ -87,7 +87,8 @@ Widget ReportTileGovernment(Report report) {
                   child: Container(
                     height: 120,
                     decoration: BoxDecoration(
-                      color: getColor(report.status[0]),
+                      color: getColor(
+                          report.status[report.status.length - 1].status),
                       borderRadius: BorderRadius.all(Radius.circular(5)),
                     ),
                     child: Column(
@@ -126,7 +127,7 @@ Widget ReportTileGovernment(Report report) {
                         Padding(
                           padding: const EdgeInsets.all(2.0),
                           child: Text(
-                            report.status[0],
+                            report.status[report.status.length - 1].status,
                             style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.w500,
