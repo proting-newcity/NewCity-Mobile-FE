@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:newcity/api.dart';
 import 'package:newcity/models/report.dart';
@@ -45,5 +46,23 @@ class DetailLaporanController extends GetxController {
 
   void toggleBookmark() {
     isBookmarked.value = !isBookmarked.value;
+  }
+
+  List<dynamic> getStatusState(int indeks) {
+    if (indeks == 1) {
+      return [Color.fromRGBO(250, 178, 45, 1), 'Dalam Proses'];
+    } else if (indeks == 2) {
+      return [Color.fromRGBO(171, 192, 171, 1), 'Tindak Lanjut'];
+    } else {
+      return [Color.fromRGBO(58, 90, 64, 1), 'Selesai'];
+    }
+  }
+
+  Future<void> addStatus(int id, String status) async {
+    try {
+      await ApiService.addStatus(id, status);
+    } catch (e) {
+      print(e);
+    }
   }
 }

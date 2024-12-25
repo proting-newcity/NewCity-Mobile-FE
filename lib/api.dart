@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_connect/connect.dart';
 import 'package:newcity/models/berita.dart';
 import 'package:newcity/models/report.dart';
@@ -31,7 +32,7 @@ class ApiService extends GetConnect {
 
     return dio;
   }
-  
+
   static Future<void> saveAccessToken(String token) async {
     await storage.write('access_token', token);
   }
@@ -171,7 +172,6 @@ class ApiService extends GetConnect {
       final response = await dio
           .get('api/report/status/$status', queryParameters: {'page': page});
       if (response.statusCode == 200) {
-        print(response.data);
         return ReportResponsePagination.fromJson(response.data);
       } else {
         throw Exception('Failed to load berita');
@@ -179,6 +179,24 @@ class ApiService extends GetConnect {
     } catch (e) {
       print("Error: $e");
       return null;
+    }
+  }
+
+  static Future<dynamic> addStatus(int id, String status) async {
+    try {
+      final response = await dio.post(
+        'api/report/status/$id',
+        data: {"status": status},
+      );
+      if (response.statusCode == 200) {
+        print('Status added successfully');
+        Get.snackbar('Success', 'Status berhasil ditambahkan',
+            snackPosition: SnackPosition.BOTTOM);
+      } else {
+        throw Exception('Failed to add status');
+      }
+    } catch (e) {
+      print('Error menambah status $e');
     }
   }
 

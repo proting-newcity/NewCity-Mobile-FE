@@ -59,7 +59,7 @@ class Report {
   String judul;
   String deskripsi;
   String lokasi;
-  List<String> status;
+  List<Status> status;
   String foto;
   int idMasyarakat;
   dynamic idPemerintah;
@@ -87,7 +87,7 @@ class Report {
       judul: json["judul"],
       deskripsi: json["deskripsi"],
       lokasi: json["lokasi"],
-      status: List<String>.from(json["status"].map((x) => x)),
+      status: List<Status>.from(json["status"].map((x) => Status.fromJson(x))),
       foto: json["foto"],
       idMasyarakat: json["id_masyarakat"],
       idPemerintah: json["id_pemerintah"],
@@ -102,7 +102,7 @@ class Report {
         judul: map["judul"],
         deskripsi: map["deskripsi"],
         lokasi: map["lokasi"],
-        status: List<String>.from(map["status"].map((x) => x.toString())),
+        status: List<Status>.from(map["status"].map((x) => Status.fromJson(x))),
         foto: map["foto"],
         idMasyarakat: map["id_masyarakat"],
         idPemerintah: map["id_pemerintah"],
@@ -116,7 +116,7 @@ class Report {
         "judul": judul,
         "deskripsi": deskripsi,
         "lokasi": lokasi,
-        "status": List<dynamic>.from(status.map((x) => x)),
+        "status": status.map((x) => x.toJson()).toList(),
         "foto": foto,
         "id_masyarakat": idMasyarakat,
         "id_pemerintah": idPemerintah,
@@ -147,5 +147,33 @@ class KategoriReport {
       id: json['id'],
       name: json['name'],
     );
+  }
+}
+
+class Status {
+  String status;
+  String deskripsi;
+  DateTime tanggal;
+
+  Status({
+    required this.status,
+    required this.deskripsi,
+    required this.tanggal,
+  });
+
+  factory Status.fromJson(Map<String, dynamic> json) {
+    return Status(
+      status: json["status"],
+      deskripsi: json["deskripsi"],
+      tanggal: DateTime.parse(json["tanggal"]),
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      "status": status,
+      "deskripsi": deskripsi,
+      "tanggal": tanggal,
+    };
   }
 }
