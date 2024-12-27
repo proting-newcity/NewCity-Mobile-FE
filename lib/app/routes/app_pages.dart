@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:newcity/app/modules/laporan_tersaring/bindings/laporan_tersaring_binding.dart';
 import 'package:newcity/app/modules/laporan_tersaring/views/laporan_tersaring_view.dart';
+import 'package:newcity/app/modules/register/views/otp_view.dart';
 import 'package:newcity/app/modules/status_laporan/bindings/status_laporan_binding.dart';
 import 'package:newcity/app/modules/status_laporan/views/status_laporan_view.dart';
 
@@ -141,6 +142,11 @@ class AppPages {
       name: _Paths.BERANDA,
       page: () => const BerandaView(),
       binding: BerandaBinding(),
+    ),
+    GetPage(
+      name: _Paths.OTP,
+      page: () => const OtpView(),
+      binding: RegisterBinding(),
     ),
   ];
 }

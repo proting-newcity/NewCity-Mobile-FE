@@ -45,4 +45,5 @@ abstract class _Paths {
   static const DETAIL_LAPORAN = '/detail-laporan';
   static const LIST_LAPORAN = '/list-laporan';
   static const BERANDA = '/beranda';
+  static const OTP = '/otp';
 }

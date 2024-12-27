@@ -98,8 +98,7 @@ class RegisterView extends GetView<RegisterController> {
                         SizedBox(height: 30),
                         ElevatedButton(
                           onPressed: () {
-                            controller.Register();
-                            Get.toNamed('/login');
+                            controller.sendOtp();
                           },
                           child: Text(
                             'Daftar',

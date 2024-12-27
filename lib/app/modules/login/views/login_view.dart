@@ -101,7 +101,6 @@ class LoginView extends GetView<LoginController> {
                         ElevatedButton(
                           onPressed: () {
                             controller.login();
-                            Get.toNamed('/list-laporan');
                           },
                           child: Text(
                             'Masuk',
