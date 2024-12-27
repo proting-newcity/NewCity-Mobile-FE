@@ -1,0 +1,82 @@
+import 'package:flutter/material.dart';
+
+import 'package:get/get.dart';
+
+import 'package:pinput/pinput.dart';
+import '../controllers/register_controller.dart';
+
+class OtpView extends GetView<RegisterController> {
+  const OtpView({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('OtpView'),
+        centerTitle: true,
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Text(
+              "Kode OTP",
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF588157),
+              ),
+            ),
+            Text(
+              "Kode OTP telah terkirim ke\n+62 xx xxxx xxxx",
+              textAlign: TextAlign.center,
+            ),
+            Pinput(
+              onCompleted: (pin) => controller.register(pin),
+              onSubmitted: (pin) => controller.register(pin),
+              length: 4,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text("Kode belum masuk?"),
+                TextButton(
+                  onPressed: () {
+                    Get.toNamed('/login');
+                  },
+                  child: Text(
+                    "Kirim Ulang",
+                    style: TextStyle(
+                      color: Color(0xFF588157),
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            ElevatedButton(
+              onPressed: () {
+                controller.sendOtp();
+                Get.toNamed('/otp');
+              },
+              child: Text(
+                'Daftar',
+                style: TextStyle(
+                  fontSize: 14,
+                  color: Colors.white,
+                ),
+              ),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Color(0xFF588157),
+                minimumSize: const Size(double.infinity, 50),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

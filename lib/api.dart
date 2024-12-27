@@ -16,7 +16,7 @@ class ApiService extends GetConnect {
 
   static Dio createDio() {
     var dio = Dio(BaseOptions(
-      baseUrl: "http://10.0.2.2:8000/",
+      baseUrl: "http://192.168.1.8:8000/",
       connectTimeout: Duration(seconds: 15),
       receiveTimeout: Duration(seconds: 30),
     ));
@@ -54,11 +54,11 @@ class ApiService extends GetConnect {
         if (token != null) {
           await saveAccessToken(token);
           dio.options.headers['Authorization'] = 'Bearer $token';
-          print("Login successful, token saved. $token");
         }
       } else {
         print("Login failed: ${response.data}");
       }
+      return response;
     } catch (e) {
       print("Error during login: $e");
     }
@@ -89,6 +89,7 @@ class ApiService extends GetConnect {
           'username': username,
           'password': password,
           'password_confirmation': password,
+          'always_signed_in': 1,
           'role': 'masyarakat',
         },
         options: Options(headers: {
@@ -283,7 +284,7 @@ class ApiService extends GetConnect {
   }
 
   static Future<ImageProvider<Object>> loadImage(String imagePath) async {
-    final r = RetryOptions(maxAttempts: 30, delayFactor: Duration(seconds: 2));
+    final r = RetryOptions(maxAttempts: 30, delayFactor: Duration(seconds: 5));
     final baseUrl = dio.options.baseUrl;
     try {
       String fullUrl = "$baseUrl$imagePath";

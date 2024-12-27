@@ -43,7 +43,7 @@ class ListLaporanView extends GetView<ListLaporanController> {
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           color: Colors.black,
-          onPressed: () => Get.back,
+          onPressed: () => Get.back(),
         ),
       ),
       body: Container(

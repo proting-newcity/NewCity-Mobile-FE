@@ -30,6 +30,7 @@ class BerandaController extends GetxController {
   void increment() => count.value++;
 
   void fetchReports() async {
+    print("uygygugyugyuygugyugyuyguyguuyg");
     if (isLastPage) return;
 
     try {

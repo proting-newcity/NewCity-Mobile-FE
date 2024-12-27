@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:newcity/api.dart';
+import 'package:newcity/app/modules/beranda/bindings/beranda_binding.dart';
 
 class LoginController extends GetxController {
   final TextEditingController usernameController = TextEditingController();
@@ -29,6 +30,11 @@ class LoginController extends GetxController {
       if (response.statusCode == 200 || response.statusCode == 201) {
         Get.snackbar("Success", "Login success!",
             snackPosition: SnackPosition.BOTTOM);
+        if (response.data['role'] == 'masyarakat') {
+          Get.toNamed("/beranda");
+        } else {
+          Get.toNamed("/government");
+        }
       }
     } catch (e) {
       print("Error Login: $e");
