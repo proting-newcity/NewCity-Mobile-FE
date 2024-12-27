@@ -16,7 +16,7 @@ class ApiService extends GetConnect {
 
   static Dio createDio() {
     var dio = Dio(BaseOptions(
-      baseUrl: "http://192.168.1.8:8000/",
+      baseUrl: "http://10.0.2.2:8000/",
       connectTimeout: Duration(seconds: 15),
       receiveTimeout: Duration(seconds: 30),
     ));
