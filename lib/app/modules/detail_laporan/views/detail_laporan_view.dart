@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:newcity/api.dart';
-import 'package:newcity/widgets/comments.dart';
 import 'package:newcity/widgets/detail_status.dart';
 
 import '../controllers/detail_laporan_controller.dart';
@@ -424,29 +423,30 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                           onPressed: () {
                             controller.toggleLike();
                             (context as Element).markNeedsBuild();
-                            print(controller.isLiked.value);
                           },
                         ),
-                        Text(controller.likes.value.toString()),
+                        Obx(() {
+                          return Text(controller.likes.value.toString());
+                        }),
                         SizedBox(width: 16),
                         IconButton(
                           icon: Icon(Icons.comment, color: Colors.grey),
                           onPressed: () {
-                            showDialog(
-                              context: context,
-                              builder: (BuildContext context) {
-                                return Comment(context);
-                              },
+                            controller.showCommentsModal(
+                              context,
+                              controller.report.value!.report.id,
                             );
                           },
                         ),
-                        Text("3"),
+                        Obx(() {
+                          return Text(
+                              controller.commentsCount.value.toString());
+                        }),
                         SizedBox(width: 16),
                         IconButton(
                           icon: Icon(Icons.share, color: Colors.grey),
                           onPressed: () {},
                         ),
-                        Text("10"),
                         Spacer(),
                         IconButton(
                           icon: Icon(

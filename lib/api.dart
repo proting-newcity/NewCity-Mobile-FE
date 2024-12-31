@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -222,6 +220,37 @@ class ApiService extends GetConnect {
     }
   }
 
+  static Future<List<Comment>?> getComments(int id) async {
+    try {
+      final response = await dio.get(
+        'api/report/diskusi/$id',
+      );
+      if (response.statusCode == 200) {
+        return Comment.fromJsonList(response.data);
+      } else {
+        throw Exception('Failed to load comment');
+      }
+    } catch (e) {
+      print("Error: $e");
+      return null;
+    }
+  }
+
+  static Future<dynamic> postComment(int id, String content) async {
+    try {
+      final response =
+          await dio.post('api/report/diskusi/$id', data: {'content': content});
+      if (response.statusCode == 200) {
+        return response;
+      } else {
+        throw Exception('Failed to load comment');
+      }
+    } catch (e) {
+      print("Error: $e");
+      return null;
+    }
+  }
+
   static Future<BeritaResponsePagination?> getPaginationBerita(int page) async {
     try {
       final response = await dio.get(
@@ -292,6 +321,7 @@ class ApiService extends GetConnect {
         () => Dio().get(fullUrl).then((response) {
           return NetworkImage(fullUrl);
         }),
+        retryIf: (e) => e is DioException && e.type != DioExceptionType.cancel,
       );
     } catch (e) {
       print("Error loading image: $e");

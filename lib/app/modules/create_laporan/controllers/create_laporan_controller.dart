@@ -82,8 +82,6 @@ class CreateLaporanController extends GetxController {
         MapEntry("judul", judulController.text),
         MapEntry("deskripsi", deskripsiController.text),
         MapEntry("lokasi", lokasiController.text),
-        MapEntry("status[]", '["open"]'),
-        MapEntry("id_masyarakat", "1"), // Replace with actual value
         MapEntry("id_kategori",
             allKategori.value.kategori[selectedTopics.value].id.toString()),
       ]);
@@ -97,14 +95,12 @@ class CreateLaporanController extends GetxController {
         ),
       ));
 
-      print('Form Data: ${formData.fields}');
-      print('Form Files: ${formData.files}');
-
       final response = await ApiService.postReport(formData);
 
       if (response.statusCode == 200 || response.statusCode == 201) {
         Get.snackbar("Success", "Report submitted successfully!",
             snackPosition: SnackPosition.BOTTOM);
+        Get.toNamed('/beranda');
         clearForm();
       } else {
         Get.snackbar("Error", "Failed to submit report.",
