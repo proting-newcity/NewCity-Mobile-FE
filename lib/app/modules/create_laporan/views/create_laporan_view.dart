@@ -10,7 +10,6 @@ class CreateLaporanView extends GetView<CreateLaporanController> {
 
   @override
   Widget build(BuildContext context) {
-    bool isAnonim = false;
     final CreateLaporanController controller =
         Get.put(CreateLaporanController());
 
@@ -29,45 +28,6 @@ class CreateLaporanView extends GetView<CreateLaporanController> {
         padding: const EdgeInsets.all(16.0),
         child: ListView(
           children: [
-            Text("Data Diri", style: TextStyle(fontWeight: FontWeight.bold)),
-            SizedBox(height: 18),
-            Text("Nama"),
-            TextField(
-              decoration: InputDecoration(
-                hintText: "Masukkan nama",
-                enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Color(0xFF588157), width: 2),
-                    borderRadius: BorderRadius.circular(10)),
-              ),
-            ),
-            SizedBox(height: 18),
-            Text("Nomor Telepon"),
-            TextField(
-              decoration: InputDecoration(
-                hintText: "Masukkan nomor telepon",
-                enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Color(0xFF588157), width: 2),
-                    borderRadius: BorderRadius.circular(10)),
-              ),
-            ),
-            SizedBox(height: 18),
-            Text("Email"),
-            TextField(
-              decoration: InputDecoration(
-                hintText: "Masukkan email",
-                enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Color(0xFF588157), width: 2),
-                    borderRadius: BorderRadius.circular(10)),
-              ),
-            ),
-            SizedBox(height: 18),
-            Row(
-              children: [
-                Checkbox(value: isAnonim, onChanged: (bool? value) {}),
-                Text("Buat laporan sebagai anonim"),
-              ],
-            ),
-            SizedBox(height: 20),
             Text("Laporan", style: TextStyle(fontWeight: FontWeight.bold)),
             SizedBox(height: 18),
             Text("Judul"),

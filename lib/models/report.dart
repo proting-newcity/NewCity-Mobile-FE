@@ -22,13 +22,15 @@ class ReportResponse {
   String pemerintahName;
   String kategoriName;
   int like;
+  int comment;
 
   ReportResponse(
       {required this.report,
       required this.masyarakatName,
       required this.pemerintahName,
       required this.kategoriName,
-      required this.like});
+      required this.like,
+      required this.comment});
 
   factory ReportResponse.fromJson(Map<String, dynamic> json) {
     return ReportResponse(
@@ -36,7 +38,8 @@ class ReportResponse {
         masyarakatName: json['masyarakat']['name'],
         pemerintahName: json['pemerintah']['name'] ?? "Unknown",
         kategoriName: json['kategori']['name'],
-        like: json['like']);
+        like: json['like'],
+        comment: json['comment']);
   }
 }
 
@@ -87,7 +90,9 @@ class Report {
       judul: json["judul"],
       deskripsi: json["deskripsi"],
       lokasi: json["lokasi"],
-      status: List<Status>.from(json["status"].map((x) => Status.fromJson(x))),
+      status: json["status"] is List
+          ? List<Status>.from(json["status"].map((x) => Status.fromJson(x)))
+          : [Status.fromJson(json["status"])],
       foto: json["foto"],
       idMasyarakat: json["id_masyarakat"],
       idPemerintah: json["id_pemerintah"],
@@ -175,5 +180,32 @@ class Status {
       "deskripsi": deskripsi,
       "tanggal": tanggal,
     };
+  }
+}
+
+class Comment {
+  final String content;
+  final String tanggal;
+  final String name;
+  final String foto;
+
+  Comment({
+    required this.content,
+    required this.tanggal,
+    required this.name,
+    required this.foto,
+  });
+
+  factory Comment.fromJson(Map<String, dynamic> json) {
+    return Comment(
+      content: json['content'] ?? '',
+      tanggal: json['tanggal'] ?? '',
+      name: json['user']['name'] ?? '',
+      foto: json['user']['foto'] ?? '',
+    );
+  }
+
+  static List<Comment> fromJsonList(List<dynamic> jsonList) {
+    return jsonList.map((json) => Comment.fromJson(json)).toList();
   }
 }

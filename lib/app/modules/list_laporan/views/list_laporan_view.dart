@@ -99,7 +99,7 @@ class ListLaporanView extends GetView<ListLaporanController> {
                   itemCount: controller.filteredReports.length + 1,
                   itemBuilder: (context, index) {
                     if (index < controller.filteredReports.length) {
-                      return reportTile(controller.filteredReports[index]);
+                      return ReportTile(controller.filteredReports[index]);
                     } else {
                       return controller.isLoadingMore.isTrue
                           ? const Center(child: CircularProgressIndicator())

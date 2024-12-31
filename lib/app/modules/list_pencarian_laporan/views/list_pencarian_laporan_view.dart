@@ -20,7 +20,7 @@ class ListPencarianLaporanView extends GetView<ListPencarianLaporanController> {
         ),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
-          onPressed: () => Navigator.of(context).pop(),
+          onPressed: () => Get.back(),
         ),
       ),
       body: Obx(
@@ -49,7 +49,7 @@ class ListPencarianLaporanView extends GetView<ListPencarianLaporanController> {
                   (controller.hasReachedEnd.value ? 0 : 1),
               itemBuilder: (context, index) {
                 if (index < controller.allReport.value.report.length) {
-                  return reportTile(
+                  return ReportTile(
                     controller.allReport.value.report[index],
                   );
                 } else {
