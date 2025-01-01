@@ -14,7 +14,7 @@ import '../modules/detail_berita/views/detail_berita_view.dart';
 import '../modules/detail_laporan/bindings/detail_laporan_binding.dart';
 import '../modules/detail_laporan/views/detail_laporan_view.dart';
 import '../modules/edit_akun/bindings/edit_akun_binding.dart';
-import '../modules/edit_akun/views/edit_akun_view.dart';
+import '../modules/biodata_page/views/edit_akun_view.dart';
 import '../modules/government/bindings/government_binding.dart';
 import '../modules/government/views/government_view.dart';
 import '../modules/home/bindings/home_binding.dart';
@@ -113,11 +113,11 @@ class AppPages {
       page: () => const BiodataPageView(),
       binding: BiodataPageBinding(),
     ),
-    GetPage(
+    /*GetPage(
       name: _Paths.EDIT_AKUN,
       page: () => const EditAkunView(),
       binding: EditAkunBinding(),
-    ),
+    ),*/
     GetPage(
       name: _Paths.CREATE_LAPORAN,
       page: () => const CreateLaporanView(),
