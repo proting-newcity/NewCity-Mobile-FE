@@ -1,11 +1,38 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
-
+import 'package:intl/intl.dart';
+import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 import '../controllers/biodata_page_controller.dart';
 
 class BiodataPageView extends GetView<BiodataPageController> {
   const BiodataPageView({super.key});
+
+  List<PersistentBottomNavBarItem> _navBarsItems() {
+    return [
+      PersistentBottomNavBarItem(
+        icon: Icon(Icons.home_outlined),
+        title: ("Beranda"),
+        activeColorPrimary: Colors.white,
+        inactiveColorPrimary: Colors.white,
+      ),
+      PersistentBottomNavBarItem(
+        icon: Icon(Icons.camera_alt_outlined, color: Color(0xFF588157)),
+        title: ("Lapor"),
+        activeColorPrimary: Colors.white,
+        inactiveColorPrimary: Colors.white,
+        onPressed: (context) {
+          Get.toNamed('/create-laporan', preventDuplicates: false);
+        },
+      ),
+      PersistentBottomNavBarItem(
+        icon: Icon(Icons.person_outline),
+        title: ("Akun"),
+        activeColorPrimary: Colors.white,
+        inactiveColorPrimary: Colors.white,
+      ),
+    ];
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,25 +62,30 @@ class BiodataPageView extends GetView<BiodataPageController> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SizedBox(height: 5), //Jarak PP dari atas appbar
+                SizedBox(height: 5),
                 CircleAvatar(
                   radius: 88,
                   child: Icon(Icons.person, size: 50),
                 ),
                 SizedBox(height: 16),
-                Text(
-                  'Anomaly',
-                  style: TextStyle(
-                      fontFamily: 'poppins',
+                Obx(() {
+                  return Text(
+                    controller.userName.value,
+                    style: TextStyle(
+                      fontFamily: 'Poppins',
                       fontSize: 26,
-                      fontWeight: FontWeight.bold),
-                ),
+                      fontWeight: FontWeight.bold,
+                    ),
+                  );
+                }),
                 SizedBox(height: 8),
-                Text(
-                  'anomaly@gmail.com | +62 8123-4567-9810',
-                  style: TextStyle(fontSize: 18),
-                  textAlign: TextAlign.center,
-                ),
+                Obx(() {
+                  return Text(
+                    '${controller.userEmail.value} | ${controller.userPhone.value}',
+                    style: TextStyle(fontSize: 18),
+                    textAlign: TextAlign.center,
+                  );
+                }),
                 SizedBox(height: 16),
                 ListTile(
                   title: Text(
@@ -61,7 +93,7 @@ class BiodataPageView extends GetView<BiodataPageController> {
                     style: TextStyle(fontSize: 22),
                   ),
                   onTap: () {
-                    // Untuk ubah password
+                    // Navigate to change password page
                   },
                 ),
                 Divider(),
@@ -71,7 +103,7 @@ class BiodataPageView extends GetView<BiodataPageController> {
                     style: TextStyle(fontSize: 20),
                   ),
                   onTap: () {
-                    // Navigator.pushNamed(context, '/edit');
+                    Get.toNamed('/edit-account');
                   },
                 ),
                 Divider(),
@@ -81,7 +113,7 @@ class BiodataPageView extends GetView<BiodataPageController> {
                     style: TextStyle(fontSize: 20),
                   ),
                   onTap: () {
-                    // Navigasi ke halaman bantuan
+                    // Navigate to help page
                   },
                 ),
                 Divider(),
@@ -91,7 +123,7 @@ class BiodataPageView extends GetView<BiodataPageController> {
                     style: TextStyle(fontSize: 20),
                   ),
                   onTap: () {
-                    // Log out dari akun
+                    controller.logout();
                   },
                 ),
                 SizedBox(height: 16),
