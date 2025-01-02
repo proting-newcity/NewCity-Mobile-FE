@@ -411,19 +411,20 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                     SizedBox(height: 16),
                     Row(
                       children: [
-                        IconButton(
-                          icon: Icon(
-                            controller.isLiked.value
-                                ? Icons.favorite
-                                : Icons.favorite_border,
-                            color: controller.isLiked.value
-                                ? Colors.red
-                                : Colors.grey,
+                        Obx(
+                          () => IconButton(
+                            icon: Icon(
+                              controller.isLiked.value
+                                  ? Icons.favorite
+                                  : Icons.favorite_border,
+                              color: controller.isLiked.value
+                                  ? Colors.red
+                                  : Colors.grey,
+                            ),
+                            onPressed: () {
+                              controller.toggleLike();
+                            },
                           ),
-                          onPressed: () {
-                            controller.toggleLike();
-                            (context as Element).markNeedsBuild();
-                          },
                         ),
                         Obx(() {
                           return Text(controller.likes.value.toString());
