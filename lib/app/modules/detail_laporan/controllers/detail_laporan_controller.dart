@@ -40,6 +40,7 @@ class DetailLaporanController extends GetxController {
       report.value = response;
       likes.value = response?.like ?? 0;
       commentsCount.value = response?.comment ?? 0;
+      isLiked.value = response?.hasLiked ?? false;
     } catch (e) {
       print('Error fetching berita: $e');
     }
@@ -83,6 +84,7 @@ class DetailLaporanController extends GetxController {
       if (response.statusCode == 200 || response.statusCode == 201) {
         Get.snackbar("Success", "Comment submitted successfully!",
             snackPosition: SnackPosition.BOTTOM);
+        commentsCount.value++;
       } else {
         Get.snackbar("Error", "Failed to submit comment.",
             snackPosition: SnackPosition.BOTTOM);
@@ -93,6 +95,7 @@ class DetailLaporanController extends GetxController {
   }
 
   void toggleLike() {
+    ApiService.toggleLikeReport(report.value!.report.id!);
     if (isLiked.value) {
       likes.value--;
     } else {
