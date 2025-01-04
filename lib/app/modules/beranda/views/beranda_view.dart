@@ -32,6 +32,9 @@ class BerandaView extends GetView<BerandaController> {
         title: ("Akun"),
         activeColorPrimary: Colors.white,
         inactiveColorPrimary: Colors.white,
+        onPressed: (context) {
+          Get.toNamed('/biodata-page', preventDuplicates: false);
+        },
       ),
     ];
   }

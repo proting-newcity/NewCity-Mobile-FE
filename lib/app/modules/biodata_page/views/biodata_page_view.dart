@@ -1,37 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:intl/intl.dart';
-import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 import '../controllers/biodata_page_controller.dart';
 
 class BiodataPageView extends GetView<BiodataPageController> {
-  const BiodataPageView({super.key});
-
-  List<PersistentBottomNavBarItem> _navBarsItems() {
-    return [
-      PersistentBottomNavBarItem(
-        icon: Icon(Icons.home_outlined),
-        title: ("Beranda"),
-        activeColorPrimary: Colors.white,
-        inactiveColorPrimary: Colors.white,
-      ),
-      PersistentBottomNavBarItem(
-        icon: Icon(Icons.camera_alt_outlined, color: Color(0xFF588157)),
-        title: ("Lapor"),
-        activeColorPrimary: Colors.white,
-        inactiveColorPrimary: Colors.white,
-        onPressed: (context) {
-          Get.toNamed('/create-laporan', preventDuplicates: false);
-        },
-      ),
-      PersistentBottomNavBarItem(
-        icon: Icon(Icons.person_outline),
-        title: ("Akun"),
-        activeColorPrimary: Colors.white,
-        inactiveColorPrimary: Colors.white,
-      ),
-    ];
-  }
+  const BiodataPageView({super.key});  
 
   @override
   Widget build(BuildContext context) {
@@ -93,7 +65,7 @@ class BiodataPageView extends GetView<BiodataPageController> {
                     style: TextStyle(fontSize: 22),
                   ),
                   onTap: () {
-                    // Navigate to change password page
+                    Get.toNamed('/lupa-password');
                   },
                 ),
                 Divider(),
@@ -123,7 +95,7 @@ class BiodataPageView extends GetView<BiodataPageController> {
                     style: TextStyle(fontSize: 20),
                   ),
                   onTap: () {
-                    Get.toNamed('/login');
+                    _showLogoutDialog(context);
                   },
                 ),
                 SizedBox(height: 16),
@@ -149,6 +121,33 @@ class BiodataPageView extends GetView<BiodataPageController> {
           ),
         ],
       ),
+    );
+  }
+
+  void _showLogoutDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Konfirmasi Keluar"),
+          content: Text("Apakah Anda yakin ingin keluar?"),
+          actions: [
+            TextButton(
+              child: Text("Batal"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              child: Text("Lanjut"),
+              onPressed: () {
+                Navigator.of(context).pop();
+                Get.toNamed('/login');
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 }

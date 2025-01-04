@@ -39,13 +39,15 @@ import '../modules/welcomepage/bindings/welcomepage_binding.dart';
 import '../modules/welcomepage/views/welcomepage_view.dart';
 import '../modules/beranda/views/beranda_view.dart';
 import '../modules/beranda/bindings/beranda_binding.dart';
+import '../modules/lupa_password/bindings/lupa_password_binding.dart';
+import '../modules/lupa_password/views/lupa_password_view.dart';
 
 part 'app_routes.dart';
 
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.BIODATA_PAGE;
+  static const INITIAL = Routes.BERANDA;
 
   static final routes = [
     GetPage(
@@ -147,6 +149,11 @@ class AppPages {
       name: _Paths.OTP,
       page: () => const OtpView(),
       binding: RegisterBinding(),
+    ),
+    GetPage(
+      name: _Paths.LUPA_PASSWORD,
+      page: () => const LupaPasswordView(),
+      binding: LupaPasswordBinding(),
     ),
   ];
 }

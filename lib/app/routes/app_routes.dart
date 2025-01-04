@@ -22,6 +22,7 @@ abstract class Routes {
   static const DETAIL_LAPORAN = _Paths.DETAIL_LAPORAN;
   static const LIST_LAPORAN = _Paths.LIST_LAPORAN;
   static const BERANDA = _Paths.BERANDA;
+  static const LUPA_PASSWORD = _Paths.LUPA_PASSWORD;
 }
 
 abstract class _Paths {
@@ -46,4 +47,5 @@ abstract class _Paths {
   static const LIST_LAPORAN = '/list-laporan';
   static const BERANDA = '/beranda';
   static const OTP = '/otp';
+  static const LUPA_PASSWORD = '/lupa-password';
 }
