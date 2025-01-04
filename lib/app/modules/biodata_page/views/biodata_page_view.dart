@@ -112,7 +112,7 @@ class BiodataPageView extends GetView<BiodataPageController> {
             label: 'Beranda',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.report),
+            icon: Icon(Icons.camera),
             label: 'Lapor',
           ),
           BottomNavigationBarItem(
