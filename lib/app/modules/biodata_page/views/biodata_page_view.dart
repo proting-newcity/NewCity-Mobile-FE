@@ -103,7 +103,7 @@ class BiodataPageView extends GetView<BiodataPageController> {
                     style: TextStyle(fontSize: 20),
                   ),
                   onTap: () {
-                    Get.toNamed('/edit-account');
+                    Get.toNamed('/edit-akun');
                   },
                 ),
                 Divider(),
@@ -111,7 +111,7 @@ class BiodataPageView extends GetView<BiodataPageController> {
                   title: Text(
                     'Bantuan',
                     style: TextStyle(fontSize: 20),
-                  ),
+                  ), 
                   onTap: () {
                     // Navigate to help page
                   },
@@ -123,7 +123,7 @@ class BiodataPageView extends GetView<BiodataPageController> {
                     style: TextStyle(fontSize: 20),
                   ),
                   onTap: () {
-                    controller.logout();
+                    Get.toNamed('/login');
                   },
                 ),
                 SizedBox(height: 16),

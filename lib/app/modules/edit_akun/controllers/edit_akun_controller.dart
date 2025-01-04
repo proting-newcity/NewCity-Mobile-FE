@@ -1,23 +1,20 @@
+// edit_akun_controller.dart
 import 'package:get/get.dart';
 
 class EditAkunController extends GetxController {
-  //TODO: Implement EditAkunController
+  var userName = ''.obs;
+  var userEmail = ''.obs;
+  var userPhone = ''.obs;
 
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
+  void updateName(String name) {
+    userName.value = name;
   }
 
-  @override
-  void onReady() {
-    super.onReady();
+  void updateEmail(String email) {
+    userEmail.value = email;
   }
 
-  @override
-  void onClose() {
-    super.onClose();
+  void updatePhone(String phone) {
+    userPhone.value = phone;
   }
-
-  void increment() => count.value++;
 }

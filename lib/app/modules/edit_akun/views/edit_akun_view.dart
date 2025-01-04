@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-import '../controllers/biodata_page_controller.dart';
+import '../controllers/edit_akun_controller.dart';
 
-class EditAkunView extends GetView<BiodataPageController> {
-  final BiodataPageController controller = Get.find();
+class EditAkunView extends GetView<EditAkunController> {
 
   @override
   Widget build(BuildContext context) {
