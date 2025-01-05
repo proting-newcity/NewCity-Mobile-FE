@@ -7,6 +7,7 @@ class BiodataPageController extends GetxController {
   var userName = ''.obs;
   var userEmail = ''.obs;
   var userPhone = ''.obs;
+  //var profileImagePath = ''.obs;
 
   var updateFlag = false.obs;
 
@@ -28,7 +29,7 @@ class BiodataPageController extends GetxController {
         switch (userId.value) {
           case '1':
             userName.value = 'kalpratama';
-            userEmail.value = 'null@mail.com';
+            userEmail.value = 'kalpratama@gmail.com';
             userPhone.value = '080000000009';
             break;
           case '2':
@@ -73,4 +74,8 @@ class BiodataPageController extends GetxController {
   void triggerUpdate() {
     updateFlag.value = !updateFlag.value;
   }
+
+  /*void updateProfileImage(String path){
+    profileImagePath.value = path;
+  }*/
 }

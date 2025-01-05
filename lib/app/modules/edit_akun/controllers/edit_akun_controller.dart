@@ -1,10 +1,12 @@
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:newcity/app/modules/biodata_page/controllers/biodata_page_controller.dart';
 
 class EditAkunController extends GetxController {
   var userName = ''.obs;
   var userEmail = ''.obs;
   var userPhone = ''.obs;
+  //var profileImagePath = ''.obs;
 
   final BiodataPageController biodataController = Get.find<BiodataPageController>();
 
@@ -36,4 +38,13 @@ class EditAkunController extends GetxController {
     //biodataController.fetchUserData();
     //biodataController.triggerUpdate();
   }
+
+  /*Future<void> pickImage() async {
+    final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
+    if (image != null){
+      profileImagePath.value = image.path;
+      final BiodataPageController biodataPageController = Get.find<BiodataPageController>();
+      biodataPageController.updateProfileImage(image.path)
+    }
+  }*/
 }

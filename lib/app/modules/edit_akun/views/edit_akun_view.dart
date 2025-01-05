@@ -15,10 +15,15 @@ class EditAkunView extends GetView<EditAkunController> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SizedBox(height: 5),
-            CircleAvatar(
+            //Obx((){
+              //return 
+              CircleAvatar(
               radius: 88,
               child: Icon(Icons.person, size: 50),
+              //backgroundImage: controller.profileImagePath.value.isEmpty? AssetImage('assets/default_profile.png'):FileImage(File(controller.profileImagePath.value)) as ImageProvider,
             ),
+            //}),
+            
             SizedBox(height: 15),
             Text(
               'Ubah foto',
