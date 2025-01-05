@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:newcity/app/modules/biodata_page/controllers/biodata_page_controller.dart'; // Correct import path
+import 'package:newcity/app/modules/biodata_page/controllers/biodata_page_controller.dart';
 
 class EditAkunController extends GetxController {
   var userName = ''.obs;
@@ -29,8 +29,11 @@ class EditAkunController extends GetxController {
   }
 
   void saveChanges() {
+    print("Saving Changes: Name: ${userName.value}, Email: ${userEmail.value}, Phone: ${userPhone.value}");
     biodataController.updateName(userName.value);
     biodataController.updateEmail(userEmail.value);
     biodataController.updatePhone(userPhone.value);
+    //biodataController.fetchUserData();
+    //biodataController.triggerUpdate();
   }
 }
