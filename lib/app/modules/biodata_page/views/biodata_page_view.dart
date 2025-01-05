@@ -76,12 +76,13 @@ class BiodataPageView extends GetView<BiodataPageController> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton( icon: Icon(Icons.arrow_back),
+        color: Colors.white,
         onPressed: () { 
           Get.toNamed('/beranda');
           },
         ),
 
-        title: Text('Akun'),
+        title: Text('Akun', style: TextStyle(fontSize: 22, color: Colors.white)),
         backgroundColor: Color(0xFF588157),
       ),
       body: Stack(
@@ -95,8 +96,8 @@ class BiodataPageView extends GetView<BiodataPageController> {
               decoration: BoxDecoration(
                 color: Color(0xFF588157),
                 borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.elliptical(290, 280),
-                  bottomRight: Radius.elliptical(290, 280),
+                  bottomLeft: Radius.elliptical(MediaQuery.of(context).size.width / 0.5, 100),
+                  bottomRight: Radius.elliptical(MediaQuery.of(context).size.width / 0.5, 100),
                 ),
               ),
             ),

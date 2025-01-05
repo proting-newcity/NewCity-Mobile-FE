@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
 class BiodataPageController extends GetxController {
-  var userName = 'kalel'.obs;
+  var userName = 'kalpratama'.obs;
   var userEmail = 'kalpratama@gmail.com'.obs;
   var userPhone = '081234567890'.obs;
 
