@@ -75,6 +75,12 @@ class BiodataPageView extends GetView<BiodataPageController> {
   Widget _buildBiodataScreen(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton( icon: Icon(Icons.arrow_back),
+        onPressed: () { 
+          Get.toNamed('/beranda');
+          },
+        ),
+
         title: Text('Akun'),
         backgroundColor: Color(0xFF588157),
       ),
@@ -94,6 +100,7 @@ class BiodataPageView extends GetView<BiodataPageController> {
                 ),
               ),
             ),
+            
           ),
           Padding(
             padding: const EdgeInsets.all(16.0),
@@ -124,11 +131,12 @@ class BiodataPageView extends GetView<BiodataPageController> {
                     textAlign: TextAlign.center,
                   );
                 }),
-                SizedBox(height: 16),
+                SizedBox(height: 55),
                 ListTile(
+                  leading: Icon(Icons.lock),
                   title: Text(
                     'Ubah Kata Sandi',
-                    style: TextStyle(fontSize: 22),
+                    style: TextStyle(fontSize: 20),
                   ),
                   onTap: () {
                     Get.toNamed('/lupa-password');
@@ -136,8 +144,9 @@ class BiodataPageView extends GetView<BiodataPageController> {
                 ),
                 Divider(),
                 ListTile(
+                  leading: Icon(Icons.account_circle),
                   title: Text(
-                    'Akun',
+                    'Edit Akun',
                     style: TextStyle(fontSize: 20),
                   ),
                   onTap: () {
@@ -146,6 +155,7 @@ class BiodataPageView extends GetView<BiodataPageController> {
                 ),
                 Divider(),
                 ListTile(
+                  leading: Icon(Icons.question_mark),
                   title: Text(
                     'Bantuan',
                     style: TextStyle(fontSize: 20),
@@ -156,9 +166,10 @@ class BiodataPageView extends GetView<BiodataPageController> {
                 ),
                 Divider(),
                 ListTile(
+                  leading: Icon(Icons.exit_to_app, color: Colors.red),
                   title: Text(
                     'Keluar',
-                    style: TextStyle(fontSize: 20),
+                    style: TextStyle(fontSize: 20, color: Colors.red),
                   ),
                   onTap: () {
                     _showLogoutDialog(context);
