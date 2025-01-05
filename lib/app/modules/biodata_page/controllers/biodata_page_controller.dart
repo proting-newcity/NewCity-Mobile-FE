@@ -15,7 +15,9 @@ class BiodataPageController extends GetxController {
   }
 
   Future<void> fetchUserData() async {
-    if (userName.value.isEmpty || userEmail.value.isEmpty || userPhone.value.isEmpty) {
+    if (userName.value.isEmpty ||
+        userEmail.value.isEmpty ||
+        userPhone.value.isEmpty) {
       final response = await http.get(Uri.parse(
           'http://10.0.2.2/newcity/fetchUsername.php?id=${userId.value}'));
 
@@ -54,8 +56,6 @@ class BiodataPageController extends GetxController {
         throw Exception('Failed to load username');
       }
     }
-
-    print("CONT Data: $userName, $userEmail");
   }
 
   void updateName(String name) {

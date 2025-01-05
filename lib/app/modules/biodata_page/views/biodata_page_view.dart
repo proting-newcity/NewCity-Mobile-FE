@@ -75,12 +75,7 @@ class BiodataPageView extends GetView<BiodataPageController> {
   Widget _buildBiodataScreen(BuildContext context) {
     final String userId = "2";
     controller.setUserId(userId);
-
-    /*if (controller.userName.value.isEmpty || controller.userEmail.value.isEmpty || controller.userPhone.value.isEmpty) { 
-      controller.fetchUserData(); 
-      }*/
     controller.fetchUserData();
-    print("VIEW Data: ${controller.userName}, ${controller.userEmail}");
 
     return Scaffold(
       appBar: AppBar(
@@ -88,7 +83,7 @@ class BiodataPageView extends GetView<BiodataPageController> {
           icon: Icon(Icons.arrow_back),
           color: Colors.white,
           onPressed: () {
-            Get.back();
+            Get.back;
           },
         ),
         title:

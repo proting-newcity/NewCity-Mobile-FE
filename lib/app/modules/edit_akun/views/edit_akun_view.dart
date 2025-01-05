@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:newcity/app/modules/biodata_page/controllers/biodata_page_controller.dart';
 import '../controllers/edit_akun_controller.dart';
 
 class EditAkunView extends GetView<EditAkunController> {
   @override
   Widget build(BuildContext context) {
-    //final String userId = "2";
-
     return Scaffold(
       appBar: AppBar(
         title: Text('Edit Akun'),
@@ -65,8 +62,8 @@ class EditAkunView extends GetView<EditAkunController> {
                 }),
             SizedBox(height: 20),
             ElevatedButton(
-              onPressed: () { //async{
-                //await controller.saveChanges(userId);
+              onPressed: () {
+                controller.saveChanges();
                 Get.back();
               },
               child: Text('Simpan Perubahan',
