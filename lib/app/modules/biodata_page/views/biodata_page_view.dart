@@ -1,12 +1,78 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 import '../controllers/biodata_page_controller.dart';
 
 class BiodataPageView extends GetView<BiodataPageController> {
-  const BiodataPageView({super.key});  
+  const BiodataPageView({super.key});
+
+  List<PersistentBottomNavBarItem> _navBarsItems() {
+    return [
+      PersistentBottomNavBarItem(
+        icon: Icon(Icons.home_outlined),
+        title: ("Beranda"),
+        activeColorPrimary: Colors.white,
+        inactiveColorPrimary: Colors.white,
+        onPressed: (context) {
+          Get.toNamed('/beranda', preventDuplicates: false);
+        },
+      ),
+      PersistentBottomNavBarItem(
+        icon: Icon(Icons.camera_alt_outlined, color: Color(0xFF588157)),
+        title: ("Lapor"),
+        activeColorPrimary: Colors.white,
+        inactiveColorPrimary: Colors.white,
+        onPressed: (context) {
+          Get.toNamed('/create-laporan', preventDuplicates: false);
+        },
+      ),
+      PersistentBottomNavBarItem(
+        icon: Icon(Icons.person_outline),
+        title: ("Akun"),
+        activeColorPrimary: Colors.white,
+        inactiveColorPrimary: Colors.white,
+        onPressed: (context) {
+          Get.toNamed('/biodata-page', preventDuplicates: false);
+        },
+      ),
+    ];
+  }
 
   @override
   Widget build(BuildContext context) {
+    PersistentTabController _controller = PersistentTabController();
+
+    return PersistentTabView(
+      context,
+      controller: _controller,
+      screens: [
+        _buildBiodataScreen(context),
+        _buildLaporScreen(context),
+        _buildAkunScreen(context),
+      ],
+      items: _navBarsItems(),
+      confineToSafeArea: true,
+      backgroundColor: Color(0xFF588157),
+      handleAndroidBackButtonPress: true,
+      resizeToAvoidBottomInset: true,
+      stateManagement: true,
+      hideNavigationBarWhenKeyboardAppears: true,
+      animationSettings: const NavBarAnimationSettings(
+        navBarItemAnimation: ItemAnimationSettings(
+          duration: Duration(milliseconds: 200),
+          curve: Curves.ease,
+        ),
+        screenTransitionAnimation: ScreenTransitionAnimationSettings(
+          animateTabTransition: true,
+          duration: Duration(milliseconds: 200),
+          curve: Curves.ease,
+        ),
+      ),
+      navBarStyle: NavBarStyle.style15,
+    );
+  }
+
+  Widget _buildBiodataScreen(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Akun'),
@@ -23,8 +89,8 @@ class BiodataPageView extends GetView<BiodataPageController> {
               decoration: BoxDecoration(
                 color: Color(0xFF588157),
                 borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.elliptical(MediaQuery.of(context).size.width / 1, 110),
-                  bottomRight: Radius.elliptical(MediaQuery.of(context).size.width / 1, 110),
+                  bottomLeft: Radius.elliptical(290, 280),
+                  bottomRight: Radius.elliptical(290, 280),
                 ),
               ),
             ),
@@ -83,7 +149,7 @@ class BiodataPageView extends GetView<BiodataPageController> {
                   title: Text(
                     'Bantuan',
                     style: TextStyle(fontSize: 20),
-                  ), 
+                  ),
                   onTap: () {
                     // Navigate to help page
                   },
@@ -101,23 +167,6 @@ class BiodataPageView extends GetView<BiodataPageController> {
                 SizedBox(height: 16),
               ],
             ),
-          ),
-        ],
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Color(0xFF588157),
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Beranda',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.camera),
-            label: 'Lapor',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.account_circle),
-            label: 'Akun',
           ),
         ],
       ),
@@ -148,6 +197,24 @@ class BiodataPageView extends GetView<BiodataPageController> {
           ],
         );
       },
+    );
+  }
+
+  Widget _buildLaporScreen(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Lapor'),
+      ),
+      body: const Center(child: Text("Lapor Content")),
+    );
+  }
+
+  Widget _buildAkunScreen(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Akun'),
+      ),
+      body: const Center(child: Text("Akun Content")),
     );
   }
 }
