@@ -73,7 +73,7 @@ class BiodataPageView extends GetView<BiodataPageController> {
   }
 
   Widget _buildBiodataScreen(BuildContext context) {
-    final String userId = "2";
+    final String userId = "4";
     controller.setUserId(userId);
     controller.fetchUserData();
 
@@ -83,7 +83,7 @@ class BiodataPageView extends GetView<BiodataPageController> {
           icon: Icon(Icons.arrow_back),
           color: Colors.white,
           onPressed: () {
-            Get.back;
+            Get.toNamed('/beranda');
           },
         ),
         title:
