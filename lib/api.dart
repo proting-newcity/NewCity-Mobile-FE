@@ -256,6 +256,21 @@ class ApiService extends GetConnect {
     }
   }
 
+  static Future<dynamic> toggleLikeReport(int id) async {
+    try {
+      final response =
+          await dio.post('api/report/like', data: {'id': id, "loaded": false});
+      if (response.statusCode == 200) {
+        return Comment.fromJsonList(response.data);
+      } else {
+        throw Exception('Failed to like');
+      }
+    } catch (e) {
+      print("Error: $e");
+      return null;
+    }
+  }
+
   static Future<dynamic> postComment(int id, String content) async {
     try {
       final response =

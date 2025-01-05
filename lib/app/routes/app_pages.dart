@@ -43,13 +43,17 @@ import '../modules/topik_berita/bindings/topik_berita_binding.dart';
 import '../modules/topik_berita/views/topik_berita_view.dart';
 import '../modules/welcomepage/bindings/welcomepage_binding.dart';
 import '../modules/welcomepage/views/welcomepage_view.dart';
+import '../modules/beranda/views/beranda_view.dart';
+import '../modules/beranda/bindings/beranda_binding.dart';
+import '../modules/lupa_password/bindings/lupa_password_binding.dart';
+import '../modules/lupa_password/views/lupa_password_view.dart';
 
 part 'app_routes.dart';
 
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.SPLASHSCREEN;
+  static const INITIAL = Routes.BERANDA;
 
   static final routes = [
     GetPage(
@@ -119,7 +123,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.EDIT_AKUN,
-      page: () => const EditAkunView(),
+      page: () => EditAkunView(),
       binding: EditAkunBinding(),
     ),
     GetPage(

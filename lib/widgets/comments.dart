@@ -60,6 +60,7 @@ Widget ShowComment(
                     username: comment.name,
                     time: DateTime.parse(comment.tanggal),
                     comment: comment.content,
+                    foto: comment.foto,
                   );
                 }).toList(),
               SizedBox(height: 16),
@@ -99,6 +100,7 @@ Widget CommentTile({
   required String username,
   required DateTime time,
   required String comment,
+  required String foto,
 }) {
   return Padding(
     padding: const EdgeInsets.symmetric(vertical: 8.0),
@@ -107,9 +109,30 @@ Widget CommentTile({
       children: [
         Row(
           children: [
-            CircleAvatar(
-              radius: 16,
-              backgroundColor: Colors.green,
+            FutureBuilder<ImageProvider>(
+              future: ApiService.loadImage(foto),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return CircleAvatar(
+                    radius: 16,
+                    backgroundColor: Colors.grey[200],
+                    child: CircularProgressIndicator(
+                      strokeWidth: 2,
+                      valueColor: AlwaysStoppedAnimation<Color>(Colors.green),
+                    ),
+                  );
+                } else if (snapshot.hasError) {
+                  return CircleAvatar(
+                    radius: 16,
+                    backgroundImage: AssetImage('assets/placeholder.png'),
+                  );
+                } else {
+                  return CircleAvatar(
+                    radius: 16,
+                    backgroundImage: snapshot.data,
+                  );
+                }
+              },
             ),
             SizedBox(width: 8),
             Row(
@@ -119,9 +142,7 @@ Widget CommentTile({
                   username,
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
-                SizedBox(
-                  width: 10,
-                ),
+                SizedBox(width: 10),
                 Text(
                   convertToAgo(time),
                   style: TextStyle(fontSize: 12, color: Colors.grey),

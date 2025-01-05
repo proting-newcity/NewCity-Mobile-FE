@@ -1,23 +1,36 @@
 import 'package:get/get.dart';
+import 'package:newcity/app/modules/biodata_page/controllers/biodata_page_controller.dart'; // Correct import path
 
 class EditAkunController extends GetxController {
-  //TODO: Implement EditAkunController
+  var userName = ''.obs;
+  var userEmail = ''.obs;
+  var userPhone = ''.obs;
 
-  final count = 0.obs;
+  final BiodataPageController biodataController = Get.find<BiodataPageController>();
+
   @override
   void onInit() {
     super.onInit();
+    userName.value = biodataController.userName.value;
+    userEmail.value = biodataController.userEmail.value;
+    userPhone.value = biodataController.userPhone.value;
   }
 
-  @override
-  void onReady() {
-    super.onReady();
+  void updateName(String name) {
+    userName.value = name;
   }
 
-  @override
-  void onClose() {
-    super.onClose();
+  void updateEmail(String email) {
+    userEmail.value = email;
   }
 
-  void increment() => count.value++;
+  void updatePhone(String phone) {
+    userPhone.value = phone;
+  }
+
+  void saveChanges() {
+    biodataController.updateName(userName.value);
+    biodataController.updateEmail(userEmail.value);
+    biodataController.updatePhone(userPhone.value);
+  }
 }
