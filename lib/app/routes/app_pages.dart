@@ -1,10 +1,9 @@
 import 'package:get/get.dart';
-import 'package:newcity/app/modules/laporan_tersaring/bindings/laporan_tersaring_binding.dart';
-import 'package:newcity/app/modules/laporan_tersaring/views/laporan_tersaring_view.dart';
-import 'package:newcity/app/modules/register/views/otp_view.dart';
-import 'package:newcity/app/modules/status_laporan/bindings/status_laporan_binding.dart';
-import 'package:newcity/app/modules/status_laporan/views/status_laporan_view.dart';
+import 'package:newcity/app/modules/forgot_password/views/kode_verifikasi_view.dart';
+import 'package:newcity/app/modules/forgot_password/views/new_password_view.dart';
 
+import '../modules/beranda/bindings/beranda_binding.dart';
+import '../modules/beranda/views/beranda_view.dart';
 import '../modules/biodata_page/bindings/biodata_page_binding.dart';
 import '../modules/biodata_page/views/biodata_page_view.dart';
 import '../modules/create_laporan/bindings/create_laporan_binding.dart';
@@ -15,10 +14,14 @@ import '../modules/detail_laporan/bindings/detail_laporan_binding.dart';
 import '../modules/detail_laporan/views/detail_laporan_view.dart';
 import '../modules/edit_akun/bindings/edit_akun_binding.dart';
 import '../modules/edit_akun/views/edit_akun_view.dart';
+import '../modules/forgot_password/bindings/forgot_password_binding.dart';
+import '../modules/forgot_password/views/forgot_password_view.dart';
 import '../modules/government/bindings/government_binding.dart';
 import '../modules/government/views/government_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
+import '../modules/laporan_tersaring/bindings/laporan_tersaring_binding.dart';
+import '../modules/laporan_tersaring/views/laporan_tersaring_view.dart';
 import '../modules/list_berita/bindings/list_berita_binding.dart';
 import '../modules/list_berita/views/list_berita_view.dart';
 import '../modules/list_laporan/bindings/list_laporan_binding.dart';
@@ -30,15 +33,16 @@ import '../modules/list_topik_berita/views/list_topik_berita_view.dart';
 import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
 import '../modules/register/bindings/register_binding.dart';
+import '../modules/register/views/otp_view.dart';
 import '../modules/register/views/register_view.dart';
 import '../modules/splashscreen/bindings/splashscreen_binding.dart';
 import '../modules/splashscreen/views/splashscreen_view.dart';
+import '../modules/status_laporan/bindings/status_laporan_binding.dart';
+import '../modules/status_laporan/views/status_laporan_view.dart';
 import '../modules/topik_berita/bindings/topik_berita_binding.dart';
 import '../modules/topik_berita/views/topik_berita_view.dart';
 import '../modules/welcomepage/bindings/welcomepage_binding.dart';
 import '../modules/welcomepage/views/welcomepage_view.dart';
-import '../modules/beranda/views/beranda_view.dart';
-import '../modules/beranda/bindings/beranda_binding.dart';
 
 part 'app_routes.dart';
 
@@ -147,6 +151,21 @@ class AppPages {
       name: _Paths.OTP,
       page: () => const OtpView(),
       binding: RegisterBinding(),
+    ),
+    GetPage(
+      name: _Paths.FORGOT_PASSWORD,
+      page: () => const ForgotPasswordView(),
+      binding: ForgotPasswordBinding(),
+    ),
+    GetPage(
+      name: _Paths.KODE_VERIFIKASI,
+      page: () => const KodeVerifikasiView(),
+      binding: ForgotPasswordBinding(),
+    ),
+    GetPage(
+      name: _Paths.NEW_PASSWORD,
+      page: () => const NewPasswordView(),
+      binding: ForgotPasswordBinding(),
     ),
   ];
 }

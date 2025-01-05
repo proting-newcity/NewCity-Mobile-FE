@@ -105,6 +105,26 @@ class ApiService extends GetConnect {
     }
   }
 
+  static Future<dynamic> changePassword(String phone, String password) async {
+    try {
+      final response = await dio.post(
+        'api/reset-password',
+        data: {
+          'username': phone,
+          'new_password': password,
+        },
+      );
+      if (response.statusCode == 200) {
+        return response;
+      } else {
+        throw Exception('Failed to change password');
+      }
+    } catch (e) {
+      print("Error: $e");
+      return null;
+    }
+  }
+
   static Future<dynamic> postReport(var data) async {
     final response = await dio.post(
       'api/report',
@@ -326,6 +346,20 @@ class ApiService extends GetConnect {
     } catch (e) {
       print("Error loading image: $e");
       return AssetImage('assets/placeholder.png');
+    }
+  }
+
+  static Future<dynamic> getMasyarakatByPhone(String phone) async {
+    try {
+      final response = await dio.get('api/masyarakat/search?search=$phone');
+      if (response.statusCode == 200) {
+        return response;
+      } else {
+        return response;
+      }
+    } catch (e) {
+      print("Error: $e");
+      return null;
     }
   }
 }
