@@ -4,7 +4,7 @@ class WelcomepageController extends GetxController {
   static final List<Map> list = [
     {
       "image": "assets/images/img_welcomepage1.png",
-      "title": "Selamat Datang!",
+      "title": "Selamat Datang!\n",
       "description":
           "Bersama NewCity, jadilah bagian dari\nkomunitas yang aktif dan saling terhubung!",
     },
@@ -12,13 +12,13 @@ class WelcomepageController extends GetxController {
       "image": "assets/images/img_welcomepage2.png",
       "title": "Setiap laporan\nAnda berharga!",
       "description":
-          "Semakin banyak Anda melapor, semakin\nbanyak informasi yang kita kumpulkan,\nsemakin cepat kita menyelesaikan masalah.",
+          "Semakin banyak Anda melapor, semakin cepat kita menyelesaikan masalah.",
     },
     {
       "image": "assets/images/img_welcomepage3.png",
       "title": "Informasi Real-Time\nyang terjangkau",
       "description":
-          "NewCity menyediakan akses cepat dan\nmudah dijangkau terhadap data dan berita\nterbaru.",
+          "NewCity menyediakan akses cepat dan mudah dijangkau terhadap data dan berita terbaru.",
     }
   ];
 

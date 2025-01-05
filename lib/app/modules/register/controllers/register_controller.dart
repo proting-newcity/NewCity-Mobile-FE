@@ -33,7 +33,7 @@ class RegisterController extends GetxController {
     );
   }
 
-  void register(pin) async {
+  void nextRoute(pin) async {
     if (otp.value == int.parse(pin)) {
       try {
         var response = await ApiService.register(

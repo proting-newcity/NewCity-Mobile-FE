@@ -14,27 +14,26 @@ class WelcomepageView extends GetView<WelcomepageController> {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 40),
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Image.asset("assets/images/logo_NewCity_horizontal.png",
-                    width: 200),
-                SizedBox(height: 100),
+          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+          child: SingleChildScrollView(
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Image.asset("assets/images/logo_NewCity_horizontal.png",
+                      width: 200),
+                  SizedBox(height: 100),
 
-                // Obx untuk merespon perubahan pada currentIndex
-                Obx(() {
-                  final content = controller.currentIndex;
-                  return DetailPage(
-                    map: WelcomepageController.list[content.value],
-                  );
-                }),
+                  // Obx untuk merespon perubahan pada currentIndex
+                  Obx(() {
+                    final content = controller.currentIndex;
+                    return DetailPage(
+                      map: WelcomepageController.list[content.value],
+                    );
+                  }),
 
-                SizedBox(height: 60),
-                Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Column(
+                  SizedBox(height: 60),
+                  Column(
                     children: [
                       ElevatedButtonTheme(
                         data: ElevatedButtonThemeData(
@@ -79,8 +78,8 @@ class WelcomepageView extends GetView<WelcomepageController> {
                       ),
                     ],
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),

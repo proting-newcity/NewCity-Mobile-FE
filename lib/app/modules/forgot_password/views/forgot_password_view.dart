@@ -2,12 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-import '../controllers/register_controller.dart';
+import '../controllers/forgot_password_controller.dart';
 
-// import 'package:google_fonts/google_fonts.dart';
-
-class RegisterView extends GetView<RegisterController> {
-  const RegisterView({super.key});
+class ForgotPasswordView extends GetView<ForgotPasswordController> {
+  const ForgotPasswordView({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,12 +36,7 @@ class RegisterView extends GetView<RegisterController> {
                     top: 135,
                     left: 23,
                     child: Text(
-                      "Registrasi",
-                      // style: GoogleFonts.poppins(
-                      //   color: Colors.white,
-                      //   fontSize: 24,
-                      //   fontWeight: FontWeight.bold,
-                      // ),
+                      "Lupa kata sandi?",
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 24,
@@ -55,7 +48,7 @@ class RegisterView extends GetView<RegisterController> {
                     top: 182,
                     left: 23,
                     child: Text(
-                      "Buat Akun Anda!",
+                      "Masukkan nomor telepon Anda untuk\nmengirimkan kode verifikasi!.",
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 14,
@@ -73,42 +66,31 @@ class RegisterView extends GetView<RegisterController> {
                     child: Column(
                       children: [
                         TextField(
+                          controller: controller.notelpController,
                           decoration: InputDecoration(
-                            hintText: 'Nama',
-                            prefixIcon: Icon(Icons.person_2_outlined),
-                            border: OutlineInputBorder(),
+                            hintText: 'Nomor Telpon',
+                            hintStyle: TextStyle(
+                              color: Color(0xFF588157),
+                            ),
+                            prefixIcon: Icon(Icons.phone_in_talk_outlined,
+                                color: Color(0xFF588157)),
+                            enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: Color(0xFF588157), width: 1),
+                                borderRadius: BorderRadius.circular(10)),
                           ),
-                          controller: controller.namacontroller,
-                        ),
-                        SizedBox(height: 20),
-                        TextField(
-                          decoration: InputDecoration(
-                            hintText: 'Nomor Telepon',
-                            prefixIcon: Icon(Icons.phone),
-                            border: OutlineInputBorder(),
-                          ),
-                          controller: controller.notelpcontroller,
-                        ),
-                        SizedBox(height: 20),
-                        TextField(
-                          decoration: InputDecoration(
-                            hintText: 'Kata Sandi',
-                            prefixIcon: Icon(Icons.email),
-                            border: OutlineInputBorder(),
-                          ),
-                          controller: controller.passwordcontroller,
                         ),
                         SizedBox(height: 30),
                         ElevatedButton(
                           onPressed: () {
-                            controller.sendOtp();
+                            controller.searchnotelp();
                           },
                           child: Text(
-                            'Daftar',
+                            'Kirim Kode',
                             style: TextStyle(
-                              fontSize: 14,
-                              color: Colors.white,
-                            ),
+                                fontSize: 14,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold),
                           ),
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Color(0xFF588157),
@@ -118,40 +100,12 @@ class RegisterView extends GetView<RegisterController> {
                             ),
                           ),
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text("Sudah punya akun?"),
-                            TextButton(
-                              onPressed: () {
-                                Get.toNamed('/login');
-                              },
-                              child: Text(
-                                "Masuk",
-                                style: TextStyle(
-                                  color: Color(0xFF588157),
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
                       ],
                     ),
                   ),
                 ],
               ),
             ],
-          ),
-          Container(
-            padding: EdgeInsets.only(bottom: 20),
-            child: Text(
-              "dengan in isaya menyetujui\nsyarat dan ketentuan yang berlaku untuk aplikasi ini ",
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 12,
-              ),
-            ),
           ),
         ],
       ),

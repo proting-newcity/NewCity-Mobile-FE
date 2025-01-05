@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import '../controllers/forgot_password_controller.dart';
 
-import '../controllers/login_controller.dart';
-
-class LoginView extends GetView<LoginController> {
-  const LoginView({super.key});
+class NewPasswordView extends GetView<ForgotPasswordController> {
+  const NewPasswordView({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,6 +13,7 @@ class LoginView extends GetView<LoginController> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Stack(
                 children: [
@@ -35,7 +35,7 @@ class LoginView extends GetView<LoginController> {
                     top: 135,
                     left: 23,
                     child: Text(
-                      "Selamat Datang",
+                      "Kata Sandi Baru",
                       // style: GoogleFonts.poppins(
                       //   color: Colors.white,
                       //   fontSize: 24,
@@ -52,7 +52,7 @@ class LoginView extends GetView<LoginController> {
                     top: 182,
                     left: 23,
                     child: Text(
-                      "Senang Melihatmu Kembali.",
+                      "Buat Kata Sandi Baru.",
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 14,
@@ -70,25 +70,9 @@ class LoginView extends GetView<LoginController> {
                     child: Column(
                       children: [
                         TextField(
-                          controller: controller.usernameController,
-                          decoration: InputDecoration(
-                            hintText: 'Nomor Telpon',
-                            hintStyle: TextStyle(
-                              color: Color(0xFF588157),
-                            ),
-                            prefixIcon: Icon(Icons.phone_outlined,
-                                color: Color(0xFF588157)),
-                            enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: Color(0xFF588157), width: 1),
-                                borderRadius: BorderRadius.circular(10)),
-                          ),
-                        ),
-                        SizedBox(height: 20),
-                        TextField(
                           controller: controller.passwordController,
                           decoration: InputDecoration(
-                            hintText: 'Kata Sandi',
+                            hintText: 'Kata Sandi Baru',
                             hintStyle: TextStyle(
                               color: Color(0xFF588157),
                             ),
@@ -100,28 +84,29 @@ class LoginView extends GetView<LoginController> {
                                 borderRadius: BorderRadius.circular(10)),
                           ),
                         ),
-                        SizedBox(height: 10),
-                        Container(
-                          alignment: Alignment.centerRight,
-                          child: TextButton(
-                              onPressed: () {
-                                Get.toNamed('/forgot-password');
-                              },
-                              child: Text(
-                                "Lupa kata sandi?",
-                                style: TextStyle(
-                                  color: Color(0xFF588157),
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              )),
+                        SizedBox(height: 20),
+                        TextField(
+                          controller: controller.passwordConfirmationController,
+                          decoration: InputDecoration(
+                            hintText: 'Konfirmasi Kata Sandi',
+                            hintStyle: TextStyle(
+                              color: Color(0xFF588157),
+                            ),
+                            prefixIcon: Icon(Icons.lock_outline,
+                                color: Color(0xFF588157)),
+                            enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: Color(0xFF588157), width: 1),
+                                borderRadius: BorderRadius.circular(10)),
+                          ),
                         ),
-                        SizedBox(height: 10),
+                        SizedBox(height: 20),
                         ElevatedButton(
                           onPressed: () {
-                            controller.login();
+                            controller.changePassword();
                           },
                           child: Text(
-                            'Masuk',
+                            'Buat Kata Sandi Baru',
                             style: TextStyle(
                               fontSize: 14,
                               color: Colors.white,
@@ -136,42 +121,12 @@ class LoginView extends GetView<LoginController> {
                           ),
                         ),
                         SizedBox(height: 20),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text("Belum punya akun?"),
-                            TextButton(
-                              onPressed: () {
-                                Get.toNamed('/register');
-                              },
-                              child: Text(
-                                "Daftar",
-                                style: TextStyle(
-                                  color: Color(0xFF588157),
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
                       ],
                     ),
                   ),
                 ],
               ),
             ],
-          ),
-          Container(
-            padding: EdgeInsets.only(bottom: 20),
-            child: Text(
-              "Dengan ini saya menyetujui\nsyarat dan ketentuan yang berlaku untuk aplikasi ini ",
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 12,
-              ),
-              textHeightBehavior:
-                  TextHeightBehavior(applyHeightToFirstAscent: true),
-            ),
           ),
         ],
       ),

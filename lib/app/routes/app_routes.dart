@@ -22,7 +22,7 @@ abstract class Routes {
   static const DETAIL_LAPORAN = _Paths.DETAIL_LAPORAN;
   static const LIST_LAPORAN = _Paths.LIST_LAPORAN;
   static const BERANDA = _Paths.BERANDA;
-  static const LUPA_PASSWORD = _Paths.LUPA_PASSWORD;
+  static const FORGOT_PASSWORD = _Paths.FORGOT_PASSWORD;
 }
 
 abstract class _Paths {
@@ -47,5 +47,7 @@ abstract class _Paths {
   static const LIST_LAPORAN = '/list-laporan';
   static const BERANDA = '/beranda';
   static const OTP = '/otp';
-  static const LUPA_PASSWORD = '/lupa-password';
+  static const FORGOT_PASSWORD = '/forgot-password';
+  static const KODE_VERIFIKASI = '/kode-verifikasi';
+  static const NEW_PASSWORD = '/new-password';
 }

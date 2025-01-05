@@ -32,8 +32,8 @@ class OtpView extends GetView<RegisterController> {
               textAlign: TextAlign.center,
             ),
             Pinput(
-              onCompleted: (pin) => controller.register(pin),
-              onSubmitted: (pin) => controller.register(pin),
+              onCompleted: (pin) => controller.nextRoute(pin),
+              onSubmitted: (pin) => controller.nextRoute(pin),
               length: 4,
             ),
             Row(
