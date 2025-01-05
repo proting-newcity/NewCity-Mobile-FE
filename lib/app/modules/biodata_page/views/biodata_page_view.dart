@@ -73,115 +73,129 @@ class BiodataPageView extends GetView<BiodataPageController> {
   }
 
   Widget _buildBiodataScreen(BuildContext context) {
+    final String userId = "2";
+    controller.setUserId(userId);
+
+    /*if (controller.userName.value.isEmpty || controller.userEmail.value.isEmpty || controller.userPhone.value.isEmpty) { 
+      controller.fetchUserData(); 
+      }*/
+    controller.fetchUserData();
+    print("VIEW Data: ${controller.userName}, ${controller.userEmail}");
+
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton( icon: Icon(Icons.arrow_back),
-        color: Colors.white,
-        onPressed: () { 
-          Get.toNamed('/beranda');
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          color: Colors.white,
+          onPressed: () {
+            Get.back();
           },
         ),
-
-        title: Text('Akun', style: TextStyle(fontSize: 22, color: Colors.white)),
+        title:
+            Text('Akun', style: TextStyle(fontSize: 22, color: Colors.white)),
         backgroundColor: Color(0xFF588157),
       ),
-      body: Stack(
-        children: [
-          Positioned(
-            top: 0,
-            left: 0,
-            right: 0,
-            child: Container(
-              height: 110,
-              decoration: BoxDecoration(
-                color: Color(0xFF588157),
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.elliptical(MediaQuery.of(context).size.width / 0.5, 100),
-                  bottomRight: Radius.elliptical(MediaQuery.of(context).size.width / 0.5, 100),
+      body: Obx(() {
+        controller.updateFlag.value;
+        return Stack(
+          children: [
+            Positioned(
+              top: 0,
+              left: 0,
+              right: 0,
+              child: Container(
+                height: 110,
+                decoration: BoxDecoration(
+                  color: Color(0xFF588157),
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.elliptical(
+                        MediaQuery.of(context).size.width / 0.5, 100),
+                    bottomRight: Radius.elliptical(
+                        MediaQuery.of(context).size.width / 0.5, 100),
+                  ),
                 ),
               ),
             ),
-            
-          ),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                SizedBox(height: 5),
-                CircleAvatar(
-                  radius: 88,
-                  child: Icon(Icons.person, size: 50),
-                ),
-                SizedBox(height: 16),
-                Obx(() {
-                  return Text(
-                    controller.userName.value,
-                    style: TextStyle(
-                      fontFamily: 'Poppins',
-                      fontSize: 26,
-                      fontWeight: FontWeight.bold,
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SizedBox(height: 5),
+                  CircleAvatar(
+                    radius: 88,
+                    child: Icon(Icons.person, size: 50),
+                  ),
+                  SizedBox(height: 16),
+                  Obx(() {
+                    return Text(
+                      controller.userName.value,
+                      style: TextStyle(
+                        fontFamily: 'Poppins',
+                        fontSize: 26,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    );
+                  }),
+                  SizedBox(height: 8),
+                  Obx(() {
+                    return Text(
+                      '${controller.userEmail.value} | ${controller.userPhone.value}',
+                      style: TextStyle(fontSize: 18),
+                      textAlign: TextAlign.center,
+                    );
+                  }),
+                  SizedBox(height: 55),
+                  ListTile(
+                    leading: Icon(Icons.lock),
+                    title: Text(
+                      'Ubah Kata Sandi',
+                      style: TextStyle(fontSize: 20),
                     ),
-                  );
-                }),
-                SizedBox(height: 8),
-                Obx(() {
-                  return Text(
-                    '${controller.userEmail.value} | ${controller.userPhone.value}',
-                    style: TextStyle(fontSize: 18),
-                    textAlign: TextAlign.center,
-                  );
-                }),
-                SizedBox(height: 55),
-                ListTile(
-                  leading: Icon(Icons.lock),
-                  title: Text(
-                    'Ubah Kata Sandi',
-                    style: TextStyle(fontSize: 20),
+                    onTap: () {
+                      Get.toNamed('/lupa-password');
+                    },
                   ),
-                  onTap: () {
-                    Get.toNamed('/lupa-password');
-                  },
-                ),
-                Divider(),
-                ListTile(
-                  leading: Icon(Icons.account_circle),
-                  title: Text(
-                    'Edit Akun',
-                    style: TextStyle(fontSize: 20),
+                  Divider(),
+                  ListTile(
+                    leading: Icon(Icons.account_circle),
+                    title: Text(
+                      'Edit Akun',
+                      style: TextStyle(fontSize: 20),
+                    ),
+                    onTap: () {
+                      Get.toNamed('/edit-akun');
+                    },
                   ),
-                  onTap: () {
-                    Get.toNamed('/edit-akun');
-                  },
-                ),
-                Divider(),
-                ListTile(
-                  leading: Icon(Icons.question_mark),
-                  title: Text(
-                    'Bantuan',
-                    style: TextStyle(fontSize: 20),
+                  Divider(),
+                  ListTile(
+                    leading: Icon(Icons.question_mark),
+                    title: Text(
+                      'Bantuan',
+                      style: TextStyle(fontSize: 20),
+                    ),
+                    onTap: () {
+                      // Navigate to help page
+                    },
                   ),
-                  onTap: () {
-                    // Navigate to help page
-                  },
-                ),
-                Divider(),
-                ListTile(
-                  leading: Icon(Icons.exit_to_app, color: Colors.red),
-                  title: Text(
-                    'Keluar',
-                    style: TextStyle(fontSize: 20, color: Colors.red),
+                  Divider(),
+                  ListTile(
+                    leading: Icon(Icons.exit_to_app, color: Colors.red),
+                    title: Text(
+                      'Keluar',
+                      style: TextStyle(fontSize: 20, color: Colors.red),
+                    ),
+                    onTap: () {
+                      _showLogoutDialog(context);
+                    },
                   ),
-                  onTap: () {
-                    _showLogoutDialog(context);
-                  },
-                ),
-                SizedBox(height: 16),
-              ],
+                  SizedBox(height: 16),
+                ],
+              ),
             ),
-          ),
-        ],
-      ),
+          ],
+        );
+      }),
     );
   }
 
