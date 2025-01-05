@@ -1,23 +1,26 @@
 import 'package:get/get.dart';
 
 class BiodataPageController extends GetxController {
-  //TODO: Implement BiodataPageController
+  // Observables to manage state
+  var userName = 'akunSaya'.obs;
+  var userEmail = 'akunsayapertama@gmail.com'.obs;
+  var userPhone = '+62 8123-4567-9810'.obs;
 
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
+  // Methods to update the user data
+  void updateName(String newName) {
+    userName.value = newName;
   }
 
-  @override
-  void onReady() {
-    super.onReady();
+  void updateEmail(String newEmail) {
+    userEmail.value = newEmail;
   }
 
-  @override
-  void onClose() {
-    super.onClose();
+  void updatePhone(String newPhone) {
+    userPhone.value = newPhone;
   }
 
-  void increment() => count.value++;
+  // Method to log out
+  void logout() {
+    // Implement logout logic here
+  }
 }

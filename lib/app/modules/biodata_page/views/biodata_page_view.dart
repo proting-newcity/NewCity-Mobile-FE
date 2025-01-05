@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
-
 import '../controllers/biodata_page_controller.dart';
 
 class BiodataPageView extends GetView<BiodataPageController> {
-  const BiodataPageView({super.key});
+  const BiodataPageView({super.key});  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,25 +34,30 @@ class BiodataPageView extends GetView<BiodataPageController> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SizedBox(height: 5), //Jarak PP dari atas appbar
+                SizedBox(height: 5),
                 CircleAvatar(
                   radius: 88,
                   child: Icon(Icons.person, size: 50),
                 ),
                 SizedBox(height: 16),
-                Text(
-                  'Anomaly',
-                  style: TextStyle(
-                      fontFamily: 'poppins',
+                Obx(() {
+                  return Text(
+                    controller.userName.value,
+                    style: TextStyle(
+                      fontFamily: 'Poppins',
                       fontSize: 26,
-                      fontWeight: FontWeight.bold),
-                ),
+                      fontWeight: FontWeight.bold,
+                    ),
+                  );
+                }),
                 SizedBox(height: 8),
-                Text(
-                  'anomaly@gmail.com | +62 8123-4567-9810',
-                  style: TextStyle(fontSize: 18),
-                  textAlign: TextAlign.center,
-                ),
+                Obx(() {
+                  return Text(
+                    '${controller.userEmail.value} | ${controller.userPhone.value}',
+                    style: TextStyle(fontSize: 18),
+                    textAlign: TextAlign.center,
+                  );
+                }),
                 SizedBox(height: 16),
                 ListTile(
                   title: Text(
@@ -61,7 +65,7 @@ class BiodataPageView extends GetView<BiodataPageController> {
                     style: TextStyle(fontSize: 22),
                   ),
                   onTap: () {
-                    // Untuk ubah password
+                    Get.toNamed('/lupa-password');
                   },
                 ),
                 Divider(),
@@ -71,7 +75,7 @@ class BiodataPageView extends GetView<BiodataPageController> {
                     style: TextStyle(fontSize: 20),
                   ),
                   onTap: () {
-                    // Navigator.pushNamed(context, '/edit');
+                    Get.toNamed('/edit-akun');
                   },
                 ),
                 Divider(),
@@ -79,9 +83,9 @@ class BiodataPageView extends GetView<BiodataPageController> {
                   title: Text(
                     'Bantuan',
                     style: TextStyle(fontSize: 20),
-                  ),
+                  ), 
                   onTap: () {
-                    // Navigasi ke halaman bantuan
+                    // Navigate to help page
                   },
                 ),
                 Divider(),
@@ -91,7 +95,7 @@ class BiodataPageView extends GetView<BiodataPageController> {
                     style: TextStyle(fontSize: 20),
                   ),
                   onTap: () {
-                    // Log out dari akun
+                    _showLogoutDialog(context);
                   },
                 ),
                 SizedBox(height: 16),
@@ -108,7 +112,7 @@ class BiodataPageView extends GetView<BiodataPageController> {
             label: 'Beranda',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.report),
+            icon: Icon(Icons.camera),
             label: 'Lapor',
           ),
           BottomNavigationBarItem(
@@ -117,6 +121,33 @@ class BiodataPageView extends GetView<BiodataPageController> {
           ),
         ],
       ),
+    );
+  }
+
+  void _showLogoutDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Konfirmasi Keluar"),
+          content: Text("Apakah Anda yakin ingin keluar?"),
+          actions: [
+            TextButton(
+              child: Text("Batal"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              child: Text("Lanjut"),
+              onPressed: () {
+                Navigator.of(context).pop();
+                Get.toNamed('/login');
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 }
