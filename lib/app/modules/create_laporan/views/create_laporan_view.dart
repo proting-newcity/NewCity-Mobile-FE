@@ -38,6 +38,9 @@ class CreateLaporanView extends GetView<CreateLaporanController> {
                 enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: Color(0xFF588157), width: 2),
                     borderRadius: BorderRadius.circular(10)),
+                focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Color(0xFF588157), width: 2),
+                    borderRadius: BorderRadius.circular(10)),
               ),
             ),
             SizedBox(height: 18),
@@ -80,6 +83,9 @@ class CreateLaporanView extends GetView<CreateLaporanController> {
                 enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: Color(0xFF588157), width: 2),
                     borderRadius: BorderRadius.circular(10)),
+                focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Color(0xFF588157), width: 2),
+                    borderRadius: BorderRadius.circular(10)),
               ),
             ),
             SizedBox(height: 18),
@@ -90,6 +96,9 @@ class CreateLaporanView extends GetView<CreateLaporanController> {
               decoration: InputDecoration(
                 hintText: "Masukkan detail dari laporan mu disini",
                 enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Color(0xFF588157), width: 2),
+                    borderRadius: BorderRadius.circular(10)),
+                focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: Color(0xFF588157), width: 2),
                     borderRadius: BorderRadius.circular(10)),
               ),
