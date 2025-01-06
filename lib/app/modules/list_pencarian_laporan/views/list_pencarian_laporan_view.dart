@@ -35,27 +35,30 @@ class ListPencarianLaporanView extends GetView<ListPencarianLaporanController> {
             );
           }
 
-          return NotificationListener<ScrollNotification>(
-            onNotification: (ScrollNotification scrollInfo) {
-              if (!controller.isLoading.value &&
-                  scrollInfo.metrics.pixels ==
-                      scrollInfo.metrics.maxScrollExtent) {
-                controller.fetchReportbySearch(Get.arguments.keyword);
-              }
-              return true;
-            },
-            child: ListView.builder(
-              itemCount: controller.allReport.value.report.length +
-                  (controller.hasReachedEnd.value ? 0 : 1),
-              itemBuilder: (context, index) {
-                if (index < controller.allReport.value.report.length) {
-                  return ReportTile(
-                    controller.allReport.value.report[index],
-                  );
-                } else {
-                  return Center(child: CircularProgressIndicator());
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: NotificationListener<ScrollNotification>(
+              onNotification: (ScrollNotification scrollInfo) {
+                if (!controller.isLoading.value &&
+                    scrollInfo.metrics.pixels ==
+                        scrollInfo.metrics.maxScrollExtent) {
+                  controller.fetchReportbySearch(Get.arguments);
                 }
+                return true;
               },
+              child: ListView.builder(
+                itemCount: controller.allReport.value.report.length +
+                    (controller.hasReachedEnd.value ? 0 : 1),
+                itemBuilder: (context, index) {
+                  if (index < controller.allReport.value.report.length) {
+                    return ReportTile(
+                      controller.allReport.value.report[index],
+                    );
+                  } else {
+                    return Center(child: CircularProgressIndicator());
+                  }
+                },
+              ),
             ),
           );
         },
