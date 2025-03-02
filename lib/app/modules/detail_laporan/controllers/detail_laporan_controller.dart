@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:newcity/api.dart';
 import 'package:newcity/models/report.dart';
 import 'package:newcity/widgets/comments.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class DetailLaporanController extends GetxController {
   var report = Rx<ReportResponse?>(null);
@@ -124,5 +125,11 @@ class DetailLaporanController extends GetxController {
     } catch (e) {
       print(e);
     }
+  }
+
+  Future<String?> getUserRole() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs
+        .getString('userRole'); // Nilainya bisa 'masyarakat' atau 'pemerintah'
   }
 }
