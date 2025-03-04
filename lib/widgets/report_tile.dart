@@ -50,19 +50,19 @@ Widget ReportTile(Report report) {
                         overflow: TextOverflow.ellipsis,
                       ),
                       SizedBox(height: 5),
-                      // Row(
-                      //   children: [
-                      //     Icon(Icons.person_pin_circle_outlined,
-                      //         color: Color.fromRGBO(88, 129, 87, 1)),
-                      //     Text(
-                      //       report.status[0],
-                      //       overflow: TextOverflow.ellipsis,
-                      //       maxLines: 2,
-                      //       style: TextStyle(fontSize: 12),
-                      //     ),
-                      //   ],
-                      // ),
-                      // SizedBox(height: 5),
+                      Row(
+                        children: [
+                          Icon(Icons.person_pin_circle_outlined,
+                              color: Color.fromRGBO(88, 129, 87, 1)),
+                          Text(
+                            report.pelapor,
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 2,
+                            style: TextStyle(fontSize: 12),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 5),
                       Row(
                         children: [
                           Icon(Icons.location_on_outlined,
