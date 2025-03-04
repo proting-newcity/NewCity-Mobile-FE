@@ -55,7 +55,7 @@ Widget ReportTile(Report report) {
                           Icon(Icons.person_pin_circle_outlined,
                               color: Color.fromRGBO(88, 129, 87, 1)),
                           Text(
-                            report.pelapor,
+                            report.pelapor ?? 'Anonymous',
                             overflow: TextOverflow.ellipsis,
                             maxLines: 2,
                             style: TextStyle(fontSize: 12),
