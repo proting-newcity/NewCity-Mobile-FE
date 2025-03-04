@@ -74,6 +74,7 @@ class Report {
   DateTime updatedAt;
   String? pelapor;
 
+
   Report({
     this.id,
     required this.judul,
@@ -87,6 +88,7 @@ class Report {
     required this.createdAt,
     required this.updatedAt,
     this.pelapor,
+
   });
 
   factory Report.fromJson(Map<String, dynamic> json) {
