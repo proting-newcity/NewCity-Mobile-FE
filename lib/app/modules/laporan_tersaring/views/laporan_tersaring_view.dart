@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:newcity/widgets/report_tile_government.dart';
+import 'package:newcity/widgets/report_tile.dart';
 
 import '../controllers/laporan_tersaring_controller.dart';
 
@@ -64,8 +64,7 @@ class LaporanTersaringView extends GetView<LaporanTersaringController> {
                   itemCount: controller.filteredReports.length + 1,
                   itemBuilder: (context, index) {
                     if (index < controller.filteredReports.length) {
-                      return ReportTileGovernment(
-                          controller.filteredReports[index]);
+                      return ReportTile(controller.filteredReports[index]);
                     } else {
                       return controller.isLoadingMore.isTrue
                           ? const Center(child: CircularProgressIndicator())

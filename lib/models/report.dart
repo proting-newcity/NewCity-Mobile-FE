@@ -72,6 +72,7 @@ class Report {
   dynamic idKategori;
   DateTime createdAt;
   DateTime updatedAt;
+  String pelapor;
 
   Report({
     this.id,
@@ -85,6 +86,7 @@ class Report {
     required this.idKategori,
     required this.createdAt,
     required this.updatedAt,
+    required this.pelapor,
   });
 
   factory Report.fromJson(Map<String, dynamic> json) {
@@ -102,6 +104,7 @@ class Report {
       idKategori: json["id_kategori"],
       createdAt: DateTime.parse(json["created_at"]),
       updatedAt: DateTime.parse(json["updated_at"]),
+      pelapor: json["pelapor"],
     );
   }
 
@@ -117,6 +120,7 @@ class Report {
         idKategori: map["id_kategori"],
         createdAt: DateTime.parse(map["created_at"]),
         updatedAt: DateTime.parse(map["updated_at"]),
+        pelapor: map["pelapor"],
       );
 
   Map<String, dynamic> toJson() => {
