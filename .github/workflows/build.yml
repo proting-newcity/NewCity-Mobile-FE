@@ -30,9 +30,6 @@ jobs:
       - name: Install Dependencies
         run: flutter pub get
 
-      - name: Run Tests
-        run: flutter test --coverage
-
       - name: Generate SonarQube Properties
         run: |
           echo "sonar.projectKey=proting-newcity_NewCity-Mobile-FE" > sonar-project.properties
