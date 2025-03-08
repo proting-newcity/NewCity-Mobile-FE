@@ -1,0 +1,56 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  sonarqube:
+    name: SonarQube
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+      
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: 'stable'
+
+      - name: Install Dependencies
+        run: flutter pub get
+
+      - name: Run Tests
+        run: flutter test --coverage
+
+      - name: Generate SonarQube Properties
+        run: |
+          echo "sonar.projectKey=proting-newcity_NewCity-Mobile-FE" > sonar-project.properties
+          echo "sonar.organization=proting-newcity" >> sonar-project.properties
+          echo "sonar.host.url=https://sonarcloud.io" >> sonar-project.properties
+          echo "sonar.sources=lib" >> sonar-project.properties
+          echo "sonar.tests=test" >> sonar-project.properties
+          echo "sonar.exclusions=**/*.g.dart" >> sonar-project.properties
+          echo "sonar.coverage.exclusions=**/*.g.dart" >> sonar-project.properties
+          echo "sonar.flutter.reportPaths=coverage/lcov.info" >> sonar-project.properties
+          echo "sonar.java.binaries=build" >> sonar-project.properties
+
+      - name: SonarQube Scan
+        uses: SonarSource/sonarqube-scan-action@v5
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+      - name: Verify Quality Gate
+        uses: SonarSource/sonarqube-quality-gate-action@v1
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
