@@ -1,13 +1,78 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:motion_tab_bar/MotionTabBar.dart';
+import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 import '../controllers/biodata_page_controller.dart';
 
 class BiodataPageView extends GetView<BiodataPageController> {
   const BiodataPageView({super.key});
 
+  List<PersistentBottomNavBarItem> _navBarsItems() {
+    return [
+      PersistentBottomNavBarItem(
+        icon: Icon(Icons.home_outlined),
+        title: ("Beranda"),
+        activeColorPrimary: Colors.white,
+        inactiveColorPrimary: Colors.white,
+        onPressed: (context) {
+          Get.toNamed('/beranda', preventDuplicates: false);
+        },
+      ),
+      PersistentBottomNavBarItem(
+        icon: Icon(Icons.camera_alt_outlined, color: Color(0xFF588157)),
+        title: ("Lapor"),
+        activeColorPrimary: Colors.white,
+        inactiveColorPrimary: Colors.white,
+        onPressed: (context) {
+          Get.toNamed('/create-laporan', preventDuplicates: false);
+        },
+      ),
+      PersistentBottomNavBarItem(
+        icon: Icon(Icons.person_outline),
+        title: ("Akun"),
+        activeColorPrimary: Colors.white,
+        inactiveColorPrimary: Colors.white,
+        onPressed: (context) {
+          Get.toNamed('/biodata-page', preventDuplicates: false);
+        },
+      ),
+    ];
+  }
+
   @override
   Widget build(BuildContext context) {
+    PersistentTabController _controller = PersistentTabController();
+
+    return PersistentTabView(
+      context,
+      controller: _controller,
+      screens: [
+        _buildBiodataScreen(context),
+        _buildLaporScreen(context),
+        _buildAkunScreen(context),
+      ],
+      items: _navBarsItems(),
+      confineToSafeArea: true,
+      backgroundColor: Color(0xFF588157),
+      handleAndroidBackButtonPress: true,
+      resizeToAvoidBottomInset: true,
+      stateManagement: true,
+      hideNavigationBarWhenKeyboardAppears: true,
+      animationSettings: const NavBarAnimationSettings(
+        navBarItemAnimation: ItemAnimationSettings(
+          duration: Duration(milliseconds: 200),
+          curve: Curves.ease,
+        ),
+        screenTransitionAnimation: ScreenTransitionAnimationSettings(
+          animateTabTransition: true,
+          duration: Duration(milliseconds: 200),
+          curve: Curves.ease,
+        ),
+      ),
+      navBarStyle: NavBarStyle.style15,
+    );
+  }
+
+  Widget _buildBiodataScreen(BuildContext context) {
     final String userId = "2";
     controller.setUserId(userId);
     controller.fetchUserData();
@@ -126,28 +191,6 @@ class BiodataPageView extends GetView<BiodataPageController> {
           ],
         );
       }),
-      bottomNavigationBar: MotionTabBar(
-        controller: controller.motionTabBarController,
-        initialSelectedTab: "Akun",
-        labels: const ["Beranda", "Lapor", "Akun"],
-        icons: const [Icons.home_outlined, Icons.add, Icons.person_outline],
-        tabSize: 50,
-        tabBarHeight: 55,
-        textStyle: const TextStyle(
-          fontSize: 12,
-          color: Colors.black,
-          fontWeight: FontWeight.w500,
-        ),
-        tabIconColor: Colors.black87,
-        tabIconSize: 28.0,
-        tabIconSelectedSize: 26.0,
-        tabSelectedColor: Color(0xFF588157),
-        tabIconSelectedColor: Colors.white,
-        tabBarColor: Colors.white,
-        onTabItemSelected: (int value) {
-          controller.changeTab(value);
-        },
-      ),
     );
   }
 
@@ -175,6 +218,24 @@ class BiodataPageView extends GetView<BiodataPageController> {
           ],
         );
       },
+    );
+  }
+
+  Widget _buildLaporScreen(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Lapor'),
+      ),
+      body: const Center(child: Text("Lapor Content")),
+    );
+  }
+
+  Widget _buildAkunScreen(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Akun'),
+      ),
+      body: const Center(child: Text("Akun Content")),
     );
   }
 }

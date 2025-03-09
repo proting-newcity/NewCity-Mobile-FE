@@ -81,6 +81,7 @@ class DetailLaporanController extends GetxController {
     try {
       final response =
           await ApiService.postComment(report.value!.report.id!, content);
+      contentController.clear();
       if (response.statusCode == 200 || response.statusCode == 201) {
         Get.snackbar("Success", "Comment submitted successfully!",
             snackPosition: SnackPosition.BOTTOM);

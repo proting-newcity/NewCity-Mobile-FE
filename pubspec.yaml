@@ -30,6 +30,7 @@ dependencies:
   awesome_notifications: ^0.9.3
   pinput: ^5.0.0
   http_parser: ^4.0.2
+  motion_tab_bar: ^2.0.4
 
 dev_dependencies:
   flutter_test:

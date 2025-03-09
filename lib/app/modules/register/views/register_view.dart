@@ -75,8 +75,15 @@ class RegisterView extends GetView<RegisterController> {
                         TextField(
                           decoration: InputDecoration(
                             hintText: 'Nama',
-                            prefixIcon: Icon(Icons.person_2_outlined),
-                            border: OutlineInputBorder(),
+                            hintStyle: TextStyle(
+                              color: Color(0xFF588157),
+                            ),
+                            prefixIcon: Icon(Icons.person_2_outlined,
+                                color: Color(0xFF588157)),
+                            enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: Color(0xFF588157), width: 1),
+                                borderRadius: BorderRadius.circular(10)),
                           ),
                           controller: controller.namacontroller,
                         ),
@@ -84,17 +91,32 @@ class RegisterView extends GetView<RegisterController> {
                         TextField(
                           decoration: InputDecoration(
                             hintText: 'Nomor Telepon',
-                            prefixIcon: Icon(Icons.phone),
-                            border: OutlineInputBorder(),
+                            hintStyle: TextStyle(
+                              color: Color(0xFF588157),
+                            ),
+                            prefixIcon:
+                                Icon(Icons.phone, color: Color(0xFF588157)),
+                            enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: Color(0xFF588157), width: 1),
+                                borderRadius: BorderRadius.circular(10)),
                           ),
                           controller: controller.notelpcontroller,
                         ),
                         SizedBox(height: 20),
                         TextField(
+                          obscureText: true,
                           decoration: InputDecoration(
                             hintText: 'Kata Sandi',
-                            prefixIcon: Icon(Icons.email),
-                            border: OutlineInputBorder(),
+                            hintStyle: TextStyle(
+                              color: Color(0xFF588157),
+                            ),
+                            prefixIcon: Icon(Icons.lock_outline,
+                                color: Color(0xFF588157)),
+                            enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: Color(0xFF588157), width: 1),
+                                borderRadius: BorderRadius.circular(10)),
                           ),
                           controller: controller.passwordcontroller,
                         ),

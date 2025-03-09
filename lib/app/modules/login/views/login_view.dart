@@ -86,6 +86,7 @@ class LoginView extends GetView<LoginController> {
                         ),
                         SizedBox(height: 20),
                         TextField(
+                          obscureText: true,
                           controller: controller.passwordController,
                           decoration: InputDecoration(
                             hintText: 'Kata Sandi',

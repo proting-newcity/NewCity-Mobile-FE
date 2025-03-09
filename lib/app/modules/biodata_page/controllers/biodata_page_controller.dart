@@ -1,18 +1,50 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:get/get.dart';
+import 'package:motion_tab_bar/MotionTabBarController.dart';
 
-class BiodataPageController extends GetxController {
+class BiodataPageController extends GetxController
+    with GetTickerProviderStateMixin {
   var userId = ''.obs;
   var userName = ''.obs;
   var userEmail = ''.obs;
   var userPhone = ''.obs;
+  var selectedTabIndex = 1.obs;
+  late MotionTabBarController motionTabBarController;
   //var profileImagePath = ''.obs;
 
   var updateFlag = false.obs;
 
   void setUserId(String id) {
     userId.value = id;
+  }
+
+  void onInit() {
+    super.onInit();
+    motionTabBarController =
+        MotionTabBarController(initialIndex: 0, length: 3, vsync: this);
+  }
+
+  @override
+  void onClose() {
+    motionTabBarController!.dispose();
+    super.onClose();
+  }
+
+  void changeTab(int index) {
+    // selectedTabIndex.value = index;
+    // motionTabBarController.index = index;
+    switch (index) {
+      case 0:
+        Get.toNamed('/beranda', preventDuplicates: false);
+        break;
+      case 1:
+        Get.toNamed('/create-laporan', preventDuplicates: false);
+        break;
+      case 2:
+        Get.toNamed('/biodata-page', preventDuplicates: false);
+        break;
+    }
   }
 
   Future<void> fetchUserData() async {

@@ -53,7 +53,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.BERANDA;
+  static const INITIAL = Routes.BIODATA_PAGE;
 
   static final routes = [
     GetPage(
