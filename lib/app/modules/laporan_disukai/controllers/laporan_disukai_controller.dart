@@ -1,9 +1,8 @@
 import 'package:get/get.dart';
-import 'package:newcity/services/report_service.dart';
 import 'package:newcity/models/report.dart';
+import 'package:newcity/services/report_service.dart';
 
-class GovernmentController extends GetxController {
-  var report = Rx<ReportResponse?>(null);
+class LaporanDisukaiController extends GetxController {
   var reports = <Report>[].obs;
   var filteredReports = <Report>[].obs;
   var isLoading = true.obs;
@@ -40,7 +39,7 @@ class GovernmentController extends GetxController {
         isLoadingMore(true);
       }
 
-      final response = await ReportService.getReport(currentPage);
+      final response = await ReportService.getLikedReports(currentPage);
       if (response != null) {
         if (response.report.isNotEmpty) {
           reports.addAll(response.report);
