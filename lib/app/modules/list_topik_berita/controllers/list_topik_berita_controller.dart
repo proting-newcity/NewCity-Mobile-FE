@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import 'package:newcity/models/berita.dart';
-import 'package:newcity/api.dart';
+import 'package:newcity/services/berita_service.dart';
 
 class ListTopikBeritaController extends GetxController {
   var allKategori = Rx<KategoriBeritaResponse>(KategoriBeritaResponse());
@@ -23,7 +23,7 @@ class ListTopikBeritaController extends GetxController {
 
   void fetchKategori() async {
     try {
-      var response = await ApiService.getKategoriBerita();
+      var response = await BeritaService.getKategoriBerita();
       allKategori.value = response!;
     } catch (e) {
       print('Error fetching berita: $e');

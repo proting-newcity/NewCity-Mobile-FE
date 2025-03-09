@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:newcity/api.dart';
+import 'package:newcity/services/image_service.dart';
 import 'package:newcity/app/modules/login/controllers/login_controller.dart';
 import 'package:newcity/widgets/detail_status.dart';
 
@@ -32,7 +32,7 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                       );
                     } else {
                       return FutureBuilder<ImageProvider<Object>>(
-                        future: ApiService.loadImage(
+                        future: ImageService.loadImage(
                             controller.report.value!.report.foto),
                         builder: (context, snapshot) {
                           if (snapshot.connectionState ==

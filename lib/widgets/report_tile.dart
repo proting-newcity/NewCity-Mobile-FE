@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:newcity/models/report.dart';
-import 'package:newcity/api.dart';
+import 'package:newcity/services/image_service.dart';
 
 Widget ReportTile(Report report) {
   return Padding(
@@ -94,7 +94,7 @@ Widget ReportTile(Report report) {
                     child: Column(
                       children: [
                         FutureBuilder<ImageProvider<Object>>(
-                          future: ApiService.loadImage(report.foto),
+                          future: ImageService.loadImage(report.foto),
                           builder: (context, snapshot) {
                             if (snapshot.connectionState ==
                                 ConnectionState.waiting) {

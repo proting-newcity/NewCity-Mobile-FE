@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:newcity/api.dart';
 import 'package:newcity/models/report.dart';
+import 'package:newcity/services/report_service.dart';
 
 class StatusLaporanController extends GetxController {
   var report = Rx<ReportResponse?>(null);
@@ -40,7 +40,7 @@ class StatusLaporanController extends GetxController {
         isLoadingMore(true);
       }
 
-      final response = await ApiService.getPaginationReport(currentPage);
+      final response = await ReportService.getReport(currentPage);
       if (response != null) {
         if (response.report.isNotEmpty) {
           reports.addAll(response.report);

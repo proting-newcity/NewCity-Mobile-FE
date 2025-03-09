@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart' as dio;
 import 'package:image_picker_platform_interface/image_picker_platform_interface.dart';
-import 'package:newcity/api.dart';
+import 'package:newcity/services/report_service.dart';
 import 'package:newcity/camera.dart';
 import 'package:http_parser/http_parser.dart';
 import 'package:newcity/models/report.dart';
@@ -37,7 +37,7 @@ class CreateLaporanController extends GetxController {
 
   void fetchKategori() async {
     try {
-      var response = await ApiService.getKategoriReport();
+      var response = await ReportService.getKategoriReport();
       allKategori.value = response!;
       print(allKategori.value.kategori.length);
     } catch (e) {
@@ -95,7 +95,7 @@ class CreateLaporanController extends GetxController {
         ),
       ));
 
-      final response = await ApiService.postReport(formData);
+      final response = await ReportService.postReport(formData);
 
       if (response.statusCode == 200 || response.statusCode == 201) {
         Get.snackbar("Success", "Report submitted successfully!",

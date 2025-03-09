@@ -1,7 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:newcity/api.dart';
 import 'package:newcity/models/report.dart';
+import 'package:newcity/services/report_service.dart';
 
 class LaporanTersaringController extends GetxController {
   var reports = <Report>[].obs;
@@ -40,7 +39,8 @@ class LaporanTersaringController extends GetxController {
         isLoadingMore(true);
       }
 
-      final response = await ApiService.getReportByStatus(currentPage, status);
+      final response =
+          await ReportService.getReportByStatus(currentPage, status);
       if (response != null) {
         if (response.report.isNotEmpty) {
           reports.addAll(response.report);
