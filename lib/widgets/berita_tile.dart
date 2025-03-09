@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:newcity/api.dart';
 import 'package:newcity/models/berita.dart';
+import 'package:newcity/services/image_service.dart';
 
 Widget BeritaTile(Berita beritaData, int index) {
   return GestureDetector(
@@ -20,7 +20,7 @@ Widget BeritaTile(Berita beritaData, int index) {
         child: Row(
           children: [
             FutureBuilder<ImageProvider<Object>>(
-              future: ApiService.loadImage(beritaData.foto),
+              future: ImageService.loadImage(beritaData.foto),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return Container(

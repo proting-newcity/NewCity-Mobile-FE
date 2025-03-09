@@ -2,15 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:newcity/app/modules/detail_laporan/controllers/detail_laporan_controller.dart';
 import 'package:newcity/models/report.dart';
+import 'package:newcity/services/image_service.dart';
+import 'package:newcity/services/report_service.dart';
 import 'package:newcity/utils/date.dart';
-import 'package:newcity/api.dart';
 
 Widget ShowComment(
     BuildContext context, int? id, TextEditingController contentController) {
   final MediaQueryData mediaQueryData = MediaQuery.of(context);
   final DetailLaporanController controller = Get.find();
   return FutureBuilder<List<Comment>?>(
-    future: ApiService.getComments(id!),
+    future: ReportService.getComments(id!),
     builder: (context, snapshot) {
       // error handling
       if (snapshot.hasError) {
@@ -110,7 +111,7 @@ Widget CommentTile({
         Row(
           children: [
             FutureBuilder<ImageProvider>(
-              future: ApiService.loadImage(foto),
+              future: ImageService.loadImage(foto),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return CircleAvatar(

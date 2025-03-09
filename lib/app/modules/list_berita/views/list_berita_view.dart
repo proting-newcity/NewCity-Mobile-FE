@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:newcity/services/image_service.dart';
 import 'package:newcity/widgets/berita_tile.dart';
-import 'package:newcity/api.dart';
 import '../controllers/list_berita_controller.dart';
 import 'package:newcity/models/berita.dart';
 
@@ -12,7 +12,7 @@ class ListBeritaView extends GetView<ListBeritaController> {
     List<Future<ImageProvider<Object>>> futures = [];
 
     for (var kategori in kategoriList) {
-      futures.add(ApiService.loadImage(kategori.foto));
+      futures.add(ImageService.loadImage(kategori.foto));
     }
 
     return await Future.wait(futures);

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:newcity/api.dart';
+import 'package:newcity/services/image_service.dart';
 
 import '../controllers/detail_berita_controller.dart';
 
@@ -19,7 +19,7 @@ class DetailBeritaView extends GetView<DetailBeritaController> {
               Stack(
                 children: [
                   FutureBuilder<ImageProvider<Object>>(
-                    future: ApiService.loadImage(Get.arguments.foto),
+                    future: ImageService.loadImage(Get.arguments.foto),
                     builder: (context, snapshot) {
                       if (snapshot.connectionState == ConnectionState.waiting) {
                         return Container(

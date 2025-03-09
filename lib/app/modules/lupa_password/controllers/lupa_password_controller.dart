@@ -1,12 +1,11 @@
-import 'dart:ffi';
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:newcity/api.dart';
 import 'dart:math';
 
-class LupaPasswordController extends GetxController {
+import 'package:newcity/services/auth_service.dart';
 
+class LupaPasswordController extends GetxController {
   final TextEditingController namacontroller = TextEditingController();
   final TextEditingController notelpcontroller = TextEditingController();
   final TextEditingController passwordcontroller = TextEditingController();
@@ -35,7 +34,7 @@ class LupaPasswordController extends GetxController {
   void register(pin) async {
     if (otp.value == int.parse(pin)) {
       try {
-        var response = await ApiService.register(
+        var response = await AuthService.register(
           namacontroller.text,
           notelpcontroller.text,
           passwordcontroller.text,
