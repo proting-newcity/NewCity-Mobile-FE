@@ -1,9 +1,12 @@
 import 'package:get/get.dart';
+
 import 'package:newcity/app/modules/forgot_password/views/kode_verifikasi_view.dart';
 import 'package:newcity/app/modules/forgot_password/views/new_password_view.dart';
 import 'package:newcity/app/modules/laporan_disukai/bindings/laporan_disukai_binding.dart';
 import 'package:newcity/app/modules/laporan_disukai/views/laporan_disukai_view.dart';
 import '../modules/beranda/bindings/beranda_binding.dart';
+import '../modules/beranda/bindings/beranda_binding.dart';
+import '../modules/beranda/views/beranda_view.dart';
 import '../modules/beranda/views/beranda_view.dart';
 import '../modules/biodata_page/bindings/biodata_page_binding.dart';
 import '../modules/biodata_page/views/biodata_page_view.dart';
@@ -17,6 +20,8 @@ import '../modules/edit_akun/bindings/edit_akun_binding.dart';
 import '../modules/edit_akun/views/edit_akun_view.dart';
 import '../modules/forgot_password/bindings/forgot_password_binding.dart';
 import '../modules/forgot_password/views/forgot_password_view.dart';
+import '../modules/forgot_password/views/kode_verifikasi_view.dart';
+import '../modules/forgot_password/views/new_password_view.dart';
 import '../modules/government/bindings/government_binding.dart';
 import '../modules/government/views/government_view.dart';
 import '../modules/home/bindings/home_binding.dart';
@@ -33,6 +38,10 @@ import '../modules/list_topik_berita/bindings/list_topik_berita_binding.dart';
 import '../modules/list_topik_berita/views/list_topik_berita_view.dart';
 import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
+import '../modules/lupa_password/bindings/lupa_password_binding.dart';
+import '../modules/lupa_password/views/lupa_password_view.dart';
+import '../modules/notifikasi/bindings/notifikasi_binding.dart';
+import '../modules/notifikasi/views/notifikasi_view.dart';
 import '../modules/register/bindings/register_binding.dart';
 import '../modules/register/views/otp_view.dart';
 import '../modules/register/views/register_view.dart';
@@ -172,6 +181,11 @@ class AppPages {
       name: _Paths.NEW_PASSWORD,
       page: () => const NewPasswordView(),
       binding: ForgotPasswordBinding(),
+    ),
+    GetPage(
+      name: _Paths.NOTIFIKASI,
+      page: () => const NotifikasiView(),
+      binding: NotifikasiBinding(),
     ),
   ];
 }

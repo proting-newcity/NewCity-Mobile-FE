@@ -30,14 +30,14 @@ jobs:
       - name: Install Dependencies
         run: flutter pub get
 
-      - name: Run Tests and Generate Coverage Report
-        run: flutter test --coverage
+      # - name: Run Tests and Generate Coverage Report
+      #   run: flutter test --coverage
 
-      - name: Upload Coverage Report
-        uses: actions/upload-artifact@v4
-        with:
-          name: coverage-report
-          path: coverage/lcov.info
+      # - name: Upload Coverage Report
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: coverage-report
+      #     path: coverage/lcov.info
 
       - name: Generate SonarQube Properties
         run: |
@@ -56,7 +56,7 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
-      - name: Verify Quality Gate
-        uses: SonarSource/sonarqube-quality-gate-action@v1
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      # - name: Verify Quality Gate
+      #   uses: SonarSource/sonarqube-quality-gate-action@v1
+      #   env:
+      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

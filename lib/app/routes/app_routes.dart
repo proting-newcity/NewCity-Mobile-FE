@@ -24,6 +24,7 @@ abstract class Routes {
   static const LIST_LAPORAN = _Paths.LIST_LAPORAN;
   static const BERANDA = _Paths.BERANDA;
   static const FORGOT_PASSWORD = _Paths.FORGOT_PASSWORD;
+  static const NOTIFIKASI = _Paths.NOTIFIKASI;
 }
 
 abstract class _Paths {
@@ -52,4 +53,5 @@ abstract class _Paths {
   static const FORGOT_PASSWORD = '/forgot-password';
   static const KODE_VERIFIKASI = '/kode-verifikasi';
   static const NEW_PASSWORD = '/new-password';
+  static const NOTIFIKASI = '/notifikasi';
 }
