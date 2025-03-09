@@ -2,8 +2,7 @@ import 'package:get/get.dart';
 import 'package:newcity/api.dart';
 import 'package:newcity/models/report.dart';
 
-class GovernmentController extends GetxController {
-  var report = Rx<ReportResponse?>(null);
+class LaporanDisukaiController extends GetxController {
   var reports = <Report>[].obs;
   var filteredReports = <Report>[].obs;
   var isLoading = true.obs;
@@ -40,7 +39,7 @@ class GovernmentController extends GetxController {
         isLoadingMore(true);
       }
 
-      final response = await ApiService.getPaginationReport(currentPage);
+      final response = await ApiService.getLikedReports(currentPage);
       if (response != null) {
         if (response.report.isNotEmpty) {
           reports.addAll(response.report);

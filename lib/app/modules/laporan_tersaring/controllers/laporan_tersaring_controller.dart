@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:newcity/api.dart';
 import 'package:newcity/models/report.dart';

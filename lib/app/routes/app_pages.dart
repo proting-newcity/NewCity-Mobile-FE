@@ -1,7 +1,8 @@
 import 'package:get/get.dart';
 import 'package:newcity/app/modules/forgot_password/views/kode_verifikasi_view.dart';
 import 'package:newcity/app/modules/forgot_password/views/new_password_view.dart';
-
+import 'package:newcity/app/modules/laporan_disukai/bindings/laporan_disukai_binding.dart';
+import 'package:newcity/app/modules/laporan_disukai/views/laporan_disukai_view.dart';
 import '../modules/beranda/bindings/beranda_binding.dart';
 import '../modules/beranda/views/beranda_view.dart';
 import '../modules/biodata_page/bindings/biodata_page_binding.dart';
@@ -110,6 +111,11 @@ class AppPages {
       name: _Paths.LAPORAN_TERSARING,
       page: () => const LaporanTersaringView(),
       binding: LaporanTersaringBinding(),
+    ),
+    GetPage(
+      name: _Paths.LAPORAN_DISUKAI,
+      page: () => const LaporanDisukaiView(),
+      binding: LaporanDisukaiBinding(),
     ),
     GetPage(
       name: _Paths.REGISTER,
