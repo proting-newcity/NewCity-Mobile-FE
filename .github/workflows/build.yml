@@ -42,6 +42,15 @@ jobs:
           echo "sonar.flutter.reportPaths=coverage/lcov.info" >> sonar-project.properties
           echo "sonar.java.binaries=build" >> sonar-project.properties
 
+      - name: Run Tests and Generate Coverage Report
+        run: flutter test --coverage
+
+      - name: Upload Coverage Report
+        uses: actions/upload-artifact@v2
+        with:
+          name: coverage-report
+          path: coverage/lcov.info
+
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v5
         env:
