@@ -30,6 +30,15 @@ jobs:
       - name: Install Dependencies
         run: flutter pub get
 
+      - name: Run Tests and Generate Coverage Report
+        run: flutter test --coverage
+
+      - name: Upload Coverage Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: coverage-report
+          path: coverage/lcov.info
+
       - name: Generate SonarQube Properties
         run: |
           echo "sonar.projectKey=proting-newcity_NewCity-Mobile-FE" > sonar-project.properties
@@ -41,15 +50,6 @@ jobs:
           echo "sonar.coverage.exclusions=**/*.g.dart" >> sonar-project.properties
           echo "sonar.flutter.reportPaths=coverage/lcov.info" >> sonar-project.properties
           echo "sonar.java.binaries=build" >> sonar-project.properties
-
-      - name: Run Tests and Generate Coverage Report
-        run: flutter test --coverage
-
-      - name: Upload Coverage Report
-        uses: actions/upload-artifact@v2
-        with:
-          name: coverage-report
-          path: coverage/lcov.info
 
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v5
