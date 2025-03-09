@@ -132,8 +132,8 @@ class BerandaView extends GetView<BerandaController> {
                 BuildIconButton(
                     "assets/images/icon_berita.png", 'Berita', '/list-berita'),
                 BuildIconButton("assets/images/icon_simpan.png", 'Simpan', ''),
-                BuildIconButton(
-                    "assets/images/icon_notifikasi.png", 'Notifikasi', ''),
+                BuildIconButton("assets/images/icon_notifikasi.png",
+                    'Notifikasi', '/notifikasi'),
               ],
             ),
             SizedBox(height: 16.0),
