@@ -14,6 +14,7 @@ abstract class Routes {
   static const GOVERNMENT = _Paths.GOVERNMENT;
   static const STATUS_LAPORAN = _Paths.STATUS_LAPORAN;
   static const LAPORAN_TERSARING = _Paths.LAPORAN_TERSARING;
+  static const LAPORAN_DISUKAI = _Paths.LAPORAN_DISUKAI;
   static const REGISTER = _Paths.REGISTER;
   static const BIODATA_PAGE = _Paths.BIODATA_PAGE;
   static const EDIT_AKUN = _Paths.EDIT_AKUN;
@@ -23,6 +24,7 @@ abstract class Routes {
   static const LIST_LAPORAN = _Paths.LIST_LAPORAN;
   static const BERANDA = _Paths.BERANDA;
   static const FORGOT_PASSWORD = _Paths.FORGOT_PASSWORD;
+  static const NOTIFIKASI = _Paths.NOTIFIKASI;
 }
 
 abstract class _Paths {
@@ -38,6 +40,7 @@ abstract class _Paths {
   static const GOVERNMENT = '/government';
   static const STATUS_LAPORAN = '/status-laporan';
   static const LAPORAN_TERSARING = '/laporan-tersaring';
+  static const LAPORAN_DISUKAI = '/laporan-disukai';
   static const REGISTER = '/register';
   static const BIODATA_PAGE = '/biodata-page';
   static const EDIT_AKUN = '/edit-akun';
@@ -50,4 +53,5 @@ abstract class _Paths {
   static const FORGOT_PASSWORD = '/forgot-password';
   static const KODE_VERIFIKASI = '/kode-verifikasi';
   static const NEW_PASSWORD = '/new-password';
+  static const NOTIFIKASI = '/notifikasi';
 }

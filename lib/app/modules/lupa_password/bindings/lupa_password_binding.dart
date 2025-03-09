@@ -1,6 +1,4 @@
 import 'package:get/get.dart';
-import 'package:newcity/api.dart';
-
 import '../controllers/lupa_password_controller.dart';
 
 class LupaPasswordBinding extends Bindings {
@@ -9,6 +7,5 @@ class LupaPasswordBinding extends Bindings {
     Get.lazyPut<LupaPasswordController>(
       () => LupaPasswordController(),
     );
-    Get.lazyPut<ApiService>(() => ApiService());
   }
 }

@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:newcity/api.dart';
 import 'package:newcity/models/report.dart';
+import 'package:newcity/services/report_service.dart';
 
 class ListLaporanController extends GetxController {
   var allKategori = Rx<KategoriReportResponse>(KategoriReportResponse());
@@ -49,7 +49,7 @@ class ListLaporanController extends GetxController {
 
   void fetchKategori() async {
     try {
-      var response = await ApiService.getKategoriReport();
+      var response = await ReportService.getKategoriReport();
       allKategori.value = response!;
     } catch (e) {
       print('Error fetching Kategori: $e');
@@ -66,7 +66,7 @@ class ListLaporanController extends GetxController {
         isLoadingMore(true);
       }
 
-      final response = await ApiService.getPaginationReport(currentPage);
+      final response = await ReportService.getReport(currentPage);
       if (response != null) {
         if (response.report.isNotEmpty) {
           reports.addAll(response.report);
@@ -96,7 +96,7 @@ class ListLaporanController extends GetxController {
         isLoadingMore(true);
       }
 
-      final response = await ApiService.getReportByKategori(currentPage, id);
+      final response = await ReportService.getReportByKategori(currentPage, id);
       if (response != null) {
         if (response.report.isNotEmpty) {
           reports.addAll(response.report);

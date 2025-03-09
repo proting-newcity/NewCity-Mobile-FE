@@ -10,7 +10,7 @@ class BiodataPageView extends GetView<BiodataPageController> {
   Widget build(BuildContext context) {
     final String userId = "2";
     controller.setUserId(userId);
-    controller.fetchUserData();
+    // controller.fetchUserData();
 
     return Scaffold(
       appBar: AppBar(

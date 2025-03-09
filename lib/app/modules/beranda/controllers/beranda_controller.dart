@@ -1,8 +1,7 @@
 import 'package:get/get.dart';
-import 'package:newcity/api.dart';
+import 'package:newcity/services/report_service.dart';
 import 'package:newcity/models/report.dart';
 import 'package:motion_tab_bar/MotionTabBarController.dart';
-import '../views/beranda_view.dart';
 
 class BerandaController extends GetxController
     with GetTickerProviderStateMixin {
@@ -27,6 +26,7 @@ class BerandaController extends GetxController
 
   @override
   void onReady() {
+    fetchReports();
     super.onReady();
   }
 
@@ -65,7 +65,7 @@ class BerandaController extends GetxController
         isLoadingMore(true);
       }
 
-      final response = await ApiService.getPaginationReport(currentPage);
+      final response = await ReportService.getReport(currentPage);
       if (response != null) {
         if (response.report.isNotEmpty) {
           reports.addAll(response.report);
