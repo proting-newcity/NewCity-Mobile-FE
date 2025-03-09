@@ -174,4 +174,22 @@ class ReportService {
       return null;
     }
   }
+
+  static Future<ReportResponsePagination?> getLikedReports(int page) async {
+    try {
+      final response = await dio.get(
+        'api/report/liked',
+        queryParameters: {'page': page},
+      );
+
+      if (response.statusCode == 200) {
+        return ReportResponsePagination.fromJson(response.data);
+      } else {
+        throw Exception('Failed to load liked reports');
+      }
+    } catch (e) {
+      print("Error fetching liked reports: $e");
+      return null;
+    }
+  }
 }
