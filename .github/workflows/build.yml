@@ -30,6 +30,15 @@ jobs:
       - name: Install Dependencies
         run: flutter pub get
 
+      - name: Run Tests and Generate Coverage Report
+        run: flutter test --coverage
+
+      - name: Upload Coverage Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report
+          path: coverage/lcov.info
+
       - name: Generate SonarQube Properties
         run: |
           echo "sonar.projectKey=proting-newcity_NewCity-Mobile-FE" > sonar-project.properties

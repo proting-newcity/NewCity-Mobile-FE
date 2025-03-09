@@ -4,7 +4,7 @@ import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:newcity/api.dart';
+import 'package:newcity/services/auth_service.dart';
 
 class ForgotPasswordController extends GetxController {
   //TODO: Implement ForgotPasswordController
@@ -49,7 +49,7 @@ class ForgotPasswordController extends GetxController {
   void searchnotelp() async {
     try {
       final response =
-          await ApiService.getMasyarakatByPhone(notelpController.text);
+          await AuthService.getMasyarakatByPhone(notelpController.text);
       print(response);
       if (response.statusCode == 200 || response.statusCode == 201) {
         sendOtp();
@@ -79,7 +79,7 @@ class ForgotPasswordController extends GetxController {
     }
 
     try {
-      final response = await ApiService.changePassword(
+      final response = await AuthService.changePassword(
           notelpController.text, passwordController.text);
       if (response.statusCode == 200 || response.statusCode == 201) {
         Get.snackbar(

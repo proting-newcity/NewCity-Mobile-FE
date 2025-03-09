@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:newcity/api.dart';
+import 'package:newcity/services/report_service.dart';
 import 'package:newcity/models/report.dart';
 
 class GovernmentController extends GetxController {
@@ -40,7 +40,7 @@ class GovernmentController extends GetxController {
         isLoadingMore(true);
       }
 
-      final response = await ApiService.getPaginationReport(currentPage);
+      final response = await ReportService.getReport(currentPage);
       if (response != null) {
         if (response.report.isNotEmpty) {
           reports.addAll(response.report);

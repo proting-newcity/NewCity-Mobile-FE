@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:newcity/api.dart';
 import 'package:newcity/models/report.dart';
+import 'package:newcity/services/report_service.dart';
 
 class LaporanDisukaiController extends GetxController {
   var reports = <Report>[].obs;
@@ -39,7 +40,7 @@ class LaporanDisukaiController extends GetxController {
         isLoadingMore(true);
       }
 
-      final response = await ApiService.getLikedReports(currentPage);
+      final response = await ReportService.getLikedReports(currentPage);
       if (response != null) {
         if (response.report.isNotEmpty) {
           reports.addAll(response.report);

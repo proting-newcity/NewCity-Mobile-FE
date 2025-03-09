@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:newcity/api.dart';
 import 'package:newcity/models/report.dart';
+import 'package:newcity/services/report_service.dart';
 
 class ListPencarianLaporanController extends GetxController {
   var allReport = Rx<ReportResponsePagination>(ReportResponsePagination());
@@ -32,7 +32,7 @@ class ListPencarianLaporanController extends GetxController {
 
     try {
       var response =
-          await ApiService.getSearchedReport(currentPage.value, keyword);
+          await ReportService.getSearchedReport(currentPage.value, keyword);
       if (response != null) {
         final currentReport = allReport.value.report;
         final newReport = response.report;

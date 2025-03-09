@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:newcity/api.dart';
-import 'package:newcity/app/modules/beranda/bindings/beranda_binding.dart';
+import 'package:newcity/services/auth_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginController extends GetxController {
@@ -32,7 +31,7 @@ class LoginController extends GetxController {
 
   Future<void> login() async {
     try {
-      final response = await ApiService.login(
+      final response = await AuthService.login(
           usernameController.text, passwordController.text);
       print(response);
 

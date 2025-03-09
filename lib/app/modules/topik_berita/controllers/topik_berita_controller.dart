@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:newcity/api.dart';
 import 'package:newcity/models/berita.dart';
+import 'package:newcity/services/berita_service.dart';
 
 class TopikBeritaController extends GetxController {
   var allBerita = Rx<BeritaResponsePagination>(BeritaResponsePagination());
@@ -29,7 +29,7 @@ class TopikBeritaController extends GetxController {
     isLoading.value = true;
     try {
       var response =
-          await ApiService.getBeritaByKategori(currentPage.value, id);
+          await BeritaService.getBeritaByKategori(currentPage.value, id);
       if (response != null) {
         final currentBerita = allBerita.value.berita;
         final newBerita = response.berita;
