@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:newcity/api.dart';
 import 'package:newcity/app/modules/beranda/bindings/beranda_binding.dart';
+import 'package:newcity/app/modules/biodata_page/controllers/biodata_page_controller.dart';
+
 
 class LoginController extends GetxController {
+    var userId = ''.obs;
+    
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   @override
@@ -40,6 +44,19 @@ class LoginController extends GetxController {
       print("Error Login: $e");
       Get.snackbar("Error", "Something went wrong. Please try again.",
           snackPosition: SnackPosition.BOTTOM);
+    }
+  }
+
+  Future<void> fetchUserProfile(String userId) async {
+    try {
+      var userData = await ApiService.fetchUserProfile(userId);
+      final BiodataPageController biodataController = Get.find<BiodataPageController>();
+      biodataController.updateName(userData['username']);
+      biodataController.updateEmail(userData['email']);
+      biodataController.updatePhone(userData['phone']);
+      biodataController.updateProfileImage(userData['profile_image']);
+    } catch (e) {
+      print("Error fetching user profile: $e");
     }
   }
 }

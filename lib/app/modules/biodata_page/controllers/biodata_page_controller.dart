@@ -7,7 +7,7 @@ class BiodataPageController extends GetxController {
   var userName = ''.obs;
   var userEmail = ''.obs;
   var userPhone = ''.obs;
-  //var profileImagePath = ''.obs;
+  var profileImagePath = ''.obs;
 
   var updateFlag = false.obs;
 
@@ -69,6 +69,10 @@ class BiodataPageController extends GetxController {
 
   void updatePhone(String phone) {
     userPhone.value = phone;
+  }
+
+  void updateProfileImage(String imagePath) {
+    profileImagePath.value = imagePath;
   }
 
   void triggerUpdate() {

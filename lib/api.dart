@@ -7,6 +7,8 @@ import 'package:newcity/models/report.dart';
 import 'package:retry/retry.dart';
 import 'package:newcity/models/user.dart';
 import 'package:get_storage/get_storage.dart';
+import 'dart:convert';
+import 'dart:io';
 
 class ApiService extends GetConnect {
   static Dio dio = createDio();
@@ -328,4 +330,37 @@ class ApiService extends GetConnect {
       return AssetImage('assets/placeholder.png');
     }
   }
+
+  static Future<Map<String, dynamic>> fetchUserProfile(String userId) async {
+    try {
+      final response = await dio.get('api/user/profile/$userId');
+      if (response.statusCode == 200) {
+        return response.data;
+      } else {
+        throw Exception('Failed to fetch user profile');
+      }
+    } catch (e) {
+      print("Error fetching user profile: $e");
+      throw e;
+    }
+  }
+
+  /*static Future<void> uploadProfilePicture(File imageFile) async{
+    String fileName = imageFile.path.split('/').last;
+    FormData formData = FormData.fromMap({
+      "profile_picture": await MultipartFile.fromFile(imageFile.path, filename: fileName),
+    });
+
+    try{
+      final response = await dio.post('api/user/upload_profile_picture', data: formData);
+      if (response.statusCode == 200){
+        print("Upload Success");
+      } else {
+        throw Exception('Failed to Upload');
+      }
+    } catch (e){
+      print("Error uploading: $e");
+      throw e;
+    }
+  }*/
 }

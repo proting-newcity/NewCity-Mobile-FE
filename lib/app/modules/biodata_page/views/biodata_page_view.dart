@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 import '../controllers/biodata_page_controller.dart';
+import 'dart:io';
 
 class BiodataPageView extends GetView<BiodataPageController> {
   const BiodataPageView({super.key});
@@ -73,7 +74,7 @@ class BiodataPageView extends GetView<BiodataPageController> {
   }
 
   Widget _buildBiodataScreen(BuildContext context) {
-    final String userId = "4";
+    final String userId = "2";
     controller.setUserId(userId);
     controller.fetchUserData();
 
@@ -117,10 +118,17 @@ class BiodataPageView extends GetView<BiodataPageController> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   SizedBox(height: 5),
-                  CircleAvatar(
-                    radius: 88,
-                    child: Icon(Icons.person, size: 50),
-                  ),
+                   Obx(() {
+                    return CircleAvatar(
+                      radius: 88,
+                      backgroundImage: controller.profileImagePath.value.isEmpty
+                          ? AssetImage('assets/default_profile.png')
+                          : FileImage(File(controller.profileImagePath.value)) as ImageProvider,
+                      child: controller.profileImagePath.value.isEmpty
+                          ? Icon(Icons.person, size: 50)
+                          : null,
+                    );
+                  }),
                   SizedBox(height: 16),
                   Obx(() {
                     return Text(

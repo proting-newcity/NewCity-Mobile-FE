@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controllers/edit_akun_controller.dart';
+import 'dart:io';
 
 class EditAkunView extends GetView<EditAkunController> {
   @override
@@ -15,19 +16,27 @@ class EditAkunView extends GetView<EditAkunController> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SizedBox(height: 5),
-            //Obx((){
-              //return 
-              CircleAvatar(
-              radius: 88,
-              child: Icon(Icons.person, size: 50),
-              //backgroundImage: controller.profileImagePath.value.isEmpty? AssetImage('assets/default_profile.png'):FileImage(File(controller.profileImagePath.value)) as ImageProvider,
-            ),
-            //}),
+            Obx(() {
+              return CircleAvatar(
+                radius: 88,
+                backgroundImage: controller.profileImagePath.value.isEmpty
+                    ? AssetImage('assets/default_profile.png')
+                    : FileImage(File(controller.profileImagePath.value)) as ImageProvider,
+                child: controller.profileImagePath.value.isEmpty
+                    ? Icon(Icons.person, size: 50)
+                    : null,
+              );
+            }),
             
             SizedBox(height: 15),
-            Text(
-              'Ubah foto',
-              style: TextStyle(color: Color(0xFF588157)),
+            GestureDetector(
+              onTap: () {
+                controller.pickImage();
+              },
+              child: Text(
+                'Ubah foto',
+                style: TextStyle(color: Color(0xFF588157), decoration: TextDecoration.underline),
+              ),
             ),
             SizedBox(height: 45),
             TextField(
