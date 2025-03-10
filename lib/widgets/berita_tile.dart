@@ -20,7 +20,7 @@ Widget BeritaTile(Berita beritaData, int index) {
         child: Row(
           children: [
             FutureBuilder<ImageProvider<Object>>(
-              future: ImageService.loadImage(beritaData.foto),
+              future: ImageService.loadThumbnail(beritaData.foto),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return Container(

@@ -1,7 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_navigation/src/snackbar/snackbar.dart';
 import 'dio_client.dart';
 import 'package:newcity/models/report.dart';
 
@@ -12,9 +10,11 @@ class ReportService {
     final response = await dio.post(
       'api/report',
       data: data,
-      options: Options(headers: {
-        "Accept": "application/json",
-      }),
+      options: Options(
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      ),
     );
     return response;
   }
@@ -72,6 +72,7 @@ class ReportService {
   static Future<ReportResponse?> getReportDetail(int id) async {
     try {
       final response = await dio.get('api/report/$id');
+      print(response.data);
       return response.statusCode == 200
           ? ReportResponse.fromJson(response.data)
           : null;

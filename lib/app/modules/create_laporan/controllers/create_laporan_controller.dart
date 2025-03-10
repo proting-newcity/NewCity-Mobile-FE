@@ -6,6 +6,7 @@ import 'package:newcity/services/report_service.dart';
 import 'package:newcity/camera.dart';
 import 'package:http_parser/http_parser.dart';
 import 'package:newcity/models/report.dart';
+import 'dart:io';
 
 class CreateLaporanController extends GetxController {
   var allKategori = Rx<KategoriReportResponse>(KategoriReportResponse());
@@ -14,7 +15,6 @@ class CreateLaporanController extends GetxController {
 
   final TextEditingController judulController = TextEditingController();
   final TextEditingController teleponController = TextEditingController();
-  final TextEditingController emailController = TextEditingController();
   final TextEditingController lokasiController = TextEditingController();
   final TextEditingController deskripsiController = TextEditingController();
   Rx<int> selectedTopics = Rx<int>(-1);
@@ -39,7 +39,6 @@ class CreateLaporanController extends GetxController {
     try {
       var response = await ReportService.getKategoriReport();
       allKategori.value = response!;
-      print(allKategori.value.kategori.length);
     } catch (e) {
       print('Error fetching Kategori: $e');
     }
@@ -86,18 +85,27 @@ class CreateLaporanController extends GetxController {
             allKategori.value.kategori[selectedTopics.value].id.toString()),
       ]);
 
-      formData.files.add(MapEntry(
-        "foto",
-        await dio.MultipartFile.fromFile(
-          photo.value!.path,
-          filename: photo.value!.name,
-          contentType: MediaType('image', 'jpeg'),
-        ),
-      ));
+      final multipartFile = await dio.MultipartFile.fromFile(
+        photo.value!.path,
+        filename: photo.value!.name,
+        contentType: MediaType('image', 'jpeg'),
+      );
+      formData.files.add(MapEntry("foto", multipartFile));
+
+      if (!File(photo.value!.path).existsSync()) {
+        print("File tidak ditemukan di path: ${photo.value!.path}");
+        return;
+      }
+
+      if (!File(photo.value!.path).existsSync()) {
+        print("File tidak ditemukan di path: ${photo.value!.path}");
+        return;
+      }
 
       final response = await ReportService.postReport(formData);
 
-      if (response.statusCode == 200 || response.statusCode == 201) {
+      if (response != null &&
+          (response.statusCode == 200 || response.statusCode == 201)) {
         Get.snackbar("Success", "Report submitted successfully!",
             snackPosition: SnackPosition.BOTTOM);
         Get.toNamed('/beranda');
@@ -118,7 +126,6 @@ class CreateLaporanController extends GetxController {
   void clearForm() {
     judulController.clear();
     teleponController.clear();
-    emailController.clear();
     lokasiController.clear();
     deskripsiController.clear();
     photo.value = null;

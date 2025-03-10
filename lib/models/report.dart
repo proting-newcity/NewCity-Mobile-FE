@@ -38,7 +38,7 @@ class ReportResponse {
     return ReportResponse(
         report: Report.fromJson(json['report']),
         masyarakatName: json['masyarakat']['name'],
-        pemerintahName: json['pemerintah']['name'] ?? "Unknown",
+        pemerintahName: json['pemerintah']?['name'] ?? "Unknown",
         kategoriName: json['kategori']['name'],
         like: json['like'],
         comment: json['comment'],
