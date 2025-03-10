@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:intl/intl.dart';
 import 'package:newcity/models/user.dart';
 import 'package:newcity/widgets/notifikasi_tile.dart';
 

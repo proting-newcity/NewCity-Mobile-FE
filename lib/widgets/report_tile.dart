@@ -94,7 +94,7 @@ Widget ReportTile(Report report) {
                     child: Column(
                       children: [
                         FutureBuilder<ImageProvider<Object>>(
-                          future: ImageService.loadImage(report.foto),
+                          future: ImageService.loadThumbnail(report.foto),
                           builder: (context, snapshot) {
                             if (snapshot.connectionState ==
                                 ConnectionState.waiting) {

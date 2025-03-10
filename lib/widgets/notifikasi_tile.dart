@@ -14,9 +14,8 @@ Widget NotifikasiTile(Notifikasi notif) {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Foto Profil dengan FutureBuilder
           FutureBuilder<ImageProvider>(
-            future: ImageService.loadImage(notif.fotoProfile ?? ''),
+            future: ImageService.loadThumbnail(notif.fotoProfile ?? ''),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return CircleAvatar(
@@ -41,14 +40,11 @@ Widget NotifikasiTile(Notifikasi notif) {
             },
           ),
           const SizedBox(width: 10),
-
-          // Teks dan Gambar Report dalam Row
           Expanded(
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                // Teks Notifikasi
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -78,13 +74,10 @@ Widget NotifikasiTile(Notifikasi notif) {
                     ],
                   ),
                 ),
-
                 const SizedBox(width: 10),
-
-                // Gambar Report Jika Ada
                 if (notif.foto.isNotEmpty)
                   FutureBuilder<ImageProvider>(
-                    future: ImageService.loadImage(notif.foto),
+                    future: ImageService.loadThumbnail(notif.foto),
                     builder: (context, snapshot) {
                       if (snapshot.connectionState == ConnectionState.waiting) {
                         return Container(

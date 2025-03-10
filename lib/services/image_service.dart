@@ -22,4 +22,19 @@ class ImageService {
       return const AssetImage('assets/placeholder.png');
     }
   }
+
+  static Future<ImageProvider<Object>> loadThumbnail(String imagePath) async {
+    final parts = imagePath.split('/');
+
+    if (parts.length < 3 || parts[0] != 'storage') {
+      print("Invalid image path: $imagePath");
+      return const AssetImage('assets/placeholder.png');
+    }
+
+    parts.insert(3, 'thumbnail');
+
+    final thumbnailPath = parts.join('/');
+
+    return await loadImage(thumbnailPath);
+  }
 }
