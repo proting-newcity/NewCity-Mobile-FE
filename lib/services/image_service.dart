@@ -31,7 +31,7 @@ class ImageService {
       return const AssetImage('assets/placeholder.png');
     }
 
-    parts.insert(3, 'thumbnail');
+    parts.insert(2, 'thumbnail');
 
     final thumbnailPath = parts.join('/');
 
