@@ -1,6 +1,7 @@
-import 'package:http/http.dart' as http;
-import 'dart:convert';
+//import 'package:http/http.dart' as http;
+//import 'dart:convert';
 import 'package:get/get.dart';
+import 'package:newcity/api.dart';
 
 class BiodataPageController extends GetxController {
   var userId = ''.obs;
@@ -16,46 +17,18 @@ class BiodataPageController extends GetxController {
   }
 
   Future<void> fetchUserData() async {
-    if (userName.value.isEmpty ||
-        userEmail.value.isEmpty ||
-        userPhone.value.isEmpty) {
-      final response = await http.get(Uri.parse(
-          'http://10.0.2.2/newcity/fetchUsername.php?id=${userId.value}'));
-
-      if (response.statusCode == 200) {
-        var data = jsonDecode(response.body);
-        userName.value = data['username'];
-
-        switch (userId.value) {
-          case '1':
-            userName.value = 'kalpratama';
-            userEmail.value = 'kalpratama@gmail.com';
-            userPhone.value = '080000000009';
-            break;
-          case '2':
-            userEmail.value = 'fionadhilla17@gmail.com';
-            userPhone.value = '081212121212';
-            break;
-          case '3':
-            userEmail.value = 'masyarakatbiasa@gmail.com';
-            userPhone.value = '081111111111';
-            break;
-          case '4':
-            userEmail.value = 'akuwarga@yahoo.com';
-            userPhone.value = '087654321980';
-            break;
-          case '5':
-            userEmail.value = 'bandungjuara@newcity.go.id';
-            userPhone.value = '088889999123';
-            break;
-          case '6':
-            userEmail.value = 'chillwarga@gmail.com';
-            userPhone.value = '088008800880';
-            break;
-        }
+    try {
+      final profileData = await ApiService.fetchUserProfile(userId.value);
+      if (profileData != null) {
+        userName.value = profileData['name'] ?? '';
+        userEmail.value = profileData['email'] ?? '';
+        userPhone.value = profileData['phone'] ?? '';
+        profileImagePath.value = profileData['profile_image'] ?? ''; // Optional
       } else {
-        throw Exception('Failed to load username');
+        print('Failed to fetch user data');
       }
+    } catch (e) {
+      print('Error fetching user data: $e');
     }
   }
 
@@ -78,8 +51,4 @@ class BiodataPageController extends GetxController {
   void triggerUpdate() {
     updateFlag.value = !updateFlag.value;
   }
-
-  /*void updateProfileImage(String path){
-    profileImagePath.value = path;
-  }*/
 }

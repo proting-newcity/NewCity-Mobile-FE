@@ -345,6 +345,25 @@ class ApiService extends GetConnect {
     }
   }
 
+  static Future<bool> updateUserProfile(
+    String name, String email, String phone) async {
+    try {
+      final response = await dio.put(
+        'api/user/profile/update',
+        data: {
+          'name': name,
+          'email': email,
+          'phone': phone,
+        },
+      );
+      return response.statusCode == 200;
+    } catch (e) {
+      print("Error updating profile: $e");
+      return false;
+    }
+  }
+
+
   /*static Future<void> uploadProfilePicture(File imageFile) async{
     String fileName = imageFile.path.split('/').last;
     FormData formData = FormData.fromMap({

@@ -36,7 +36,21 @@ class EditAkunController extends GetxController {
     profileImagePath.value = imagePath;
   }
 
-  void saveChanges() {
+  Future<void> saveChanges() async {
+    try {
+      final success = await ApiService.updateUserProfile(
+        userName.value,
+        userEmail.value,
+        userPhone.value,
+      );
+      if (success) {
+        Get.snackbar('Success', 'Profile updated successfully!');
+      } else {
+        Get.snackbar('Error', 'Failed to update profile.');
+      }
+    } catch (e) {
+      Get.snackbar('Error', 'An error occurred: $e');
+    }
     print("Saving Changes: Name: ${userName.value}, Email: ${userEmail.value}, Phone: ${userPhone.value}");
     biodataController.updateName(userName.value);
     biodataController.updateEmail(userEmail.value);
