@@ -15,6 +15,7 @@ abstract class Routes {
   static const STATUS_LAPORAN = _Paths.STATUS_LAPORAN;
   static const LAPORAN_TERSARING = _Paths.LAPORAN_TERSARING;
   static const LAPORAN_DISUKAI = _Paths.LAPORAN_DISUKAI;
+  static const LAPORAN_SAYA = _Paths.LAPORAN_SAYA;
   static const REGISTER = _Paths.REGISTER;
   static const BIODATA_PAGE = _Paths.BIODATA_PAGE;
   static const EDIT_AKUN = _Paths.EDIT_AKUN;
@@ -41,6 +42,7 @@ abstract class _Paths {
   static const STATUS_LAPORAN = '/status-laporan';
   static const LAPORAN_TERSARING = '/laporan-tersaring';
   static const LAPORAN_DISUKAI = '/laporan-disukai';
+  static const LAPORAN_SAYA = '/laporan-saya';
   static const REGISTER = '/register';
   static const BIODATA_PAGE = '/biodata-page';
   static const EDIT_AKUN = '/edit-akun';
