@@ -193,4 +193,22 @@ class ReportService {
       return null;
     }
   }
+
+  static Future<ReportResponsePagination?> getMyReports(int page) async {
+    try {
+      final response = await dio.get(
+        'api/report/my',
+        queryParameters: {'page': page},
+      );
+
+      if (response.statusCode == 200) {
+        return ReportResponsePagination.fromJson(response.data);
+      } else {
+        throw Exception('Failed to load reports');
+      }
+    } catch (e) {
+      print("Error fetching reports: $e");
+      return null;
+    }
+  }
 }

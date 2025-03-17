@@ -47,6 +47,8 @@ import '../modules/topik_berita/bindings/topik_berita_binding.dart';
 import '../modules/topik_berita/views/topik_berita_view.dart';
 import '../modules/welcomepage/bindings/welcomepage_binding.dart';
 import '../modules/welcomepage/views/welcomepage_view.dart';
+import '../modules/laporan_saya/bindings/laporan_saya_binding.dart';
+import '../modules/laporan_saya/views/laporan_saya_view.dart';
 
 part 'app_routes.dart';
 
@@ -110,6 +112,11 @@ class AppPages {
       name: _Paths.LAPORAN_TERSARING,
       page: () => const LaporanTersaringView(),
       binding: LaporanTersaringBinding(),
+    ),
+    GetPage(
+      name: _Paths.LAPORAN_SAYA,
+      page: () => const LaporanSayaView(),
+      binding: LaporanSayaBinding(),
     ),
     GetPage(
       name: _Paths.LAPORAN_DISUKAI,
