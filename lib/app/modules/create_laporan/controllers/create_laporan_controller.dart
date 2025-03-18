@@ -6,12 +6,12 @@ import 'package:newcity/services/report_service.dart';
 import 'package:newcity/camera.dart';
 import 'package:http_parser/http_parser.dart';
 import 'package:newcity/models/report.dart';
-import 'dart:io';
 
 class CreateLaporanController extends GetxController {
   var allKategori = Rx<KategoriReportResponse>(KategoriReportResponse());
   Rx<XFile?> photo = Rx<XFile?>(null);
   var isLoading = false.obs;
+  var isUploading = false.obs;
 
   final TextEditingController judulController = TextEditingController();
   final TextEditingController teleponController = TextEditingController();
@@ -49,12 +49,6 @@ class CreateLaporanController extends GetxController {
 
     final cameraDelegate = MyCameraDelegate();
     photo.value = await cameraDelegate.takePhoto();
-
-    if (photo.value != null) {
-      print('Photo taken: ${photo.value!.path}');
-    } else {
-      print('No photo taken or user canceled');
-    }
   }
 
   Future<void> postReport() async {
@@ -91,16 +85,6 @@ class CreateLaporanController extends GetxController {
         contentType: MediaType('image', 'jpeg'),
       );
       formData.files.add(MapEntry("foto", multipartFile));
-
-      if (!File(photo.value!.path).existsSync()) {
-        print("File tidak ditemukan di path: ${photo.value!.path}");
-        return;
-      }
-
-      if (!File(photo.value!.path).existsSync()) {
-        print("File tidak ditemukan di path: ${photo.value!.path}");
-        return;
-      }
 
       final response = await ReportService.postReport(formData);
 
