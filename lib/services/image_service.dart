@@ -18,7 +18,6 @@ class ImageService {
         return NetworkImage(fullUrl);
       });
     } catch (e) {
-      print("Error loading image: $e");
       return const AssetImage('assets/placeholder.png');
     }
   }
@@ -27,14 +26,13 @@ class ImageService {
     final parts = imagePath.split('/');
 
     if (parts.length < 3 || parts[0] != 'storage') {
-      print("Invalid image path: $imagePath");
       return const AssetImage('assets/placeholder.png');
     }
 
-    parts.insert(3, 'thumbnail');
+    parts.insert(2, 'thumbnail');
 
     final thumbnailPath = parts.join('/');
-
+    print(thumbnailPath);
     return await loadImage(thumbnailPath);
   }
 }
