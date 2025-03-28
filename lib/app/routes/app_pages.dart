@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
-
+import 'package:newcity/app/modules/faq/bindings/faq_binding.dart';
+import 'package:newcity/app/modules/faq/views/faq_view.dart';
 import 'package:newcity/app/modules/forgot_password/views/kode_verifikasi_view.dart';
 import 'package:newcity/app/modules/forgot_password/views/new_password_view.dart';
 import 'package:newcity/app/modules/laporan_disukai/bindings/laporan_disukai_binding.dart';
@@ -137,6 +138,11 @@ class AppPages {
       name: _Paths.EDIT_AKUN,
       page: () => EditAkunView(),
       binding: EditAkunBinding(),
+    ),
+    GetPage(
+      name: _Paths.FAQ,
+      page: () => FaqView(),
+      binding: FaqBinding(),
     ),
     GetPage(
       name: _Paths.CREATE_LAPORAN,
