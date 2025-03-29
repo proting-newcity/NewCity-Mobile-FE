@@ -21,16 +21,20 @@ class NotifikasiView extends GetView<NotifikasiController> {
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
         ),
         actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 16),
-            child: Text(
-              "Laporan Saya",
-              style: TextStyle(
-                color: Colors.green[700],
-                fontWeight: FontWeight.bold,
-                fontSize: 16,
+          GestureDetector(
+            child: Padding(
+              padding: EdgeInsets.all(16.0),
+              child: Center(
+                child: Text(
+                  'Laporan Saya',
+                  style: TextStyle(
+                      color: Color(0xFF588157), fontWeight: FontWeight.bold),
+                ),
               ),
             ),
+            onTap: () {
+              Get.toNamed('/laporan-saya');
+            },
           ),
         ],
         elevation: 0,
