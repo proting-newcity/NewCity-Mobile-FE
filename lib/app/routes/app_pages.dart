@@ -131,7 +131,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.BIODATA_PAGE,
-      page: () => const BiodataPageView(),
+      page: () => BiodataPageView(),
       binding: BiodataPageBinding(),
     ),
     GetPage(

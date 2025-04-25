@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import "package:newcity/models/user.dart";
 import 'package:motion_tab_bar/MotionTabBar.dart';
 import '../controllers/biodata_page_controller.dart';
 
 class BiodataPageView extends GetView<BiodataPageController> {
-  const BiodataPageView({super.key});
+  // const BiodataPageView({super.key});
+  var user = Rx<User?>(null);
+
+  final BiodataPageController biodataController =
+      Get.find<BiodataPageController>();
 
   @override
   Widget build(BuildContext context) {
-    final String userId = "2";
-    controller.setUserId(userId);
     // controller.fetchUserData();
 
     return Scaffold(
@@ -26,7 +29,6 @@ class BiodataPageView extends GetView<BiodataPageController> {
         backgroundColor: Color(0xFF588157),
       ),
       body: Obx(() {
-        controller.updateFlag.value;
         return Stack(
           children: [
             Positioned(
@@ -59,7 +61,7 @@ class BiodataPageView extends GetView<BiodataPageController> {
                   SizedBox(height: 16),
                   Obx(() {
                     return Text(
-                      controller.userName.value,
+                      '${user.value?.name}',
                       style: TextStyle(
                         fontFamily: 'Poppins',
                         fontSize: 26,
@@ -70,7 +72,7 @@ class BiodataPageView extends GetView<BiodataPageController> {
                   SizedBox(height: 8),
                   Obx(() {
                     return Text(
-                      '${controller.userEmail.value} | ${controller.userPhone.value}',
+                      '${user.value?.username} | ${user.value?.phone}',
                       style: TextStyle(fontSize: 18),
                       textAlign: TextAlign.center,
                     );
@@ -127,7 +129,7 @@ class BiodataPageView extends GetView<BiodataPageController> {
         );
       }),
       bottomNavigationBar: MotionTabBar(
-        controller: controller.motionTabBarController,
+        //controller: controller.motionTabBarController,
         initialSelectedTab: "Akun",
         labels: const ["Beranda", "Lapor", "Akun"],
         icons: const [Icons.home_outlined, Icons.add, Icons.person_outline],
