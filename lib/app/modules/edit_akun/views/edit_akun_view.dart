@@ -1,8 +1,15 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:newcity/models/user.dart';
 import '../controllers/edit_akun_controller.dart';
 
+// ignore: must_be_immutable
 class EditAkunView extends GetView<EditAkunController> {
+  var user = Rx<User?>(null);
+
+  EditAkunView({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,70 +23,86 @@ class EditAkunView extends GetView<EditAkunController> {
           children: [
             SizedBox(height: 5),
             //Obx((){
-              //return 
-              CircleAvatar(
+            //return
+            CircleAvatar(
               radius: 88,
-              child: Icon(Icons.person, size: 50),
+              child: GestureDetector(onTap: () async {
+                // buka kamera
+                await controller.openCamera();
+              }, child: Obx(() {
+                // TODO update biar load gambar dari API (ini salah)
+                if (controller.photo.value != null) {
+                  return ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: Image.file(
+                      File(controller.photo.value!.path),
+                      fit: BoxFit.contain, // atur gambar di container
+                      width: double.infinity,
+                      height: double.infinity,
+                    ),
+                  );
+                } else {
+                  return Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Icons.camera_alt, color: Colors.green),
+                      Text("Ubah Foto"),
+                    ],
+                  );
+                }
+              })),
+              //child: Icon(Icons.person, size: 50),
               //backgroundImage: controller.profileImagePath.value.isEmpty? AssetImage('assets/default_profile.png'):FileImage(File(controller.profileImagePath.value)) as ImageProvider,
             ),
             //}),
-            
+
             SizedBox(height: 15),
             Text(
               'Ubah foto',
               style: TextStyle(color: Color(0xFF588157)),
             ),
             SizedBox(height: 45),
+            Text("Nama"),
             TextField(
-                decoration: InputDecoration(
-                  hintText: 'Nama',
-                  prefixIcon: Icon(Icons.person_2_outlined),
-                  border: OutlineInputBorder(),
-                ),
-                controller:
-                    TextEditingController(text: controller.userName.value),
-                onChanged: (value) {
-                  controller.updateName(value);
-                }),
+              controller: controller.nameController,
+              decoration: InputDecoration(
+                hintText: "Masukkan nama",
+                enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Color(0xFF588157), width: 2),
+                    borderRadius: BorderRadius.circular(10)),
+                focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Color(0xFF588157), width: 2),
+                    borderRadius: BorderRadius.circular(10)),
+              ),
+            ),
             SizedBox(height: 20),
+            Text("Nomor Telepon"),
             TextField(
-                decoration: InputDecoration(
-                  hintText: 'Email',
-                  prefixIcon: Icon(Icons.mail),
-                  border: OutlineInputBorder(),
-                ),
-                controller:
-                    TextEditingController(text: controller.userEmail.value),
-                onChanged: (value) {
-                  controller.updateEmail(value);
-                }),
-            SizedBox(height: 20),
-            TextField(
-                decoration: InputDecoration(
-                  hintText: 'Telepon',
-                  prefixIcon: Icon(Icons.phone),
-                  border: OutlineInputBorder(),
-                ),
-                controller:
-                    TextEditingController(text: controller.userPhone.value),
-                onChanged: (value) {
-                  controller.updatePhone(value);
-                }),
+              controller: controller.usernameController,
+              decoration: InputDecoration(
+                hintText: "Masukkan nomor telepon",
+                enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Color(0xFF588157), width: 2),
+                    borderRadius: BorderRadius.circular(10)),
+                focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Color(0xFF588157), width: 2),
+                    borderRadius: BorderRadius.circular(10)),
+              ),
+            ),
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
                 controller.saveChanges();
-                Get.back();
               },
-              child: Text('Simpan Perubahan',
-                style: TextStyle(color: Colors.white)),
-                style: ElevatedButton.styleFrom(
+              style: ElevatedButton.styleFrom(
                 backgroundColor: Color(0xFF588157),
                 minimumSize: const Size(double.infinity, 50),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15),
                 ),
               ),
+              child: Text('Simpan Perubahan',
+                  style: TextStyle(color: Colors.white)),
             ),
           ],
         ),
