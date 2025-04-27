@@ -2,25 +2,21 @@ class User {
   int id;
   String name;
   String username;
-  String phone;
-  String? profilePhoto;
+  String? foto;
 
   User({
     required this.id,
     required this.name,
     required this.username,
-    required this.phone,
-    required this.profilePhoto,
+    required this.foto,
   });
 
   factory User.fromJson(Map<String, dynamic> json) {
     return User(
-      id: json['id'],
-      name: json['name'],
-      username: json['username'],
-      phone: json['phone'],
-      profilePhoto: json['profilePhoto']
-    );
+        id: json['id'],
+        name: json['name'],
+        username: json['username'],
+        foto: json['foto']);
   }
 }
 

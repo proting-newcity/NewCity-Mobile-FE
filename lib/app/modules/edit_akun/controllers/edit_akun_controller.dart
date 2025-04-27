@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import "package:newcity/models/user.dart";
 import 'package:dio/dio.dart' as dio;
@@ -11,52 +12,55 @@ class EditAkunController extends GetxController {
   var user = Rx<User?>(null);
   Rx<XFile?> photo = Rx<XFile?>(null);
 
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController usernameController = TextEditingController();
+
   final BiodataPageController biodataController =
       Get.find<BiodataPageController>();
 
   @override
   void onInit() {
     super.onInit();
-    user.value?.name;
-    user.value?.username;
-    user.value?.phone;
-    user.value?.profilePhoto;
+    nameController.text = Get.arguments.name;
+    usernameController.text = Get.arguments.username;
   }
 
-  @override 
-  void onClose(){
+  @override
+  void onClose() {
     super.onClose();
   }
 
-  void updateName(String name) {
-    user.value?.name = name;
-  }
+  Future<void> saveChanges() async {
+    try {
+      dio.FormData formData = dio.FormData();
+      formData.fields.addAll([
+        MapEntry("name", nameController.text),
+        MapEntry("username", usernameController.text),
+      ]);
 
-  void updateUserName(String username){
-    user.value?.username = username;
-  }
+      if (photo.value != null) {
+        final multipartFile = await dio.MultipartFile.fromFile(
+          photo.value!.path,
+          filename: photo.value!.name,
+          contentType: MediaType('image', 'jpeg'),
+        );
+        formData.files.add(MapEntry("foto", multipartFile));
+      }
 
-  void updatePhone(String phone) {
-    user.value?.phone = phone;
-  }
-
-  Future <void> saveChanges() async {
-    print("Saving Changes: Name: ${user.value?.name}, Phone: ${user.value?.phone}");
-
-    try{
-      final response = await UserService.postProfile('name', 'username', 'phone');
+      final response = await UserService.updateUser(formData);
 
       if (response != null &&
           (response.statusCode == 200 || response.statusCode == 201)) {
-        Get.snackbar("Success", "Changes saved successfully!",
+        print(response.data);
+        Get.snackbar("Success", "Report submitted successfully!",
             snackPosition: SnackPosition.BOTTOM);
         Get.toNamed('/beranda');
       } else {
-        Get.snackbar("Error", "Failed to save changes.",
+        Get.snackbar("Error", "Failed to submit report.",
             snackPosition: SnackPosition.BOTTOM);
       }
-    } catch(e){
-      print("Error saving changes: $e");
+    } catch (e) {
+      print("Error posting report: $e");
       Get.snackbar("Error", "Something went wrong. Please try again.",
           snackPosition: SnackPosition.BOTTOM);
     }
@@ -67,21 +71,5 @@ class EditAkunController extends GetxController {
 
     final cameraDelegate = MyCameraDelegate();
     photo.value = await cameraDelegate.takePhoto();
-  }
-
-  Future<void> pickImage() async {
-    final multipartFile = await dio.MultipartFile.fromFile(
-        photo.value!.path,
-        filename: photo.value!.name,
-        contentType: MediaType('image', 'jpeg'),
-      );
-
-    final BiodataPageController biodataPageController = Get.find<BiodataPageController>();
-    biodataPageController.updateProfileImage();
-
-    //final XFile? image = await _picker.Image(source: ImageSource.gallery);
-    // if (image != null){
-    //   photo.value!.path;
-    // }
   }
 }

@@ -1,23 +1,16 @@
-import 'package:http/http.dart' as http;
-import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:newcity/models/user.dart';
 import 'package:newcity/services/user_service.dart';
 import 'package:image_picker_platform_interface/image_picker_platform_interface.dart';
-import 'package:motion_tab_bar/MotionTabBarController.dart';
 
-class BiodataPageController extends GetxController{
+class BiodataPageController extends GetxController {
   var user = Rx<User?>(null);
   Rx<XFile?> photo = Rx<XFile?>(null);
-
 
   @override
   void onInit() {
     super.onInit();
     fetchUser();
-    user.value?.name;
-    user.value?.username;
-    user.value?.phone;
   }
 
   @override
@@ -26,7 +19,7 @@ class BiodataPageController extends GetxController{
   }
 
   void fetchUser() async {
-    try{
+    try {
       var response = await UserService.getMasyarakat();
       user.value = response;
     } catch (e) {
@@ -35,8 +28,6 @@ class BiodataPageController extends GetxController{
   }
 
   void changeTab(int index) {
-    // selectedTabIndex.value = index;
-    // motionTabBarController.index = index;
     switch (index) {
       case 0:
         Get.toNamed('/beranda', preventDuplicates: false);
@@ -50,7 +41,7 @@ class BiodataPageController extends GetxController{
     }
   }
 
-  void updateProfileImage(){
+  void updateProfileImage() {
     this.photo = photo;
   }
 }
