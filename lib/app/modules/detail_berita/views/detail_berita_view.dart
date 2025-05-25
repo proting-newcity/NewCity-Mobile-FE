@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:newcity/api.dart';
+import 'package:newcity/theme/colors.dart';
 
 import '../controllers/detail_berita_controller.dart';
 

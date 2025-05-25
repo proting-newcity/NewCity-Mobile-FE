@@ -91,64 +91,117 @@ class BerandaView extends GetView<BerandaController> {
       appBar: AppBar(
         title: Column(
           children: [
-            const Text('Selamat datang!'),
-            Text(
-              DateFormat('EEEE dd MMMM yyyy', 'id_ID').format(DateTime.now()),
-              style: const TextStyle(fontSize: 12.0),
+            SizedBox(height: 16.0),
+            Row(
+              children: [
+                Image.asset(
+                  'assets/images/logo_NewCity_Original.png',
+                  width: 40,
+                ),
+                SizedBox(width: 10.0),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text('Selamat datang!',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, color: primaryColor)),
+                    Text(
+                      DateFormat('EEEE dd MMMM yyyy', 'id_ID')
+                          .format(DateTime.now()),
+                      style: const TextStyle(fontSize: 12.0),
+                    ),
+                  ],
+                ),
+              ],
             ),
           ],
         ),
       ),
-      body: Padding(
-        padding: EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            TextField(
-              onSubmitted: (keyword) {
-                Get.toNamed('/list-pencarian-laporan', arguments: keyword);
-              },
-              decoration: const InputDecoration(
-                prefixIcon: Icon(Icons.search, color: Color(0xFF588157)),
-                hintText: 'Cari laporan',
-                focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                    borderSide: BorderSide(color: Color(0xFF588157))),
-                enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                    borderSide: BorderSide(color: Color(0xFF588157))),
-                border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                    borderSide: BorderSide(color: Color(0xFF588157))),
-                contentPadding: EdgeInsets.symmetric(vertical: 14),
-              ),
+      bottomNavigationBar: MotionTabBar(
+        controller: controller.motionTabBarController,
+        initialSelectedTab: "Beranda",
+        labels: const ["Beranda", "Lapor", "Akun"],
+        icons: const [Icons.home_outlined, Icons.add, Icons.person_outline],
+        tabSize: 50,
+        tabBarHeight: 55,
+        textStyle: const TextStyle(
+          fontSize: 12,
+          color: blackColor,
+          fontWeight: FontWeight.w500,
+        ),
+        tabIconColor: Colors.black87,
+        tabIconSize: 28.0,
+        tabIconSelectedSize: 26.0,
+        tabSelectedColor: primaryColor,
+        tabIconSelectedColor: whiteColor,
+        tabBarColor: whiteColor,
+        onTabItemSelected: (int value) {
+          controller.changeTab(value);
+        },
+      ),
+      body: _buildBerandaScreen(),
+    );
+  }
+
+  Widget _buildBerandaScreen() {
+    final ScrollController _scrollController = ScrollController();
+    _scrollController.addListener(() {
+      if (_scrollController.position.pixels ==
+          _scrollController.position.maxScrollExtent) {
+        controller.fetchReports();
+      }
+    });
+    return Padding(
+      padding: EdgeInsets.all(20.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          TextField(
+            onSubmitted: (keyword) {
+              Get.toNamed('/list-pencarian-laporan', arguments: keyword);
+            },
+            decoration: const InputDecoration(
+              prefixIcon: Icon(Icons.search, color: primaryColor),
+              hintText: 'Cari laporan',
+              focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                  borderSide: BorderSide(color: primaryColor)),
+              enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                  borderSide: BorderSide(color: primaryColor)),
+              border: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                  borderSide: BorderSide(color: primaryColor)),
+              contentPadding: EdgeInsets.symmetric(vertical: 15),
             ),
-            SizedBox(height: 16.0),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                BuildIconButton("assets/images/icon_laporan.png", 'Laporan',
-                    '/list-laporan'),
-                BuildIconButton(
-                    "assets/images/icon_berita.png", 'Berita', '/list-berita'),
-                BuildIconButton("assets/images/icon_simpan.png", 'Simpan', ''),
-                BuildIconButton(
-                    "assets/images/icon_notifikasi.png", 'Notifikasi', ''),
-              ],
+          ),
+          SizedBox(height: 16.0),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              BuildIconButton(
+                  "assets/images/icon_laporan.png", 'Laporan', '/list-laporan'),
+              BuildIconButton(
+                  "assets/images/icon_berita.png", 'Berita', '/list-berita'),
+              BuildIconButton("assets/images/icon_simpan.png", 'Simpan', ''),
+              BuildIconButton("assets/images/icon_notifikasi.png", 'Notifikasi',
+                  '/notifikasi'),
+            ],
+          ),
+          SizedBox(height: 23.0),
+          Text(
+            'Rekomendasi Untukmu',
+            style: TextStyle(
+              fontSize: 15.0,
+              fontWeight: FontWeight.bold,
             ),
-            SizedBox(height: 16.0),
-            Text(
-              'Rekomendasi Untukmu',
-              style: TextStyle(
-                fontSize: 18.0,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            Expanded(
-              child: Obx(() {
-                if (controller.isLoading.isTrue) {
-                  return const Center(child: CircularProgressIndicator());
-                }
+          ),
+          SizedBox(height: 20.0),
+          Expanded(
+            child: Obx(() {
+              if (controller.isLoading.isTrue) {
+                return const Center(child: CircularProgressIndicator());
+              }
 
                 return ListView.builder(
                   controller: _scrollController,
