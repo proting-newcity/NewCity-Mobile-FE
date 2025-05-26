@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:newcity/theme/colors.dart';
 import 'package:get/get.dart';
 
 import '../controllers/register_controller.dart';
@@ -27,7 +27,7 @@ class RegisterView extends GetView<RegisterController> {
                     child: IconButton(
                       icon: Icon(
                         Icons.arrow_back,
-                        color: Colors.white,
+                        color: whiteColor,
                       ),
                       onPressed: () {
                         Get.back();
@@ -40,12 +40,12 @@ class RegisterView extends GetView<RegisterController> {
                     child: Text(
                       "Registrasi",
                       // style: GoogleFonts.poppins(
-                      //   color: Colors.white,
+                      //   color: whiteColor,
                       //   fontSize: 24,
                       //   fontWeight: FontWeight.bold,
                       // ),
                       style: TextStyle(
-                        color: Colors.white,
+                        color: whiteColor,
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
                       ),
@@ -57,7 +57,7 @@ class RegisterView extends GetView<RegisterController> {
                     child: Text(
                       "Buat Akun Anda!",
                       style: TextStyle(
-                        color: Colors.white,
+                        color: whiteColor,
                         fontSize: 14,
                       ),
                     ),
@@ -107,11 +107,11 @@ class RegisterView extends GetView<RegisterController> {
                             'Daftar',
                             style: TextStyle(
                               fontSize: 14,
-                              color: Colors.white,
+                              color: whiteColor,
                             ),
                           ),
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Color(0xFF588157),
+                            backgroundColor: primaryColor,
                             minimumSize: const Size(double.infinity, 50),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(15),
@@ -129,7 +129,7 @@ class RegisterView extends GetView<RegisterController> {
                               child: Text(
                                 "Masuk",
                                 style: TextStyle(
-                                  color: Color(0xFF588157),
+                                  color: primaryColor,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),

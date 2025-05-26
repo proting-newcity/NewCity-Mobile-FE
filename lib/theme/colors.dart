@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 
 const Color primaryColor = Color(0xFF588157);
-const Color secondaryColor = Color(0xFF4A8BFF);
-const Color backgroundColor = Color(0xFFF5F5F5);
+const Color secondaryColor = Color.fromRGBO(58, 90, 64, 1);
+const Color backgroundColor = Color.fromRGBO(88, 129, 87, 1);
+const Color backgroundColor2 = Color(0xFF9CAC9F);
+const Color statusTidakLanjut = Color.fromRGBO(171, 192, 171, 1);
+const Color statusDalamProses = Color.fromRGBO(250, 178, 45, 1);
+const Color statusSelesai = Color.fromRGBO(58, 90, 64, 1);
 const Color whiteColor = Colors.white;
 const Color blackColor = Colors.black;
 final Color greyColor = Colors.grey[300] ?? Color(0xFFD6D6D6);
+const Color grey2Color = Colors.grey;
 const Color redColor = Colors.red;
 const Color greenColor = Colors.green;
 const Color blueColor = Colors.blue;

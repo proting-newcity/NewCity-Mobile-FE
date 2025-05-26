@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:newcity/theme/colors.dart';
 import 'package:get/get.dart';
 import 'package:newcity/widgets/report_tile_government.dart';
 
@@ -37,17 +37,17 @@ class StatusLaporanView extends GetView<StatusLaporanController> {
                 Get.toNamed('/list-pencarian-laporan', arguments: keyword);
               },
               decoration: const InputDecoration(
-                prefixIcon: Icon(Icons.search, color: Color(0xFF588157)),
+                prefixIcon: Icon(Icons.search, color: primaryColor),
                 hintText: 'Cari laporan',
                 focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(20)),
-                    borderSide: BorderSide(color: Color(0xFF588157))),
+                    borderSide: BorderSide(color: primaryColor)),
                 enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(20)),
-                    borderSide: BorderSide(color: Color(0xFF588157))),
+                    borderSide: BorderSide(color: primaryColor)),
                 border: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(20)),
-                    borderSide: BorderSide(color: Color(0xFF588157))),
+                    borderSide: BorderSide(color: primaryColor)),
                 contentPadding: EdgeInsets.symmetric(vertical: 14),
               ),
             ),
@@ -78,7 +78,7 @@ class StatusLaporanView extends GetView<StatusLaporanController> {
                               child: Text(
                                 'Menunggu',
                                 style: TextStyle(
-                                    color: Colors.white,
+                                    color: whiteColor,
                                     fontWeight: FontWeight.bold,
                                     fontSize: 15),
                               ),
@@ -103,13 +103,13 @@ class StatusLaporanView extends GetView<StatusLaporanController> {
                               borderRadius: BorderRadius.all(
                                 Radius.circular(10),
                               ),
-                              color: Color.fromRGBO(171, 192, 171, 1),
+                              color: backgroundColor,
                             ),
                             child: Center(
                               child: Text(
                                 'Tindak Lanjut',
                                 style: TextStyle(
-                                    color: Colors.white,
+                                    color: whiteColor,
                                     fontWeight: FontWeight.bold,
                                     fontSize: 15),
                               ),
@@ -139,13 +139,13 @@ class StatusLaporanView extends GetView<StatusLaporanController> {
                               borderRadius: BorderRadius.all(
                                 Radius.circular(10),
                               ),
-                              color: Color.fromRGBO(250, 178, 45, 1),
+                              color: statusDalamProses,
                             ),
                             child: Center(
                               child: Text(
                                 'Dalam Proses',
                                 style: TextStyle(
-                                    color: Colors.white,
+                                    color: whiteColor,
                                     fontWeight: FontWeight.bold,
                                     fontSize: 15),
                               ),
@@ -170,13 +170,13 @@ class StatusLaporanView extends GetView<StatusLaporanController> {
                               borderRadius: BorderRadius.all(
                                 Radius.circular(10),
                               ),
-                              color: Color.fromRGBO(58, 90, 64, 1),
+                              color: secondaryColor,
                             ),
                             child: Center(
                               child: Text(
                                 'Selesai',
                                 style: TextStyle(
-                                    color: Colors.white,
+                                    color: whiteColor,
                                     fontWeight: FontWeight.bold,
                                     fontSize: 15),
                               ),

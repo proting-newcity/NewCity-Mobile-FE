@@ -1,50 +1,75 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:image_picker/image_picker.dart';
+import "package:newcity/models/user.dart";
+import 'package:dio/dio.dart' as dio;
+import 'package:image_picker_platform_interface/image_picker_platform_interface.dart';
 import 'package:newcity/app/modules/biodata_page/controllers/biodata_page_controller.dart';
+import 'package:newcity/camera.dart';
+import 'package:http_parser/http_parser.dart';
+import 'package:newcity/services/user_service.dart';
 
 class EditAkunController extends GetxController {
-  var userName = ''.obs;
-  var userEmail = ''.obs;
-  var userPhone = ''.obs;
-  //var profileImagePath = ''.obs;
+  var user = Rx<User?>(null);
+  Rx<XFile?> photo = Rx<XFile?>(null);
 
-  final BiodataPageController biodataController = Get.find<BiodataPageController>();
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController usernameController = TextEditingController();
+
+  final BiodataPageController biodataController =
+      Get.find<BiodataPageController>();
 
   @override
   void onInit() {
     super.onInit();
-    userName.value = biodataController.userName.value;
-    userEmail.value = biodataController.userEmail.value;
-    userPhone.value = biodataController.userPhone.value;
+    nameController.text = Get.arguments.name;
+    usernameController.text = Get.arguments.username;
   }
 
-  void updateName(String name) {
-    userName.value = name;
+  @override
+  void onClose() {
+    super.onClose();
   }
 
-  void updateEmail(String email) {
-    userEmail.value = email;
-  }
+  Future<void> saveChanges() async {
+    try {
+      dio.FormData formData = dio.FormData();
+      formData.fields.addAll([
+        MapEntry("name", nameController.text),
+        MapEntry("username", usernameController.text),
+      ]);
 
-  void updatePhone(String phone) {
-    userPhone.value = phone;
-  }
+      if (photo.value != null) {
+        final multipartFile = await dio.MultipartFile.fromFile(
+          photo.value!.path,
+          filename: photo.value!.name,
+          contentType: MediaType('image', 'jpeg'),
+        );
+        formData.files.add(MapEntry("foto", multipartFile));
+      }
 
-  void saveChanges() {
-    print("Saving Changes: Name: ${userName.value}, Email: ${userEmail.value}, Phone: ${userPhone.value}");
-    biodataController.updateName(userName.value);
-    biodataController.updateEmail(userEmail.value);
-    biodataController.updatePhone(userPhone.value);
-    //biodataController.fetchUserData();
-    //biodataController.triggerUpdate();
-  }
+      final response = await UserService.updateUser(formData);
 
-  /*Future<void> pickImage() async {
-    final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
-    if (image != null){
-      profileImagePath.value = image.path;
-      final BiodataPageController biodataPageController = Get.find<BiodataPageController>();
-      biodataPageController.updateProfileImage(image.path)
+      if (response != null &&
+          (response.statusCode == 200 || response.statusCode == 201)) {
+        print(response.data);
+        Get.snackbar("Success", "Report submitted successfully!",
+            snackPosition: SnackPosition.BOTTOM);
+        Get.toNamed('/beranda');
+      } else {
+        Get.snackbar("Error", "Failed to submit report.",
+            snackPosition: SnackPosition.BOTTOM);
+      }
+    } catch (e) {
+      print("Error posting report: $e");
+      Get.snackbar("Error", "Something went wrong. Please try again.",
+          snackPosition: SnackPosition.BOTTOM);
     }
-  }*/
+  }
+
+  Future<void> openCamera() async {
+    setUpCameraDelegate();
+
+    final cameraDelegate = MyCameraDelegate();
+    photo.value = await cameraDelegate.takePhoto();
+  }
 }

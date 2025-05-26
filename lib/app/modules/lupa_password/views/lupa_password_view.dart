@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-
+import 'package:newcity/theme/colors.dart';
 import '../controllers/lupa_password_controller.dart';
 
 // import 'package:google_fonts/google_fonts.dart';
@@ -26,7 +26,7 @@ class LupaPasswordView extends GetView<LupaPasswordController> {
                     child: IconButton(
                       icon: Icon(
                         Icons.arrow_back,
-                        color: Colors.white,
+                        color: whiteColor,
                       ),
                       onPressed: () {
                         Get.toNamed('/biodata-page');
@@ -39,12 +39,12 @@ class LupaPasswordView extends GetView<LupaPasswordController> {
                     child: Text(
                       "Buat Kata Sandi Baru",
                       // style: GoogleFonts.poppins(
-                      //   color: Colors.white,
+                      //   color: whiteColor,
                       //   fontSize: 24,
                       //   fontWeight: FontWeight.bold,
                       // ),
                       style: TextStyle(
-                        color: Colors.white,
+                        color: whiteColor,
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
                       ),
@@ -56,7 +56,7 @@ class LupaPasswordView extends GetView<LupaPasswordController> {
                     child: Text(
                       "Masukkan kata sandi baru Anda.",
                       style: TextStyle(
-                        color: Colors.white,
+                        color: whiteColor,
                         fontSize: 14,
                       ),
                     ),
@@ -97,18 +97,16 @@ class LupaPasswordView extends GetView<LupaPasswordController> {
                             'Ubah Kata Sandi',
                             style: TextStyle(
                               fontSize: 14,
-                              color: Colors.white,
+                              color: whiteColor,
                             ),
                           ),
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Color(0xFF588157),
+                            backgroundColor: primaryColor,
                             minimumSize: const Size(double.infinity, 50),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(15),
                             ),
-                            
                           ),
-                          
                         ),
                       ],
                     ),

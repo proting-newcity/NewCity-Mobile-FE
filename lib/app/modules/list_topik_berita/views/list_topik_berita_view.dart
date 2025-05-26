@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:newcity/api.dart';
-
+import 'package:newcity/theme/colors.dart';
 import '../controllers/list_topik_berita_controller.dart';
 import 'package:newcity/models/berita.dart';
 
@@ -52,9 +52,9 @@ Widget TopikTile({required KategoriBerita kategori}) {
             );
           } else if (snapshot.hasError) {
             return Container(
-              color: Colors.grey[300],
+              color: greyColor,
               child: Center(
-                child: Icon(Icons.error, color: Colors.red),
+                child: Icon(Icons.error, color: redColor),
               ),
             );
           } else {
@@ -73,7 +73,7 @@ Widget TopikTile({required KategoriBerita kategori}) {
                   borderRadius: BorderRadius.circular(16),
                   gradient: LinearGradient(
                     colors: [
-                      Colors.black.withOpacity(0.6),
+                      blackColor.withOpacity(0.6),
                       Colors.transparent,
                     ],
                     begin: Alignment.bottomCenter,
@@ -83,7 +83,7 @@ Widget TopikTile({required KategoriBerita kategori}) {
                 child: Text(
                   kategori.name,
                   style: TextStyle(
-                    color: Colors.white,
+                    color: whiteColor,
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),

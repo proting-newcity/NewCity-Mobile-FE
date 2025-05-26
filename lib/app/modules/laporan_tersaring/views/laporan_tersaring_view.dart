@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:newcity/theme/colors.dart';
 import 'package:get/get.dart';
 import 'package:newcity/widgets/report_tile_government.dart';
 
@@ -39,17 +39,17 @@ class LaporanTersaringView extends GetView<LaporanTersaringController> {
                 Get.toNamed('/list-pencarian-laporan', arguments: keyword);
               },
               decoration: const InputDecoration(
-                prefixIcon: Icon(Icons.search, color: Color(0xFF588157)),
+                prefixIcon: Icon(Icons.search, color: primaryColor),
                 hintText: 'Cari laporan',
                 focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(20)),
-                    borderSide: BorderSide(color: Color(0xFF588157))),
+                    borderSide: BorderSide(color: primaryColor)),
                 enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(20)),
-                    borderSide: BorderSide(color: Color(0xFF588157))),
+                    borderSide: BorderSide(color: primaryColor)),
                 border: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(20)),
-                    borderSide: BorderSide(color: Color(0xFF588157))),
+                    borderSide: BorderSide(color: primaryColor)),
                 contentPadding: EdgeInsets.symmetric(vertical: 14),
               ),
             ),
