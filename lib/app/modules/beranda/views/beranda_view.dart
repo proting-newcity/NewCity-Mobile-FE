@@ -135,25 +135,23 @@ class BerandaView extends GetView<BerandaController> {
               if (controller.isLoading.isTrue) {
                 return const Center(child: CircularProgressIndicator());
               }
-
-                  return ListView.builder(
-                    controller: _scrollController,
-                    itemCount: controller.filteredReports.length + 1,
-                    itemBuilder: (context, index) {
-                      if (index < controller.filteredReports.length) {
-                        return ReportTile(controller.filteredReports[index]);
-                      } else {
-                        return controller.isLoadingMore.isTrue
-                            ? const Center(child: CircularProgressIndicator())
-                            : const SizedBox.shrink();
-                      }
-                    },
-                  );
-                }),
-              ),
-            ],
+              return ListView.builder(
+                controller: _scrollController,
+                itemCount: controller.filteredReports.length + 1,
+                itemBuilder: (context, index) {
+                  if (index < controller.filteredReports.length) {
+                    return ReportTile(controller.filteredReports[index]);
+                  } else {
+                    return controller.isLoadingMore.isTrue
+                        ? const Center(child: CircularProgressIndicator())
+                        : const SizedBox.shrink();
+                  }
+                },
+              );
+            }),
           ),
-        )
-      );
+        ],
+      ),
+    );
   }
 }
