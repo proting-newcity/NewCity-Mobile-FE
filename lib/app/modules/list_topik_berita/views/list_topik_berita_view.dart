@@ -5,6 +5,7 @@ import 'package:newcity/theme/colors.dart';
 import '../controllers/list_topik_berita_controller.dart';
 import 'package:newcity/models/berita.dart';
 import 'package:newcity/theme/text_theme.dart';
+import 'package:newcity/theme/Radius.dart';
 
 class ListTopikBeritaView extends GetView<ListTopikBeritaController> {
   const ListTopikBeritaView({super.key});
@@ -39,7 +40,7 @@ Widget TopikTile({required KategoriBerita kategori}) {
       height: 150,
       margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: borderXlAltCircular,
       ),
       child: FutureBuilder<ImageProvider<Object>>(
         future: ImageService.loadImage(kategori.foto),
@@ -58,7 +59,7 @@ Widget TopikTile({required KategoriBerita kategori}) {
           } else {
             return Container(
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16),
+                borderRadius: borderXlAltCircular,
                 image: DecorationImage(
                   image: snapshot.data!,
                   fit: BoxFit.fitWidth,
@@ -68,7 +69,7 @@ Widget TopikTile({required KategoriBerita kategori}) {
                 alignment: Alignment.center,
                 padding: EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(16),
+                  borderRadius: borderXlAltCircular,
                   gradient: LinearGradient(
                     colors: [
                       blackColor.withOpacity(0.6),

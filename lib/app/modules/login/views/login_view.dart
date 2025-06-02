@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:newcity/theme/Radius.dart';
 import 'package:get/get.dart';
 import 'package:newcity/theme/colors.dart';
 import '../controllers/login_controller.dart';
@@ -69,7 +69,7 @@ class LoginView extends GetView<LoginController> {
                             enabledBorder: OutlineInputBorder(
                                 borderSide:
                                     BorderSide(color: primaryColor, width: 1),
-                                borderRadius: BorderRadius.circular(10)),
+                                borderRadius: borderLgCircular),
                           ),
                         ),
                         SizedBox(height: 20),
@@ -83,7 +83,7 @@ class LoginView extends GetView<LoginController> {
                             enabledBorder: OutlineInputBorder(
                                 borderSide:
                                     BorderSide(color: primaryColor, width: 1),
-                                borderRadius: BorderRadius.circular(10)),
+                                borderRadius: borderLgCircular),
                           ),
                         ),
                         SizedBox(height: 10),
@@ -106,7 +106,7 @@ class LoginView extends GetView<LoginController> {
                             backgroundColor: primaryColor,
                             minimumSize: const Size(double.infinity, 50),
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15),
+                              borderRadius: borderXlCircular,
                             ),
                           ),
                         ),

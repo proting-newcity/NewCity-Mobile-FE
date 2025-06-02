@@ -195,3 +195,13 @@ const TextStyle boldWhite15 = TextStyle(
   fontWeight: FontWeight.bold,
   fontSize: 15,
 );
+
+const TextStyle white22 = TextStyle(
+  fontSize: 22,
+  color: whiteColor,
+);
+
+const TextStyle red20 = TextStyle(
+  fontSize: 20,
+  color: redColor,
+);

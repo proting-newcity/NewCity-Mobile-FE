@@ -3,8 +3,7 @@ import 'package:newcity/theme/colors.dart';
 import 'package:get/get.dart';
 import 'package:newcity/theme/text_theme.dart';
 import '../controllers/register_controller.dart';
-
-// import 'package:google_fonts/google_fonts.dart';
+import 'package:newcity/theme/Radius.dart';
 
 class RegisterView extends GetView<RegisterController> {
   const RegisterView({super.key});
@@ -69,7 +68,7 @@ class RegisterView extends GetView<RegisterController> {
                             enabledBorder: OutlineInputBorder(
                                 borderSide:
                                     BorderSide(color: primaryColor, width: 1),
-                                borderRadius: BorderRadius.circular(10)),
+                                borderRadius: borderLgCircular),
                           ),
                           controller: controller.namacontroller,
                         ),
@@ -82,7 +81,7 @@ class RegisterView extends GetView<RegisterController> {
                             enabledBorder: OutlineInputBorder(
                                 borderSide:
                                     BorderSide(color: primaryColor, width: 1),
-                                borderRadius: BorderRadius.circular(10)),
+                                borderRadius: borderLgCircular),
                           ),
                           controller: controller.notelpcontroller,
                         ),
@@ -97,7 +96,7 @@ class RegisterView extends GetView<RegisterController> {
                             enabledBorder: OutlineInputBorder(
                                 borderSide:
                                     BorderSide(color: primaryColor, width: 1),
-                                borderRadius: BorderRadius.circular(10)),
+                                borderRadius: borderLgCircular),
                           ),
                           controller: controller.passwordcontroller,
                         ),
@@ -111,7 +110,7 @@ class RegisterView extends GetView<RegisterController> {
                             backgroundColor: primaryColor,
                             minimumSize: const Size(double.infinity, 50),
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15),
+                              borderRadius: borderXlCircular,
                             ),
                           ),
                         ),

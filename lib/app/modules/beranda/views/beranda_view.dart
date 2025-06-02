@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:motion_tab_bar/MotionTabBar.dart';
+import 'package:newcity/theme/Radius.dart';
 import 'package:newcity/widgets/report_tile.dart';
 import 'package:newcity/widgets/icon_button.dart';
 import '../controllers/beranda_controller.dart';
@@ -94,13 +95,13 @@ class BerandaView extends GetView<BerandaController> {
               prefixIcon: Icon(Icons.search, color: primaryColor),
               hintText: 'Cari laporan',
               focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                  borderRadius: borderXxxl,
                   borderSide: BorderSide(color: primaryColor)),
               enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                  borderRadius: borderXxxl,
                   borderSide: BorderSide(color: primaryColor)),
               border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                  borderRadius: borderXxxl,
                   borderSide: BorderSide(color: primaryColor)),
               contentPadding: EdgeInsets.symmetric(vertical: 15),
             ),

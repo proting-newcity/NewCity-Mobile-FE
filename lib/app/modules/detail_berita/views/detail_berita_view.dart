@@ -4,7 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:newcity/services/image_service.dart';
 import 'package:newcity/theme/colors.dart';
 import 'package:newcity/theme/text_theme.dart';
-
+import 'package:newcity/theme/Radius.dart';
 import '../controllers/detail_berita_controller.dart';
 
 class DetailBeritaView extends GetView<DetailBeritaController> {
@@ -27,7 +27,7 @@ class DetailBeritaView extends GetView<DetailBeritaController> {
                         return Container(
                           height: 225,
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8),
+                            borderRadius: borderMdCircular,
                             color: greyColor,
                           ),
                           child: Center(child: CircularProgressIndicator()),
@@ -36,7 +36,7 @@ class DetailBeritaView extends GetView<DetailBeritaController> {
                         return Container(
                           height: 225,
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8),
+                            borderRadius: borderMdCircular,
                             color: greyColor,
                           ),
                           child: Center(
@@ -47,7 +47,7 @@ class DetailBeritaView extends GetView<DetailBeritaController> {
                         return Container(
                           height: 225,
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8),
+                            borderRadius: borderMdCircular,
                             image: DecorationImage(
                               image: snapshot.data!,
                               fit: BoxFit.cover,

@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import '../controllers/create_laporan_controller.dart';
 import 'package:newcity/widgets/topic_chip.dart';
 import 'package:newcity/theme/text_theme.dart';
+import 'package:newcity/theme/Radius.dart';
 
 class CreateLaporanView extends GetView<CreateLaporanController> {
   const CreateLaporanView({super.key});
@@ -38,10 +39,10 @@ class CreateLaporanView extends GetView<CreateLaporanController> {
                 hintText: "Masukkan judul laporan",
                 enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: primaryColor, width: 2),
-                    borderRadius: BorderRadius.circular(10)),
+                    borderRadius: borderLgCircular),
                 focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: primaryColor, width: 2),
-                    borderRadius: BorderRadius.circular(10)),
+                    borderRadius: borderLgCircular),
               ),
             ),
             SizedBox(height: 18),
@@ -49,14 +50,14 @@ class CreateLaporanView extends GetView<CreateLaporanController> {
               height: 150,
               decoration: BoxDecoration(
                   border: Border.all(color: primaryColor, width: 2),
-                  borderRadius: BorderRadius.circular(10)),
+                  borderRadius: borderLgCircular),
               child: GestureDetector(onTap: () async {
                 // buka kamera
                 await controller.openCamera();
               }, child: Obx(() {
                 if (controller.photo.value != null) {
                   return ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: borderLgCircular,
                     child: Image.file(
                       File(controller.photo.value!.path),
                       fit: BoxFit.contain, // atur gambar di container
@@ -83,10 +84,10 @@ class CreateLaporanView extends GetView<CreateLaporanController> {
                 hintText: "Masukkan lokasi",
                 enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: primaryColor, width: 2),
-                    borderRadius: BorderRadius.circular(10)),
+                    borderRadius: borderLgCircular),
                 focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: primaryColor, width: 2),
-                    borderRadius: BorderRadius.circular(10)),
+                    borderRadius: borderLgCircular),
               ),
             ),
             SizedBox(height: 18),
@@ -98,10 +99,10 @@ class CreateLaporanView extends GetView<CreateLaporanController> {
                 hintText: "Masukkan detail dari laporan mu disini",
                 enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: primaryColor, width: 2),
-                    borderRadius: BorderRadius.circular(10)),
+                    borderRadius: borderLgCircular),
                 focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: primaryColor, width: 2),
-                    borderRadius: BorderRadius.circular(10)),
+                    borderRadius: borderLgCircular),
               ),
             ),
             SizedBox(height: 20),

@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:newcity/widgets/report_tile.dart';
 import 'package:newcity/theme/text_theme.dart';
 import '../controllers/laporan_disukai_controller.dart';
+import 'package:newcity/theme/Radius.dart';
 
 class LaporanDisukaiView extends GetView<LaporanDisukaiController> {
   const LaporanDisukaiView({super.key});
@@ -38,13 +39,13 @@ class LaporanDisukaiView extends GetView<LaporanDisukaiController> {
                 prefixIcon: Icon(Icons.search, color: primaryColor),
                 hintText: 'Cari laporan',
                 focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                    borderRadius: borderXxxl,
                     borderSide: BorderSide(color: primaryColor)),
                 enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                    borderRadius: borderXxxl,
                     borderSide: BorderSide(color: primaryColor)),
                 border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                    borderRadius: borderXxxl,
                     borderSide: BorderSide(color: primaryColor)),
                 contentPadding: EdgeInsets.symmetric(vertical: 14),
               ),

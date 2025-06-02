@@ -3,6 +3,7 @@ import 'package:newcity/theme/colors.dart';
 import 'package:get/get.dart';
 import '../controllers/welcomepage_controller.dart';
 import 'package:newcity/theme/text_theme.dart';
+import 'package:newcity/theme/Radius.dart';
 
 class WelcomepageView extends GetView<WelcomepageController> {
   final WelcomepageController controller = Get.put(WelcomepageController());
@@ -40,7 +41,7 @@ class WelcomepageView extends GetView<WelcomepageController> {
                           style: ElevatedButton.styleFrom(
                             backgroundColor: primaryColor,
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10),
+                              borderRadius: borderLgCircular,
                             ),
                             minimumSize: Size(320, 50),
                           ),
@@ -58,7 +59,7 @@ class WelcomepageView extends GetView<WelcomepageController> {
                           style: ElevatedButton.styleFrom(
                             backgroundColor: backgroundColor2,
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10),
+                              borderRadius: borderLgCircular,
                             ),
                             minimumSize: Size(320, 50),
                           ),

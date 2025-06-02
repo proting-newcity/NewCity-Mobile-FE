@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:newcity/theme/colors.dart';
 import '../controllers/lupa_password_controller.dart';
 import 'package:newcity/theme/text_theme.dart';
-// import 'package:google_fonts/google_fonts.dart';
+import 'package:newcity/theme/Radius.dart';
 
 class LupaPasswordView extends GetView<LupaPasswordController> {
   const LupaPasswordView({super.key});
@@ -87,7 +87,7 @@ class LupaPasswordView extends GetView<LupaPasswordController> {
                             backgroundColor: primaryColor,
                             minimumSize: const Size(double.infinity, 50),
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15),
+                              borderRadius: borderXlCircular,
                             ),
                           ),
                         ),

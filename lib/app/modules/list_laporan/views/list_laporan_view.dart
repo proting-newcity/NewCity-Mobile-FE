@@ -5,6 +5,7 @@ import '../controllers/list_laporan_controller.dart';
 import 'package:newcity/widgets/report_tile.dart';
 import 'package:newcity/theme/colors.dart';
 import 'package:newcity/theme/text_theme.dart';
+import 'package:newcity/theme/Radius.dart';
 
 class ListLaporanView extends GetView<ListLaporanController> {
   const ListLaporanView({super.key});
@@ -58,13 +59,13 @@ class ListLaporanView extends GetView<ListLaporanController> {
                 prefixIcon: Icon(Icons.search, color: primaryColor),
                 hintText: 'Cari laporan',
                 focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                    borderRadius: borderXxxl,
                     borderSide: BorderSide(color: primaryColor)),
                 enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                    borderRadius: borderXxxl,
                     borderSide: BorderSide(color: primaryColor)),
                 border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                    borderRadius: borderXxxl,
                     borderSide: BorderSide(color: primaryColor)),
                 contentPadding: EdgeInsets.symmetric(vertical: 14),
               ),

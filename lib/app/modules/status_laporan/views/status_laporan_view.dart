@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:newcity/widgets/report_tile.dart';
 import 'package:newcity/theme/text_theme.dart';
 import '../controllers/status_laporan_controller.dart';
+import 'package:newcity/theme/Radius.dart';
 
 class StatusLaporanView extends GetView<StatusLaporanController> {
   const StatusLaporanView({super.key});
@@ -37,13 +38,13 @@ class StatusLaporanView extends GetView<StatusLaporanController> {
                 prefixIcon: Icon(Icons.search, color: primaryColor),
                 hintText: 'Cari laporan',
                 focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                    borderRadius: borderXxxl,
                     borderSide: BorderSide(color: primaryColor)),
                 enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                    borderRadius: borderXxxl,
                     borderSide: BorderSide(color: primaryColor)),
                 border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                    borderRadius: borderXxxl,
                     borderSide: BorderSide(color: primaryColor)),
                 contentPadding: EdgeInsets.symmetric(vertical: 14),
               ),
@@ -66,9 +67,7 @@ class StatusLaporanView extends GetView<StatusLaporanController> {
                           child: Container(
                             height: 35,
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(10),
-                              ),
+                              borderRadius: borderMd,
                               color: Color.fromRGBO(102, 102, 102, 1),
                             ),
                             child: Center(
@@ -91,9 +90,7 @@ class StatusLaporanView extends GetView<StatusLaporanController> {
                           child: Container(
                             height: 35,
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(10),
-                              ),
+                              borderRadius: borderMd,
                               color: backgroundColor,
                             ),
                             child: Center(
@@ -121,9 +118,7 @@ class StatusLaporanView extends GetView<StatusLaporanController> {
                           child: Container(
                             height: 35,
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(10),
-                              ),
+                              borderRadius: borderMd,
                               color: statusDalamProses,
                             ),
                             child: Center(
@@ -146,9 +141,7 @@ class StatusLaporanView extends GetView<StatusLaporanController> {
                           child: Container(
                             height: 35,
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(10),
-                              ),
+                              borderRadius: borderMd,
                               color: secondaryColor,
                             ),
                             child: Center(

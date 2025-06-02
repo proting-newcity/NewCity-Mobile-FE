@@ -3,6 +3,7 @@ import 'package:newcity/theme/colors.dart';
 import 'package:newcity/theme/text_theme.dart';
 import 'package:get/get.dart';
 import '../controllers/forgot_password_controller.dart';
+import 'package:newcity/theme/Radius.dart';
 
 class NewPasswordView extends GetView<ForgotPasswordController> {
   const NewPasswordView({super.key});
@@ -68,7 +69,7 @@ class NewPasswordView extends GetView<ForgotPasswordController> {
                             enabledBorder: OutlineInputBorder(
                                 borderSide:
                                     BorderSide(color: primaryColor, width: 1),
-                                borderRadius: BorderRadius.circular(10)),
+                                borderRadius: borderLgCircular),
                           ),
                         ),
                         SizedBox(height: 20),
@@ -82,7 +83,7 @@ class NewPasswordView extends GetView<ForgotPasswordController> {
                             enabledBorder: OutlineInputBorder(
                                 borderSide:
                                     BorderSide(color: primaryColor, width: 1),
-                                borderRadius: BorderRadius.circular(10)),
+                                borderRadius: borderLgCircular),
                           ),
                         ),
                         SizedBox(height: 20),
@@ -96,7 +97,7 @@ class NewPasswordView extends GetView<ForgotPasswordController> {
                             backgroundColor: primaryColor,
                             minimumSize: const Size(double.infinity, 50),
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15),
+                              borderRadius: borderXlCircular,
                             ),
                           ),
                         ),

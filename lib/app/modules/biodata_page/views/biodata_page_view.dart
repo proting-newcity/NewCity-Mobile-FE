@@ -29,7 +29,7 @@ class BiodataPageView extends GetView<BiodataPageController> {
             Get.toNamed('/beranda');
           },
         ),
-        title: Text('Akun', style: TextStyle(fontSize: 22, color: whiteColor)),
+        title: Text('Akun', style: white22),
         backgroundColor: primaryColor,
       ),
       body: Stack(
@@ -110,10 +110,7 @@ class BiodataPageView extends GetView<BiodataPageController> {
                 Divider(),
                 ListTile(
                   leading: Icon(Icons.exit_to_app, color: redColor),
-                  title: Text(
-                    'Keluar',
-                    style: TextStyle(fontSize: 20, color: redColor),
-                  ),
+                  title: Text('Keluar', style: red20),
                   onTap: () {
                     _showLogoutDialog(context);
                   },

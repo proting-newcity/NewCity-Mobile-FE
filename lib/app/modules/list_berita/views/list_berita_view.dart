@@ -6,6 +6,7 @@ import '../controllers/list_berita_controller.dart';
 import 'package:newcity/models/berita.dart';
 import 'package:newcity/theme/colors.dart';
 import 'package:newcity/theme/text_theme.dart';
+import 'package:newcity/theme/Radius.dart';
 
 class ListBeritaView extends GetView<ListBeritaController> {
   const ListBeritaView({super.key});
@@ -146,13 +147,13 @@ class ListBeritaView extends GetView<ListBeritaController> {
             image: image,
             fit: BoxFit.contain,
           ),
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: borderXlAltCircular,
         ),
         child: Container(
           alignment: Alignment.bottomCenter,
           padding: EdgeInsets.all(8),
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: borderXlAltCircular,
             gradient: LinearGradient(
               colors: [
                 blackColor.withOpacity(0.6),

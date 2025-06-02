@@ -7,6 +7,7 @@ import 'package:newcity/widgets/detail_status.dart';
 import 'package:newcity/theme/colors.dart';
 import '../controllers/detail_laporan_controller.dart';
 import 'package:newcity/theme/text_theme.dart';
+import 'package:newcity/theme/Radius.dart';
 
 class DetailLaporanView extends GetView<DetailLaporanController> {
   DetailLaporanView({super.key});
@@ -26,7 +27,7 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                       return Container(
                         height: 225,
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
+                          borderRadius: borderMdCircular,
                           color: greyColor,
                         ),
                         child: Center(child: CircularProgressIndicator()),
@@ -41,7 +42,7 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                             return Container(
                               height: 225,
                               decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(8),
+                                borderRadius: borderMdCircular,
                                 color: greyColor,
                               ),
                               child: Center(child: CircularProgressIndicator()),
@@ -50,7 +51,7 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                             return Container(
                               height: 225,
                               decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(8),
+                                borderRadius: borderMdCircular,
                                 color: greyColor,
                               ),
                               child: Center(
@@ -61,7 +62,7 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                             return Container(
                               height: 225,
                               decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(8),
+                                borderRadius: borderMdCircular,
                                 color: greyColor,
                               ),
                               child: Center(
@@ -72,7 +73,7 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                             return Container(
                               height: 225,
                               decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(8),
+                                borderRadius: borderMdCircular,
                                 image: DecorationImage(
                                   image: snapshot.data!,
                                   fit: BoxFit.cover,
@@ -261,8 +262,7 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                                             child: Container(
                                               height: 35,
                                               decoration: BoxDecoration(
-                                                borderRadius: BorderRadius.all(
-                                                    Radius.circular(10)),
+                                                borderRadius: borderLg,
                                                 color: isMaxStatusReached
                                                     ? grey2Color // Warna abu-abu jika status sudah 4
                                                     : controller.getStatusState(

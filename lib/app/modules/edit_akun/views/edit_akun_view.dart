@@ -5,6 +5,7 @@ import 'package:newcity/models/user.dart';
 import '../controllers/edit_akun_controller.dart';
 import 'package:newcity/theme/colors.dart';
 import 'package:newcity/theme/text_theme.dart';
+import 'package:newcity/theme/Radius.dart';
 
 // ignore: must_be_immutable
 class EditAkunView extends GetView<EditAkunController> {
@@ -35,7 +36,7 @@ class EditAkunView extends GetView<EditAkunController> {
                 // TODO update biar load gambar dari API (ini salah)
                 if (controller.photo.value != null) {
                   return ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: borderLgCircular,
                     child: Image.file(
                       File(controller.photo.value!.path),
                       fit: BoxFit.contain, // atur gambar di container
@@ -71,10 +72,10 @@ class EditAkunView extends GetView<EditAkunController> {
                 hintText: "Masukkan nama",
                 enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: primaryColor, width: 2),
-                    borderRadius: BorderRadius.circular(10)),
+                    borderRadius: borderLgCircular),
                 focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: primaryColor, width: 2),
-                    borderRadius: BorderRadius.circular(10)),
+                    borderRadius: borderLgCircular),
               ),
             ),
             SizedBox(height: 20),
@@ -85,10 +86,10 @@ class EditAkunView extends GetView<EditAkunController> {
                 hintText: "Masukkan nomor telepon",
                 enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: primaryColor, width: 2),
-                    borderRadius: BorderRadius.circular(10)),
+                    borderRadius: borderLgCircular),
                 focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: primaryColor, width: 2),
-                    borderRadius: BorderRadius.circular(10)),
+                    borderRadius: borderLgCircular),
               ),
             ),
             SizedBox(height: 20),
@@ -100,7 +101,7 @@ class EditAkunView extends GetView<EditAkunController> {
                 backgroundColor: primaryColor,
                 minimumSize: const Size(double.infinity, 50),
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15),
+                  borderRadius: borderXlCircular,
                 ),
               ),
               child: Text('Simpan Perubahan', style: regularWhite),

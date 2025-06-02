@@ -3,6 +3,7 @@ import 'package:newcity/theme/colors.dart';
 import 'package:get/get.dart';
 import '../controllers/faq_controller.dart';
 import 'package:newcity/theme/text_theme.dart';
+import 'package:newcity/theme/Radius.dart';
 
 class FaqView extends GetView<FaqController> {
   FaqView({super.key});
@@ -62,7 +63,7 @@ class FaqView extends GetView<FaqController> {
                       children: [
                         Container(
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30),
+                            borderRadius: borderXxxxlCircular,
                             border: Border.all(
                               color: backgroundColor,
                               width: 1,
@@ -76,10 +77,10 @@ class FaqView extends GetView<FaqController> {
                             iconColor: backgroundColor,
                             textColor: backgroundColor,
                             collapsedShape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30),
+                              borderRadius: borderXxxxlCircular,
                             ),
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30),
+                              borderRadius: borderXxxxlCircular,
                             ),
                             children: [
                               Text(faq["answer"]!,

@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:pinput/pinput.dart';
 import '../controllers/forgot_password_controller.dart';
 import 'package:newcity/theme/text_theme.dart';
+import 'package:newcity/theme/Radius.dart';
 
 class KodeVerifikasiView extends GetView<ForgotPasswordController> {
   const KodeVerifikasiView({super.key});
@@ -79,7 +80,7 @@ class KodeVerifikasiView extends GetView<ForgotPasswordController> {
                     backgroundColor: primaryColor,
                     minimumSize: const Size(double.infinity, 50),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15),
+                      borderRadius: borderXlCircular,
                     ),
                   ),
                 ),
