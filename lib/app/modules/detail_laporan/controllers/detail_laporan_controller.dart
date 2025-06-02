@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:newcity/api.dart';
+import 'package:newcity/services/report_service.dart';
 import 'package:newcity/models/report.dart';
 import 'package:newcity/widgets/comments.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class DetailLaporanController extends GetxController {
   var report = Rx<ReportResponse?>(null);
@@ -36,7 +37,7 @@ class DetailLaporanController extends GetxController {
 
   void fetchReport(int id) async {
     try {
-      var response = await ApiService.getReport(id);
+      var response = await ReportService.getReportDetail(id);
       report.value = response;
       likes.value = response?.like ?? 0;
       commentsCount.value = response?.comment ?? 0;
@@ -63,7 +64,7 @@ class DetailLaporanController extends GetxController {
     try {
       isLoadingComments(true);
       commentError('');
-      var fetchedComments = await ApiService.getComments(reportId);
+      var fetchedComments = await ReportService.getComments(reportId);
       if (fetchedComments != null && fetchedComments.isNotEmpty) {
         comments.assignAll(fetchedComments);
       } else {
@@ -80,7 +81,7 @@ class DetailLaporanController extends GetxController {
   Future<void> addComment(String content) async {
     try {
       final response =
-          await ApiService.postComment(report.value!.report.id!, content);
+          await ReportService.postComment(report.value!.report.id!, content);
       if (response.statusCode == 200 || response.statusCode == 201) {
         Get.snackbar("Success", "Comment submitted successfully!",
             snackPosition: SnackPosition.BOTTOM);
@@ -95,7 +96,7 @@ class DetailLaporanController extends GetxController {
   }
 
   void toggleLike() {
-    ApiService.toggleLikeReport(report.value!.report.id!);
+    ReportService.toggleLikeReport(report.value!.report.id!);
     if (isLiked.value) {
       likes.value--;
     } else {
@@ -120,9 +121,15 @@ class DetailLaporanController extends GetxController {
 
   Future<void> addStatus(int id, String status) async {
     try {
-      await ApiService.addStatus(id, status);
+      await ReportService.addStatus(id, status);
     } catch (e) {
       print(e);
     }
+  }
+
+  Future<String?> getUserRole() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs
+        .getString('userRole'); // Nilainya bisa 'masyarakat' atau 'pemerintah'
   }
 }

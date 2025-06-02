@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:newcity/api.dart';
+import 'package:newcity/services/image_service.dart';
 import 'package:newcity/theme/colors.dart';
 import '../controllers/list_topik_berita_controller.dart';
 import 'package:newcity/models/berita.dart';
@@ -44,7 +44,7 @@ Widget TopikTile({required KategoriBerita kategori}) {
         borderRadius: BorderRadius.circular(16),
       ),
       child: FutureBuilder<ImageProvider<Object>>(
-        future: ApiService.loadImage(kategori.foto),
+        future: ImageService.loadImage(kategori.foto),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(
@@ -74,7 +74,7 @@ Widget TopikTile({required KategoriBerita kategori}) {
                   gradient: LinearGradient(
                     colors: [
                       blackColor.withOpacity(0.6),
-                      Colors.transparent,
+                      transparentColor,
                     ],
                     begin: Alignment.bottomCenter,
                     end: Alignment.topCenter,

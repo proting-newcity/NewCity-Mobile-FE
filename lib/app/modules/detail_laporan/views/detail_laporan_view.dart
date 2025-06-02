@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:newcity/api.dart';
+import 'package:newcity/services/image_service.dart';
+import 'package:newcity/app/modules/login/controllers/login_controller.dart';
 import 'package:newcity/widgets/detail_status.dart';
 import 'package:newcity/theme/colors.dart';
 import '../controllers/detail_laporan_controller.dart';
 
 class DetailLaporanView extends GetView<DetailLaporanController> {
   DetailLaporanView({super.key});
-
+  final LoginController loginController = Get.find<LoginController>();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -31,7 +32,7 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                       );
                     } else {
                       return FutureBuilder<ImageProvider<Object>>(
-                        future: ApiService.loadImage(
+                        future: ImageService.loadImage(
                             controller.report.value!.report.foto),
                         builder: (context, snapshot) {
                           if (snapshot.connectionState ==
@@ -80,7 +81,7 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                                 children: [
                                   Container(
                                     decoration: BoxDecoration(
-                                      color: Colors.black.withOpacity(0.4),
+                                      color: blackColor.withOpacity(0.4),
                                     ),
                                   ),
                                 ],
@@ -225,97 +226,87 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                                                         ),
                                                       ],
                                                     );
+                                              // Placeholder jika status tidak ada
                                             },
                                           ),
                                         ),
-                                        confirm: controller.report.value!.report
-                                                    .status.length <
-                                                4
-                                            ? GestureDetector(
-                                                onTap: () {
-                                                  controller.addStatus(
-                                                      controller.report.value
-                                                              ?.report.id ??
-                                                          0,
-                                                      controller.getStatusState(
-                                                          controller
-                                                              .report
-                                                              .value!
-                                                              .report
-                                                              .status
-                                                              .length)[1]);
-                                                  controller.fetchReport(
-                                                      controller.report.value
-                                                              ?.report.id ??
-                                                          0);
-                                                  Get.back();
-                                                },
-                                                child: Container(
-                                                  height: 35,
-                                                  decoration: BoxDecoration(
-                                                    borderRadius:
-                                                        BorderRadius.all(
-                                                      Radius.circular(10),
-                                                    ),
-                                                    color: controller
-                                                        .getStatusState(
-                                                            controller
-                                                                .report
-                                                                .value!
-                                                                .report
-                                                                .status
-                                                                .length)[0],
-                                                  ),
-                                                  child: Center(
-                                                    child: Text(
-                                                      controller.getStatusState(
-                                                          controller
-                                                              .report
-                                                              .value!
-                                                              .report
-                                                              .status
-                                                              .length)[1],
-                                                      style: TextStyle(
-                                                          color: whiteColor,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          fontSize: 15),
-                                                    ),
-                                                  ),
-                                                ),
-                                              )
-                                            : Container(
-                                                height: 35,
-                                                decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.all(
-                                                    Radius.circular(10),
-                                                  ),
-                                                  color: Color.fromRGBO(
-                                                      58, 90, 64, 0.5),
-                                                ),
-                                                child: Center(
-                                                  child: Text(
-                                                    controller.getStatusState(
+                                        confirm: Obx(() {
+                                          bool isGovernment =
+                                              loginController.userRole.value ==
+                                                  'pemerintah';
+                                          bool isMaxStatusReached = controller
+                                                  .report
+                                                  .value!
+                                                  .report
+                                                  .status
+                                                  .length >=
+                                              4;
+
+                                          if (!isGovernment) {
+                                            return Container(); // Jika masyarakat, tombol hilang
+                                          }
+
+                                          return GestureDetector(
+                                            onTap: isMaxStatusReached
+                                                ? null // Jika status sudah 4, tombol tidak bisa diklik
+                                                : () {
+                                                    controller.addStatus(
+                                                        controller.report.value
+                                                                ?.report.id ??
+                                                            0,
+                                                        controller
+                                                            .getStatusState(
+                                                                controller
+                                                                    .report
+                                                                    .value!
+                                                                    .report
+                                                                    .status
+                                                                    .length)[1]);
+                                                    controller.fetchReport(
+                                                        controller.report.value
+                                                                ?.report.id ??
+                                                            0);
+                                                    Get.back();
+                                                  },
+                                            child: Container(
+                                              height: 35,
+                                              decoration: BoxDecoration(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(10)),
+                                                color: isMaxStatusReached
+                                                    ? grey2Color // Warna abu-abu jika status sudah 4
+                                                    : controller.getStatusState(
                                                         controller
                                                             .report
                                                             .value!
                                                             .report
                                                             .status
-                                                            .length)[1],
-                                                    style: TextStyle(
-                                                        color: whiteColor,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        fontSize: 15),
+                                                            .length)[0],
+                                              ),
+                                              child: Center(
+                                                child: Text(
+                                                  controller.getStatusState(
+                                                      controller
+                                                          .report
+                                                          .value!
+                                                          .report
+                                                          .status
+                                                          .length)[1],
+                                                  style: TextStyle(
+                                                    color: whiteColor,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 15,
                                                   ),
                                                 ),
                                               ),
+                                            ),
+                                          );
+                                        }),
                                       );
                                     },
                                     style: ElevatedButton.styleFrom(
                                       foregroundColor: whiteColor,
-                                      backgroundColor: primaryColor,
+                                      backgroundColor: backgroundColor,
                                     ),
                                     child: Row(
                                       children: [
@@ -452,7 +443,7 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                                 ? Icons.bookmark
                                 : Icons.bookmark_border,
                             color: controller.isBookmarked.value
-                                ? Colors.blue
+                                ? blueColor
                                 : grey2Color,
                           ),
                           onPressed: () {

@@ -1,4 +1,8 @@
 {
     "cmake.sourceDirectory": "D:/TELKOM/SEMESTER 5/PPB/tubes/NewCity-Mobile-FE/windows/flutter",
-    "java.configuration.updateBuildConfiguration": "interactive"
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "sonarlint.connectedMode.project": {
+        "connectionId": "proting-newcity",
+        "projectKey": "proting-newcity_NewCity-Mobile-FE"
+    }
 }

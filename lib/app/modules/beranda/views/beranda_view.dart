@@ -5,6 +5,7 @@ import 'package:motion_tab_bar/MotionTabBar.dart';
 import 'package:newcity/widgets/report_tile.dart';
 import 'package:newcity/widgets/icon_button.dart';
 import '../controllers/beranda_controller.dart';
+import 'package:newcity/theme/colors.dart';
 
 class BerandaView extends GetView<BerandaController> {
   const BerandaView({super.key});
@@ -21,8 +22,6 @@ class BerandaView extends GetView<BerandaController> {
     });
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 100.0,
-        automaticallyImplyLeading: false,
         title: Column(
           children: [
             SizedBox(height: 16.0),
@@ -38,8 +37,7 @@ class BerandaView extends GetView<BerandaController> {
                   children: [
                     const Text('Selamat datang!',
                         style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Color(0xFF588157))),
+                            fontWeight: FontWeight.bold, color: primaryColor)),
                     Text(
                       DateFormat('EEEE dd MMMM yyyy', 'id_ID')
                           .format(DateTime.now()),
@@ -61,15 +59,15 @@ class BerandaView extends GetView<BerandaController> {
         tabBarHeight: 55,
         textStyle: const TextStyle(
           fontSize: 12,
-          color: Colors.black,
+          color: blackColor,
           fontWeight: FontWeight.w500,
         ),
         tabIconColor: Colors.black87,
         tabIconSize: 28.0,
         tabIconSelectedSize: 26.0,
-        tabSelectedColor: Color(0xFF588157),
-        tabIconSelectedColor: Colors.white,
-        tabBarColor: Colors.white,
+        tabSelectedColor: primaryColor,
+        tabIconSelectedColor: whiteColor,
+        tabBarColor: whiteColor,
         onTabItemSelected: (int value) {
           controller.changeTab(value);
         },
@@ -96,17 +94,17 @@ class BerandaView extends GetView<BerandaController> {
               Get.toNamed('/list-pencarian-laporan', arguments: keyword);
             },
             decoration: const InputDecoration(
-              prefixIcon: Icon(Icons.search, color: Color(0xFF588157)),
+              prefixIcon: Icon(Icons.search, color: primaryColor),
               hintText: 'Cari laporan',
               focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(25.0)),
-                  borderSide: BorderSide(color: Color(0xFF588157))),
+                  borderSide: BorderSide(color: primaryColor)),
               enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(25.0)),
-                  borderSide: BorderSide(color: Color(0xFF588157))),
+                  borderSide: BorderSide(color: primaryColor)),
               border: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(25.0)),
-                  borderSide: BorderSide(color: Color(0xFF588157))),
+                  borderSide: BorderSide(color: primaryColor)),
               contentPadding: EdgeInsets.symmetric(vertical: 15),
             ),
           ),
@@ -138,23 +136,24 @@ class BerandaView extends GetView<BerandaController> {
                 return const Center(child: CircularProgressIndicator());
               }
 
-              return ListView.builder(
-                controller: _scrollController,
-                itemCount: controller.filteredReports.length + 1,
-                itemBuilder: (context, index) {
-                  if (index < controller.filteredReports.length) {
-                    return ReportTile(controller.filteredReports[index]);
-                  } else {
-                    return controller.isLoadingMore.isTrue
-                        ? const Center(child: CircularProgressIndicator())
-                        : const SizedBox.shrink();
-                  }
-                },
-              );
-            }),
+                  return ListView.builder(
+                    controller: _scrollController,
+                    itemCount: controller.filteredReports.length + 1,
+                    itemBuilder: (context, index) {
+                      if (index < controller.filteredReports.length) {
+                        return ReportTile(controller.filteredReports[index]);
+                      } else {
+                        return controller.isLoadingMore.isTrue
+                            ? const Center(child: CircularProgressIndicator())
+                            : const SizedBox.shrink();
+                      }
+                    },
+                  );
+                }),
+              ),
+            ],
           ),
-        ],
-      ),
-    );
+        )
+      );
   }
 }

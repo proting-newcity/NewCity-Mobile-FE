@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:newcity/api.dart';
+import 'package:newcity/services/berita_service.dart';
 import 'package:newcity/models/berita.dart';
 
 class ListBeritaController extends GetxController {
@@ -33,7 +33,7 @@ class ListBeritaController extends GetxController {
 
     try {
       var response =
-          await ApiService.getPaginationBerita(currentPage.value + 1);
+          await BeritaService.getPaginationBerita(currentPage.value + 1);
       if (response != null) {
         final currentBerita = allBerita.value.berita;
         final newBerita = response.berita;
@@ -55,7 +55,7 @@ class ListBeritaController extends GetxController {
 
   void fetchKategori() async {
     try {
-      var response = await ApiService.getKategoriBerita();
+      var response = await BeritaService.getKategoriBerita();
       allKategori.value = response!;
     } catch (e) {
       print('Error fetching kategori: $e');

@@ -7,12 +7,12 @@ Widget BuildIconButton(String name, String label, String route) {
     child: Column(
       children: [
         CircleAvatar(
-          radius: 24.0,
+          radius: 30.0,
           backgroundColor: Color(0xFF588157),
           child: Image.asset(name),
         ),
         SizedBox(height: 4.0),
-        Text(label),
+        Text(label, style: TextStyle(color: Color(0xFF588157))),
       ],
     ),
     onTap: () {

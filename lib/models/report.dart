@@ -38,7 +38,7 @@ class ReportResponse {
     return ReportResponse(
         report: Report.fromJson(json['report']),
         masyarakatName: json['masyarakat']['name'],
-        pemerintahName: json['pemerintah']['name'] ?? "Unknown",
+        pemerintahName: json['pemerintah']?['name'] ?? "Unknown",
         kategoriName: json['kategori']['name'],
         like: json['like'],
         comment: json['comment'],
@@ -72,6 +72,7 @@ class Report {
   dynamic idKategori;
   DateTime createdAt;
   DateTime updatedAt;
+  String? pelapor;
 
   Report({
     this.id,
@@ -85,6 +86,7 @@ class Report {
     required this.idKategori,
     required this.createdAt,
     required this.updatedAt,
+    this.pelapor,
   });
 
   factory Report.fromJson(Map<String, dynamic> json) {
@@ -102,46 +104,9 @@ class Report {
       idKategori: json["id_kategori"],
       createdAt: DateTime.parse(json["created_at"]),
       updatedAt: DateTime.parse(json["updated_at"]),
+      pelapor: json["pelapor"],
     );
   }
-
-  factory Report.fromMap(Map<String, dynamic> map) => Report(
-        id: map["id"],
-        judul: map["judul"],
-        deskripsi: map["deskripsi"],
-        lokasi: map["lokasi"],
-        status: List<Status>.from(map["status"].map((x) => Status.fromJson(x))),
-        foto: map["foto"],
-        idMasyarakat: map["id_masyarakat"],
-        idPemerintah: map["id_pemerintah"],
-        idKategori: map["id_kategori"],
-        createdAt: DateTime.parse(map["created_at"]),
-        updatedAt: DateTime.parse(map["updated_at"]),
-      );
-
-  Map<String, dynamic> toJson() => {
-        "id": id,
-        "judul": judul,
-        "deskripsi": deskripsi,
-        "lokasi": lokasi,
-        "status": status.map((x) => x.toJson()).toList(),
-        "foto": foto,
-        "id_masyarakat": idMasyarakat,
-        "id_pemerintah": idPemerintah,
-        "id_kategori": idKategori,
-        "created_at": createdAt.toIso8601String(),
-        "updated_at": updatedAt.toIso8601String(),
-      };
-
-  Map<String, dynamic> toJsonPost() => {
-        "judul": judul,
-        "deskripsi": deskripsi,
-        "lokasi": lokasi,
-        "status": List<dynamic>.from(status.map((x) => x)),
-        "foto": foto,
-        "id_masyarakat": idMasyarakat,
-        "id_kategori": idKategori,
-      };
 }
 
 class KategoriReport {
@@ -175,14 +140,6 @@ class Status {
       deskripsi: json["deskripsi"],
       tanggal: DateTime.parse(json["tanggal"]),
     );
-  }
-
-  Map<String, dynamic> toJson() {
-    return {
-      "status": status,
-      "deskripsi": deskripsi,
-      "tanggal": tanggal,
-    };
   }
 }
 

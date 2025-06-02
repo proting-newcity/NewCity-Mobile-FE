@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:newcity/models/report.dart';
-import 'package:newcity/api.dart';
+import 'package:newcity/services/image_service.dart';
 
 Widget ReportTile(Report report) {
   return Padding(
@@ -50,19 +50,19 @@ Widget ReportTile(Report report) {
                         overflow: TextOverflow.ellipsis,
                       ),
                       SizedBox(height: 5),
-                      // Row(
-                      //   children: [
-                      //     Icon(Icons.person_pin_circle_outlined,
-                      //         color: Color.fromRGBO(88, 129, 87, 1)),
-                      //     Text(
-                      //       report.status[0],
-                      //       overflow: TextOverflow.ellipsis,
-                      //       maxLines: 2,
-                      //       style: TextStyle(fontSize: 12),
-                      //     ),
-                      //   ],
-                      // ),
-                      // SizedBox(height: 5),
+                      Row(
+                        children: [
+                          Icon(Icons.person_pin_circle_outlined,
+                              color: Color.fromRGBO(88, 129, 87, 1)),
+                          Text(
+                            report.pelapor ?? 'Anonymous',
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 2,
+                            style: TextStyle(fontSize: 12),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 5),
                       Row(
                         children: [
                           Icon(Icons.location_on_outlined,
@@ -94,7 +94,7 @@ Widget ReportTile(Report report) {
                     child: Column(
                       children: [
                         FutureBuilder<ImageProvider<Object>>(
-                          future: ApiService.loadImage(report.foto),
+                          future: ImageService.loadThumbnail(report.foto),
                           builder: (context, snapshot) {
                             if (snapshot.connectionState ==
                                 ConnectionState.waiting) {

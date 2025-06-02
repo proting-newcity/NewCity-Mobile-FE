@@ -1,3 +1,5 @@
+import 'package:intl/intl.dart';
+
 String convertToAgo(DateTime? input) {
   if (input == null) {
     return 'Invalid date';
@@ -25,5 +27,22 @@ String convertToAgo(DateTime? input) {
         : '$numMinutes menit yang lalu';
   } else {
     return 'Sekarang';
+  }
+}
+
+String formatTimeAgo(String dateTime) {
+  DateTime time = DateFormat("yyyy-MM-dd HH:mm:ss").parse(dateTime);
+  Duration diff = DateTime.now().difference(time);
+
+  if (diff.inMinutes < 60) {
+    return "${diff.inMinutes} Menit";
+  } else if (diff.inHours < 24) {
+    return "${diff.inHours} Jam";
+  } else if (diff.inDays == 1) {
+    return "Kemarin";
+  } else if (diff.inDays <= 7) {
+    return "${diff.inDays} Hari";
+  } else {
+    return DateFormat("dd MMM yyyy").format(time);
   }
 }

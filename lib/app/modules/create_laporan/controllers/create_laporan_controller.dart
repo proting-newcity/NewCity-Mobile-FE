@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart' as dio;
 import 'package:image_picker_platform_interface/image_picker_platform_interface.dart';
-import 'package:newcity/api.dart';
+import 'package:newcity/services/report_service.dart';
 import 'package:newcity/camera.dart';
 import 'package:http_parser/http_parser.dart';
 import 'package:newcity/models/report.dart';
@@ -11,10 +11,10 @@ class CreateLaporanController extends GetxController {
   var allKategori = Rx<KategoriReportResponse>(KategoriReportResponse());
   Rx<XFile?> photo = Rx<XFile?>(null);
   var isLoading = false.obs;
+  var isUploading = false.obs;
 
   final TextEditingController judulController = TextEditingController();
   final TextEditingController teleponController = TextEditingController();
-  final TextEditingController emailController = TextEditingController();
   final TextEditingController lokasiController = TextEditingController();
   final TextEditingController deskripsiController = TextEditingController();
   Rx<int> selectedTopics = Rx<int>(-1);
@@ -37,9 +37,8 @@ class CreateLaporanController extends GetxController {
 
   void fetchKategori() async {
     try {
-      var response = await ApiService.getKategoriReport();
+      var response = await ReportService.getKategoriReport();
       allKategori.value = response!;
-      print(allKategori.value.kategori.length);
     } catch (e) {
       print('Error fetching Kategori: $e');
     }
@@ -50,12 +49,6 @@ class CreateLaporanController extends GetxController {
 
     final cameraDelegate = MyCameraDelegate();
     photo.value = await cameraDelegate.takePhoto();
-
-    if (photo.value != null) {
-      print('Photo taken: ${photo.value!.path}');
-    } else {
-      print('No photo taken or user canceled');
-    }
   }
 
   Future<void> postReport() async {
@@ -86,18 +79,17 @@ class CreateLaporanController extends GetxController {
             allKategori.value.kategori[selectedTopics.value].id.toString()),
       ]);
 
-      formData.files.add(MapEntry(
-        "foto",
-        await dio.MultipartFile.fromFile(
-          photo.value!.path,
-          filename: photo.value!.name,
-          contentType: MediaType('image', 'jpeg'),
-        ),
-      ));
+      final multipartFile = await dio.MultipartFile.fromFile(
+        photo.value!.path,
+        filename: photo.value!.name,
+        contentType: MediaType('image', 'jpeg'),
+      );
+      formData.files.add(MapEntry("foto", multipartFile));
 
-      final response = await ApiService.postReport(formData);
+      final response = await ReportService.postReport(formData);
 
-      if (response.statusCode == 200 || response.statusCode == 201) {
+      if (response != null &&
+          (response.statusCode == 200 || response.statusCode == 201)) {
         Get.snackbar("Success", "Report submitted successfully!",
             snackPosition: SnackPosition.BOTTOM);
         Get.toNamed('/beranda');
@@ -118,7 +110,6 @@ class CreateLaporanController extends GetxController {
   void clearForm() {
     judulController.clear();
     teleponController.clear();
-    emailController.clear();
     lokasiController.clear();
     deskripsiController.clear();
     photo.value = null;

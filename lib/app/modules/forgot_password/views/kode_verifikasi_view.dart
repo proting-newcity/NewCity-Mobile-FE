@@ -3,6 +3,7 @@ import 'package:newcity/theme/colors.dart';
 import 'package:get/get.dart';
 import 'package:pinput/pinput.dart';
 import '../controllers/forgot_password_controller.dart';
+import 'package:newcity/theme/colors.dart';
 
 class KodeVerifikasiView extends GetView<ForgotPasswordController> {
   const KodeVerifikasiView({super.key});

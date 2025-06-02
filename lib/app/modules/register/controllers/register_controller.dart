@@ -1,9 +1,9 @@
-import 'dart:ffi';
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:newcity/api.dart';
 import 'dart:math';
+
+import 'package:newcity/services/auth_service.dart';
 
 class RegisterController extends GetxController {
   //TODO: Implement RegisterController
@@ -36,7 +36,7 @@ class RegisterController extends GetxController {
   void nextRoute(pin) async {
     if (otp.value == int.parse(pin)) {
       try {
-        var response = await ApiService.register(
+        var response = await AuthService.register(
           namacontroller.text,
           notelpcontroller.text,
           passwordcontroller.text,

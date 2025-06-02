@@ -1,5 +1,5 @@
 import 'dart:io';
-
+import 'package:newcity/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controllers/create_laporan_controller.dart';
@@ -123,7 +123,10 @@ class CreateLaporanView extends GetView<CreateLaporanController> {
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () async {
-                await controller.postReport();
+                if (!controller.isUploading.value) {
+                  controller.isUploading.value = true;
+                  await controller.postReport();
+                }
               },
               style: ElevatedButton.styleFrom(
                   minimumSize: Size(double.infinity, 50),

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:newcity/theme/colors.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:newcity/widgets/report_tile_government.dart';
+import 'package:newcity/widgets/report_tile.dart';
 
 import '../controllers/government_controller.dart';
 
@@ -49,7 +49,7 @@ class GovernmentView extends GetView<GovernmentController> {
                       DateFormat('EEEE dd MMMM yyyy', 'id_ID')
                           .format(DateTime.now()),
                       style: TextStyle(
-                          color: grey2Color,
+                          color: textLight,
                           fontFamily: 'Poppins',
                           fontSize: 14,
                           fontWeight: FontWeight.w500),
@@ -155,8 +155,7 @@ class GovernmentView extends GetView<GovernmentController> {
                   itemCount: controller.filteredReports.length + 1,
                   itemBuilder: (context, index) {
                     if (index < controller.filteredReports.length) {
-                      return ReportTileGovernment(
-                          controller.filteredReports[index]);
+                      return ReportTile(controller.filteredReports[index]);
                     } else {
                       return controller.isLoadingMore.isTrue
                           ? const Center(child: CircularProgressIndicator())

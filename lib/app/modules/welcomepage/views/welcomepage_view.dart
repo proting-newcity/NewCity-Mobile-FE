@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:newcity/theme/colors.dart';
 import 'package:get/get.dart';
 import 'package:newcity/theme/colors.dart';
 import '../controllers/welcomepage_controller.dart';

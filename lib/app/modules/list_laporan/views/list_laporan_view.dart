@@ -29,16 +29,21 @@ class ListLaporanView extends GetView<ListLaporanController> {
               color: Colors.black, fontSize: 22, fontWeight: FontWeight.bold),
         ),
         centerTitle: false,
-        actions: const [
-          Padding(
-            padding: EdgeInsets.all(16.0),
-            child: Center(
-              child: Text(
-                'Laporan Saya',
-                style:
-                    TextStyle(color: primaryColor, fontWeight: FontWeight.bold),
+        actions: [
+          GestureDetector(
+            child: Padding(
+              padding: EdgeInsets.all(16.0),
+              child: Center(
+                child: Text(
+                  'Laporan Saya',
+                  style: TextStyle(
+                      color: primaryColor, fontWeight: FontWeight.bold),
+                ),
               ),
             ),
+            onTap: () {
+              Get.toNamed('/laporan-saya');
+            },
           ),
         ],
         leading: IconButton(

@@ -15,5 +15,6 @@ const Color redColor = Colors.red;
 const Color greenColor = Colors.green;
 const Color blueColor = Colors.blue;
 const Color yellowColor = Colors.yellow;
+const Color transparentColor = Colors.transparent;
 const Color text = Color(0xFF333333);
-const Color textLight = Color(0xFF666666);
+const Color textLight = Color.fromRGBO(129, 125, 125, 1);
