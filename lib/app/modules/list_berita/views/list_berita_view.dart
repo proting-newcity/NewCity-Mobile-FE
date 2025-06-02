@@ -4,6 +4,7 @@ import 'package:newcity/services/image_service.dart';
 import 'package:newcity/widgets/berita_tile.dart';
 import '../controllers/list_berita_controller.dart';
 import 'package:newcity/models/berita.dart';
+import 'package:newcity/theme/colors.dart';
 
 class ListBeritaView extends GetView<ListBeritaController> {
   const ListBeritaView({super.key});
@@ -56,7 +57,7 @@ class ListBeritaView extends GetView<ListBeritaController> {
                     style: TextStyle(
                         fontSize: 15,
                         fontWeight: FontWeight.bold,
-                        color: Colors.green),
+                        color: greenColor),
                   ),
                 )
               ],
@@ -171,8 +172,8 @@ class ListBeritaView extends GetView<ListBeritaController> {
             borderRadius: BorderRadius.circular(16),
             gradient: LinearGradient(
               colors: [
-                Colors.black.withOpacity(0.6),
-                Colors.transparent,
+                blackColor.withOpacity(0.6),
+                transparentColor,
               ],
               begin: Alignment.bottomCenter,
               end: Alignment.topCenter,
@@ -181,7 +182,7 @@ class ListBeritaView extends GetView<ListBeritaController> {
           child: Text(
             kategori.name,
             style: TextStyle(
-              color: Colors.white,
+              color: whiteColor,
               fontSize: 16,
               fontWeight: FontWeight.bold,
             ),

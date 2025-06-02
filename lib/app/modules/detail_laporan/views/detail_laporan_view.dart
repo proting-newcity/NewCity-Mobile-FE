@@ -4,7 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:newcity/services/image_service.dart';
 import 'package:newcity/app/modules/login/controllers/login_controller.dart';
 import 'package:newcity/widgets/detail_status.dart';
-
+import 'package:newcity/theme/colors.dart';
 import '../controllers/detail_laporan_controller.dart';
 
 class DetailLaporanView extends GetView<DetailLaporanController> {
@@ -26,7 +26,7 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                         height: 225,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(8),
-                          color: Colors.grey[300],
+                          color: greyColor,
                         ),
                         child: Center(child: CircularProgressIndicator()),
                       );
@@ -41,7 +41,7 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                               height: 225,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(8),
-                                color: Colors.grey[300],
+                                color: greyColor,
                               ),
                               child: Center(child: CircularProgressIndicator()),
                             );
@@ -50,10 +50,10 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                               height: 225,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(8),
-                                color: Colors.grey[300],
+                                color: greyColor,
                               ),
                               child: Center(
-                                child: Icon(Icons.error, color: Colors.red),
+                                child: Icon(Icons.error, color: redColor),
                               ),
                             );
                           } else if (!snapshot.hasData) {
@@ -61,10 +61,10 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                               height: 225,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(8),
-                                color: Colors.grey[300],
+                                color: greyColor,
                               ),
                               child: Center(
-                                child: Icon(Icons.image, color: Colors.grey),
+                                child: Icon(Icons.image, color: grey2Color),
                               ),
                             );
                           } else {
@@ -81,7 +81,7 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                                 children: [
                                   Container(
                                     decoration: BoxDecoration(
-                                      color: Colors.black.withOpacity(0.4),
+                                      color: blackColor.withOpacity(0.4),
                                     ),
                                   ),
                                 ],
@@ -103,7 +103,7 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                         Row(
                           children: [
                             IconButton(
-                              icon: Icon(Icons.arrow_back, color: Colors.white),
+                              icon: Icon(Icons.arrow_back, color: whiteColor),
                               onPressed: () => Get.back(),
                             ),
                             Expanded(
@@ -114,7 +114,7 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                                   style: TextStyle(
                                     fontSize: 20,
                                     fontWeight: FontWeight.bold,
-                                    color: Colors.white,
+                                    color: whiteColor,
                                   ),
                                 );
                               }),
@@ -136,21 +136,20 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                                       : 'Loading...',
                                   style: TextStyle(
                                     fontSize: 14,
-                                    color: Colors.white,
+                                    color: whiteColor,
                                   ),
                                 );
                               }),
                               const SizedBox(height: 16),
                               Row(
                                 children: [
-                                  const Icon(Icons.person, color: Colors.white),
+                                  const Icon(Icons.person, color: whiteColor),
                                   const SizedBox(width: 4),
                                   Obx(() {
                                     return Text(
                                       controller.report.value?.masyarakatName ??
                                           'Loading...',
-                                      style:
-                                          const TextStyle(color: Colors.white),
+                                      style: const TextStyle(color: whiteColor),
                                     );
                                   }),
                                 ],
@@ -223,8 +222,7 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                                                                   left: 10),
                                                           height: 60,
                                                           width: 2,
-                                                          color:
-                                                              Colors.grey[300],
+                                                          color: greyColor,
                                                         ),
                                                       ],
                                                     );
@@ -276,8 +274,7 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                                                 borderRadius: BorderRadius.all(
                                                     Radius.circular(10)),
                                                 color: isMaxStatusReached
-                                                    ? Colors
-                                                        .grey // Warna abu-abu jika status sudah 4
+                                                    ? grey2Color // Warna abu-abu jika status sudah 4
                                                     : controller.getStatusState(
                                                         controller
                                                             .report
@@ -296,7 +293,7 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                                                           .status
                                                           .length)[1],
                                                   style: TextStyle(
-                                                    color: Colors.white,
+                                                    color: whiteColor,
                                                     fontWeight: FontWeight.bold,
                                                     fontSize: 15,
                                                   ),
@@ -308,9 +305,8 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                                       );
                                     },
                                     style: ElevatedButton.styleFrom(
-                                      foregroundColor: Colors.white,
-                                      backgroundColor:
-                                          Color.fromRGBO(88, 129, 87, 1),
+                                      foregroundColor: whiteColor,
+                                      backgroundColor: backgroundColor,
                                     ),
                                     child: Row(
                                       children: [
@@ -410,8 +406,8 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                                   ? Icons.favorite
                                   : Icons.favorite_border,
                               color: controller.isLiked.value
-                                  ? Colors.red
-                                  : Colors.grey,
+                                  ? redColor
+                                  : grey2Color,
                             ),
                             onPressed: () {
                               controller.toggleLike();
@@ -423,7 +419,7 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                         }),
                         SizedBox(width: 16),
                         IconButton(
-                          icon: Icon(Icons.comment, color: Colors.grey),
+                          icon: Icon(Icons.comment, color: grey2Color),
                           onPressed: () {
                             controller.showCommentsModal(
                               context,
@@ -437,7 +433,7 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                         }),
                         SizedBox(width: 16),
                         IconButton(
-                          icon: Icon(Icons.share, color: Colors.grey),
+                          icon: Icon(Icons.share, color: grey2Color),
                           onPressed: () {},
                         ),
                         Spacer(),
@@ -447,8 +443,8 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                                 ? Icons.bookmark
                                 : Icons.bookmark_border,
                             color: controller.isBookmarked.value
-                                ? Colors.blue
-                                : Colors.grey,
+                                ? blueColor
+                                : grey2Color,
                           ),
                           onPressed: () {
                             controller.toggleBookmark();

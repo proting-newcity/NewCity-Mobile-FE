@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:newcity/models/user.dart';
 import '../controllers/edit_akun_controller.dart';
+import 'package:newcity/theme/colors.dart';
 
 // ignore: must_be_immutable
 class EditAkunView extends GetView<EditAkunController> {
@@ -45,7 +46,7 @@ class EditAkunView extends GetView<EditAkunController> {
                   return Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Icon(Icons.camera_alt, color: Colors.green),
+                      Icon(Icons.camera_alt, color: greenColor),
                       Text("Ubah Foto"),
                     ],
                   );
@@ -59,7 +60,7 @@ class EditAkunView extends GetView<EditAkunController> {
             SizedBox(height: 15),
             Text(
               'Ubah foto',
-              style: TextStyle(color: Color(0xFF588157)),
+              style: TextStyle(color: primaryColor),
             ),
             SizedBox(height: 45),
             Text("Nama"),
@@ -68,10 +69,10 @@ class EditAkunView extends GetView<EditAkunController> {
               decoration: InputDecoration(
                 hintText: "Masukkan nama",
                 enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Color(0xFF588157), width: 2),
+                    borderSide: BorderSide(color: primaryColor, width: 2),
                     borderRadius: BorderRadius.circular(10)),
                 focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Color(0xFF588157), width: 2),
+                    borderSide: BorderSide(color: primaryColor, width: 2),
                     borderRadius: BorderRadius.circular(10)),
               ),
             ),
@@ -82,10 +83,10 @@ class EditAkunView extends GetView<EditAkunController> {
               decoration: InputDecoration(
                 hintText: "Masukkan nomor telepon",
                 enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Color(0xFF588157), width: 2),
+                    borderSide: BorderSide(color: primaryColor, width: 2),
                     borderRadius: BorderRadius.circular(10)),
                 focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Color(0xFF588157), width: 2),
+                    borderSide: BorderSide(color: primaryColor, width: 2),
                     borderRadius: BorderRadius.circular(10)),
               ),
             ),
@@ -95,14 +96,14 @@ class EditAkunView extends GetView<EditAkunController> {
                 controller.saveChanges();
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: Color(0xFF588157),
+                backgroundColor: primaryColor,
                 minimumSize: const Size(double.infinity, 50),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15),
                 ),
               ),
-              child: Text('Simpan Perubahan',
-                  style: TextStyle(color: Colors.white)),
+              child:
+                  Text('Simpan Perubahan', style: TextStyle(color: whiteColor)),
             ),
           ],
         ),

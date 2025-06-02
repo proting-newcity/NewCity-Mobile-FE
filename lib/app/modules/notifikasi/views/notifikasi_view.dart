@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:newcity/models/user.dart';
 import 'package:newcity/widgets/notifikasi_tile.dart';
-
+import 'package:newcity/theme/colors.dart';
 import '../controllers/notifikasi_controller.dart';
 
 class NotifikasiView extends GetView<NotifikasiController> {
@@ -28,7 +28,7 @@ class NotifikasiView extends GetView<NotifikasiController> {
                 child: Text(
                   'Laporan Saya',
                   style: TextStyle(
-                      color: Color(0xFF588157), fontWeight: FontWeight.bold),
+                      color: primaryColor, fontWeight: FontWeight.bold),
                 ),
               ),
             ),
@@ -38,8 +38,8 @@ class NotifikasiView extends GetView<NotifikasiController> {
           ),
         ],
         elevation: 0,
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
+        backgroundColor: whiteColor,
+        foregroundColor: blackColor,
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),

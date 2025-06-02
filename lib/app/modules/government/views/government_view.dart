@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:newcity/theme/colors.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:newcity/widgets/report_tile.dart';
@@ -40,7 +40,7 @@ class GovernmentView extends GetView<GovernmentController> {
                       'Selamat datang!',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                          color: Color.fromRGBO(58, 90, 64, 1),
+                          color: secondaryColor,
                           fontFamily: 'Poppins',
                           fontSize: 26,
                           fontWeight: FontWeight.w700),
@@ -49,7 +49,7 @@ class GovernmentView extends GetView<GovernmentController> {
                       DateFormat('EEEE dd MMMM yyyy', 'id_ID')
                           .format(DateTime.now()),
                       style: TextStyle(
-                          color: Color.fromRGBO(129, 125, 125, 1),
+                          color: textLight,
                           fontFamily: 'Poppins',
                           fontSize: 14,
                           fontWeight: FontWeight.w500),
@@ -64,17 +64,17 @@ class GovernmentView extends GetView<GovernmentController> {
                 Get.toNamed('/list-pencarian-laporan', arguments: keyword);
               },
               decoration: const InputDecoration(
-                prefixIcon: Icon(Icons.search, color: Color(0xFF588157)),
+                prefixIcon: Icon(Icons.search, color: primaryColor),
                 hintText: 'Cari laporan',
                 focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(20)),
-                    borderSide: BorderSide(color: Color(0xFF588157))),
+                    borderSide: BorderSide(color: primaryColor)),
                 enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(20)),
-                    borderSide: BorderSide(color: Color(0xFF588157))),
+                    borderSide: BorderSide(color: primaryColor)),
                 border: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(20)),
-                    borderSide: BorderSide(color: Color(0xFF588157))),
+                    borderSide: BorderSide(color: primaryColor)),
                 contentPadding: EdgeInsets.symmetric(vertical: 14),
               ),
             ),
@@ -95,16 +95,16 @@ class GovernmentView extends GetView<GovernmentController> {
                         children: [
                           CircleAvatar(
                             radius: 32,
-                            backgroundColor: Color.fromRGBO(88, 129, 87, 1),
+                            backgroundColor: backgroundColor,
                             child: Icon(
                               Icons.check,
-                              color: Colors.white,
+                              color: whiteColor,
                             ),
                           ),
                           Text(
                             'Status',
                             style: TextStyle(
-                              color: Color.fromRGBO(88, 129, 87, 1),
+                              color: backgroundColor,
                             ),
                           ),
                         ],
@@ -120,16 +120,16 @@ class GovernmentView extends GetView<GovernmentController> {
                         children: [
                           CircleAvatar(
                             radius: 32,
-                            backgroundColor: Color.fromRGBO(88, 129, 87, 1),
+                            backgroundColor: backgroundColor,
                             child: Icon(
                               Icons.person_outlined,
-                              color: Colors.white,
+                              color: whiteColor,
                             ),
                           ),
                           Text(
                             'Profil',
                             style: TextStyle(
-                              color: Color.fromRGBO(88, 129, 87, 1),
+                              color: backgroundColor,
                             ),
                           ),
                         ],

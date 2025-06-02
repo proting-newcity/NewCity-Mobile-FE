@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-
+import 'package:newcity/theme/colors.dart';
 import '../controllers/login_controller.dart';
 
 class LoginView extends GetView<LoginController> {
@@ -24,7 +24,7 @@ class LoginView extends GetView<LoginController> {
                     child: IconButton(
                       icon: Icon(
                         Icons.arrow_back,
-                        color: Colors.white,
+                        color: whiteColor,
                       ),
                       onPressed: () {
                         Get.back();
@@ -37,12 +37,12 @@ class LoginView extends GetView<LoginController> {
                     child: Text(
                       "Selamat Datang",
                       // style: GoogleFonts.poppins(
-                      //   color: Colors.white,
+                      //   color: whiteColor,
                       //   fontSize: 24,
                       //   fontWeight: FontWeight.bold,
                       // ),
                       style: TextStyle(
-                        color: Colors.white,
+                        color: whiteColor,
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
                       ),
@@ -54,7 +54,7 @@ class LoginView extends GetView<LoginController> {
                     child: Text(
                       "Senang Melihatmu Kembali.",
                       style: TextStyle(
-                        color: Colors.white,
+                        color: whiteColor,
                         fontSize: 14,
                       ),
                     ),
@@ -74,30 +74,29 @@ class LoginView extends GetView<LoginController> {
                           decoration: InputDecoration(
                             hintText: 'Nomor Telpon',
                             hintStyle: TextStyle(
-                              color: Color(0xFF588157),
+                              color: primaryColor,
                             ),
-                            prefixIcon: Icon(Icons.phone_outlined,
-                                color: Color(0xFF588157)),
+                            prefixIcon:
+                                Icon(Icons.phone_outlined, color: primaryColor),
                             enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: Color(0xFF588157), width: 1),
+                                borderSide:
+                                    BorderSide(color: primaryColor, width: 1),
                                 borderRadius: BorderRadius.circular(10)),
                           ),
                         ),
                         SizedBox(height: 20),
                         TextField(
-                          obscureText: true,
                           controller: controller.passwordController,
                           decoration: InputDecoration(
                             hintText: 'Kata Sandi',
                             hintStyle: TextStyle(
-                              color: Color(0xFF588157),
+                              color: primaryColor,
                             ),
-                            prefixIcon: Icon(Icons.lock_outline,
-                                color: Color(0xFF588157)),
+                            prefixIcon:
+                                Icon(Icons.lock_outline, color: primaryColor),
                             enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: Color(0xFF588157), width: 1),
+                                borderSide:
+                                    BorderSide(color: primaryColor, width: 1),
                                 borderRadius: BorderRadius.circular(10)),
                           ),
                         ),
@@ -111,7 +110,7 @@ class LoginView extends GetView<LoginController> {
                               child: Text(
                                 "Lupa kata sandi?",
                                 style: TextStyle(
-                                  color: Color(0xFF588157),
+                                  color: primaryColor,
                                   fontWeight: FontWeight.bold,
                                 ),
                               )),
@@ -125,11 +124,11 @@ class LoginView extends GetView<LoginController> {
                             'Masuk',
                             style: TextStyle(
                               fontSize: 14,
-                              color: Colors.white,
+                              color: whiteColor,
                             ),
                           ),
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Color(0xFF588157),
+                            backgroundColor: primaryColor,
                             minimumSize: const Size(double.infinity, 50),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(15),
@@ -148,7 +147,7 @@ class LoginView extends GetView<LoginController> {
                               child: Text(
                                 "Daftar",
                                 style: TextStyle(
-                                  color: Color(0xFF588157),
+                                  color: primaryColor,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),

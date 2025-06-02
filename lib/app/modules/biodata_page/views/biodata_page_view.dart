@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import "package:newcity/models/user.dart";
 import 'package:motion_tab_bar/MotionTabBar.dart';
 import '../controllers/biodata_page_controller.dart';
+import 'package:newcity/theme/colors.dart';
 
 // ignore: must_be_immutable
 class BiodataPageView extends GetView<BiodataPageController> {
@@ -22,14 +23,13 @@ class BiodataPageView extends GetView<BiodataPageController> {
       appBar: AppBar(
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
-          color: Colors.white,
+          color: whiteColor,
           onPressed: () {
             Get.toNamed('/beranda');
           },
         ),
-        title:
-            Text('Akun', style: TextStyle(fontSize: 22, color: Colors.white)),
-        backgroundColor: Color(0xFF588157),
+        title: Text('Akun', style: TextStyle(fontSize: 22, color: whiteColor)),
+        backgroundColor: primaryColor,
       ),
       body: Stack(
         children: [
@@ -40,7 +40,7 @@ class BiodataPageView extends GetView<BiodataPageController> {
             child: Container(
               height: 110,
               decoration: BoxDecoration(
-                color: Color(0xFF588157),
+                color: primaryColor,
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.elliptical(
                       MediaQuery.of(context).size.width / 0.5, 100),
@@ -115,10 +115,10 @@ class BiodataPageView extends GetView<BiodataPageController> {
                 ),
                 Divider(),
                 ListTile(
-                  leading: Icon(Icons.exit_to_app, color: Colors.red),
+                  leading: Icon(Icons.exit_to_app, color: redColor),
                   title: Text(
                     'Keluar',
-                    style: TextStyle(fontSize: 20, color: Colors.red),
+                    style: TextStyle(fontSize: 20, color: redColor),
                   ),
                   onTap: () {
                     _showLogoutDialog(context);
@@ -139,15 +139,15 @@ class BiodataPageView extends GetView<BiodataPageController> {
         tabBarHeight: 55,
         textStyle: const TextStyle(
           fontSize: 12,
-          color: Colors.black,
+          color: blackColor,
           fontWeight: FontWeight.w500,
         ),
-        tabIconColor: Colors.black87,
+        tabIconColor: blackColor,
         tabIconSize: 28.0,
         tabIconSelectedSize: 26.0,
-        tabSelectedColor: Color(0xFF588157),
-        tabIconSelectedColor: Colors.white,
-        tabBarColor: Colors.white,
+        tabSelectedColor: primaryColor,
+        tabIconSelectedColor: whiteColor,
+        tabBarColor: whiteColor,
         onTabItemSelected: (int value) {
           controller.changeTab(value);
         },

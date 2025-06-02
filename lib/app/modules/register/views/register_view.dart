@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:newcity/theme/colors.dart';
 import 'package:get/get.dart';
 
 import '../controllers/register_controller.dart';
@@ -27,7 +27,7 @@ class RegisterView extends GetView<RegisterController> {
                     child: IconButton(
                       icon: Icon(
                         Icons.arrow_back,
-                        color: Colors.white,
+                        color: whiteColor,
                       ),
                       onPressed: () {
                         Get.back();
@@ -40,12 +40,12 @@ class RegisterView extends GetView<RegisterController> {
                     child: Text(
                       "Registrasi",
                       // style: GoogleFonts.poppins(
-                      //   color: Colors.white,
+                      //   color: whiteColor,
                       //   fontSize: 24,
                       //   fontWeight: FontWeight.bold,
                       // ),
                       style: TextStyle(
-                        color: Colors.white,
+                        color: whiteColor,
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
                       ),
@@ -57,7 +57,7 @@ class RegisterView extends GetView<RegisterController> {
                     child: Text(
                       "Buat Akun Anda!",
                       style: TextStyle(
-                        color: Colors.white,
+                        color: whiteColor,
                         fontSize: 14,
                       ),
                     ),
@@ -76,13 +76,13 @@ class RegisterView extends GetView<RegisterController> {
                           decoration: InputDecoration(
                             hintText: 'Nama',
                             hintStyle: TextStyle(
-                              color: Color(0xFF588157),
+                              color: primaryColor,
                             ),
                             prefixIcon: Icon(Icons.person_2_outlined,
-                                color: Color(0xFF588157)),
+                                color: primaryColor),
                             enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: Color(0xFF588157), width: 1),
+                                borderSide:
+                                    BorderSide(color: primaryColor, width: 1),
                                 borderRadius: BorderRadius.circular(10)),
                           ),
                           controller: controller.namacontroller,
@@ -92,13 +92,12 @@ class RegisterView extends GetView<RegisterController> {
                           decoration: InputDecoration(
                             hintText: 'Nomor Telepon',
                             hintStyle: TextStyle(
-                              color: Color(0xFF588157),
+                              color: primaryColor,
                             ),
-                            prefixIcon:
-                                Icon(Icons.phone, color: Color(0xFF588157)),
+                            prefixIcon: Icon(Icons.phone, color: primaryColor),
                             enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: Color(0xFF588157), width: 1),
+                                borderSide:
+                                    BorderSide(color: primaryColor, width: 1),
                                 borderRadius: BorderRadius.circular(10)),
                           ),
                           controller: controller.notelpcontroller,
@@ -109,13 +108,13 @@ class RegisterView extends GetView<RegisterController> {
                           decoration: InputDecoration(
                             hintText: 'Kata Sandi',
                             hintStyle: TextStyle(
-                              color: Color(0xFF588157),
+                              color: primaryColor,
                             ),
-                            prefixIcon: Icon(Icons.lock_outline,
-                                color: Color(0xFF588157)),
+                            prefixIcon:
+                                Icon(Icons.lock_outline, color: primaryColor),
                             enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: Color(0xFF588157), width: 1),
+                                borderSide:
+                                    BorderSide(color: primaryColor, width: 1),
                                 borderRadius: BorderRadius.circular(10)),
                           ),
                           controller: controller.passwordcontroller,
@@ -129,11 +128,11 @@ class RegisterView extends GetView<RegisterController> {
                             'Daftar',
                             style: TextStyle(
                               fontSize: 14,
-                              color: Colors.white,
+                              color: whiteColor,
                             ),
                           ),
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Color(0xFF588157),
+                            backgroundColor: primaryColor,
                             minimumSize: const Size(double.infinity, 50),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(15),
@@ -151,7 +150,7 @@ class RegisterView extends GetView<RegisterController> {
                               child: Text(
                                 "Masuk",
                                 style: TextStyle(
-                                  color: Color(0xFF588157),
+                                  color: primaryColor,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),

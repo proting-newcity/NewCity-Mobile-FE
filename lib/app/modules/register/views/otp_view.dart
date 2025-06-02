@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:newcity/theme/colors.dart';
 import 'package:get/get.dart';
 
 import 'package:pinput/pinput.dart';
@@ -24,7 +25,7 @@ class OtpView extends GetView<RegisterController> {
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
-                color: Color(0xFF588157),
+                color: primaryColor,
               ),
             ),
             Text(
@@ -47,7 +48,7 @@ class OtpView extends GetView<RegisterController> {
                   child: Text(
                     "Kirim Ulang",
                     style: TextStyle(
-                      color: Color(0xFF588157),
+                      color: primaryColor,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -63,11 +64,11 @@ class OtpView extends GetView<RegisterController> {
                 'Daftar',
                 style: TextStyle(
                   fontSize: 14,
-                  color: Colors.white,
+                  color: whiteColor,
                 ),
               ),
               style: ElevatedButton.styleFrom(
-                backgroundColor: Color(0xFF588157),
+                backgroundColor: primaryColor,
                 minimumSize: const Size(double.infinity, 50),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15),

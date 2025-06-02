@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:newcity/theme/colors.dart';
 import 'package:get/get.dart';
 
 import '../controllers/welcomepage_controller.dart';
@@ -38,7 +38,7 @@ class WelcomepageView extends GetView<WelcomepageController> {
                       ElevatedButtonTheme(
                         data: ElevatedButtonThemeData(
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Color(0xFF588157),
+                            backgroundColor: primaryColor,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10),
                             ),
@@ -51,7 +51,7 @@ class WelcomepageView extends GetView<WelcomepageController> {
                           },
                           child: Text(
                             "Lanjut",
-                            style: TextStyle(color: Colors.white),
+                            style: TextStyle(color: whiteColor),
                           ),
                         ),
                       ),
@@ -59,7 +59,7 @@ class WelcomepageView extends GetView<WelcomepageController> {
                       ElevatedButtonTheme(
                         data: ElevatedButtonThemeData(
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Color(0xFF9CAC9F),
+                            backgroundColor: backgroundColor2,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10),
                             ),
@@ -72,7 +72,7 @@ class WelcomepageView extends GetView<WelcomepageController> {
                           },
                           child: Text(
                             "Masuk",
-                            style: TextStyle(color: Colors.white),
+                            style: TextStyle(color: whiteColor),
                           ),
                         ),
                       ),

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pinput/pinput.dart';
 import '../controllers/forgot_password_controller.dart';
+import 'package:newcity/theme/colors.dart';
 
 class KodeVerifikasiView extends GetView<ForgotPasswordController> {
   const KodeVerifikasiView({super.key});
@@ -22,7 +23,7 @@ class KodeVerifikasiView extends GetView<ForgotPasswordController> {
                 child: IconButton(
                   icon: Icon(
                     Icons.arrow_back,
-                    color: Colors.white,
+                    color: whiteColor,
                   ),
                   onPressed: () {
                     Get.back();
@@ -35,7 +36,7 @@ class KodeVerifikasiView extends GetView<ForgotPasswordController> {
                 child: Text(
                   "Kode Verivikasi",
                   style: TextStyle(
-                    color: Colors.white,
+                    color: whiteColor,
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
                   ),
@@ -47,7 +48,7 @@ class KodeVerifikasiView extends GetView<ForgotPasswordController> {
                 child: Text(
                   "Anda perlu memasukkan kode 4 digit yang\nkami kirim ke nomor telepon Anda.",
                   style: TextStyle(
-                    color: Colors.white,
+                    color: whiteColor,
                     fontSize: 14,
                   ),
                 ),
@@ -94,7 +95,7 @@ class KodeVerifikasiView extends GetView<ForgotPasswordController> {
                     'Verivikasi',
                     style: TextStyle(
                       fontSize: 14,
-                      color: Colors.white,
+                      color: whiteColor,
                     ),
                   ),
                   style: ElevatedButton.styleFrom(

@@ -1,5 +1,5 @@
 import 'dart:io';
-
+import 'package:newcity/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controllers/create_laporan_controller.dart';
@@ -36,10 +36,10 @@ class CreateLaporanView extends GetView<CreateLaporanController> {
               decoration: InputDecoration(
                 hintText: "Masukkan judul laporan",
                 enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Color(0xFF588157), width: 2),
+                    borderSide: BorderSide(color: primaryColor, width: 2),
                     borderRadius: BorderRadius.circular(10)),
                 focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Color(0xFF588157), width: 2),
+                    borderSide: BorderSide(color: primaryColor, width: 2),
                     borderRadius: BorderRadius.circular(10)),
               ),
             ),
@@ -47,7 +47,7 @@ class CreateLaporanView extends GetView<CreateLaporanController> {
             Container(
               height: 150,
               decoration: BoxDecoration(
-                  border: Border.all(color: Color(0xFF588157), width: 2),
+                  border: Border.all(color: primaryColor, width: 2),
                   borderRadius: BorderRadius.circular(10)),
               child: GestureDetector(onTap: () async {
                 // buka kamera
@@ -67,7 +67,7 @@ class CreateLaporanView extends GetView<CreateLaporanController> {
                   return Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Icon(Icons.camera_alt, color: Colors.green),
+                      Icon(Icons.camera_alt, color: greenColor),
                       Text("Unggah gambar/video"),
                     ],
                   );
@@ -81,10 +81,10 @@ class CreateLaporanView extends GetView<CreateLaporanController> {
               decoration: InputDecoration(
                 hintText: "Masukkan lokasi",
                 enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Color(0xFF588157), width: 2),
+                    borderSide: BorderSide(color: primaryColor, width: 2),
                     borderRadius: BorderRadius.circular(10)),
                 focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Color(0xFF588157), width: 2),
+                    borderSide: BorderSide(color: primaryColor, width: 2),
                     borderRadius: BorderRadius.circular(10)),
               ),
             ),
@@ -96,10 +96,10 @@ class CreateLaporanView extends GetView<CreateLaporanController> {
               decoration: InputDecoration(
                 hintText: "Masukkan detail dari laporan mu disini",
                 enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Color(0xFF588157), width: 2),
+                    borderSide: BorderSide(color: primaryColor, width: 2),
                     borderRadius: BorderRadius.circular(10)),
                 focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Color(0xFF588157), width: 2),
+                    borderSide: BorderSide(color: primaryColor, width: 2),
                     borderRadius: BorderRadius.circular(10)),
               ),
             ),
@@ -129,11 +129,11 @@ class CreateLaporanView extends GetView<CreateLaporanController> {
               },
               style: ElevatedButton.styleFrom(
                   minimumSize: Size(double.infinity, 50),
-                  backgroundColor: Color(0xFF588157)),
+                  backgroundColor: primaryColor),
               child: Text(
                 "Berikutnya",
                 style:
-                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                    TextStyle(color: whiteColor, fontWeight: FontWeight.bold),
               ),
             ),
           ],

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:newcity/theme/colors.dart';
 
 import 'package:get/get.dart';
 import '../controllers/forgot_password_controller.dart';
@@ -24,7 +25,7 @@ class NewPasswordView extends GetView<ForgotPasswordController> {
                     child: IconButton(
                       icon: Icon(
                         Icons.arrow_back,
-                        color: Colors.white,
+                        color: whiteColor,
                       ),
                       onPressed: () {
                         Get.back();
@@ -37,12 +38,12 @@ class NewPasswordView extends GetView<ForgotPasswordController> {
                     child: Text(
                       "Kata Sandi Baru",
                       // style: GoogleFonts.poppins(
-                      //   color: Colors.white,
+                      //   color: whiteColor,
                       //   fontSize: 24,
                       //   fontWeight: FontWeight.bold,
                       // ),
                       style: TextStyle(
-                        color: Colors.white,
+                        color: whiteColor,
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
                       ),
@@ -54,7 +55,7 @@ class NewPasswordView extends GetView<ForgotPasswordController> {
                     child: Text(
                       "Buat Kata Sandi Baru.",
                       style: TextStyle(
-                        color: Colors.white,
+                        color: whiteColor,
                         fontSize: 14,
                       ),
                     ),
@@ -74,13 +75,13 @@ class NewPasswordView extends GetView<ForgotPasswordController> {
                           decoration: InputDecoration(
                             hintText: 'Kata Sandi Baru',
                             hintStyle: TextStyle(
-                              color: Color(0xFF588157),
+                              color: primaryColor,
                             ),
-                            prefixIcon: Icon(Icons.lock_outline,
-                                color: Color(0xFF588157)),
+                            prefixIcon:
+                                Icon(Icons.lock_outline, color: primaryColor),
                             enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: Color(0xFF588157), width: 1),
+                                borderSide:
+                                    BorderSide(color: primaryColor, width: 1),
                                 borderRadius: BorderRadius.circular(10)),
                           ),
                         ),
@@ -90,13 +91,13 @@ class NewPasswordView extends GetView<ForgotPasswordController> {
                           decoration: InputDecoration(
                             hintText: 'Konfirmasi Kata Sandi',
                             hintStyle: TextStyle(
-                              color: Color(0xFF588157),
+                              color: primaryColor,
                             ),
-                            prefixIcon: Icon(Icons.lock_outline,
-                                color: Color(0xFF588157)),
+                            prefixIcon:
+                                Icon(Icons.lock_outline, color: primaryColor),
                             enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: Color(0xFF588157), width: 1),
+                                borderSide:
+                                    BorderSide(color: primaryColor, width: 1),
                                 borderRadius: BorderRadius.circular(10)),
                           ),
                         ),
@@ -109,11 +110,11 @@ class NewPasswordView extends GetView<ForgotPasswordController> {
                             'Buat Kata Sandi Baru',
                             style: TextStyle(
                               fontSize: 14,
-                              color: Colors.white,
+                              color: whiteColor,
                             ),
                           ),
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Color(0xFF588157),
+                            backgroundColor: primaryColor,
                             minimumSize: const Size(double.infinity, 50),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(15),

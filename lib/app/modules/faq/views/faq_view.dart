@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:newcity/theme/colors.dart';
 import 'package:get/get.dart';
 import '../controllers/faq_controller.dart';
 
@@ -63,7 +63,7 @@ class FaqView extends GetView<FaqController> {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(30),
                             border: Border.all(
-                              color: Color.fromRGBO(88, 129, 87, 1),
+                              color: backgroundColor,
                               width: 1,
                             ),
                           ),
@@ -76,10 +76,10 @@ class FaqView extends GetView<FaqController> {
                               ),
                             ),
                             childrenPadding: EdgeInsets.all(16),
-                            collapsedIconColor: Color.fromRGBO(88, 129, 87, 1),
-                            collapsedTextColor: Color.fromRGBO(88, 129, 87, 1),
-                            iconColor: Color.fromRGBO(88, 129, 87, 1),
-                            textColor: Color.fromRGBO(88, 129, 87, 1),
+                            collapsedIconColor: backgroundColor,
+                            collapsedTextColor: backgroundColor,
+                            iconColor: backgroundColor,
+                            textColor: backgroundColor,
                             collapsedShape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(30),
                             ),
@@ -90,7 +90,7 @@ class FaqView extends GetView<FaqController> {
                               Text(
                                 faq["answer"]!,
                                 style: TextStyle(
-                                  color: Color.fromRGBO(88, 129, 87, 1),
+                                  color: backgroundColor,
                                 ),
                               ),
                             ],

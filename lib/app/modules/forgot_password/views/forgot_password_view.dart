@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:newcity/theme/colors.dart';
 import 'package:get/get.dart';
 
 import '../controllers/forgot_password_controller.dart';
@@ -25,7 +25,7 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
                     child: IconButton(
                       icon: Icon(
                         Icons.arrow_back,
-                        color: Colors.white,
+                        color: whiteColor,
                       ),
                       onPressed: () {
                         Get.back();
@@ -38,7 +38,7 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
                     child: Text(
                       "Lupa kata sandi?",
                       style: TextStyle(
-                        color: Colors.white,
+                        color: whiteColor,
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
                       ),
@@ -50,7 +50,7 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
                     child: Text(
                       "Masukkan nomor telepon Anda untuk\nmengirimkan kode verifikasi!.",
                       style: TextStyle(
-                        color: Colors.white,
+                        color: whiteColor,
                         fontSize: 14,
                       ),
                     ),
@@ -70,13 +70,13 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
                           decoration: InputDecoration(
                             hintText: 'Nomor Telpon',
                             hintStyle: TextStyle(
-                              color: Color(0xFF588157),
+                              color: primaryColor,
                             ),
                             prefixIcon: Icon(Icons.phone_in_talk_outlined,
-                                color: Color(0xFF588157)),
+                                color: primaryColor),
                             enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: Color(0xFF588157), width: 1),
+                                borderSide:
+                                    BorderSide(color: primaryColor, width: 1),
                                 borderRadius: BorderRadius.circular(10)),
                           ),
                         ),
@@ -89,11 +89,11 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
                             'Kirim Kode',
                             style: TextStyle(
                                 fontSize: 14,
-                                color: Colors.white,
+                                color: whiteColor,
                                 fontWeight: FontWeight.bold),
                           ),
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Color(0xFF588157),
+                            backgroundColor: primaryColor,
                             minimumSize: const Size(double.infinity, 50),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(15),
