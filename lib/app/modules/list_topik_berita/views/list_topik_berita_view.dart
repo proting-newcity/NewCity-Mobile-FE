@@ -4,6 +4,7 @@ import 'package:newcity/services/image_service.dart';
 import 'package:newcity/theme/colors.dart';
 import '../controllers/list_topik_berita_controller.dart';
 import 'package:newcity/models/berita.dart';
+import 'package:newcity/theme/text_theme.dart';
 
 class ListTopikBeritaView extends GetView<ListTopikBeritaController> {
   const ListTopikBeritaView({super.key});
@@ -16,10 +17,7 @@ class ListTopikBeritaView extends GetView<ListTopikBeritaController> {
           icon: Icon(Icons.arrow_back),
           onPressed: () => Get.back(),
         ),
-        title: Text(
-          "Topik Berita",
-          style: TextStyle(fontWeight: FontWeight.bold),
-        ),
+        title: Text("Topik Berita", style: boldText),
       ),
       body: Obx(() => ListView.builder(
             itemCount: controller.allKategori.value.kategori.length,
@@ -80,14 +78,7 @@ Widget TopikTile({required KategoriBerita kategori}) {
                     end: Alignment.topCenter,
                   ),
                 ),
-                child: Text(
-                  kategori.name,
-                  style: TextStyle(
-                    color: whiteColor,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+                child: Text(kategori.name, style: boldTextWhite),
               ),
             );
           }

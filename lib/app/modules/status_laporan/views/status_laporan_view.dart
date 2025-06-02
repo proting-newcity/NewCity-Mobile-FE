@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:newcity/theme/colors.dart';
 import 'package:get/get.dart';
 import 'package:newcity/widgets/report_tile.dart';
-
+import 'package:newcity/theme/text_theme.dart';
 import '../controllers/status_laporan_controller.dart';
 
 class StatusLaporanView extends GetView<StatusLaporanController> {
@@ -22,10 +22,7 @@ class StatusLaporanView extends GetView<StatusLaporanController> {
           icon: Icon(Icons.arrow_back),
           onPressed: () => Get.back(),
         ),
-        title: Text(
-          "Status Laporan",
-          style: TextStyle(fontWeight: FontWeight.bold),
-        ),
+        title: Text("Status Laporan", style: boldText),
       ),
       body: Container(
         margin: EdgeInsets.only(left: 30, right: 30),
@@ -75,13 +72,7 @@ class StatusLaporanView extends GetView<StatusLaporanController> {
                               color: Color.fromRGBO(102, 102, 102, 1),
                             ),
                             child: Center(
-                              child: Text(
-                                'Menunggu',
-                                style: TextStyle(
-                                    color: whiteColor,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 15),
-                              ),
+                              child: Text('Menunggu', style: boldWhite15),
                             ),
                           ),
                         ),
@@ -106,13 +97,7 @@ class StatusLaporanView extends GetView<StatusLaporanController> {
                               color: backgroundColor,
                             ),
                             child: Center(
-                              child: Text(
-                                'Tindak Lanjut',
-                                style: TextStyle(
-                                    color: whiteColor,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 15),
-                              ),
+                              child: Text('Tindak Lanjut', style: boldWhite15),
                             ),
                           ),
                         ),
@@ -142,13 +127,7 @@ class StatusLaporanView extends GetView<StatusLaporanController> {
                               color: statusDalamProses,
                             ),
                             child: Center(
-                              child: Text(
-                                'Dalam Proses',
-                                style: TextStyle(
-                                    color: whiteColor,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 15),
-                              ),
+                              child: Text('Dalam Proses', style: boldWhite15),
                             ),
                           ),
                         ),
@@ -173,13 +152,7 @@ class StatusLaporanView extends GetView<StatusLaporanController> {
                               color: secondaryColor,
                             ),
                             child: Center(
-                              child: Text(
-                                'Selesai',
-                                style: TextStyle(
-                                    color: whiteColor,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 15),
-                              ),
+                              child: Text('Selesai', style: boldWhite15),
                             ),
                           ),
                         ),
@@ -190,10 +163,7 @@ class StatusLaporanView extends GetView<StatusLaporanController> {
               ),
             ),
             SizedBox(height: 20),
-            Text(
-              'Laporan Terkini',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
-            ),
+            Text('Laporan Terkini', style: bold18),
             SizedBox(height: 20),
             Expanded(
               child: Obx(() {

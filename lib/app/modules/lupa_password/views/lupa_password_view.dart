@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:newcity/theme/colors.dart';
 import '../controllers/lupa_password_controller.dart';
-
+import 'package:newcity/theme/text_theme.dart';
 // import 'package:google_fonts/google_fonts.dart';
 
 class LupaPasswordView extends GetView<LupaPasswordController> {
@@ -36,30 +36,19 @@ class LupaPasswordView extends GetView<LupaPasswordController> {
                   Positioned(
                     top: 135,
                     left: 23,
-                    child: Text(
-                      "Buat Kata Sandi Baru",
-                      // style: GoogleFonts.poppins(
-                      //   color: whiteColor,
-                      //   fontSize: 24,
-                      //   fontWeight: FontWeight.bold,
-                      // ),
-                      style: TextStyle(
-                        color: whiteColor,
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+                    child: Text("Buat Kata Sandi Baru",
+                        // style: GoogleFonts.poppins(
+                        //   color: whiteColor,
+                        //   fontSize: 24,
+                        //   fontWeight: FontWeight.bold,
+                        // ),
+                        style: boldWhite24),
                   ),
                   Positioned(
                     top: 182,
                     left: 23,
-                    child: Text(
-                      "Masukkan kata sandi baru Anda.",
-                      style: TextStyle(
-                        color: whiteColor,
-                        fontSize: 14,
-                      ),
-                    ),
+                    child: Text("Masukkan kata sandi baru Anda.",
+                        style: regularWhite),
                   ),
                 ],
               ),
@@ -93,13 +82,7 @@ class LupaPasswordView extends GetView<LupaPasswordController> {
                           onPressed: () {
                             controller.sendOtp();
                           },
-                          child: Text(
-                            'Ubah Kata Sandi',
-                            style: TextStyle(
-                              fontSize: 14,
-                              color: whiteColor,
-                            ),
-                          ),
+                          child: Text('Ubah Kata Sandi', style: regularWhite),
                           style: ElevatedButton.styleFrom(
                             backgroundColor: primaryColor,
                             minimumSize: const Size(double.infinity, 50),

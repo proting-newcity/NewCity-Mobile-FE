@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:newcity/theme/colors.dart';
 import 'package:get/get.dart';
 import 'package:newcity/widgets/report_tile.dart';
-
+import 'package:newcity/theme/text_theme.dart';
 import '../controllers/laporan_disukai_controller.dart';
 
 class LaporanDisukaiView extends GetView<LaporanDisukaiController> {
@@ -23,10 +23,7 @@ class LaporanDisukaiView extends GetView<LaporanDisukaiController> {
           icon: Icon(Icons.arrow_back),
           onPressed: () => Get.back(),
         ),
-        title: Text(
-          "Laporan Disukai",
-          style: TextStyle(fontWeight: FontWeight.bold),
-        ),
+        title: Text("Laporan Disukai", style: boldText),
       ),
       body: Container(
         margin: EdgeInsets.only(left: 30, right: 30),

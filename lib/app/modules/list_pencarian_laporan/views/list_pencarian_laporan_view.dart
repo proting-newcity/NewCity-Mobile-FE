@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:newcity/theme/text_theme.dart';
 
 import '../controllers/list_pencarian_laporan_controller.dart';
 import 'package:newcity/widgets/report_tile.dart';
@@ -11,13 +12,7 @@ class ListPencarianLaporanView extends GetView<ListPencarianLaporanController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Hasil Pencarian',
-          style: TextStyle(
-            fontSize: 30,
-            fontWeight: FontWeight.w800,
-          ),
-        ),
+        title: const Text('Hasil Pencarian', style: bold30),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () => Get.back(),

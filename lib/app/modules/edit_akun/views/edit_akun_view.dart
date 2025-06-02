@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:newcity/models/user.dart';
 import '../controllers/edit_akun_controller.dart';
 import 'package:newcity/theme/colors.dart';
+import 'package:newcity/theme/text_theme.dart';
 
 // ignore: must_be_immutable
 class EditAkunView extends GetView<EditAkunController> {
@@ -60,7 +61,7 @@ class EditAkunView extends GetView<EditAkunController> {
             SizedBox(height: 15),
             Text(
               'Ubah foto',
-              style: TextStyle(color: primaryColor),
+              style: regularPrimaryColor,
             ),
             SizedBox(height: 45),
             Text("Nama"),
@@ -102,8 +103,7 @@ class EditAkunView extends GetView<EditAkunController> {
                   borderRadius: BorderRadius.circular(15),
                 ),
               ),
-              child:
-                  Text('Simpan Perubahan', style: TextStyle(color: whiteColor)),
+              child: Text('Simpan Perubahan', style: regularWhite),
             ),
           ],
         ),

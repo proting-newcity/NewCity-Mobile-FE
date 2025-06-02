@@ -4,6 +4,7 @@ import 'package:newcity/widgets/topic_chip.dart';
 import '../controllers/list_laporan_controller.dart';
 import 'package:newcity/widgets/report_tile.dart';
 import 'package:newcity/theme/colors.dart';
+import 'package:newcity/theme/text_theme.dart';
 
 class ListLaporanView extends GetView<ListLaporanController> {
   const ListLaporanView({super.key});
@@ -23,22 +24,14 @@ class ListLaporanView extends GetView<ListLaporanController> {
       appBar: AppBar(
         backgroundColor: whiteColor,
         elevation: 0,
-        title: const Text(
-          'Laporan',
-          style: TextStyle(
-              color: Colors.black, fontSize: 22, fontWeight: FontWeight.bold),
-        ),
+        title: const Text('Laporan', style: boldBlack22),
         centerTitle: false,
         actions: [
           GestureDetector(
             child: Padding(
               padding: EdgeInsets.all(16.0),
               child: Center(
-                child: Text(
-                  'Laporan Saya',
-                  style: TextStyle(
-                      color: primaryColor, fontWeight: FontWeight.bold),
-                ),
+                child: Text('Laporan Saya', style: boldPrimaryColor),
               ),
             ),
             onTap: () {
@@ -123,10 +116,7 @@ class ListLaporanView extends GetView<ListLaporanController> {
           Icons.add,
           color: whiteColor,
         ),
-        label: Text(
-          "Tambah Laporan",
-          style: TextStyle(color: whiteColor),
-        ),
+        label: Text("Tambah Laporan", style: regularWhite),
         backgroundColor: primaryColor,
         onPressed: () {
           Get.toNamed('/create-laporan');

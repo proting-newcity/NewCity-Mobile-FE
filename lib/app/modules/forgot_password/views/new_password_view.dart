@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:newcity/theme/colors.dart';
-
+import 'package:newcity/theme/text_theme.dart';
 import 'package:get/get.dart';
 import '../controllers/forgot_password_controller.dart';
 
@@ -35,30 +35,18 @@ class NewPasswordView extends GetView<ForgotPasswordController> {
                   Positioned(
                     top: 135,
                     left: 23,
-                    child: Text(
-                      "Kata Sandi Baru",
-                      // style: GoogleFonts.poppins(
-                      //   color: whiteColor,
-                      //   fontSize: 24,
-                      //   fontWeight: FontWeight.bold,
-                      // ),
-                      style: TextStyle(
-                        color: whiteColor,
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+                    child: Text("Kata Sandi Baru",
+                        // style: GoogleFonts.poppins(
+                        //   color: whiteColor,
+                        //   fontSize: 24,
+                        //   fontWeight: FontWeight.bold,
+                        // ),
+                        style: boldWhite24),
                   ),
                   Positioned(
                     top: 182,
                     left: 23,
-                    child: Text(
-                      "Buat Kata Sandi Baru.",
-                      style: TextStyle(
-                        color: whiteColor,
-                        fontSize: 14,
-                      ),
-                    ),
+                    child: Text("Buat Kata Sandi Baru.", style: regularWhite),
                   ),
                 ],
               ),
@@ -74,9 +62,7 @@ class NewPasswordView extends GetView<ForgotPasswordController> {
                           controller: controller.passwordController,
                           decoration: InputDecoration(
                             hintText: 'Kata Sandi Baru',
-                            hintStyle: TextStyle(
-                              color: primaryColor,
-                            ),
+                            hintStyle: regularPrimaryColor,
                             prefixIcon:
                                 Icon(Icons.lock_outline, color: primaryColor),
                             enabledBorder: OutlineInputBorder(
@@ -90,9 +76,7 @@ class NewPasswordView extends GetView<ForgotPasswordController> {
                           controller: controller.passwordConfirmationController,
                           decoration: InputDecoration(
                             hintText: 'Konfirmasi Kata Sandi',
-                            hintStyle: TextStyle(
-                              color: primaryColor,
-                            ),
+                            hintStyle: regularPrimaryColor,
                             prefixIcon:
                                 Icon(Icons.lock_outline, color: primaryColor),
                             enabledBorder: OutlineInputBorder(
@@ -106,13 +90,8 @@ class NewPasswordView extends GetView<ForgotPasswordController> {
                           onPressed: () {
                             controller.changePassword();
                           },
-                          child: Text(
-                            'Buat Kata Sandi Baru',
-                            style: TextStyle(
-                              fontSize: 14,
-                              color: whiteColor,
-                            ),
-                          ),
+                          child:
+                              Text('Buat Kata Sandi Baru', style: regularWhite),
                           style: ElevatedButton.styleFrom(
                             backgroundColor: primaryColor,
                             minimumSize: const Size(double.infinity, 50),

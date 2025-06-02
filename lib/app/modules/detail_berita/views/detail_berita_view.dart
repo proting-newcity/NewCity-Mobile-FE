@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:newcity/services/image_service.dart';
 import 'package:newcity/theme/colors.dart';
-import 'package:newcity/theme/colors.dart';
+import 'package:newcity/theme/text_theme.dart';
 
 import '../controllers/detail_berita_controller.dart';
 
@@ -81,14 +81,8 @@ class DetailBeritaView extends GetView<DetailBeritaController> {
                               onPressed: () => Get.back(),
                             ),
                             Expanded(
-                              child: Text(
-                                Get.arguments.title,
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                  color: whiteColor,
-                                ),
-                              ),
+                              child: Text(Get.arguments.title,
+                                  style: boldTextWhite),
                             ),
                           ],
                         ),
@@ -99,13 +93,9 @@ class DetailBeritaView extends GetView<DetailBeritaController> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                DateFormat('yyyy-MM-dd – kk:mm')
-                                    .format(Get.arguments.tanggal),
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  color: whiteColor,
-                                ),
-                              ),
+                                  DateFormat('yyyy-MM-dd – kk:mm')
+                                      .format(Get.arguments.tanggal),
+                                  style: h2WhiteColor),
                               const SizedBox(height: 16),
                               Row(
                                 children: [
@@ -113,7 +103,9 @@ class DetailBeritaView extends GetView<DetailBeritaController> {
                                   const SizedBox(width: 4),
                                   Text(
                                     Get.arguments.user.name,
-                                    style: const TextStyle(color: whiteColor),
+                                    style: textStandart.copyWith(
+                                      color: whiteColor,
+                                    ),
                                   ),
                                 ],
                               ),

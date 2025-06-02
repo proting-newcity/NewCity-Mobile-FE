@@ -3,7 +3,7 @@ import 'package:newcity/theme/colors.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:newcity/widgets/report_tile.dart';
-
+import 'package:newcity/theme/text_theme.dart';
 import '../controllers/government_controller.dart';
 
 class GovernmentView extends GetView<GovernmentController> {
@@ -36,24 +36,13 @@ class GovernmentView extends GetView<GovernmentController> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    Text('Selamat datang!',
+                        textAlign: TextAlign.center,
+                        style: boldSecondaryColor26),
                     Text(
-                      'Selamat datang!',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          color: secondaryColor,
-                          fontFamily: 'Poppins',
-                          fontSize: 26,
-                          fontWeight: FontWeight.w700),
-                    ),
-                    Text(
-                      DateFormat('EEEE dd MMMM yyyy', 'id_ID')
-                          .format(DateTime.now()),
-                      style: TextStyle(
-                          color: textLight,
-                          fontFamily: 'Poppins',
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500),
-                    )
+                        DateFormat('EEEE dd MMMM yyyy', 'id_ID')
+                            .format(DateTime.now()),
+                        style: sizeMTextLight),
                   ],
                 )
               ],
@@ -101,12 +90,7 @@ class GovernmentView extends GetView<GovernmentController> {
                               color: whiteColor,
                             ),
                           ),
-                          Text(
-                            'Status',
-                            style: TextStyle(
-                              color: backgroundColor,
-                            ),
-                          ),
+                          Text('Status', style: regularBackgroundColor),
                         ],
                       ),
                     ),
@@ -126,12 +110,7 @@ class GovernmentView extends GetView<GovernmentController> {
                               color: whiteColor,
                             ),
                           ),
-                          Text(
-                            'Profil',
-                            style: TextStyle(
-                              color: backgroundColor,
-                            ),
-                          ),
+                          Text('Profil', style: regularBackgroundColor),
                         ],
                       ),
                     ),
@@ -142,7 +121,7 @@ class GovernmentView extends GetView<GovernmentController> {
             SizedBox(height: 20),
             Text(
               'Rekomendasi Untukmu',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
+              style: bold18,
             ),
             SizedBox(height: 20),
             Expanded(

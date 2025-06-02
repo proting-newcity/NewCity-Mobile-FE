@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:newcity/theme/colors.dart';
 import 'package:get/get.dart';
-
+import 'package:newcity/theme/text_theme.dart';
 import '../controllers/forgot_password_controller.dart';
 
 class ForgotPasswordView extends GetView<ForgotPasswordController> {
@@ -35,25 +35,14 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
                   Positioned(
                     top: 135,
                     left: 23,
-                    child: Text(
-                      "Lupa kata sandi?",
-                      style: TextStyle(
-                        color: whiteColor,
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+                    child: Text("Lupa kata sandi?", style: boldWhite24),
                   ),
                   Positioned(
                     top: 182,
                     left: 23,
                     child: Text(
-                      "Masukkan nomor telepon Anda untuk\nmengirimkan kode verifikasi!.",
-                      style: TextStyle(
-                        color: whiteColor,
-                        fontSize: 14,
-                      ),
-                    ),
+                        "Masukkan nomor telepon Anda untuk\nmengirimkan kode verifikasi!.",
+                        style: regularWhite),
                   ),
                 ],
               ),
@@ -69,9 +58,7 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
                           controller: controller.notelpController,
                           decoration: InputDecoration(
                             hintText: 'Nomor Telpon',
-                            hintStyle: TextStyle(
-                              color: primaryColor,
-                            ),
+                            hintStyle: regularPrimaryColor,
                             prefixIcon: Icon(Icons.phone_in_talk_outlined,
                                 color: primaryColor),
                             enabledBorder: OutlineInputBorder(
@@ -85,13 +72,7 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
                           onPressed: () {
                             controller.searchnotelp();
                           },
-                          child: Text(
-                            'Kirim Kode',
-                            style: TextStyle(
-                                fontSize: 14,
-                                color: whiteColor,
-                                fontWeight: FontWeight.bold),
-                          ),
+                          child: Text('Kirim Kode', style: h2WhiteColor),
                           style: ElevatedButton.styleFrom(
                             backgroundColor: primaryColor,
                             minimumSize: const Size(double.infinity, 50),

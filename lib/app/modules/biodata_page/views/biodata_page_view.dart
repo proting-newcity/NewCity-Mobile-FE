@@ -4,6 +4,7 @@ import "package:newcity/models/user.dart";
 import 'package:motion_tab_bar/MotionTabBar.dart';
 import '../controllers/biodata_page_controller.dart';
 import 'package:newcity/theme/colors.dart';
+import 'package:newcity/theme/text_theme.dart';
 
 // ignore: must_be_immutable
 class BiodataPageView extends GetView<BiodataPageController> {
@@ -63,20 +64,13 @@ class BiodataPageView extends GetView<BiodataPageController> {
                 ),
                 SizedBox(height: 16),
                 Obx(() {
-                  return Text(
-                    '${controller.user.value?.name}',
-                    style: TextStyle(
-                      fontFamily: 'Poppins',
-                      fontSize: 26,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  );
+                  return Text('${controller.user.value?.name}', style: h2);
                 }),
                 SizedBox(height: 8),
                 Obx(() {
                   return Text(
                     '${controller.user.value?.username}',
-                    style: TextStyle(fontSize: 18),
+                    style: sizeL,
                     textAlign: TextAlign.center,
                   );
                 }),
@@ -85,7 +79,7 @@ class BiodataPageView extends GetView<BiodataPageController> {
                   leading: Icon(Icons.lock),
                   title: Text(
                     'Ubah Kata Sandi',
-                    style: TextStyle(fontSize: 20),
+                    style: sizeXL,
                   ),
                   onTap: () {
                     Get.toNamed('/lupa-password');
@@ -96,7 +90,7 @@ class BiodataPageView extends GetView<BiodataPageController> {
                   leading: Icon(Icons.account_circle),
                   title: Text(
                     'Edit Akun',
-                    style: TextStyle(fontSize: 20),
+                    style: sizeXL,
                   ),
                   onTap: () {
                     Get.toNamed('/edit-akun', arguments: controller.user.value);
@@ -107,7 +101,7 @@ class BiodataPageView extends GetView<BiodataPageController> {
                   leading: Icon(Icons.question_mark),
                   title: Text(
                     'Bantuan',
-                    style: TextStyle(fontSize: 20),
+                    style: sizeXL,
                   ),
                   onTap: () {
                     // Navigate to help page
@@ -137,8 +131,7 @@ class BiodataPageView extends GetView<BiodataPageController> {
         icons: const [Icons.home_outlined, Icons.add, Icons.person_outline],
         tabSize: 50,
         tabBarHeight: 55,
-        textStyle: const TextStyle(
-          fontSize: 12,
+        textStyle: h4.copyWith(
           color: blackColor,
           fontWeight: FontWeight.w500,
         ),

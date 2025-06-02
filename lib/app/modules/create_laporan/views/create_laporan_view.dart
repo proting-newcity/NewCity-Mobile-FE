@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controllers/create_laporan_controller.dart';
 import 'package:newcity/widgets/topic_chip.dart';
-import 'package:newcity/theme/colors.dart';
+import 'package:newcity/theme/text_theme.dart';
 
 class CreateLaporanView extends GetView<CreateLaporanController> {
   const CreateLaporanView({super.key});
@@ -22,14 +22,14 @@ class CreateLaporanView extends GetView<CreateLaporanController> {
         ),
         title: Text(
           "Buat Laporan",
-          style: TextStyle(fontWeight: FontWeight.bold),
+          style: boldText,
         ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: ListView(
           children: [
-            Text("Laporan", style: TextStyle(fontWeight: FontWeight.bold)),
+            Text("Laporan", style: boldText),
             SizedBox(height: 18),
             Text("Judul"),
             TextField(
@@ -105,7 +105,7 @@ class CreateLaporanView extends GetView<CreateLaporanController> {
               ),
             ),
             SizedBox(height: 20),
-            Text("Pilih Topik", style: TextStyle(fontWeight: FontWeight.bold)),
+            Text("Pilih Topik", style: boldText),
             SizedBox(height: 10),
             Obx(() {
               return Wrap(
@@ -131,11 +131,8 @@ class CreateLaporanView extends GetView<CreateLaporanController> {
               style: ElevatedButton.styleFrom(
                   minimumSize: Size(double.infinity, 50),
                   backgroundColor: primaryColor),
-              child: Text(
-                "Berikutnya",
-                style:
-                    TextStyle(color: whiteColor, fontWeight: FontWeight.bold),
-              ),
+              child: Text("Berikutnya",
+                  style: boldText.copyWith(color: whiteColor)),
             ),
           ],
         ),

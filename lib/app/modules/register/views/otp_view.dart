@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'package:newcity/theme/colors.dart';
 import 'package:get/get.dart';
-import 'package:newcity/theme/colors.dart';
 import 'package:pinput/pinput.dart';
 import '../controllers/register_controller.dart';
+import 'package:newcity/theme/text_theme.dart';
 
 class OtpView extends GetView<RegisterController> {
   const OtpView({super.key});
@@ -20,14 +20,7 @@ class OtpView extends GetView<RegisterController> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Text(
-              "Kode OTP",
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-                color: primaryColor,
-              ),
-            ),
+            Text("Kode OTP", style: boldPrimaryColor24),
             Text(
               "Kode OTP telah terkirim ke\n+62 xx xxxx xxxx",
               textAlign: TextAlign.center,
@@ -45,13 +38,7 @@ class OtpView extends GetView<RegisterController> {
                   onPressed: () {
                     Get.toNamed('/login');
                   },
-                  child: Text(
-                    "Kirim Ulang",
-                    style: TextStyle(
-                      color: primaryColor,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
+                  child: Text("Kirim Ulang", style: boldPrimaryColor),
                 ),
               ],
             ),
@@ -60,13 +47,7 @@ class OtpView extends GetView<RegisterController> {
                 controller.sendOtp();
                 Get.toNamed('/otp');
               },
-              child: Text(
-                'Daftar',
-                style: TextStyle(
-                  fontSize: 14,
-                  color: whiteColor,
-                ),
-              ),
+              child: Text('Daftar', style: regularWhite),
               style: ElevatedButton.styleFrom(
                 backgroundColor: primaryColor,
                 minimumSize: const Size(double.infinity, 50),

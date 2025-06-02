@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:newcity/theme/colors.dart';
 import 'package:get/get.dart';
-import 'package:newcity/theme/colors.dart';
 import '../controllers/welcomepage_controller.dart';
+import 'package:newcity/theme/text_theme.dart';
 
 class WelcomepageView extends GetView<WelcomepageController> {
   final WelcomepageController controller = Get.put(WelcomepageController());
@@ -49,10 +49,7 @@ class WelcomepageView extends GetView<WelcomepageController> {
                           onPressed: () {
                             controller.nextContent();
                           },
-                          child: Text(
-                            "Lanjut",
-                            style: TextStyle(color: whiteColor),
-                          ),
+                          child: Text("Lanjut", style: regularWhite),
                         ),
                       ),
                       SizedBox(height: 10),
@@ -70,10 +67,7 @@ class WelcomepageView extends GetView<WelcomepageController> {
                           onPressed: () {
                             Get.toNamed("/login");
                           },
-                          child: Text(
-                            "Masuk",
-                            style: TextStyle(color: whiteColor),
-                          ),
+                          child: Text("Masuk", style: regularWhite),
                         ),
                       ),
                     ],
@@ -98,10 +92,7 @@ class DetailPage extends StatelessWidget {
         children: [
           Image.asset(map["image"], height: 250),
           SizedBox(height: 60),
-          Text(
-            map["title"],
-            style: TextStyle(fontSize: 30),
-          ),
+          Text(map["title"], style: sizeXXL),
           Text(map["description"]),
         ],
       ),

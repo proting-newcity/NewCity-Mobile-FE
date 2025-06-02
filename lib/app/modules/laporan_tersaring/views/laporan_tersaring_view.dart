@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:newcity/theme/colors.dart';
 import 'package:get/get.dart';
 import 'package:newcity/widgets/report_tile.dart';
-
+import 'package:newcity/theme/text_theme.dart';
 import '../controllers/laporan_tersaring_controller.dart';
 
 class LaporanTersaringView extends GetView<LaporanTersaringController> {
@@ -24,10 +24,7 @@ class LaporanTersaringView extends GetView<LaporanTersaringController> {
           icon: Icon(Icons.arrow_back),
           onPressed: () => Get.back(),
         ),
-        title: Text(
-          "Laporan $status",
-          style: TextStyle(fontWeight: FontWeight.bold),
-        ),
+        title: Text("Laporan $status", style: boldText),
       ),
       body: Container(
         margin: EdgeInsets.only(left: 30, right: 30),

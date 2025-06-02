@@ -5,6 +5,7 @@ import 'package:newcity/widgets/berita_tile.dart';
 import '../controllers/list_berita_controller.dart';
 import 'package:newcity/models/berita.dart';
 import 'package:newcity/theme/colors.dart';
+import 'package:newcity/theme/text_theme.dart';
 
 class ListBeritaView extends GetView<ListBeritaController> {
   const ListBeritaView({super.key});
@@ -29,7 +30,7 @@ class ListBeritaView extends GetView<ListBeritaController> {
         ),
         title: Text(
           "Berita",
-          style: TextStyle(fontWeight: FontWeight.bold),
+          style: boldText,
         ),
       ),
       body: Column(
@@ -41,24 +42,12 @@ class ListBeritaView extends GetView<ListBeritaController> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  "Topik Terkenal",
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+                Text("Topik Terkenal", style: bold20),
                 TextButton(
                   onPressed: () {
                     Get.toNamed("/list-topik-berita");
                   },
-                  child: Text(
-                    "Topik lainnya",
-                    style: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.bold,
-                        color: greenColor),
-                  ),
+                  child: Text("Topik lainnya", style: boldGreen15),
                 )
               ],
             ),
@@ -66,13 +55,7 @@ class ListBeritaView extends GetView<ListBeritaController> {
           _appBarTopik(), // Only listens to topik observables
           Padding(
             padding: const EdgeInsets.all(18.0),
-            child: Text(
-              "Berita Untukmu",
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
+            child: Text("Berita Untukmu", style: bold20),
           ),
           Expanded(
             child: Obx(
@@ -179,14 +162,7 @@ class ListBeritaView extends GetView<ListBeritaController> {
               end: Alignment.topCenter,
             ),
           ),
-          child: Text(
-            kategori.name,
-            style: TextStyle(
-              color: whiteColor,
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
+          child: Text(kategori.name, style: bold16White),
         ),
       ),
     );

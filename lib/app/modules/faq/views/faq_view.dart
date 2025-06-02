@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:newcity/theme/colors.dart';
 import 'package:get/get.dart';
 import '../controllers/faq_controller.dart';
+import 'package:newcity/theme/text_theme.dart';
 
 class FaqView extends GetView<FaqController> {
   FaqView({super.key});
@@ -38,7 +39,7 @@ class FaqView extends GetView<FaqController> {
         ),
         title: Text(
           "FAQ",
-          style: TextStyle(fontWeight: FontWeight.bold),
+          style: boldText,
         ),
       ),
       body: Center(
@@ -68,13 +69,7 @@ class FaqView extends GetView<FaqController> {
                             ),
                           ),
                           child: ExpansionTile(
-                            title: Text(
-                              faq["question"]!,
-                              style: TextStyle(
-                                fontWeight: FontWeight.normal,
-                                fontSize: 15,
-                              ),
-                            ),
+                            title: Text(faq["question"]!, style: bold16),
                             childrenPadding: EdgeInsets.all(16),
                             collapsedIconColor: backgroundColor,
                             collapsedTextColor: backgroundColor,
@@ -87,12 +82,8 @@ class FaqView extends GetView<FaqController> {
                               borderRadius: BorderRadius.circular(30),
                             ),
                             children: [
-                              Text(
-                                faq["answer"]!,
-                                style: TextStyle(
-                                  color: backgroundColor,
-                                ),
-                              ),
+                              Text(faq["answer"]!,
+                                  style: regularBackgroundColor),
                             ],
                           ),
                         ),

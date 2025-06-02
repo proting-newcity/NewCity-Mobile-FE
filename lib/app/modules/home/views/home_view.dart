@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-
+import 'package:newcity/theme/text_theme.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -16,7 +16,7 @@ class HomeView extends GetView<HomeController> {
       body: const Center(
         child: Text(
           'HomeView is working',
-          style: TextStyle(fontSize: 20),
+          style: sizeXL,
         ),
       ),
     );

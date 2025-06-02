@@ -6,6 +6,7 @@ import 'package:newcity/app/modules/login/controllers/login_controller.dart';
 import 'package:newcity/widgets/detail_status.dart';
 import 'package:newcity/theme/colors.dart';
 import '../controllers/detail_laporan_controller.dart';
+import 'package:newcity/theme/text_theme.dart';
 
 class DetailLaporanView extends GetView<DetailLaporanController> {
   DetailLaporanView({super.key});
@@ -109,14 +110,9 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                             Expanded(
                               child: Obx(() {
                                 return Text(
-                                  controller.report.value?.report.judul ??
-                                      'Loading...',
-                                  style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                    color: whiteColor,
-                                  ),
-                                );
+                                    controller.report.value?.report.judul ??
+                                        'Loading...',
+                                    style: boldTextWhite);
                               }),
                             ),
                           ],
@@ -129,16 +125,12 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                             children: [
                               Obx(() {
                                 return Text(
-                                  controller.report.value != null
-                                      ? DateFormat('yyyy-MM-dd – kk:mm').format(
-                                          controller
-                                              .report.value!.report.updatedAt)
-                                      : 'Loading...',
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    color: whiteColor,
-                                  ),
-                                );
+                                    controller.report.value != null
+                                        ? DateFormat('yyyy-MM-dd – kk:mm')
+                                            .format(controller
+                                                .report.value!.report.updatedAt)
+                                        : 'Loading...',
+                                    style: regularWhite);
                               }),
                               const SizedBox(height: 16),
                               Row(
@@ -147,10 +139,10 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                                   const SizedBox(width: 4),
                                   Obx(() {
                                     return Text(
-                                      controller.report.value?.masyarakatName ??
-                                          'Loading...',
-                                      style: const TextStyle(color: whiteColor),
-                                    );
+                                        controller
+                                                .report.value?.masyarakatName ??
+                                            'Loading...',
+                                        style: regularWhite);
                                   }),
                                 ],
                               ),
@@ -163,9 +155,7 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                                         title: "Status Laporan",
                                         titlePadding: EdgeInsets.only(
                                             top: 20, right: 100),
-                                        titleStyle: TextStyle(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold),
+                                        titleStyle: boldTextBlack,
                                         content: SizedBox(
                                           width: 250,
                                           height: 250,
@@ -285,19 +275,14 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                                               ),
                                               child: Center(
                                                 child: Text(
-                                                  controller.getStatusState(
-                                                      controller
-                                                          .report
-                                                          .value!
-                                                          .report
-                                                          .status
-                                                          .length)[1],
-                                                  style: TextStyle(
-                                                    color: whiteColor,
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize: 15,
-                                                  ),
-                                                ),
+                                                    controller.getStatusState(
+                                                        controller
+                                                            .report
+                                                            .value!
+                                                            .report
+                                                            .status
+                                                            .length)[1],
+                                                    style: regularWhite),
                                               ),
                                             ),
                                           );
@@ -312,22 +297,20 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                                       children: [
                                         Obx(() {
                                           return Text(
-                                            controller
-                                                    .report
-                                                    .value
-                                                    ?.report
-                                                    .status[controller
-                                                            .report
-                                                            .value!
-                                                            .report
-                                                            .status
-                                                            .length -
-                                                        1]
-                                                    .status ??
-                                                'Loading...',
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold),
-                                          );
+                                              controller
+                                                      .report
+                                                      .value
+                                                      ?.report
+                                                      .status[controller
+                                                              .report
+                                                              .value!
+                                                              .report
+                                                              .status
+                                                              .length -
+                                                          1]
+                                                      .status ??
+                                                  'Loading...',
+                                              style: regularBlack);
                                         }),
                                         SizedBox(width: 5),
                                         Icon(Icons.arrow_forward)
@@ -349,13 +332,7 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      'Kategori',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16,
-                      ),
-                    ),
+                    Text('Kategori', style: bold16),
                     SizedBox(height: 4),
                     Obx(() {
                       return Text(
@@ -365,13 +342,7 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                       );
                     }),
                     SizedBox(height: 16),
-                    Text(
-                      'Lokasi',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16,
-                      ),
-                    ),
+                    Text('Lokasi', style: bold16),
                     SizedBox(height: 4),
                     Obx(() {
                       return Text(
@@ -383,10 +354,7 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                     SizedBox(height: 16),
                     Text(
                       'Detail Laporan',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16,
-                      ),
+                      style: bold16,
                     ),
                     SizedBox(height: 8),
                     Obx(() {

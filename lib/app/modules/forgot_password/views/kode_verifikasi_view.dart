@@ -3,7 +3,7 @@ import 'package:newcity/theme/colors.dart';
 import 'package:get/get.dart';
 import 'package:pinput/pinput.dart';
 import '../controllers/forgot_password_controller.dart';
-import 'package:newcity/theme/colors.dart';
+import 'package:newcity/theme/text_theme.dart';
 
 class KodeVerifikasiView extends GetView<ForgotPasswordController> {
   const KodeVerifikasiView({super.key});
@@ -33,25 +33,14 @@ class KodeVerifikasiView extends GetView<ForgotPasswordController> {
               Positioned(
                 top: 135,
                 left: 23,
-                child: Text(
-                  "Kode Verivikasi",
-                  style: TextStyle(
-                    color: whiteColor,
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+                child: Text("Kode Verivikasi", style: boldWhite24),
               ),
               Positioned(
                 top: 182,
                 left: 23,
                 child: Text(
-                  "Anda perlu memasukkan kode 4 digit yang\nkami kirim ke nomor telepon Anda.",
-                  style: TextStyle(
-                    color: whiteColor,
-                    fontSize: 14,
-                  ),
-                ),
+                    "Anda perlu memasukkan kode 4 digit yang\nkami kirim ke nomor telepon Anda.",
+                    style: regularWhite),
               ),
             ],
           ),
@@ -75,13 +64,7 @@ class KodeVerifikasiView extends GetView<ForgotPasswordController> {
                       onPressed: () {
                         Get.toNamed('/login');
                       },
-                      child: Text(
-                        "Kirim Ulang",
-                        style: TextStyle(
-                          color: primaryColor,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
+                      child: Text("Kirim Ulang", style: boldPrimaryColor),
                     ),
                   ],
                 ),
@@ -91,13 +74,7 @@ class KodeVerifikasiView extends GetView<ForgotPasswordController> {
                     controller.sendOtp();
                     Get.toNamed('/otp');
                   },
-                  child: Text(
-                    'Verivikasi',
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: whiteColor,
-                    ),
-                  ),
+                  child: Text('Verivikasi', style: regularWhite),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: primaryColor,
                     minimumSize: const Size(double.infinity, 50),

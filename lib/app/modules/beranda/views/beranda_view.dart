@@ -6,6 +6,7 @@ import 'package:newcity/widgets/report_tile.dart';
 import 'package:newcity/widgets/icon_button.dart';
 import '../controllers/beranda_controller.dart';
 import 'package:newcity/theme/colors.dart';
+import 'package:newcity/theme/text_theme.dart';
 
 class BerandaView extends GetView<BerandaController> {
   const BerandaView({super.key});
@@ -35,14 +36,11 @@ class BerandaView extends GetView<BerandaController> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text('Selamat datang!',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, color: primaryColor)),
+                    const Text('Selamat datang!', style: h2PrimaryColor),
                     Text(
-                      DateFormat('EEEE dd MMMM yyyy', 'id_ID')
-                          .format(DateTime.now()),
-                      style: const TextStyle(fontSize: 12.0),
-                    ),
+                        DateFormat('EEEE dd MMMM yyyy', 'id_ID')
+                            .format(DateTime.now()),
+                        style: textDate)
                   ],
                 ),
               ],
@@ -57,8 +55,7 @@ class BerandaView extends GetView<BerandaController> {
         icons: const [Icons.home_outlined, Icons.add, Icons.person_outline],
         tabSize: 50,
         tabBarHeight: 55,
-        textStyle: const TextStyle(
-          fontSize: 12,
+        textStyle: h4.copyWith(
           color: blackColor,
           fontWeight: FontWeight.w500,
         ),

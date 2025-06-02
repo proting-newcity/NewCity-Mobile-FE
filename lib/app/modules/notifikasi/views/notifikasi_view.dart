@@ -4,6 +4,7 @@ import 'package:newcity/models/user.dart';
 import 'package:newcity/widgets/notifikasi_tile.dart';
 import 'package:newcity/theme/colors.dart';
 import '../controllers/notifikasi_controller.dart';
+import 'package:newcity/theme/text_theme.dart';
 
 class NotifikasiView extends GetView<NotifikasiController> {
   const NotifikasiView({super.key});
@@ -16,20 +17,13 @@ class NotifikasiView extends GetView<NotifikasiController> {
           icon: const Icon(Icons.arrow_back),
           onPressed: () => Get.back(),
         ),
-        title: const Text(
-          "Notifikasi",
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
-        ),
+        title: const Text("Notifikasi", style: boldBlack22),
         actions: [
           GestureDetector(
             child: Padding(
               padding: EdgeInsets.all(16.0),
               child: Center(
-                child: Text(
-                  'Laporan Saya',
-                  style: TextStyle(
-                      color: primaryColor, fontWeight: FontWeight.bold),
-                ),
+                child: Text('Laporan Saya', style: boldPrimaryColor),
               ),
             ),
             onTap: () {
@@ -90,10 +84,7 @@ class NotifikasiView extends GetView<NotifikasiController> {
   Widget _buildSectionTitle(String title) {
     return Padding(
       padding: const EdgeInsets.only(top: 20, bottom: 0),
-      child: Text(
-        title,
-        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-      ),
+      child: Text(title, style: bold18),
     );
   }
 }
