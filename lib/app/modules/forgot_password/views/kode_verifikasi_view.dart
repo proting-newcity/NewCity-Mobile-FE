@@ -76,7 +76,6 @@ class KodeVerifikasiView extends GetView<ForgotPasswordController> {
                     controller.sendOtp();
                     Get.toNamed('/otp');
                   },
-                  child: const Text('Verivikasi', style: normalWhite14),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: primaryColor,
                     minimumSize: const Size(double.infinity, 50),
@@ -84,6 +83,7 @@ class KodeVerifikasiView extends GetView<ForgotPasswordController> {
                       borderRadius: borderXlCircular,
                     ),
                   ),
+                  child: const Text('Verivikasi', style: normalWhite14),
                 ),
               ],
             ),

@@ -14,7 +14,7 @@ class HomeView extends GetView<HomeController> {
         centerTitle: true,
       ),
       body: const Center(
-        child: const Text(
+        child: Text(
           'HomeView is working',
           style: normalBlack20,
         ),

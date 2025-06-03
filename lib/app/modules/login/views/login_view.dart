@@ -46,8 +46,8 @@ class LoginView extends GetView<LoginController> {
                   Positioned(
                     top: 182,
                     left: 23,
-                    child:
-                        Text("Senang Melihatmu Kembali.", style: normalWhite14),
+                    child: const Text("Senang Melihatmu Kembali.",
+                        style: normalWhite14),
                   ),
                 ],
               ),
@@ -64,11 +64,11 @@ class LoginView extends GetView<LoginController> {
                           decoration: InputDecoration(
                             hintText: 'Nomor Telpon',
                             hintStyle: regularPrimaryColor14,
-                            prefixIcon:
-                                Icon(Icons.phone_outlined, color: primaryColor),
+                            prefixIcon: const Icon(Icons.phone_outlined,
+                                color: primaryColor),
                             enabledBorder: OutlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: primaryColor, width: 1),
+                                borderSide: const BorderSide(
+                                    color: primaryColor, width: 1),
                                 borderRadius: borderLgCircular),
                           ),
                         ),
@@ -81,8 +81,8 @@ class LoginView extends GetView<LoginController> {
                             prefixIcon:
                                 Icon(Icons.lock_outline, color: primaryColor),
                             enabledBorder: OutlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: primaryColor, width: 1),
+                                borderSide: const BorderSide(
+                                    color: primaryColor, width: 1),
                                 borderRadius: borderLgCircular),
                           ),
                         ),
@@ -101,7 +101,6 @@ class LoginView extends GetView<LoginController> {
                           onPressed: () {
                             controller.login();
                           },
-                          child: const Text('Masuk', style: normalWhite14),
                           style: ElevatedButton.styleFrom(
                             backgroundColor: primaryColor,
                             minimumSize: const Size(double.infinity, 50),
@@ -109,6 +108,7 @@ class LoginView extends GetView<LoginController> {
                               borderRadius: borderXlCircular,
                             ),
                           ),
+                          child: const Text('Masuk', style: normalWhite14),
                         ),
                         SizedBox(height: 20),
                         Row(

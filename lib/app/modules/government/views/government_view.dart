@@ -37,7 +37,7 @@ class GovernmentView extends GetView<GovernmentController> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Selamat datang!',
+                    const Text('Selamat datang!',
                         textAlign: TextAlign.center,
                         style: boldSecondaryColor26),
                     Text(
@@ -91,7 +91,7 @@ class GovernmentView extends GetView<GovernmentController> {
                               color: whiteColor,
                             ),
                           ),
-                          Text('Status', style: regularBackgroundColor14),
+                          const Text('Status', style: regularBackgroundColor14),
                         ],
                       ),
                     ),
@@ -111,7 +111,7 @@ class GovernmentView extends GetView<GovernmentController> {
                               color: whiteColor,
                             ),
                           ),
-                          Text('Profil', style: regularBackgroundColor14),
+                          const Text('Profil', style: regularBackgroundColor14),
                         ],
                       ),
                     ),

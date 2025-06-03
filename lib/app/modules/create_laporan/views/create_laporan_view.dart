@@ -30,7 +30,7 @@ class CreateLaporanView extends GetView<CreateLaporanController> {
         padding: const EdgeInsets.all(16.0),
         child: ListView(
           children: [
-            Text("Laporan", style: boldBlack14),
+            const Text("Laporan", style: boldBlack14),
             SizedBox(height: 18),
             Text("Judul"),
             TextField(
@@ -38,10 +38,10 @@ class CreateLaporanView extends GetView<CreateLaporanController> {
               decoration: InputDecoration(
                 hintText: "Masukkan judul laporan",
                 enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: primaryColor, width: 2),
+                    borderSide: const BorderSide(color: primaryColor, width: 2),
                     borderRadius: borderLgCircular),
                 focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: primaryColor, width: 2),
+                    borderSide: const BorderSide(color: primaryColor, width: 2),
                     borderRadius: borderLgCircular),
               ),
             ),
@@ -69,7 +69,7 @@ class CreateLaporanView extends GetView<CreateLaporanController> {
                   return Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Icon(Icons.camera_alt, color: greenColor),
+                      const Icon(Icons.camera_alt, color: greenColor),
                       Text("Unggah gambar/video"),
                     ],
                   );
@@ -83,10 +83,10 @@ class CreateLaporanView extends GetView<CreateLaporanController> {
               decoration: InputDecoration(
                 hintText: "Masukkan lokasi",
                 enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: primaryColor, width: 2),
+                    borderSide: const BorderSide(color: primaryColor, width: 2),
                     borderRadius: borderLgCircular),
                 focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: primaryColor, width: 2),
+                    borderSide: const BorderSide(color: primaryColor, width: 2),
                     borderRadius: borderLgCircular),
               ),
             ),
@@ -98,15 +98,15 @@ class CreateLaporanView extends GetView<CreateLaporanController> {
               decoration: InputDecoration(
                 hintText: "Masukkan detail dari laporan mu disini",
                 enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: primaryColor, width: 2),
+                    borderSide: const BorderSide(color: primaryColor, width: 2),
                     borderRadius: borderLgCircular),
                 focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: primaryColor, width: 2),
+                    borderSide: const BorderSide(color: primaryColor, width: 2),
                     borderRadius: borderLgCircular),
               ),
             ),
             SizedBox(height: 20),
-            Text("Pilih Topik", style: boldBlack14),
+            const Text("Pilih Topik", style: boldBlack14),
             SizedBox(height: 10),
             Obx(() {
               return Wrap(

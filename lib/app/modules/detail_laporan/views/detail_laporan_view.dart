@@ -55,7 +55,7 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                                 color: greyColor,
                               ),
                               child: Center(
-                                child: Icon(Icons.error, color: redColor),
+                                child: const Icon(Icons.error, color: redColor),
                               ),
                             );
                           } else if (!snapshot.hasData) {
@@ -66,7 +66,8 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                                 color: greyColor,
                               ),
                               child: Center(
-                                child: Icon(Icons.image, color: grey2Color),
+                                child:
+                                    const Icon(Icons.image, color: grey2Color),
                               ),
                             );
                           } else {
@@ -83,7 +84,7 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                                 children: [
                                   Container(
                                     decoration: BoxDecoration(
-                                      color: blackColor.withOpacity(0.4),
+                                      color: blackColor2,
                                     ),
                                   ),
                                 ],
@@ -105,7 +106,8 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                         Row(
                           children: [
                             IconButton(
-                              icon: Icon(Icons.arrow_back, color: whiteColor),
+                              icon: const Icon(Icons.arrow_back,
+                                  color: whiteColor),
                               onPressed: () => Get.back(),
                             ),
                             Expanded(
@@ -332,7 +334,7 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Kategori', style: boldBlack16),
+                    const Text('Kategori', style: boldBlack16),
                     SizedBox(height: 4),
                     Obx(() {
                       return Text(
@@ -342,7 +344,7 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                       );
                     }),
                     SizedBox(height: 16),
-                    Text('Lokasi', style: boldBlack16),
+                    const Text('Lokasi', style: boldBlack16),
                     SizedBox(height: 4),
                     Obx(() {
                       return Text(
@@ -401,7 +403,7 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                         }),
                         SizedBox(width: 16),
                         IconButton(
-                          icon: Icon(Icons.share, color: grey2Color),
+                          icon: const Icon(Icons.share, color: grey2Color),
                           onPressed: () {},
                         ),
                         Spacer(),

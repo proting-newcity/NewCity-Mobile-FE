@@ -15,7 +15,7 @@ class WelcomepageView extends GetView<WelcomepageController> {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 50),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 50),
           child: SingleChildScrollView(
             child: Center(
               child: Column(

@@ -158,7 +158,7 @@ class StatusLaporanView extends GetView<StatusLaporanController> {
               ),
             ),
             SizedBox(height: 20),
-            Text('Laporan Terkini', style: boldBlack18),
+            const Text('Laporan Terkini', style: boldBlack18),
             SizedBox(height: 20),
             Expanded(
               child: Obx(() {

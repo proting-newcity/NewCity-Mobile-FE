@@ -48,7 +48,6 @@ class OtpView extends GetView<RegisterController> {
                 controller.sendOtp();
                 Get.toNamed('/otp');
               },
-              child: const Text('Daftar', style: normalWhite14),
               style: ElevatedButton.styleFrom(
                 backgroundColor: primaryColor,
                 minimumSize: const Size(double.infinity, 50),
@@ -56,6 +55,7 @@ class OtpView extends GetView<RegisterController> {
                   borderRadius: borderXlCircular,
                 ),
               ),
+              child: const Text('Daftar', style: normalWhite14),
             ),
           ],
         ),

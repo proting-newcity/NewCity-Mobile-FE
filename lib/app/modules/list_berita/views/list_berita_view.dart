@@ -43,7 +43,7 @@ class ListBeritaView extends GetView<ListBeritaController> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text("Topik Terkenal", style: boldBlack20),
+                const Text("Topik Terkenal", style: boldBlack20),
                 TextButton(
                   onPressed: () {
                     Get.toNamed("/list-topik-berita");
@@ -110,9 +110,9 @@ class ListBeritaView extends GetView<ListBeritaController> {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
-            return Center(child: const Text("Error loading images"));
+            return const Center(child: const Text("Error loading images"));
           } else if (!snapshot.hasData) {
-            return Center(child: const Text("No data available"));
+            return const Center(child: const Text("No data available"));
           } else {
             List<ImageProvider<Object>> categoryImages = snapshot.data ?? [];
 
@@ -155,9 +155,7 @@ class ListBeritaView extends GetView<ListBeritaController> {
           decoration: BoxDecoration(
             borderRadius: borderXlAltCircular,
             gradient: LinearGradient(
-              colors: [
-                transparentColor,
-              ],
+              colors: const [transparentColor],
               begin: Alignment.bottomCenter,
               end: Alignment.topCenter,
             ),

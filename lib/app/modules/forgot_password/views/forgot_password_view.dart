@@ -63,8 +63,8 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
                             prefixIcon: Icon(Icons.phone_in_talk_outlined,
                                 color: primaryColor),
                             enabledBorder: OutlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: primaryColor, width: 1),
+                                borderSide: const BorderSide(
+                                    color: primaryColor, width: 1),
                                 borderRadius: borderLgCircular),
                           ),
                         ),
@@ -73,7 +73,6 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
                           onPressed: () {
                             controller.searchnotelp();
                           },
-                          child: const Text('Kirim Kode', style: boldWhite14),
                           style: ElevatedButton.styleFrom(
                             backgroundColor: primaryColor,
                             minimumSize: const Size(double.infinity, 50),
@@ -81,6 +80,7 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
                               borderRadius: borderXlCircular,
                             ),
                           ),
+                          child: const Text('Kirim Kode', style: boldWhite14),
                         ),
                       ],
                     ),

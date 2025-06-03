@@ -48,7 +48,7 @@ class EditAkunView extends GetView<EditAkunController> {
                   return Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Icon(Icons.camera_alt, color: greenColor),
+                      const Icon(Icons.camera_alt, color: greenColor),
                       Text("Ubah Foto"),
                     ],
                   );
@@ -74,7 +74,7 @@ class EditAkunView extends GetView<EditAkunController> {
                     borderSide: BorderSide(color: primaryColor, width: 2),
                     borderRadius: borderLgCircular),
                 focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: primaryColor, width: 2),
+                    borderSide: const BorderSide(color: primaryColor, width: 2),
                     borderRadius: borderLgCircular),
               ),
             ),
@@ -88,7 +88,7 @@ class EditAkunView extends GetView<EditAkunController> {
                     borderSide: BorderSide(color: primaryColor, width: 2),
                     borderRadius: borderLgCircular),
                 focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: primaryColor, width: 2),
+                    borderSide: const BorderSide(color: primaryColor, width: 2),
                     borderRadius: borderLgCircular),
               ),
             ),

@@ -53,7 +53,7 @@ Widget TopikTile({required KategoriBerita kategori}) {
             return Container(
               color: greyColor,
               child: Center(
-                child: Icon(Icons.error, color: redColor),
+                child: const Icon(Icons.error, color: redColor),
               ),
             );
           } else {

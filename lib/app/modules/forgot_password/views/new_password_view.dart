@@ -65,11 +65,11 @@ class NewPasswordView extends GetView<ForgotPasswordController> {
                           decoration: InputDecoration(
                             hintText: 'Kata Sandi Baru',
                             hintStyle: regularPrimaryColor14,
-                            prefixIcon:
-                                Icon(Icons.lock_outline, color: primaryColor),
+                            prefixIcon: const Icon(Icons.lock_outline,
+                                color: primaryColor),
                             enabledBorder: OutlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: primaryColor, width: 1),
+                                borderSide: const BorderSide(
+                                    color: primaryColor, width: 1),
                                 borderRadius: borderLgCircular),
                           ),
                         ),
@@ -82,8 +82,8 @@ class NewPasswordView extends GetView<ForgotPasswordController> {
                             prefixIcon:
                                 Icon(Icons.lock_outline, color: primaryColor),
                             enabledBorder: OutlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: primaryColor, width: 1),
+                                borderSide: const BorderSide(
+                                    color: primaryColor, width: 1),
                                 borderRadius: borderLgCircular),
                           ),
                         ),
@@ -92,8 +92,6 @@ class NewPasswordView extends GetView<ForgotPasswordController> {
                           onPressed: () {
                             controller.changePassword();
                           },
-                          child: Text('Buat Kata Sandi Baru',
-                              style: normalWhite14),
                           style: ElevatedButton.styleFrom(
                             backgroundColor: primaryColor,
                             minimumSize: const Size(double.infinity, 50),
@@ -101,6 +99,8 @@ class NewPasswordView extends GetView<ForgotPasswordController> {
                               borderRadius: borderXlCircular,
                             ),
                           ),
+                          child: Text('Buat Kata Sandi Baru',
+                              style: normalWhite14),
                         ),
                         SizedBox(height: 20),
                       ],

@@ -82,8 +82,6 @@ class LupaPasswordView extends GetView<LupaPasswordController> {
                           onPressed: () {
                             controller.sendOtp();
                           },
-                          child: const Text('Ubah Kata Sandi',
-                              style: normalWhite14),
                           style: ElevatedButton.styleFrom(
                             backgroundColor: primaryColor,
                             minimumSize: const Size(double.infinity, 50),
@@ -91,6 +89,8 @@ class LupaPasswordView extends GetView<LupaPasswordController> {
                               borderRadius: borderXlCircular,
                             ),
                           ),
+                          child: const Text('Ubah Kata Sandi',
+                              style: normalWhite14),
                         ),
                       ],
                     ),

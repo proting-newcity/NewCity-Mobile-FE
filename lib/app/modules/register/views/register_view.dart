@@ -66,8 +66,8 @@ class RegisterView extends GetView<RegisterController> {
                             prefixIcon: Icon(Icons.person_2_outlined,
                                 color: primaryColor),
                             enabledBorder: OutlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: primaryColor, width: 1),
+                                borderSide: const BorderSide(
+                                    color: primaryColor, width: 1),
                                 borderRadius: borderLgCircular),
                           ),
                           controller: controller.namacontroller,
@@ -77,10 +77,11 @@ class RegisterView extends GetView<RegisterController> {
                           decoration: InputDecoration(
                             hintText: 'Nomor Telepon',
                             hintStyle: regularPrimaryColor14,
-                            prefixIcon: Icon(Icons.phone, color: primaryColor),
+                            prefixIcon:
+                                const Icon(Icons.phone, color: primaryColor),
                             enabledBorder: OutlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: primaryColor, width: 1),
+                                borderSide: const BorderSide(
+                                    color: primaryColor, width: 1),
                                 borderRadius: borderLgCircular),
                           ),
                           controller: controller.notelpcontroller,
@@ -105,7 +106,6 @@ class RegisterView extends GetView<RegisterController> {
                           onPressed: () {
                             controller.sendOtp();
                           },
-                          child: const Text('Daftar', style: normalWhite14),
                           style: ElevatedButton.styleFrom(
                             backgroundColor: primaryColor,
                             minimumSize: const Size(double.infinity, 50),
@@ -113,6 +113,7 @@ class RegisterView extends GetView<RegisterController> {
                               borderRadius: borderXlCircular,
                             ),
                           ),
+                          child: const Text('Daftar', style: normalWhite14),
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,

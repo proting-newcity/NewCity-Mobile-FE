@@ -110,7 +110,7 @@ class BiodataPageView extends GetView<BiodataPageController> {
                 ),
                 Divider(),
                 ListTile(
-                  leading: Icon(Icons.exit_to_app, color: redColor),
+                  leading: const Icon(Icons.exit_to_app, color: redColor),
                   title: const Text('Keluar', style: normalRed20),
                   onTap: () {
                     _showLogoutDialog(context);
