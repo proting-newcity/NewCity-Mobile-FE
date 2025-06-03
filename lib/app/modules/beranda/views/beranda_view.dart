@@ -37,11 +37,11 @@ class BerandaView extends GetView<BerandaController> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text('Selamat datang!', style: h2PrimaryColor),
+                    const Text('Selamat datang!', style: boldPrimaryColor14),
                     Text(
                         DateFormat('EEEE dd MMMM yyyy', 'id_ID')
                             .format(DateTime.now()),
-                        style: textDate)
+                        style: normalgrey12)
                   ],
                 ),
               ],
@@ -56,10 +56,7 @@ class BerandaView extends GetView<BerandaController> {
         icons: const [Icons.home_outlined, Icons.add, Icons.person_outline],
         tabSize: 50,
         tabBarHeight: 55,
-        textStyle: h4.copyWith(
-          color: blackColor,
-          fontWeight: FontWeight.w500,
-        ),
+        textStyle: boldBlack14,
         tabIconColor: Colors.black87,
         tabIconSize: 28.0,
         tabIconSelectedSize: 26.0,

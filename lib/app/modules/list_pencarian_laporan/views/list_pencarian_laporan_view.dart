@@ -12,7 +12,7 @@ class ListPencarianLaporanView extends GetView<ListPencarianLaporanController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Hasil Pencarian', style: bold30),
+        title: const Text('Hasil Pencarian', style: boldBlack30),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () => Get.back(),
@@ -26,7 +26,7 @@ class ListPencarianLaporanView extends GetView<ListPencarianLaporanController> {
 
           if (controller.allReport.value.report.isEmpty) {
             return Center(
-              child: Text("Data tidak ditemukan!"),
+              child: const Text("Data tidak ditemukan!"),
             );
           }
 

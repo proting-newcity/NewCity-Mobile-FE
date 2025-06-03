@@ -34,14 +34,14 @@ class KodeVerifikasiView extends GetView<ForgotPasswordController> {
               Positioned(
                 top: 135,
                 left: 23,
-                child: Text("Kode Verivikasi", style: boldWhite24),
+                child: const Text("Kode Verivikasi", style: boldWhite24),
               ),
               Positioned(
                 top: 182,
                 left: 23,
-                child: Text(
+                child: const Text(
                     "Anda perlu memasukkan kode 4 digit yang\nkami kirim ke nomor telepon Anda.",
-                    style: regularWhite),
+                    style: normalWhite14),
               ),
             ],
           ),
@@ -65,7 +65,8 @@ class KodeVerifikasiView extends GetView<ForgotPasswordController> {
                       onPressed: () {
                         Get.toNamed('/login');
                       },
-                      child: Text("Kirim Ulang", style: boldPrimaryColor),
+                      child:
+                          const Text("Kirim Ulang", style: boldPrimaryColor14),
                     ),
                   ],
                 ),
@@ -75,7 +76,7 @@ class KodeVerifikasiView extends GetView<ForgotPasswordController> {
                     controller.sendOtp();
                     Get.toNamed('/otp');
                   },
-                  child: Text('Verivikasi', style: regularWhite),
+                  child: const Text('Verivikasi', style: normalWhite14),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: primaryColor,
                     minimumSize: const Size(double.infinity, 50),

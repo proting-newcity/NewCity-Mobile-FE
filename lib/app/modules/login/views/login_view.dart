@@ -35,7 +35,7 @@ class LoginView extends GetView<LoginController> {
                   Positioned(
                     top: 135,
                     left: 23,
-                    child: Text("Selamat Datang",
+                    child: const Text("Selamat Datang",
                         // style: GoogleFonts.poppins(
                         //   color: whiteColor,
                         //   fontSize: 24,
@@ -47,7 +47,7 @@ class LoginView extends GetView<LoginController> {
                     top: 182,
                     left: 23,
                     child:
-                        Text("Senang Melihatmu Kembali.", style: regularWhite),
+                        Text("Senang Melihatmu Kembali.", style: normalWhite14),
                   ),
                 ],
               ),
@@ -63,7 +63,7 @@ class LoginView extends GetView<LoginController> {
                           controller: controller.usernameController,
                           decoration: InputDecoration(
                             hintText: 'Nomor Telpon',
-                            hintStyle: regularPrimaryColor,
+                            hintStyle: regularPrimaryColor14,
                             prefixIcon:
                                 Icon(Icons.phone_outlined, color: primaryColor),
                             enabledBorder: OutlineInputBorder(
@@ -77,7 +77,7 @@ class LoginView extends GetView<LoginController> {
                           controller: controller.passwordController,
                           decoration: InputDecoration(
                             hintText: 'Kata Sandi',
-                            hintStyle: regularPrimaryColor,
+                            hintStyle: regularPrimaryColor14,
                             prefixIcon:
                                 Icon(Icons.lock_outline, color: primaryColor),
                             enabledBorder: OutlineInputBorder(
@@ -93,15 +93,15 @@ class LoginView extends GetView<LoginController> {
                               onPressed: () {
                                 Get.toNamed('/forgot-password');
                               },
-                              child: Text("Lupa kata sandi?",
-                                  style: boldPrimaryColor)),
+                              child: const Text("Lupa kata sandi?",
+                                  style: boldPrimaryColor14)),
                         ),
                         SizedBox(height: 10),
                         ElevatedButton(
                           onPressed: () {
                             controller.login();
                           },
-                          child: Text('Masuk', style: regularWhite),
+                          child: const Text('Masuk', style: normalWhite14),
                           style: ElevatedButton.styleFrom(
                             backgroundColor: primaryColor,
                             minimumSize: const Size(double.infinity, 50),
@@ -119,7 +119,8 @@ class LoginView extends GetView<LoginController> {
                               onPressed: () {
                                 Get.toNamed('/register');
                               },
-                              child: Text("Daftar", style: regularPrimaryColor),
+                              child: const Text("Daftar",
+                                  style: regularPrimaryColor14),
                             ),
                           ],
                         ),
@@ -132,10 +133,10 @@ class LoginView extends GetView<LoginController> {
           ),
           Container(
             padding: EdgeInsets.only(bottom: 20),
-            child: Text(
+            child: const Text(
               "Dengan ini saya menyetujui\nsyarat dan ketentuan yang berlaku untuk aplikasi ini ",
               textAlign: TextAlign.center,
-              style: sizeS,
+              style: normalBlack12,
               textHeightBehavior:
                   TextHeightBehavior(applyHeightToFirstAscent: true),
             ),

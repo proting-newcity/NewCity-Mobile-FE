@@ -21,7 +21,7 @@ class OtpView extends GetView<RegisterController> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Text("Kode OTP", style: boldPrimaryColor24),
+            Text("Kode OTP", style: boldPrimaryColor1424),
             Text(
               "Kode OTP telah terkirim ke\n+62 xx xxxx xxxx",
               textAlign: TextAlign.center,
@@ -39,7 +39,7 @@ class OtpView extends GetView<RegisterController> {
                   onPressed: () {
                     Get.toNamed('/login');
                   },
-                  child: Text("Kirim Ulang", style: boldPrimaryColor),
+                  child: const Text("Kirim Ulang", style: boldPrimaryColor14),
                 ),
               ],
             ),
@@ -48,7 +48,7 @@ class OtpView extends GetView<RegisterController> {
                 controller.sendOtp();
                 Get.toNamed('/otp');
               },
-              child: Text('Daftar', style: regularWhite),
+              child: const Text('Daftar', style: normalWhite14),
               style: ElevatedButton.styleFrom(
                 backgroundColor: primaryColor,
                 minimumSize: const Size(double.infinity, 50),

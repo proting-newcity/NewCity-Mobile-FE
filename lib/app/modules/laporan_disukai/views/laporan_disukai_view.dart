@@ -24,7 +24,7 @@ class LaporanDisukaiView extends GetView<LaporanDisukaiController> {
           icon: Icon(Icons.arrow_back),
           onPressed: () => Get.back(),
         ),
-        title: Text("Laporan Disukai", style: boldText),
+        title: const Text("Laporan Disukai", style: boldBlack14),
       ),
       body: Container(
         margin: EdgeInsets.only(left: 30, right: 30),

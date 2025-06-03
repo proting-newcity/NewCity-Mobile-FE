@@ -38,9 +38,9 @@ class FaqView extends GetView<FaqController> {
           icon: Icon(Icons.arrow_back),
           onPressed: () => Get.back(),
         ),
-        title: Text(
+        title: const Text(
           "FAQ",
-          style: boldText,
+          style: boldBlack14,
         ),
       ),
       body: Center(
@@ -70,7 +70,7 @@ class FaqView extends GetView<FaqController> {
                             ),
                           ),
                           child: ExpansionTile(
-                            title: Text(faq["question"]!, style: bold16),
+                            title: Text(faq["question"]!, style: boldBlack16),
                             childrenPadding: EdgeInsets.all(16),
                             collapsedIconColor: backgroundColor,
                             collapsedTextColor: backgroundColor,
@@ -84,7 +84,7 @@ class FaqView extends GetView<FaqController> {
                             ),
                             children: [
                               Text(faq["answer"]!,
-                                  style: regularBackgroundColor),
+                                  style: regularBackgroundColor14),
                             ],
                           ),
                         ),

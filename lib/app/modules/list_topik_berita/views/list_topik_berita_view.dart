@@ -18,7 +18,7 @@ class ListTopikBeritaView extends GetView<ListTopikBeritaController> {
           icon: Icon(Icons.arrow_back),
           onPressed: () => Get.back(),
         ),
-        title: Text("Topik Berita", style: boldText),
+        title: const Text("Topik Berita", style: boldBlack14),
       ),
       body: Obx(() => ListView.builder(
             itemCount: controller.allKategori.value.kategori.length,
@@ -72,14 +72,14 @@ Widget TopikTile({required KategoriBerita kategori}) {
                   borderRadius: borderXlAltCircular,
                   gradient: LinearGradient(
                     colors: [
-                      blackColor.withOpacity(0.6),
+                      blackColor3,
                       transparentColor,
                     ],
                     begin: Alignment.bottomCenter,
                     end: Alignment.topCenter,
                   ),
                 ),
-                child: Text(kategori.name, style: boldTextWhite),
+                child: Text(kategori.name, style: boldWhite20),
               ),
             );
           }

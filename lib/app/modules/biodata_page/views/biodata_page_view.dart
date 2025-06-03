@@ -29,7 +29,7 @@ class BiodataPageView extends GetView<BiodataPageController> {
             Get.toNamed('/beranda');
           },
         ),
-        title: Text('Akun', style: white22),
+        title: const Text('Akun', style: normalWhite22),
         backgroundColor: primaryColor,
       ),
       body: Stack(
@@ -64,22 +64,23 @@ class BiodataPageView extends GetView<BiodataPageController> {
                 ),
                 SizedBox(height: 16),
                 Obx(() {
-                  return Text('${controller.user.value?.name}', style: h2);
+                  return Text('${controller.user.value?.name}',
+                      style: boldTextLight14);
                 }),
                 SizedBox(height: 8),
                 Obx(() {
                   return Text(
                     '${controller.user.value?.username}',
-                    style: sizeL,
+                    style: normalBlack18,
                     textAlign: TextAlign.center,
                   );
                 }),
                 SizedBox(height: 55),
                 ListTile(
                   leading: Icon(Icons.lock),
-                  title: Text(
+                  title: const Text(
                     'Ubah Kata Sandi',
-                    style: sizeXL,
+                    style: normalBlack20,
                   ),
                   onTap: () {
                     Get.toNamed('/lupa-password');
@@ -88,9 +89,9 @@ class BiodataPageView extends GetView<BiodataPageController> {
                 Divider(),
                 ListTile(
                   leading: Icon(Icons.account_circle),
-                  title: Text(
+                  title: const Text(
                     'Edit Akun',
-                    style: sizeXL,
+                    style: normalBlack20,
                   ),
                   onTap: () {
                     Get.toNamed('/edit-akun', arguments: controller.user.value);
@@ -99,9 +100,9 @@ class BiodataPageView extends GetView<BiodataPageController> {
                 Divider(),
                 ListTile(
                   leading: Icon(Icons.question_mark),
-                  title: Text(
+                  title: const Text(
                     'Bantuan',
-                    style: sizeXL,
+                    style: normalBlack20,
                   ),
                   onTap: () {
                     // Navigate to help page
@@ -110,7 +111,7 @@ class BiodataPageView extends GetView<BiodataPageController> {
                 Divider(),
                 ListTile(
                   leading: Icon(Icons.exit_to_app, color: redColor),
-                  title: Text('Keluar', style: red20),
+                  title: const Text('Keluar', style: normalRed20),
                   onTap: () {
                     _showLogoutDialog(context);
                   },
@@ -128,10 +129,7 @@ class BiodataPageView extends GetView<BiodataPageController> {
         icons: const [Icons.home_outlined, Icons.add, Icons.person_outline],
         tabSize: 50,
         tabBarHeight: 55,
-        textStyle: h4.copyWith(
-          color: blackColor,
-          fontWeight: FontWeight.w500,
-        ),
+        textStyle: boldBlack14,
         tabIconColor: blackColor,
         tabIconSize: 28.0,
         tabIconSelectedSize: 26.0,
@@ -150,17 +148,17 @@ class BiodataPageView extends GetView<BiodataPageController> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("Konfirmasi Keluar"),
-          content: Text("Apakah Anda yakin ingin keluar?"),
+          title: const Text("Konfirmasi Keluar"),
+          content: const Text("Apakah Anda yakin ingin keluar?"),
           actions: [
             TextButton(
-              child: Text("Batal"),
+              child: const Text("Batal"),
               onPressed: () {
                 Navigator.of(context).pop();
               },
             ),
             TextButton(
-              child: Text("Lanjut"),
+              child: const Text("Lanjut"),
               onPressed: () {
                 Navigator.of(context).pop();
                 Get.toNamed('/login');

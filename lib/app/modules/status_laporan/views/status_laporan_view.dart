@@ -23,7 +23,7 @@ class StatusLaporanView extends GetView<StatusLaporanController> {
           icon: Icon(Icons.arrow_back),
           onPressed: () => Get.back(),
         ),
-        title: Text("Status Laporan", style: boldText),
+        title: const Text("Status Laporan", style: boldBlack14),
       ),
       body: Container(
         margin: EdgeInsets.only(left: 30, right: 30),
@@ -71,7 +71,7 @@ class StatusLaporanView extends GetView<StatusLaporanController> {
                               color: Color.fromRGBO(102, 102, 102, 1),
                             ),
                             child: Center(
-                              child: Text('Menunggu', style: boldWhite15),
+                              child: const Text('Menunggu', style: boldWhite15),
                             ),
                           ),
                         ),
@@ -94,7 +94,8 @@ class StatusLaporanView extends GetView<StatusLaporanController> {
                               color: backgroundColor,
                             ),
                             child: Center(
-                              child: Text('Tindak Lanjut', style: boldWhite15),
+                              child: const Text('Tindak Lanjut',
+                                  style: boldWhite15),
                             ),
                           ),
                         ),
@@ -122,7 +123,8 @@ class StatusLaporanView extends GetView<StatusLaporanController> {
                               color: statusDalamProses,
                             ),
                             child: Center(
-                              child: Text('Dalam Proses', style: boldWhite15),
+                              child: const Text('Dalam Proses',
+                                  style: boldWhite15),
                             ),
                           ),
                         ),
@@ -145,7 +147,7 @@ class StatusLaporanView extends GetView<StatusLaporanController> {
                               color: secondaryColor,
                             ),
                             child: Center(
-                              child: Text('Selesai', style: boldWhite15),
+                              child: const Text('Selesai', style: boldWhite15),
                             ),
                           ),
                         ),
@@ -156,7 +158,7 @@ class StatusLaporanView extends GetView<StatusLaporanController> {
               ),
             ),
             SizedBox(height: 20),
-            Text('Laporan Terkini', style: bold18),
+            Text('Laporan Terkini', style: boldBlack18),
             SizedBox(height: 20),
             Expanded(
               child: Obx(() {

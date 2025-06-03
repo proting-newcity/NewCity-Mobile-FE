@@ -43,7 +43,7 @@ class GovernmentView extends GetView<GovernmentController> {
                     Text(
                         DateFormat('EEEE dd MMMM yyyy', 'id_ID')
                             .format(DateTime.now()),
-                        style: sizeMTextLight),
+                        style: boldBlack14Light14),
                   ],
                 )
               ],
@@ -91,7 +91,7 @@ class GovernmentView extends GetView<GovernmentController> {
                               color: whiteColor,
                             ),
                           ),
-                          Text('Status', style: regularBackgroundColor),
+                          Text('Status', style: regularBackgroundColor14),
                         ],
                       ),
                     ),
@@ -111,7 +111,7 @@ class GovernmentView extends GetView<GovernmentController> {
                               color: whiteColor,
                             ),
                           ),
-                          Text('Profil', style: regularBackgroundColor),
+                          Text('Profil', style: regularBackgroundColor14),
                         ],
                       ),
                     ),
@@ -122,7 +122,7 @@ class GovernmentView extends GetView<GovernmentController> {
             SizedBox(height: 20),
             Text(
               'Rekomendasi Untukmu',
-              style: bold18,
+              style: boldBlack18,
             ),
             SizedBox(height: 20),
             Expanded(

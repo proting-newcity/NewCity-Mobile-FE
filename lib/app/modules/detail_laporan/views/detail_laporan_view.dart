@@ -113,7 +113,7 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                                 return Text(
                                     controller.report.value?.report.judul ??
                                         'Loading...',
-                                    style: boldTextWhite);
+                                    style: boldWhite20);
                               }),
                             ),
                           ],
@@ -131,7 +131,7 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                                             .format(controller
                                                 .report.value!.report.updatedAt)
                                         : 'Loading...',
-                                    style: regularWhite);
+                                    style: normalWhite14);
                               }),
                               const SizedBox(height: 16),
                               Row(
@@ -143,7 +143,7 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                                         controller
                                                 .report.value?.masyarakatName ??
                                             'Loading...',
-                                        style: regularWhite);
+                                        style: normalWhite14);
                                   }),
                                 ],
                               ),
@@ -156,7 +156,7 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                                         title: "Status Laporan",
                                         titlePadding: EdgeInsets.only(
                                             top: 20, right: 100),
-                                        titleStyle: boldTextBlack,
+                                        titleStyle: boldBlack20,
                                         content: SizedBox(
                                           width: 250,
                                           height: 250,
@@ -282,7 +282,7 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                                                             .report
                                                             .status
                                                             .length)[1],
-                                                    style: regularWhite),
+                                                    style: normalWhite14),
                                               ),
                                             ),
                                           );
@@ -310,7 +310,7 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                                                           1]
                                                       .status ??
                                                   'Loading...',
-                                              style: regularBlack);
+                                              style: normalBlack14);
                                         }),
                                         SizedBox(width: 5),
                                         Icon(Icons.arrow_forward)
@@ -332,7 +332,7 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Kategori', style: bold16),
+                    Text('Kategori', style: boldBlack16),
                     SizedBox(height: 4),
                     Obx(() {
                       return Text(
@@ -342,7 +342,7 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                       );
                     }),
                     SizedBox(height: 16),
-                    Text('Lokasi', style: bold16),
+                    Text('Lokasi', style: boldBlack16),
                     SizedBox(height: 4),
                     Obx(() {
                       return Text(
@@ -354,7 +354,7 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                     SizedBox(height: 16),
                     Text(
                       'Detail Laporan',
-                      style: bold16,
+                      style: boldBlack16,
                     ),
                     SizedBox(height: 8),
                     Obx(() {

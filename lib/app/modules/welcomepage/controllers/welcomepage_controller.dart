@@ -10,7 +10,7 @@ class WelcomepageController extends GetxController {
     },
     {
       "image": "assets/images/img_welcomepage2.png",
-      "title": "Setiap laporan\nAnda berharga!",
+      "title": "Setiap laporan Anda\nberharga!",
       "description":
           "Semakin banyak Anda melapor, semakin cepat kita menyelesaikan masalah.",
     },

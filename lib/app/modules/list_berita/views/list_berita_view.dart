@@ -29,9 +29,9 @@ class ListBeritaView extends GetView<ListBeritaController> {
           icon: Icon(Icons.arrow_back),
           onPressed: () => Get.back(),
         ),
-        title: Text(
+        title: const Text(
           "Berita",
-          style: boldText,
+          style: boldBlack14,
         ),
       ),
       body: Column(
@@ -43,12 +43,12 @@ class ListBeritaView extends GetView<ListBeritaController> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text("Topik Terkenal", style: bold20),
+                Text("Topik Terkenal", style: boldBlack20),
                 TextButton(
                   onPressed: () {
                     Get.toNamed("/list-topik-berita");
                   },
-                  child: Text("Topik lainnya", style: boldGreen15),
+                  child: const Text("Topik lainnya", style: boldGreen15),
                 )
               ],
             ),
@@ -56,7 +56,7 @@ class ListBeritaView extends GetView<ListBeritaController> {
           _appBarTopik(), // Only listens to topik observables
           Padding(
             padding: const EdgeInsets.all(18.0),
-            child: Text("Berita Untukmu", style: bold20),
+            child: const Text("Berita Untukmu", style: boldBlack20),
           ),
           Expanded(
             child: Obx(
@@ -110,9 +110,9 @@ class ListBeritaView extends GetView<ListBeritaController> {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
-            return Center(child: Text("Error loading images"));
+            return Center(child: const Text("Error loading images"));
           } else if (!snapshot.hasData) {
-            return Center(child: Text("No data available"));
+            return Center(child: const Text("No data available"));
           } else {
             List<ImageProvider<Object>> categoryImages = snapshot.data ?? [];
 
@@ -156,14 +156,13 @@ class ListBeritaView extends GetView<ListBeritaController> {
             borderRadius: borderXlAltCircular,
             gradient: LinearGradient(
               colors: [
-                blackColor.withOpacity(0.6),
                 transparentColor,
               ],
               begin: Alignment.bottomCenter,
               end: Alignment.topCenter,
             ),
           ),
-          child: Text(kategori.name, style: bold16White),
+          child: Text(kategori.name, style: boldWhite16),
         ),
       ),
     );

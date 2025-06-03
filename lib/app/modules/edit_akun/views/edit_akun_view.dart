@@ -17,7 +17,7 @@ class EditAkunView extends GetView<EditAkunController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Edit Akun'),
+        title: const Text('Edit Akun'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -62,7 +62,7 @@ class EditAkunView extends GetView<EditAkunController> {
             SizedBox(height: 15),
             Text(
               'Ubah foto',
-              style: regularPrimaryColor,
+              style: regularPrimaryColor14,
             ),
             SizedBox(height: 45),
             Text("Nama"),
@@ -104,7 +104,7 @@ class EditAkunView extends GetView<EditAkunController> {
                   borderRadius: borderXlCircular,
                 ),
               ),
-              child: Text('Simpan Perubahan', style: regularWhite),
+              child: const Text('Simpan Perubahan', style: normalWhite14),
             ),
           ],
         ),

@@ -11,7 +11,7 @@ class TopikBeritaView extends GetView<TopikBeritaController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(Get.arguments.name, style: boldText),
+        title: Text(Get.arguments.name, style: boldBlack14),
       ),
       body: Obx(
         () {

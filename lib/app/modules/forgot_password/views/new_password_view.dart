@@ -36,7 +36,7 @@ class NewPasswordView extends GetView<ForgotPasswordController> {
                   Positioned(
                     top: 135,
                     left: 23,
-                    child: Text("Kata Sandi Baru",
+                    child: const Text("Kata Sandi Baru",
                         // style: GoogleFonts.poppins(
                         //   color: whiteColor,
                         //   fontSize: 24,
@@ -47,7 +47,8 @@ class NewPasswordView extends GetView<ForgotPasswordController> {
                   Positioned(
                     top: 182,
                     left: 23,
-                    child: Text("Buat Kata Sandi Baru.", style: regularWhite),
+                    child: const Text("Buat Kata Sandi Baru.",
+                        style: normalWhite14),
                   ),
                 ],
               ),
@@ -63,7 +64,7 @@ class NewPasswordView extends GetView<ForgotPasswordController> {
                           controller: controller.passwordController,
                           decoration: InputDecoration(
                             hintText: 'Kata Sandi Baru',
-                            hintStyle: regularPrimaryColor,
+                            hintStyle: regularPrimaryColor14,
                             prefixIcon:
                                 Icon(Icons.lock_outline, color: primaryColor),
                             enabledBorder: OutlineInputBorder(
@@ -77,7 +78,7 @@ class NewPasswordView extends GetView<ForgotPasswordController> {
                           controller: controller.passwordConfirmationController,
                           decoration: InputDecoration(
                             hintText: 'Konfirmasi Kata Sandi',
-                            hintStyle: regularPrimaryColor,
+                            hintStyle: regularPrimaryColor14,
                             prefixIcon:
                                 Icon(Icons.lock_outline, color: primaryColor),
                             enabledBorder: OutlineInputBorder(
@@ -91,8 +92,8 @@ class NewPasswordView extends GetView<ForgotPasswordController> {
                           onPressed: () {
                             controller.changePassword();
                           },
-                          child:
-                              Text('Buat Kata Sandi Baru', style: regularWhite),
+                          child: Text('Buat Kata Sandi Baru',
+                              style: normalWhite14),
                           style: ElevatedButton.styleFrom(
                             backgroundColor: primaryColor,
                             minimumSize: const Size(double.infinity, 50),

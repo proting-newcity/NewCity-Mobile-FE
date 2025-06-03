@@ -16,4 +16,9 @@ const BorderRadius borderXxl = BorderRadius.all(radiusXxl);
 const BorderRadius borderXxxl = BorderRadius.all(radiusXxxl);
 const BorderRadius borderXxxxl = BorderRadius.all(radiusXxxxl);
 
-BorderRadius borderTopSm = BorderRadius.circular(10);
+BorderRadius borderMdCircular = BorderRadius.circular(8);
+BorderRadius borderLgCircular = BorderRadius.circular(10);
+BorderRadius borderXlCircular = BorderRadius.circular(15);
+BorderRadius borderXlAltCircular = BorderRadius.circular(16);
+BorderRadius borderXxlCircular = BorderRadius.circular(20);
+BorderRadius borderXxxxlCircular = BorderRadius.circular(30);

@@ -36,7 +36,7 @@ class RegisterView extends GetView<RegisterController> {
                   Positioned(
                     top: 135,
                     left: 23,
-                    child: Text("Registrasi",
+                    child: const Text("Registrasi",
                         // style: GoogleFonts.poppins(
                         //   color: whiteColor,
                         //   fontSize: 24,
@@ -47,7 +47,7 @@ class RegisterView extends GetView<RegisterController> {
                   Positioned(
                     top: 182,
                     left: 23,
-                    child: Text("Buat Akun Anda!", style: regularWhite),
+                    child: const Text("Buat Akun Anda!", style: normalWhite14),
                   ),
                 ],
               ),
@@ -62,7 +62,7 @@ class RegisterView extends GetView<RegisterController> {
                         TextField(
                           decoration: InputDecoration(
                             hintText: 'Nama',
-                            hintStyle: regularPrimaryColor,
+                            hintStyle: regularPrimaryColor14,
                             prefixIcon: Icon(Icons.person_2_outlined,
                                 color: primaryColor),
                             enabledBorder: OutlineInputBorder(
@@ -76,7 +76,7 @@ class RegisterView extends GetView<RegisterController> {
                         TextField(
                           decoration: InputDecoration(
                             hintText: 'Nomor Telepon',
-                            hintStyle: regularPrimaryColor,
+                            hintStyle: regularPrimaryColor14,
                             prefixIcon: Icon(Icons.phone, color: primaryColor),
                             enabledBorder: OutlineInputBorder(
                                 borderSide:
@@ -90,7 +90,7 @@ class RegisterView extends GetView<RegisterController> {
                           obscureText: true,
                           decoration: InputDecoration(
                             hintText: 'Kata Sandi',
-                            hintStyle: regularPrimaryColor,
+                            hintStyle: regularPrimaryColor14,
                             prefixIcon:
                                 Icon(Icons.lock_outline, color: primaryColor),
                             enabledBorder: OutlineInputBorder(
@@ -105,7 +105,7 @@ class RegisterView extends GetView<RegisterController> {
                           onPressed: () {
                             controller.sendOtp();
                           },
-                          child: Text('Daftar', style: regularWhite),
+                          child: const Text('Daftar', style: normalWhite14),
                           style: ElevatedButton.styleFrom(
                             backgroundColor: primaryColor,
                             minimumSize: const Size(double.infinity, 50),
@@ -122,7 +122,8 @@ class RegisterView extends GetView<RegisterController> {
                               onPressed: () {
                                 Get.toNamed('/login');
                               },
-                              child: Text("Masuk", style: boldPrimaryColor),
+                              child: const Text("Masuk",
+                                  style: boldPrimaryColor14),
                             ),
                           ],
                         ),
@@ -135,10 +136,10 @@ class RegisterView extends GetView<RegisterController> {
           ),
           Container(
             padding: EdgeInsets.only(bottom: 20),
-            child: Text(
+            child: const Text(
                 "dengan in isaya menyetujui\nsyarat dan ketentuan yang berlaku untuk aplikasi ini ",
                 textAlign: TextAlign.center,
-                style: sizeS),
+                style: normalBlack12),
           ),
         ],
       ),

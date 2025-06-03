@@ -23,7 +23,7 @@ class NotifikasiView extends GetView<NotifikasiController> {
             child: Padding(
               padding: EdgeInsets.all(16.0),
               child: Center(
-                child: Text('Laporan Saya', style: boldPrimaryColor),
+                child: const Text('Laporan Saya', style: boldPrimaryColor14),
               ),
             ),
             onTap: () {
@@ -84,7 +84,7 @@ class NotifikasiView extends GetView<NotifikasiController> {
   Widget _buildSectionTitle(String title) {
     return Padding(
       padding: const EdgeInsets.only(top: 20, bottom: 0),
-      child: Text(title, style: bold18),
+      child: Text(title, style: boldBlack18),
     );
   }
 }

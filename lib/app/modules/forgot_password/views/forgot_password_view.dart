@@ -36,14 +36,14 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
                   Positioned(
                     top: 135,
                     left: 23,
-                    child: Text("Lupa kata sandi?", style: boldWhite24),
+                    child: const Text("Lupa kata sandi?", style: boldWhite24),
                   ),
                   Positioned(
                     top: 182,
                     left: 23,
-                    child: Text(
+                    child: const Text(
                         "Masukkan nomor telepon Anda untuk\nmengirimkan kode verifikasi!.",
-                        style: regularWhite),
+                        style: normalWhite14),
                   ),
                 ],
               ),
@@ -59,7 +59,7 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
                           controller: controller.notelpController,
                           decoration: InputDecoration(
                             hintText: 'Nomor Telpon',
-                            hintStyle: regularPrimaryColor,
+                            hintStyle: regularPrimaryColor14,
                             prefixIcon: Icon(Icons.phone_in_talk_outlined,
                                 color: primaryColor),
                             enabledBorder: OutlineInputBorder(
@@ -73,7 +73,7 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
                           onPressed: () {
                             controller.searchnotelp();
                           },
-                          child: Text('Kirim Kode', style: h2WhiteColor),
+                          child: const Text('Kirim Kode', style: boldWhite14),
                           style: ElevatedButton.styleFrom(
                             backgroundColor: primaryColor,
                             minimumSize: const Size(double.infinity, 50),

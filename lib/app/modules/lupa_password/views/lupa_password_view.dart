@@ -36,7 +36,7 @@ class LupaPasswordView extends GetView<LupaPasswordController> {
                   Positioned(
                     top: 135,
                     left: 23,
-                    child: Text("Buat Kata Sandi Baru",
+                    child: const Text("Buat Kata Sandi Baru",
                         // style: GoogleFonts.poppins(
                         //   color: whiteColor,
                         //   fontSize: 24,
@@ -47,8 +47,8 @@ class LupaPasswordView extends GetView<LupaPasswordController> {
                   Positioned(
                     top: 182,
                     left: 23,
-                    child: Text("Masukkan kata sandi baru Anda.",
-                        style: regularWhite),
+                    child: const Text("Masukkan kata sandi baru Anda.",
+                        style: normalWhite14),
                   ),
                 ],
               ),
@@ -82,7 +82,8 @@ class LupaPasswordView extends GetView<LupaPasswordController> {
                           onPressed: () {
                             controller.sendOtp();
                           },
-                          child: Text('Ubah Kata Sandi', style: regularWhite),
+                          child: const Text('Ubah Kata Sandi',
+                              style: normalWhite14),
                           style: ElevatedButton.styleFrom(
                             backgroundColor: primaryColor,
                             minimumSize: const Size(double.infinity, 50),

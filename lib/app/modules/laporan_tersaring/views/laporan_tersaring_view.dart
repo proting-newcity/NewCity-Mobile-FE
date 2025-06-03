@@ -25,7 +25,7 @@ class LaporanTersaringView extends GetView<LaporanTersaringController> {
           icon: Icon(Icons.arrow_back),
           onPressed: () => Get.back(),
         ),
-        title: Text("Laporan $status", style: boldText),
+        title: Text("Laporan $status", style: boldBlack14),
       ),
       body: Container(
         margin: EdgeInsets.only(left: 30, right: 30),

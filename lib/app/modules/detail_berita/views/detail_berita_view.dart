@@ -56,9 +56,7 @@ class DetailBeritaView extends GetView<DetailBeritaController> {
                           child: Stack(
                             children: [
                               Container(
-                                decoration: BoxDecoration(
-                                  color: blackColor.withOpacity(0.4),
-                                ),
+                                decoration: BoxDecoration(color: blackColor2),
                               ),
                             ],
                           ),
@@ -81,8 +79,8 @@ class DetailBeritaView extends GetView<DetailBeritaController> {
                               onPressed: () => Get.back(),
                             ),
                             Expanded(
-                              child: Text(Get.arguments.title,
-                                  style: boldTextWhite),
+                              child:
+                                  Text(Get.arguments.title, style: boldWhite20),
                             ),
                           ],
                         ),
@@ -95,18 +93,14 @@ class DetailBeritaView extends GetView<DetailBeritaController> {
                               Text(
                                   DateFormat('yyyy-MM-dd – kk:mm')
                                       .format(Get.arguments.tanggal),
-                                  style: h2WhiteColor),
+                                  style: boldWhite14),
                               const SizedBox(height: 16),
                               Row(
                                 children: [
                                   const Icon(Icons.person, color: whiteColor),
                                   const SizedBox(width: 4),
-                                  Text(
-                                    Get.arguments.user.name,
-                                    style: textStandart.copyWith(
-                                      color: whiteColor,
-                                    ),
-                                  ),
+                                  Text(Get.arguments.user.name,
+                                      style: normalWhite14),
                                 ],
                               ),
                               const SizedBox(height: 16),

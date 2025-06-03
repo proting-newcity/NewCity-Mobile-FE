@@ -21,16 +21,16 @@ class CreateLaporanView extends GetView<CreateLaporanController> {
           icon: Icon(Icons.arrow_back),
           onPressed: () => Get.back(),
         ),
-        title: Text(
+        title: const Text(
           "Buat Laporan",
-          style: boldText,
+          style: boldBlack14,
         ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: ListView(
           children: [
-            Text("Laporan", style: boldText),
+            Text("Laporan", style: boldBlack14),
             SizedBox(height: 18),
             Text("Judul"),
             TextField(
@@ -106,7 +106,7 @@ class CreateLaporanView extends GetView<CreateLaporanController> {
               ),
             ),
             SizedBox(height: 20),
-            Text("Pilih Topik", style: boldText),
+            Text("Pilih Topik", style: boldBlack14),
             SizedBox(height: 10),
             Obx(() {
               return Wrap(
@@ -132,8 +132,7 @@ class CreateLaporanView extends GetView<CreateLaporanController> {
               style: ElevatedButton.styleFrom(
                   minimumSize: Size(double.infinity, 50),
                   backgroundColor: primaryColor),
-              child: Text("Berikutnya",
-                  style: boldText.copyWith(color: whiteColor)),
+              child: const Text("Berikutnya", style: boldWhite14),
             ),
           ],
         ),

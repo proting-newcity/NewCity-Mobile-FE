@@ -15,7 +15,7 @@ class WelcomepageView extends GetView<WelcomepageController> {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 50),
           child: SingleChildScrollView(
             child: Center(
               child: Column(
@@ -50,7 +50,7 @@ class WelcomepageView extends GetView<WelcomepageController> {
                           onPressed: () {
                             controller.nextContent();
                           },
-                          child: Text("Lanjut", style: regularWhite),
+                          child: const Text("Lanjut", style: normalWhite14),
                         ),
                       ),
                       SizedBox(height: 10),
@@ -68,7 +68,7 @@ class WelcomepageView extends GetView<WelcomepageController> {
                           onPressed: () {
                             Get.toNamed("/login");
                           },
-                          child: Text("Masuk", style: regularWhite),
+                          child: const Text("Masuk", style: normalWhite14),
                         ),
                       ),
                     ],
@@ -90,11 +90,17 @@ class DetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Image.asset(map["image"], height: 250),
-          SizedBox(height: 60),
-          Text(map["title"], style: sizeXXL),
-          Text(map["description"]),
+          Text(map["title"],
+              textAlign: TextAlign.center, style: boldPrimaryColor1424),
+          Text(map["description"],
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 16,
+                color: blackColor,
+              )),
         ],
       ),
     );

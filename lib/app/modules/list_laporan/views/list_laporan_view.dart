@@ -32,7 +32,7 @@ class ListLaporanView extends GetView<ListLaporanController> {
             child: Padding(
               padding: EdgeInsets.all(16.0),
               child: Center(
-                child: Text('Laporan Saya', style: boldPrimaryColor),
+                child: const Text('Laporan Saya', style: boldPrimaryColor14),
               ),
             ),
             onTap: () {
@@ -117,7 +117,7 @@ class ListLaporanView extends GetView<ListLaporanController> {
           Icons.add,
           color: whiteColor,
         ),
-        label: Text("Tambah Laporan", style: regularWhite),
+        label: const Text("Tambah Laporan", style: normalWhite14),
         backgroundColor: primaryColor,
         onPressed: () {
           Get.toNamed('/create-laporan');
