@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-
+import 'package:newcity/theme/colors.dart';
 import 'package:get/get.dart';
-
+import 'package:newcity/theme/text_theme.dart';
 import '../controllers/forgot_password_controller.dart';
+import 'package:newcity/theme/radius.dart';
 
 class ForgotPasswordView extends GetView<ForgotPasswordController> {
   const ForgotPasswordView({super.key});
@@ -25,7 +26,7 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
                     child: IconButton(
                       icon: Icon(
                         Icons.arrow_back,
-                        color: Colors.white,
+                        color: whiteColor,
                       ),
                       onPressed: () {
                         Get.back();
@@ -35,25 +36,14 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
                   Positioned(
                     top: 135,
                     left: 23,
-                    child: Text(
-                      "Lupa kata sandi?",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+                    child: const Text("Lupa kata sandi?", style: boldWhite24),
                   ),
                   Positioned(
                     top: 182,
                     left: 23,
-                    child: Text(
-                      "Masukkan nomor telepon Anda untuk\nmengirimkan kode verifikasi!.",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 14,
-                      ),
-                    ),
+                    child: const Text(
+                        "Masukkan nomor telepon Anda untuk\nmengirimkan kode verifikasi!.",
+                        style: normalWhite14),
                   ),
                 ],
               ),
@@ -69,15 +59,13 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
                           controller: controller.notelpController,
                           decoration: InputDecoration(
                             hintText: 'Nomor Telpon',
-                            hintStyle: TextStyle(
-                              color: Color(0xFF588157),
-                            ),
+                            hintStyle: regularPrimaryColor14,
                             prefixIcon: Icon(Icons.phone_in_talk_outlined,
-                                color: Color(0xFF588157)),
+                                color: primaryColor),
                             enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: Color(0xFF588157), width: 1),
-                                borderRadius: BorderRadius.circular(10)),
+                                borderSide: const BorderSide(
+                                    color: primaryColor, width: 1),
+                                borderRadius: borderLgCircular),
                           ),
                         ),
                         SizedBox(height: 30),
@@ -85,20 +73,14 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
                           onPressed: () {
                             controller.searchnotelp();
                           },
-                          child: Text(
-                            'Kirim Kode',
-                            style: TextStyle(
-                                fontSize: 14,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold),
-                          ),
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Color(0xFF588157),
+                            backgroundColor: primaryColor,
                             minimumSize: const Size(double.infinity, 50),
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15),
+                              borderRadius: borderXlCircular,
                             ),
                           ),
+                          child: const Text('Kirim Kode', style: boldWhite14),
                         ),
                       ],
                     ),
