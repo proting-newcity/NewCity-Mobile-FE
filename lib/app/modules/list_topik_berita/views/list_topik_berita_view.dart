@@ -5,7 +5,7 @@ import 'package:newcity/theme/colors.dart';
 import '../controllers/list_topik_berita_controller.dart';
 import 'package:newcity/models/berita.dart';
 import 'package:newcity/theme/text_theme.dart';
-import 'package:newcity/theme/Radius.dart';
+import 'package:newcity/theme/radius.dart';
 
 class ListTopikBeritaView extends GetView<ListTopikBeritaController> {
   const ListTopikBeritaView({super.key});

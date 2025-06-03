@@ -5,7 +5,7 @@ import 'package:newcity/models/user.dart';
 import '../controllers/edit_akun_controller.dart';
 import 'package:newcity/theme/colors.dart';
 import 'package:newcity/theme/text_theme.dart';
-import 'package:newcity/theme/Radius.dart';
+import 'package:newcity/theme/radius.dart';
 
 // ignore: must_be_immutable
 class EditAkunView extends GetView<EditAkunController> {

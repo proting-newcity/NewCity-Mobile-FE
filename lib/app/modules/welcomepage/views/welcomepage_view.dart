@@ -3,7 +3,7 @@ import 'package:newcity/theme/colors.dart';
 import 'package:get/get.dart';
 import '../controllers/welcomepage_controller.dart';
 import 'package:newcity/theme/text_theme.dart';
-import 'package:newcity/theme/Radius.dart';
+import 'package:newcity/theme/radius.dart';
 
 class WelcomepageView extends GetView<WelcomepageController> {
   final WelcomepageController controller = Get.put(WelcomepageController());

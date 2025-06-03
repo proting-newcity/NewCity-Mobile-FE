@@ -3,7 +3,7 @@ import 'package:newcity/theme/colors.dart';
 import 'package:newcity/theme/text_theme.dart';
 import 'package:get/get.dart';
 import '../controllers/forgot_password_controller.dart';
-import 'package:newcity/theme/Radius.dart';
+import 'package:newcity/theme/radius.dart';
 
 class NewPasswordView extends GetView<ForgotPasswordController> {
   const NewPasswordView({super.key});
@@ -99,7 +99,7 @@ class NewPasswordView extends GetView<ForgotPasswordController> {
                               borderRadius: borderXlCircular,
                             ),
                           ),
-                          child: Text('Buat Kata Sandi Baru',
+                          child: const Text('Buat Kata Sandi Baru',
                               style: normalWhite14),
                         ),
                         SizedBox(height: 20),

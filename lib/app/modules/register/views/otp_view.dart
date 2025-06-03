@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:pinput/pinput.dart';
 import '../controllers/register_controller.dart';
 import 'package:newcity/theme/text_theme.dart';
-import 'package:newcity/theme/Radius.dart';
+import 'package:newcity/theme/radius.dart';
 
 class OtpView extends GetView<RegisterController> {
   const OtpView({super.key});

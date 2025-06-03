@@ -5,7 +5,7 @@ import '../controllers/list_laporan_controller.dart';
 import 'package:newcity/widgets/report_tile.dart';
 import 'package:newcity/theme/colors.dart';
 import 'package:newcity/theme/text_theme.dart';
-import 'package:newcity/theme/Radius.dart';
+import 'package:newcity/theme/radius.dart';
 
 class ListLaporanView extends GetView<ListLaporanController> {
   const ListLaporanView({super.key});

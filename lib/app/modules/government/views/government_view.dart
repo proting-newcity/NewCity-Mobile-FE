@@ -5,7 +5,7 @@ import 'package:intl/intl.dart';
 import 'package:newcity/widgets/report_tile.dart';
 import 'package:newcity/theme/text_theme.dart';
 import '../controllers/government_controller.dart';
-import 'package:newcity/theme/Radius.dart';
+import 'package:newcity/theme/radius.dart';
 
 class GovernmentView extends GetView<GovernmentController> {
   const GovernmentView({super.key});

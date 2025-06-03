@@ -3,7 +3,7 @@ import 'package:newcity/theme/colors.dart';
 import 'package:get/get.dart';
 import 'package:newcity/theme/text_theme.dart';
 import '../controllers/register_controller.dart';
-import 'package:newcity/theme/Radius.dart';
+import 'package:newcity/theme/radius.dart';
 
 class RegisterView extends GetView<RegisterController> {
   const RegisterView({super.key});
@@ -92,11 +92,11 @@ class RegisterView extends GetView<RegisterController> {
                           decoration: InputDecoration(
                             hintText: 'Kata Sandi',
                             hintStyle: regularPrimaryColor14,
-                            prefixIcon:
-                                Icon(Icons.lock_outline, color: primaryColor),
+                            prefixIcon: const Icon(Icons.lock_outline,
+                                color: primaryColor),
                             enabledBorder: OutlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: primaryColor, width: 1),
+                                borderSide: const BorderSide(
+                                    color: primaryColor, width: 1),
                                 borderRadius: borderLgCircular),
                           ),
                           controller: controller.passwordcontroller,

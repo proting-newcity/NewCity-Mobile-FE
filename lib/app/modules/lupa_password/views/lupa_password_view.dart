@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:newcity/theme/colors.dart';
 import '../controllers/lupa_password_controller.dart';
 import 'package:newcity/theme/text_theme.dart';
-import 'package:newcity/theme/Radius.dart';
+import 'package:newcity/theme/radius.dart';
 
 class LupaPasswordView extends GetView<LupaPasswordController> {
   const LupaPasswordView({super.key});

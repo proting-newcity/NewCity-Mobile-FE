@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:motion_tab_bar/MotionTabBar.dart';
-import 'package:newcity/theme/Radius.dart';
+import 'package:newcity/theme/radius.dart';
 import 'package:newcity/widgets/report_tile.dart';
 import 'package:newcity/widgets/icon_button.dart';
 import '../controllers/beranda_controller.dart';

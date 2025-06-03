@@ -6,7 +6,7 @@ import '../controllers/list_berita_controller.dart';
 import 'package:newcity/models/berita.dart';
 import 'package:newcity/theme/colors.dart';
 import 'package:newcity/theme/text_theme.dart';
-import 'package:newcity/theme/Radius.dart';
+import 'package:newcity/theme/radius.dart';
 
 class ListBeritaView extends GetView<ListBeritaController> {
   const ListBeritaView({super.key});
@@ -110,9 +110,9 @@ class ListBeritaView extends GetView<ListBeritaController> {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
-            return const Center(child: const Text("Error loading images"));
+            return const Center(child: Text("Error loading images"));
           } else if (!snapshot.hasData) {
-            return const Center(child: const Text("No data available"));
+            return const Center(child: Text("No data available"));
           } else {
             List<ImageProvider<Object>> categoryImages = snapshot.data ?? [];
 
@@ -154,7 +154,7 @@ class ListBeritaView extends GetView<ListBeritaController> {
           padding: EdgeInsets.all(8),
           decoration: BoxDecoration(
             borderRadius: borderXlAltCircular,
-            gradient: LinearGradient(
+            gradient: const LinearGradient(
               colors: const [transparentColor],
               begin: Alignment.bottomCenter,
               end: Alignment.topCenter,

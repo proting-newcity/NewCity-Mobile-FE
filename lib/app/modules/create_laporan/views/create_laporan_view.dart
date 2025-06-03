@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import '../controllers/create_laporan_controller.dart';
 import 'package:newcity/widgets/topic_chip.dart';
 import 'package:newcity/theme/text_theme.dart';
-import 'package:newcity/theme/Radius.dart';
+import 'package:newcity/theme/radius.dart';
 
 class CreateLaporanView extends GetView<CreateLaporanController> {
   const CreateLaporanView({super.key});

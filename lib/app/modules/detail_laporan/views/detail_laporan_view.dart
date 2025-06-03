@@ -7,7 +7,7 @@ import 'package:newcity/widgets/detail_status.dart';
 import 'package:newcity/theme/colors.dart';
 import '../controllers/detail_laporan_controller.dart';
 import 'package:newcity/theme/text_theme.dart';
-import 'package:newcity/theme/Radius.dart';
+import 'package:newcity/theme/radius.dart';
 
 class DetailLaporanView extends GetView<DetailLaporanController> {
   DetailLaporanView({super.key});
@@ -389,7 +389,7 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                         }),
                         SizedBox(width: 16),
                         IconButton(
-                          icon: Icon(Icons.comment, color: grey2Color),
+                          icon: const Icon(Icons.comment, color: grey2Color),
                           onPressed: () {
                             controller.showCommentsModal(
                               context,
