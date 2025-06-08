@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:newcity/theme/colors.dart';
+import 'package:newcity/themes/colors.dart';
 import '../controllers/lupa_password_controller.dart';
-import 'package:newcity/theme/text_theme.dart';
-import 'package:newcity/theme/radius.dart';
+import 'package:newcity/themes/text_theme.dart';
+import 'package:newcity/themes/radius.dart';
 
 class LupaPasswordView extends GetView<LupaPasswordController> {
   const LupaPasswordView({super.key});
@@ -64,7 +64,6 @@ class LupaPasswordView extends GetView<LupaPasswordController> {
                           decoration: InputDecoration(
                             hintText: 'Kata Sandi',
                             prefixIcon: Icon(Icons.lock),
-                            border: OutlineInputBorder(),
                           ),
                           controller: controller.notelpcontroller,
                         ),
@@ -73,7 +72,6 @@ class LupaPasswordView extends GetView<LupaPasswordController> {
                           decoration: InputDecoration(
                             hintText: 'Konfirmasi Kata Sandi',
                             prefixIcon: Icon(Icons.lock),
-                            border: OutlineInputBorder(),
                           ),
                           controller: controller.passwordcontroller,
                         ),
@@ -82,13 +80,6 @@ class LupaPasswordView extends GetView<LupaPasswordController> {
                           onPressed: () {
                             controller.sendOtp();
                           },
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: primaryColor,
-                            minimumSize: const Size(double.infinity, 50),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: borderXlCircular,
-                            ),
-                          ),
                           child: const Text('Ubah Kata Sandi',
                               style: normalWhite14),
                         ),

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:newcity/theme/colors.dart';
-import 'package:newcity/theme/text_theme.dart';
+import 'package:newcity/themes/colors.dart';
+import 'package:newcity/themes/text_theme.dart';
 import 'package:get/get.dart';
 import '../controllers/forgot_password_controller.dart';
-import 'package:newcity/theme/radius.dart';
+import 'package:newcity/themes/radius.dart';
 
 class NewPasswordView extends GetView<ForgotPasswordController> {
   const NewPasswordView({super.key});
@@ -64,13 +64,8 @@ class NewPasswordView extends GetView<ForgotPasswordController> {
                           controller: controller.passwordController,
                           decoration: InputDecoration(
                             hintText: 'Kata Sandi Baru',
-                            hintStyle: regularPrimaryColor14,
                             prefixIcon: const Icon(Icons.lock_outline,
                                 color: primaryColor),
-                            enabledBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(
-                                    color: primaryColor, width: 1),
-                                borderRadius: borderLgCircular),
                           ),
                         ),
                         SizedBox(height: 20),
@@ -78,13 +73,8 @@ class NewPasswordView extends GetView<ForgotPasswordController> {
                           controller: controller.passwordConfirmationController,
                           decoration: InputDecoration(
                             hintText: 'Konfirmasi Kata Sandi',
-                            hintStyle: regularPrimaryColor14,
                             prefixIcon:
                                 Icon(Icons.lock_outline, color: primaryColor),
-                            enabledBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(
-                                    color: primaryColor, width: 1),
-                                borderRadius: borderLgCircular),
                           ),
                         ),
                         SizedBox(height: 20),
@@ -92,13 +82,6 @@ class NewPasswordView extends GetView<ForgotPasswordController> {
                           onPressed: () {
                             controller.changePassword();
                           },
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: primaryColor,
-                            minimumSize: const Size(double.infinity, 50),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: borderXlCircular,
-                            ),
-                          ),
                           child: const Text('Buat Kata Sandi Baru',
                               style: normalWhite14),
                         ),

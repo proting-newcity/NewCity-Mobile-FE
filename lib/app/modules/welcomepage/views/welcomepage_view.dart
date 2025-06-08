@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:newcity/theme/colors.dart';
+import 'package:newcity/themes/colors.dart';
 import 'package:get/get.dart';
 import '../controllers/welcomepage_controller.dart';
-import 'package:newcity/theme/text_theme.dart';
-import 'package:newcity/theme/radius.dart';
+import 'package:newcity/themes/text_theme.dart';
+import 'package:newcity/themes/radius.dart';
 
 class WelcomepageView extends GetView<WelcomepageController> {
   final WelcomepageController controller = Get.put(WelcomepageController());
@@ -15,7 +15,7 @@ class WelcomepageView extends GetView<WelcomepageController> {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 50),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 40),
           child: SingleChildScrollView(
             child: Center(
               child: Column(

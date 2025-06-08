@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:newcity/theme/colors.dart';
+import 'package:newcity/themes/colors.dart';
 import 'package:get/get.dart';
 import '../controllers/faq_controller.dart';
-import 'package:newcity/theme/text_theme.dart';
-import 'package:newcity/theme/radius.dart';
+import 'package:newcity/themes/text_theme.dart';
+import 'package:newcity/themes/radius.dart';
 
 class FaqView extends GetView<FaqController> {
   FaqView({super.key});

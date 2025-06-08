@@ -4,9 +4,9 @@ import 'package:newcity/services/image_service.dart';
 import 'package:newcity/widgets/berita_tile.dart';
 import '../controllers/list_berita_controller.dart';
 import 'package:newcity/models/berita.dart';
-import 'package:newcity/theme/colors.dart';
-import 'package:newcity/theme/text_theme.dart';
-import 'package:newcity/theme/radius.dart';
+import 'package:newcity/themes/colors.dart';
+import 'package:newcity/themes/text_theme.dart';
+import 'package:newcity/themes/radius.dart';
 
 class ListBeritaView extends GetView<ListBeritaController> {
   const ListBeritaView({super.key});
@@ -155,7 +155,7 @@ class ListBeritaView extends GetView<ListBeritaController> {
           decoration: BoxDecoration(
             borderRadius: borderXlAltCircular,
             gradient: const LinearGradient(
-              colors: const [transparentColor],
+              colors: [transparentColor],
               begin: Alignment.bottomCenter,
               end: Alignment.topCenter,
             ),

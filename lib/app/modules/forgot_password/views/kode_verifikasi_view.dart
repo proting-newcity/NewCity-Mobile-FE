@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:newcity/theme/colors.dart';
+import 'package:newcity/themes/colors.dart';
 import 'package:get/get.dart';
 import 'package:pinput/pinput.dart';
 import '../controllers/forgot_password_controller.dart';
-import 'package:newcity/theme/text_theme.dart';
-import 'package:newcity/theme/radius.dart';
+import 'package:newcity/themes/text_theme.dart';
+import 'package:newcity/themes/radius.dart';
 
 class KodeVerifikasiView extends GetView<ForgotPasswordController> {
   const KodeVerifikasiView({super.key});
@@ -76,13 +76,6 @@ class KodeVerifikasiView extends GetView<ForgotPasswordController> {
                     controller.sendOtp();
                     Get.toNamed('/otp');
                   },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: primaryColor,
-                    minimumSize: const Size(double.infinity, 50),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: borderXlCircular,
-                    ),
-                  ),
                   child: const Text('Verivikasi', style: normalWhite14),
                 ),
               ],

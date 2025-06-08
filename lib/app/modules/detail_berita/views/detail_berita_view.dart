@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:newcity/services/image_service.dart';
-import 'package:newcity/theme/colors.dart';
-import 'package:newcity/theme/text_theme.dart';
-import 'package:newcity/theme/radius.dart';
+import 'package:newcity/themes/colors.dart';
+import 'package:newcity/themes/text_theme.dart';
+import 'package:newcity/themes/radius.dart';
 import '../controllers/detail_berita_controller.dart';
 
 class DetailBeritaView extends GetView<DetailBeritaController> {

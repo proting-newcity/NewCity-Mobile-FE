@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:newcity/models/user.dart';
 import 'package:newcity/widgets/notifikasi_tile.dart';
-import 'package:newcity/theme/colors.dart';
+import 'package:newcity/themes/colors.dart';
 import '../controllers/notifikasi_controller.dart';
-import 'package:newcity/theme/text_theme.dart';
+import 'package:newcity/themes/text_theme.dart';
 
 class NotifikasiView extends GetView<NotifikasiController> {
   const NotifikasiView({super.key});

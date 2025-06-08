@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:motion_tab_bar/MotionTabBar.dart';
-import 'package:newcity/theme/radius.dart';
+import 'package:newcity/themes/radius.dart';
 import 'package:newcity/widgets/report_tile.dart';
 import 'package:newcity/widgets/icon_button.dart';
 import '../controllers/beranda_controller.dart';
-import 'package:newcity/theme/colors.dart';
-import 'package:newcity/theme/text_theme.dart';
+import 'package:newcity/themes/colors.dart';
+import 'package:newcity/themes/text_theme.dart';
 
 class BerandaView extends GetView<BerandaController> {
   const BerandaView({super.key});
@@ -24,11 +24,14 @@ class BerandaView extends GetView<BerandaController> {
     });
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
+        toolbarHeight: kToolbarHeight + 20,
         title: Column(
           children: [
             SizedBox(height: 16.0),
             Row(
               children: [
+                SizedBox(width: 10.0),
                 Image.asset(
                   'assets/images/logo_NewCity_Original.png',
                   width: 40,
@@ -93,13 +96,13 @@ class BerandaView extends GetView<BerandaController> {
               hintText: 'Cari laporan',
               focusedBorder: OutlineInputBorder(
                   borderRadius: borderXxxl,
-                  borderSide: BorderSide(color: primaryColor)),
+                  borderSide: BorderSide(color: primaryColor, width: 2)),
               enabledBorder: OutlineInputBorder(
                   borderRadius: borderXxxl,
-                  borderSide: BorderSide(color: primaryColor)),
+                  borderSide: BorderSide(color: primaryColor, width: 1)),
               border: OutlineInputBorder(
                   borderRadius: borderXxxl,
-                  borderSide: BorderSide(color: primaryColor)),
+                  borderSide: BorderSide(color: primaryColor, width: 2)),
               contentPadding: EdgeInsets.symmetric(vertical: 15),
             ),
           ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:newcity/theme/colors.dart';
+import 'package:newcity/themes/colors.dart';
 
 const TextStyle boldTextLight14 = TextStyle(
   color: textLight,

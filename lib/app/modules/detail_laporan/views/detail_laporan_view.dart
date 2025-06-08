@@ -4,10 +4,10 @@ import 'package:intl/intl.dart';
 import 'package:newcity/services/image_service.dart';
 import 'package:newcity/app/modules/login/controllers/login_controller.dart';
 import 'package:newcity/widgets/detail_status.dart';
-import 'package:newcity/theme/colors.dart';
+import 'package:newcity/themes/colors.dart';
 import '../controllers/detail_laporan_controller.dart';
-import 'package:newcity/theme/text_theme.dart';
-import 'package:newcity/theme/radius.dart';
+import 'package:newcity/themes/text_theme.dart';
+import 'package:newcity/themes/radius.dart';
 
 class DetailLaporanView extends GetView<DetailLaporanController> {
   DetailLaporanView({super.key});
@@ -152,131 +152,150 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                               const SizedBox(height: 16),
                               Row(
                                 children: [
-                                  ElevatedButton(
-                                    onPressed: () {
-                                      Get.defaultDialog(
-                                        title: "Status Laporan",
-                                        titlePadding: EdgeInsets.only(
-                                            top: 20, right: 100),
-                                        titleStyle: boldBlack20,
-                                        content: SizedBox(
-                                          width: 250,
-                                          height: 250,
-                                          child: ListView.builder(
-                                            reverse: true,
-                                            itemCount: 4,
-                                            itemBuilder: (context, index) {
-                                              return index <
-                                                      controller.report.value!
-                                                          .report.status.length
-                                                  ? DetailStatus(controller
-                                                      .report
-                                                      .value!
-                                                      .report
-                                                      .status[index])
-                                                  : Column(
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
-                                                      children: [
-                                                        Container(
-                                                          height: 23,
-                                                          width: 23,
-                                                          decoration:
-                                                              BoxDecoration(
-                                                            border: Border.all(
-                                                                color: controller
-                                                                    .getStatusState(
-                                                                        index)[0],
-                                                                width: 2),
-                                                            shape:
-                                                                BoxShape.circle,
-                                                          ),
-                                                          child: Container(
-                                                            margin: EdgeInsets
-                                                                .symmetric(
-                                                                    vertical:
-                                                                        5),
-                                                            height: 20,
-                                                            width: 20,
-                                                            decoration:
-                                                                BoxDecoration(
-                                                              color: controller
-                                                                  .getStatusState(
-                                                                      index)[0],
-                                                              shape: BoxShape
-                                                                  .circle,
-                                                            ),
-                                                          ),
-                                                        ),
-                                                        Container(
-                                                          margin:
-                                                              EdgeInsets.only(
-                                                                  left: 10),
-                                                          height: 60,
-                                                          width: 2,
-                                                          color: greyColor,
-                                                        ),
-                                                      ],
-                                                    );
-                                              // Placeholder jika status tidak ada
-                                            },
-                                          ),
-                                        ),
-                                        confirm: Obx(() {
-                                          bool isGovernment =
-                                              loginController.userRole.value ==
-                                                  'pemerintah';
-                                          bool isMaxStatusReached = controller
-                                                  .report
-                                                  .value!
-                                                  .report
-                                                  .status
-                                                  .length >=
-                                              4;
-
-                                          if (!isGovernment) {
-                                            return Container(); // Jika masyarakat, tombol hilang
-                                          }
-
-                                          return GestureDetector(
-                                            onTap: isMaxStatusReached
-                                                ? null // Jika status sudah 4, tombol tidak bisa diklik
-                                                : () {
-                                                    controller.addStatus(
-                                                        controller.report.value
-                                                                ?.report.id ??
-                                                            0,
-                                                        controller
-                                                            .getStatusState(
-                                                                controller
-                                                                    .report
-                                                                    .value!
-                                                                    .report
-                                                                    .status
-                                                                    .length)[1]);
-                                                    controller.fetchReport(
-                                                        controller.report.value
-                                                                ?.report.id ??
-                                                            0);
-                                                    Get.back();
-                                                  },
-                                            child: Container(
-                                              height: 35,
-                                              decoration: BoxDecoration(
-                                                borderRadius: borderLg,
-                                                color: isMaxStatusReached
-                                                    ? grey2Color // Warna abu-abu jika status sudah 4
-                                                    : controller.getStatusState(
+                                  Expanded(
+                                    // Ditambahkan Expanded
+                                    child: ElevatedButton(
+                                      onPressed: () {
+                                        Get.defaultDialog(
+                                          title: "Status Laporan",
+                                          titlePadding: EdgeInsets.only(
+                                              top: 20, right: 100),
+                                          titleStyle: TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold),
+                                          content: SizedBox(
+                                            width: 250,
+                                            height: 250,
+                                            child: ListView.builder(
+                                              reverse: true,
+                                              itemCount: 4,
+                                              itemBuilder: (context, index) {
+                                                return index <
                                                         controller
                                                             .report
                                                             .value!
                                                             .report
                                                             .status
-                                                            .length)[0],
-                                              ),
-                                              child: Center(
-                                                child: Text(
+                                                            .length
+                                                    ? DetailStatus(controller
+                                                        .report
+                                                        .value!
+                                                        .report
+                                                        .status[index])
+                                                    : Column(
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Container(
+                                                            height: 23,
+                                                            width: 23,
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              border: Border.all(
+                                                                  color: controller
+                                                                      .getStatusState(
+                                                                          index)[0],
+                                                                  width: 2),
+                                                              shape: BoxShape
+                                                                  .circle,
+                                                            ),
+                                                            child: Container(
+                                                              margin: EdgeInsets
+                                                                  .symmetric(
+                                                                      vertical:
+                                                                          5),
+                                                              height: 20,
+                                                              width: 20,
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                color: controller
+                                                                    .getStatusState(
+                                                                        index)[0],
+                                                                shape: BoxShape
+                                                                    .circle,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          Container(
+                                                            margin:
+                                                                EdgeInsets.only(
+                                                                    left: 10),
+                                                            height: 60,
+                                                            width: 2,
+                                                            color: Colors
+                                                                .grey[300],
+                                                          ),
+                                                        ],
+                                                      );
+                                                // Placeholder jika status tidak ada
+                                              },
+                                            ),
+                                          ),
+                                          confirm: Obx(() {
+                                            bool isGovernment = loginController
+                                                    .userRole.value ==
+                                                'pemerintah';
+                                            bool isMaxStatusReached = controller
+                                                    .report
+                                                    .value!
+                                                    .report
+                                                    .status
+                                                    .length >=
+                                                4;
+
+                                            if (!isGovernment) {
+                                              return Container(); // Jika masyarakat, tombol hilang
+                                            }
+
+                                            return GestureDetector(
+                                              onTap: isMaxStatusReached
+                                                  ? null // Jika status sudah 4, tombol tidak bisa diklik
+                                                  : () {
+                                                      controller.addStatus(
+                                                          controller
+                                                                  .report
+                                                                  .value
+                                                                  ?.report
+                                                                  .id ??
+                                                              0,
+                                                          controller
+                                                              .getStatusState(
+                                                                  controller
+                                                                      .report
+                                                                      .value!
+                                                                      .report
+                                                                      .status
+                                                                      .length)[1]);
+                                                      controller.fetchReport(
+                                                          controller
+                                                                  .report
+                                                                  .value
+                                                                  ?.report
+                                                                  .id ??
+                                                              0);
+                                                      Get.back();
+                                                    },
+                                              child: Container(
+                                                height: 35,
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                          Radius.circular(10)),
+                                                  color: isMaxStatusReached
+                                                      ? Colors
+                                                          .grey // Warna abu-abu jika status sudah 4
+                                                      : controller
+                                                          .getStatusState(
+                                                              controller
+                                                                  .report
+                                                                  .value!
+                                                                  .report
+                                                                  .status
+                                                                  .length)[0],
+                                                ),
+                                                child: Center(
+                                                  child: Text(
                                                     controller.getStatusState(
                                                         controller
                                                             .report
@@ -284,21 +303,28 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                                                             .report
                                                             .status
                                                             .length)[1],
-                                                    style: normalWhite14),
+                                                    style: TextStyle(
+                                                      color: Colors.white,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontSize: 15,
+                                                    ),
+                                                  ),
+                                                ),
                                               ),
-                                            ),
-                                          );
-                                        }),
-                                      );
-                                    },
-                                    style: ElevatedButton.styleFrom(
-                                      foregroundColor: whiteColor,
-                                      backgroundColor: backgroundColor,
-                                    ),
-                                    child: Row(
-                                      children: [
-                                        Obx(() {
-                                          return Text(
+                                            );
+                                          }),
+                                        );
+                                      },
+                                      style: ElevatedButton.styleFrom(
+                                        foregroundColor: Colors.white,
+                                        backgroundColor:
+                                            Color.fromRGBO(88, 129, 87, 1),
+                                      ),
+                                      child: Row(
+                                        children: [
+                                          Obx(() {
+                                            return Text(
                                               controller
                                                       .report
                                                       .value
@@ -312,11 +338,14 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                                                           1]
                                                       .status ??
                                                   'Loading...',
-                                              style: normalBlack14);
-                                        }),
-                                        SizedBox(width: 5),
-                                        Icon(Icons.arrow_forward)
-                                      ],
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold),
+                                            );
+                                          }),
+                                          SizedBox(width: 5),
+                                          Icon(Icons.arrow_forward)
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 ],

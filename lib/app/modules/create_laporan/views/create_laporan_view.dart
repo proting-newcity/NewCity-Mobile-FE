@@ -1,11 +1,11 @@
 import 'dart:io';
-import 'package:newcity/theme/colors.dart';
+import 'package:newcity/themes/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controllers/create_laporan_controller.dart';
 import 'package:newcity/widgets/topic_chip.dart';
-import 'package:newcity/theme/text_theme.dart';
-import 'package:newcity/theme/radius.dart';
+import 'package:newcity/themes/text_theme.dart';
+import 'package:newcity/themes/radius.dart';
 
 class CreateLaporanView extends GetView<CreateLaporanController> {
   const CreateLaporanView({super.key});
@@ -37,19 +37,13 @@ class CreateLaporanView extends GetView<CreateLaporanController> {
               controller: controller.judulController,
               decoration: InputDecoration(
                 hintText: "Masukkan judul laporan",
-                enabledBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(color: primaryColor, width: 2),
-                    borderRadius: borderLgCircular),
-                focusedBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(color: primaryColor, width: 2),
-                    borderRadius: borderLgCircular),
               ),
             ),
             SizedBox(height: 18),
             Container(
               height: 150,
               decoration: BoxDecoration(
-                  border: Border.all(color: primaryColor, width: 2),
+                  border: Border.all(color: primaryColor, width: 1),
                   borderRadius: borderLgCircular),
               child: GestureDetector(onTap: () async {
                 // buka kamera
@@ -80,15 +74,7 @@ class CreateLaporanView extends GetView<CreateLaporanController> {
             Text("Lokasi"),
             TextField(
               controller: controller.lokasiController,
-              decoration: InputDecoration(
-                hintText: "Masukkan lokasi",
-                enabledBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(color: primaryColor, width: 2),
-                    borderRadius: borderLgCircular),
-                focusedBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(color: primaryColor, width: 2),
-                    borderRadius: borderLgCircular),
-              ),
+              decoration: InputDecoration(hintText: "Masukkan lokasi"),
             ),
             SizedBox(height: 18),
             Text("Deskripsi"),
@@ -96,14 +82,7 @@ class CreateLaporanView extends GetView<CreateLaporanController> {
               controller: controller.deskripsiController,
               maxLines: 5,
               decoration: InputDecoration(
-                hintText: "Masukkan detail dari laporan mu disini",
-                enabledBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(color: primaryColor, width: 2),
-                    borderRadius: borderLgCircular),
-                focusedBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(color: primaryColor, width: 2),
-                    borderRadius: borderLgCircular),
-              ),
+                  hintText: "Masukkan detail dari laporan mu disini"),
             ),
             SizedBox(height: 20),
             const Text("Pilih Topik", style: boldBlack14),
@@ -129,9 +108,6 @@ class CreateLaporanView extends GetView<CreateLaporanController> {
                   await controller.postReport();
                 }
               },
-              style: ElevatedButton.styleFrom(
-                  minimumSize: Size(double.infinity, 50),
-                  backgroundColor: primaryColor),
               child: const Text("Berikutnya", style: boldWhite14),
             ),
           ],

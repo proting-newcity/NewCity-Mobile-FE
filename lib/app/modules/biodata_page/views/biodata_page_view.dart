@@ -3,8 +3,8 @@ import 'package:get/get.dart';
 import "package:newcity/models/user.dart";
 import 'package:motion_tab_bar/MotionTabBar.dart';
 import '../controllers/biodata_page_controller.dart';
-import 'package:newcity/theme/colors.dart';
-import 'package:newcity/theme/text_theme.dart';
+import 'package:newcity/themes/colors.dart';
+import 'package:newcity/themes/text_theme.dart';
 
 // ignore: must_be_immutable
 class BiodataPageView extends GetView<BiodataPageController> {

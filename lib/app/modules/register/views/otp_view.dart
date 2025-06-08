@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import 'package:newcity/theme/colors.dart';
+import 'package:newcity/themes/colors.dart';
 import 'package:get/get.dart';
 import 'package:pinput/pinput.dart';
 import '../controllers/register_controller.dart';
-import 'package:newcity/theme/text_theme.dart';
-import 'package:newcity/theme/radius.dart';
+import 'package:newcity/themes/text_theme.dart';
+import 'package:newcity/themes/radius.dart';
 
 class OtpView extends GetView<RegisterController> {
   const OtpView({super.key});
@@ -48,13 +48,6 @@ class OtpView extends GetView<RegisterController> {
                 controller.sendOtp();
                 Get.toNamed('/otp');
               },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: primaryColor,
-                minimumSize: const Size(double.infinity, 50),
-                shape: RoundedRectangleBorder(
-                  borderRadius: borderXlCircular,
-                ),
-              ),
               child: const Text('Daftar', style: normalWhite14),
             ),
           ],

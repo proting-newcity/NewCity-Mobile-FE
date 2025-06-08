@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:newcity/theme/colors.dart';
+import 'package:newcity/themes/colors.dart';
 import 'package:get/get.dart';
 import 'package:newcity/widgets/report_tile.dart';
-import 'package:newcity/theme/text_theme.dart';
-import 'package:newcity/theme/radius.dart';
+import 'package:newcity/themes/text_theme.dart';
+import 'package:newcity/themes/radius.dart';
 import '../controllers/laporan_saya_controller.dart';
 
 class LaporanSayaView extends GetView<LaporanSayaController> {
@@ -38,15 +38,6 @@ class LaporanSayaView extends GetView<LaporanSayaController> {
               decoration: const InputDecoration(
                 prefixIcon: Icon(Icons.search, color: primaryColor),
                 hintText: 'Cari laporan',
-                focusedBorder: OutlineInputBorder(
-                    borderRadius: borderXxxl,
-                    borderSide: BorderSide(color: primaryColor)),
-                enabledBorder: OutlineInputBorder(
-                    borderRadius: borderXxxl,
-                    borderSide: BorderSide(color: primaryColor)),
-                border: OutlineInputBorder(
-                    borderRadius: borderXxxl,
-                    borderSide: BorderSide(color: primaryColor)),
                 contentPadding: EdgeInsets.symmetric(vertical: 14),
               ),
             ),

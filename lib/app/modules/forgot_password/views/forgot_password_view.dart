@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:newcity/theme/colors.dart';
+import 'package:newcity/themes/colors.dart';
 import 'package:get/get.dart';
-import 'package:newcity/theme/text_theme.dart';
+import 'package:newcity/themes/text_theme.dart';
 import '../controllers/forgot_password_controller.dart';
-import 'package:newcity/theme/radius.dart';
+import 'package:newcity/themes/radius.dart';
 
 class ForgotPasswordView extends GetView<ForgotPasswordController> {
   const ForgotPasswordView({super.key});
@@ -59,13 +59,8 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
                           controller: controller.notelpController,
                           decoration: InputDecoration(
                             hintText: 'Nomor Telpon',
-                            hintStyle: regularPrimaryColor14,
                             prefixIcon: Icon(Icons.phone_in_talk_outlined,
                                 color: primaryColor),
-                            enabledBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(
-                                    color: primaryColor, width: 1),
-                                borderRadius: borderLgCircular),
                           ),
                         ),
                         SizedBox(height: 30),
@@ -73,13 +68,6 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
                           onPressed: () {
                             controller.searchnotelp();
                           },
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: primaryColor,
-                            minimumSize: const Size(double.infinity, 50),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: borderXlCircular,
-                            ),
-                          ),
                           child: const Text('Kirim Kode', style: boldWhite14),
                         ),
                       ],

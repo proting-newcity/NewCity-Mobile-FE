@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:newcity/widgets/berita_tile.dart';
-import 'package:newcity/theme/text_theme.dart';
+import 'package:newcity/themes/text_theme.dart';
 import '../controllers/topik_berita_controller.dart';
 
 class TopikBeritaView extends GetView<TopikBeritaController> {

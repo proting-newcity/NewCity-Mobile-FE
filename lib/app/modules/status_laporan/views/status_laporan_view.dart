@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:newcity/theme/colors.dart';
+import 'package:newcity/themes/colors.dart';
 import 'package:get/get.dart';
 import 'package:newcity/widgets/report_tile.dart';
-import 'package:newcity/theme/text_theme.dart';
+import 'package:newcity/themes/text_theme.dart';
 import '../controllers/status_laporan_controller.dart';
-import 'package:newcity/theme/radius.dart';
+import 'package:newcity/themes/radius.dart';
 
 class StatusLaporanView extends GetView<StatusLaporanController> {
   const StatusLaporanView({super.key});
@@ -37,15 +37,6 @@ class StatusLaporanView extends GetView<StatusLaporanController> {
               decoration: const InputDecoration(
                 prefixIcon: Icon(Icons.search, color: primaryColor),
                 hintText: 'Cari laporan',
-                focusedBorder: OutlineInputBorder(
-                    borderRadius: borderXxxl,
-                    borderSide: BorderSide(color: primaryColor)),
-                enabledBorder: OutlineInputBorder(
-                    borderRadius: borderXxxl,
-                    borderSide: BorderSide(color: primaryColor)),
-                border: OutlineInputBorder(
-                    borderRadius: borderXxxl,
-                    borderSide: BorderSide(color: primaryColor)),
                 contentPadding: EdgeInsets.symmetric(vertical: 14),
               ),
             ),

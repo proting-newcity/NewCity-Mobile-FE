@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:newcity/models/user.dart';
 import '../controllers/edit_akun_controller.dart';
-import 'package:newcity/theme/colors.dart';
-import 'package:newcity/theme/text_theme.dart';
-import 'package:newcity/theme/radius.dart';
+import 'package:newcity/themes/colors.dart';
+import 'package:newcity/themes/text_theme.dart';
+import 'package:newcity/themes/radius.dart';
 
 // ignore: must_be_immutable
 class EditAkunView extends GetView<EditAkunController> {
@@ -97,13 +97,6 @@ class EditAkunView extends GetView<EditAkunController> {
               onPressed: () {
                 controller.saveChanges();
               },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: primaryColor,
-                minimumSize: const Size(double.infinity, 50),
-                shape: RoundedRectangleBorder(
-                  borderRadius: borderXlCircular,
-                ),
-              ),
               child: const Text('Simpan Perubahan', style: normalWhite14),
             ),
           ],

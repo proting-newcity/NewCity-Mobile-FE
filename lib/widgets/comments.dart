@@ -72,10 +72,6 @@ Widget ShowComment(
                       controller: contentController,
                       decoration: InputDecoration(
                         hintText: "Tulis diskusimu..",
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20),
-                          borderSide: BorderSide(color: Colors.green),
-                        ),
                       ),
                     ),
                   ),

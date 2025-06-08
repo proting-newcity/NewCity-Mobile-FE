@@ -66,7 +66,7 @@ class Berita {
       id: json['id'],
       title: json['title'],
       content: json['content'],
-      foto: json['foto'] ?? '',
+      foto: json['foto'],
       tanggal: DateTime.parse(json['tanggal']),
       status: json['status'],
       idKategori: json['id_kategori'],
