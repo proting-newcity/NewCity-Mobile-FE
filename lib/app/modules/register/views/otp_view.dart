@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
+import 'package:newcity/themes/colors.dart';
 import 'package:get/get.dart';
-
 import 'package:pinput/pinput.dart';
 import '../controllers/register_controller.dart';
+import 'package:newcity/themes/text_theme.dart';
+import 'package:newcity/themes/radius.dart';
 
 class OtpView extends GetView<RegisterController> {
   const OtpView({super.key});
@@ -19,14 +21,7 @@ class OtpView extends GetView<RegisterController> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Text(
-              "Kode OTP",
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-                color: Color(0xFF588157),
-              ),
-            ),
+            Text("Kode OTP", style: boldPrimaryColor1424),
             Text(
               "Kode OTP telah terkirim ke\n+62 xx xxxx xxxx",
               textAlign: TextAlign.center,
@@ -44,13 +39,7 @@ class OtpView extends GetView<RegisterController> {
                   onPressed: () {
                     Get.toNamed('/login');
                   },
-                  child: Text(
-                    "Kirim Ulang",
-                    style: TextStyle(
-                      color: Color(0xFF588157),
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
+                  child: const Text("Kirim Ulang", style: boldPrimaryColor14),
                 ),
               ],
             ),
@@ -59,20 +48,7 @@ class OtpView extends GetView<RegisterController> {
                 controller.sendOtp();
                 Get.toNamed('/otp');
               },
-              child: Text(
-                'Daftar',
-                style: TextStyle(
-                  fontSize: 14,
-                  color: Colors.white,
-                ),
-              ),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Color(0xFF588157),
-                minimumSize: const Size(double.infinity, 50),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15),
-                ),
-              ),
+              child: const Text('Daftar', style: normalWhite14),
             ),
           ],
         ),

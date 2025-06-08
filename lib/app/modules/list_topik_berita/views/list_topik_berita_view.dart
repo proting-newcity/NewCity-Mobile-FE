@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:newcity/services/image_service.dart';
-
+import 'package:newcity/themes/colors.dart';
 import '../controllers/list_topik_berita_controller.dart';
 import 'package:newcity/models/berita.dart';
+import 'package:newcity/themes/text_theme.dart';
+import 'package:newcity/themes/radius.dart';
 
 class ListTopikBeritaView extends GetView<ListTopikBeritaController> {
   const ListTopikBeritaView({super.key});
@@ -16,10 +18,7 @@ class ListTopikBeritaView extends GetView<ListTopikBeritaController> {
           icon: Icon(Icons.arrow_back),
           onPressed: () => Get.back(),
         ),
-        title: Text(
-          "Topik Berita",
-          style: TextStyle(fontWeight: FontWeight.bold),
-        ),
+        title: const Text("Topik Berita", style: boldBlack14),
       ),
       body: Obx(() => ListView.builder(
             itemCount: controller.allKategori.value.kategori.length,
@@ -41,7 +40,7 @@ Widget TopikTile({required KategoriBerita kategori}) {
       height: 150,
       margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: borderXlAltCircular,
       ),
       child: FutureBuilder<ImageProvider<Object>>(
         future: ImageService.loadImage(kategori.foto),
@@ -52,15 +51,15 @@ Widget TopikTile({required KategoriBerita kategori}) {
             );
           } else if (snapshot.hasError) {
             return Container(
-              color: Colors.grey[300],
+              color: greyColor,
               child: Center(
-                child: Icon(Icons.error, color: Colors.red),
+                child: const Icon(Icons.error, color: redColor),
               ),
             );
           } else {
             return Container(
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16),
+                borderRadius: borderXlAltCircular,
                 image: DecorationImage(
                   image: snapshot.data!,
                   fit: BoxFit.fitWidth,
@@ -70,24 +69,17 @@ Widget TopikTile({required KategoriBerita kategori}) {
                 alignment: Alignment.center,
                 padding: EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(16),
+                  borderRadius: borderXlAltCircular,
                   gradient: LinearGradient(
                     colors: [
-                      Colors.black.withOpacity(0.6),
-                      Colors.transparent,
+                      blackColor3,
+                      transparentColor,
                     ],
                     begin: Alignment.bottomCenter,
                     end: Alignment.topCenter,
                   ),
                 ),
-                child: Text(
-                  kategori.name,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+                child: Text(kategori.name, style: boldWhite20),
               ),
             );
           }

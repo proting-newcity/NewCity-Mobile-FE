@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-
+import 'package:newcity/themes/colors.dart';
 import 'package:get/get.dart';
 import 'package:newcity/widgets/report_tile.dart';
-
+import 'package:newcity/themes/text_theme.dart';
 import '../controllers/status_laporan_controller.dart';
+import 'package:newcity/themes/radius.dart';
 
 class StatusLaporanView extends GetView<StatusLaporanController> {
   const StatusLaporanView({super.key});
@@ -22,10 +23,7 @@ class StatusLaporanView extends GetView<StatusLaporanController> {
           icon: Icon(Icons.arrow_back),
           onPressed: () => Get.back(),
         ),
-        title: Text(
-          "Status Laporan",
-          style: TextStyle(fontWeight: FontWeight.bold),
-        ),
+        title: const Text("Status Laporan", style: boldBlack14),
       ),
       body: Container(
         margin: EdgeInsets.only(left: 30, right: 30),
@@ -37,17 +35,8 @@ class StatusLaporanView extends GetView<StatusLaporanController> {
                 Get.toNamed('/list-pencarian-laporan', arguments: keyword);
               },
               decoration: const InputDecoration(
-                prefixIcon: Icon(Icons.search, color: Color(0xFF588157)),
+                prefixIcon: Icon(Icons.search, color: primaryColor),
                 hintText: 'Cari laporan',
-                focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                    borderSide: BorderSide(color: Color(0xFF588157))),
-                enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                    borderSide: BorderSide(color: Color(0xFF588157))),
-                border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                    borderSide: BorderSide(color: Color(0xFF588157))),
                 contentPadding: EdgeInsets.symmetric(vertical: 14),
               ),
             ),
@@ -69,19 +58,11 @@ class StatusLaporanView extends GetView<StatusLaporanController> {
                           child: Container(
                             height: 35,
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(10),
-                              ),
+                              borderRadius: borderMd,
                               color: Color.fromRGBO(102, 102, 102, 1),
                             ),
                             child: Center(
-                              child: Text(
-                                'Menunggu',
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 15),
-                              ),
+                              child: const Text('Menunggu', style: boldWhite15),
                             ),
                           ),
                         ),
@@ -100,19 +81,12 @@ class StatusLaporanView extends GetView<StatusLaporanController> {
                           child: Container(
                             height: 35,
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(10),
-                              ),
-                              color: Color.fromRGBO(171, 192, 171, 1),
+                              borderRadius: borderMd,
+                              color: backgroundColor,
                             ),
                             child: Center(
-                              child: Text(
-                                'Tindak Lanjut',
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 15),
-                              ),
+                              child: const Text('Tindak Lanjut',
+                                  style: boldWhite15),
                             ),
                           ),
                         ),
@@ -136,19 +110,12 @@ class StatusLaporanView extends GetView<StatusLaporanController> {
                           child: Container(
                             height: 35,
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(10),
-                              ),
-                              color: Color.fromRGBO(250, 178, 45, 1),
+                              borderRadius: borderMd,
+                              color: statusDalamProses,
                             ),
                             child: Center(
-                              child: Text(
-                                'Dalam Proses',
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 15),
-                              ),
+                              child: const Text('Dalam Proses',
+                                  style: boldWhite15),
                             ),
                           ),
                         ),
@@ -167,19 +134,11 @@ class StatusLaporanView extends GetView<StatusLaporanController> {
                           child: Container(
                             height: 35,
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(10),
-                              ),
-                              color: Color.fromRGBO(58, 90, 64, 1),
+                              borderRadius: borderMd,
+                              color: secondaryColor,
                             ),
                             child: Center(
-                              child: Text(
-                                'Selesai',
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 15),
-                              ),
+                              child: const Text('Selesai', style: boldWhite15),
                             ),
                           ),
                         ),
@@ -190,10 +149,7 @@ class StatusLaporanView extends GetView<StatusLaporanController> {
               ),
             ),
             SizedBox(height: 20),
-            Text(
-              'Laporan Terkini',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
-            ),
+            const Text('Laporan Terkini', style: boldBlack18),
             SizedBox(height: 20),
             Expanded(
               child: Obx(() {

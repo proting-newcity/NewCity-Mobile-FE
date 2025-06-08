@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:newcity/services/image_service.dart';
-
+import 'package:newcity/themes/colors.dart';
+import 'package:newcity/themes/text_theme.dart';
+import 'package:newcity/themes/radius.dart';
 import '../controllers/detail_berita_controller.dart';
 
 class DetailBeritaView extends GetView<DetailBeritaController> {
@@ -25,8 +27,8 @@ class DetailBeritaView extends GetView<DetailBeritaController> {
                         return Container(
                           height: 225,
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8),
-                            color: Colors.grey[300],
+                            borderRadius: borderMdCircular,
+                            color: greyColor,
                           ),
                           child: Center(child: CircularProgressIndicator()),
                         );
@@ -34,18 +36,18 @@ class DetailBeritaView extends GetView<DetailBeritaController> {
                         return Container(
                           height: 225,
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8),
-                            color: Colors.grey[300],
+                            borderRadius: borderMdCircular,
+                            color: greyColor,
                           ),
                           child: Center(
-                            child: Icon(Icons.error, color: Colors.red),
+                            child: const Icon(Icons.error, color: redColor),
                           ),
                         );
                       } else {
                         return Container(
                           height: 225,
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8),
+                            borderRadius: borderMdCircular,
                             image: DecorationImage(
                               image: snapshot.data!,
                               fit: BoxFit.cover,
@@ -54,9 +56,7 @@ class DetailBeritaView extends GetView<DetailBeritaController> {
                           child: Stack(
                             children: [
                               Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.black.withOpacity(0.4),
-                                ),
+                                decoration: BoxDecoration(color: blackColor2),
                               ),
                             ],
                           ),
@@ -75,18 +75,12 @@ class DetailBeritaView extends GetView<DetailBeritaController> {
                         Row(
                           children: [
                             IconButton(
-                              icon: Icon(Icons.arrow_back, color: Colors.white),
+                              icon: Icon(Icons.arrow_back, color: whiteColor),
                               onPressed: () => Get.back(),
                             ),
                             Expanded(
-                              child: Text(
-                                Get.arguments.title,
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                ),
-                              ),
+                              child:
+                                  Text(Get.arguments.title, style: boldWhite20),
                             ),
                           ],
                         ),
@@ -97,22 +91,16 @@ class DetailBeritaView extends GetView<DetailBeritaController> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                DateFormat('yyyy-MM-dd – kk:mm')
-                                    .format(Get.arguments.tanggal),
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  color: Colors.white,
-                                ),
-                              ),
+                                  DateFormat('yyyy-MM-dd – kk:mm')
+                                      .format(Get.arguments.tanggal),
+                                  style: boldWhite14),
                               const SizedBox(height: 16),
                               Row(
                                 children: [
-                                  const Icon(Icons.person, color: Colors.white),
+                                  const Icon(Icons.person, color: whiteColor),
                                   const SizedBox(width: 4),
-                                  Text(
-                                    Get.arguments.user.name,
-                                    style: const TextStyle(color: Colors.white),
-                                  ),
+                                  Text(Get.arguments.user.name,
+                                      style: normalWhite14),
                                 ],
                               ),
                               const SizedBox(height: 16),
@@ -127,13 +115,13 @@ class DetailBeritaView extends GetView<DetailBeritaController> {
                                   ),
                                   const Spacer(),
                                   const Icon(Icons.thumb_up_alt_outlined,
-                                      color: Colors.white),
+                                      color: whiteColor),
                                   const SizedBox(width: 16),
                                   const Icon(Icons.bookmark_outline,
-                                      color: Colors.white),
+                                      color: whiteColor),
                                   const SizedBox(width: 16),
                                   const Icon(Icons.share_outlined,
-                                      color: Colors.white),
+                                      color: whiteColor),
                                 ],
                               ),
                             ],

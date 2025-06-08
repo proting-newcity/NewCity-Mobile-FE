@@ -4,6 +4,9 @@ import 'package:newcity/services/image_service.dart';
 import 'package:newcity/widgets/berita_tile.dart';
 import '../controllers/list_berita_controller.dart';
 import 'package:newcity/models/berita.dart';
+import 'package:newcity/themes/colors.dart';
+import 'package:newcity/themes/text_theme.dart';
+import 'package:newcity/themes/radius.dart';
 
 class ListBeritaView extends GetView<ListBeritaController> {
   const ListBeritaView({super.key});
@@ -26,9 +29,9 @@ class ListBeritaView extends GetView<ListBeritaController> {
           icon: Icon(Icons.arrow_back),
           onPressed: () => Get.back(),
         ),
-        title: Text(
+        title: const Text(
           "Berita",
-          style: TextStyle(fontWeight: FontWeight.bold),
+          style: boldBlack14,
         ),
       ),
       body: Column(
@@ -40,24 +43,12 @@ class ListBeritaView extends GetView<ListBeritaController> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  "Topik Terkenal",
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+                const Text("Topik Terkenal", style: boldBlack20),
                 TextButton(
                   onPressed: () {
                     Get.toNamed("/list-topik-berita");
                   },
-                  child: Text(
-                    "Topik lainnya",
-                    style: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.green),
-                  ),
+                  child: const Text("Topik lainnya", style: boldGreen15),
                 )
               ],
             ),
@@ -65,13 +56,7 @@ class ListBeritaView extends GetView<ListBeritaController> {
           _appBarTopik(), // Only listens to topik observables
           Padding(
             padding: const EdgeInsets.all(18.0),
-            child: Text(
-              "Berita Untukmu",
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
+            child: const Text("Berita Untukmu", style: boldBlack20),
           ),
           Expanded(
             child: Obx(
@@ -125,9 +110,9 @@ class ListBeritaView extends GetView<ListBeritaController> {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
-            return Center(child: Text("Error loading images"));
+            return const Center(child: Text("Error loading images"));
           } else if (!snapshot.hasData) {
-            return Center(child: Text("No data available"));
+            return const Center(child: Text("No data available"));
           } else {
             List<ImageProvider<Object>> categoryImages = snapshot.data ?? [];
 
@@ -162,30 +147,20 @@ class ListBeritaView extends GetView<ListBeritaController> {
             image: image,
             fit: BoxFit.contain,
           ),
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: borderXlAltCircular,
         ),
         child: Container(
           alignment: Alignment.bottomCenter,
           padding: EdgeInsets.all(8),
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(16),
-            gradient: LinearGradient(
-              colors: [
-                Colors.black.withOpacity(0.6),
-                Colors.transparent,
-              ],
+            borderRadius: borderXlAltCircular,
+            gradient: const LinearGradient(
+              colors: [transparentColor],
               begin: Alignment.bottomCenter,
               end: Alignment.topCenter,
             ),
           ),
-          child: Text(
-            kategori.name,
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
+          child: Text(kategori.name, style: boldWhite16),
         ),
       ),
     );

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-
+import 'package:newcity/themes/colors.dart';
 import 'package:get/get.dart';
 import '../controllers/faq_controller.dart';
+import 'package:newcity/themes/text_theme.dart';
+import 'package:newcity/themes/radius.dart';
 
 class FaqView extends GetView<FaqController> {
   FaqView({super.key});
@@ -36,9 +38,9 @@ class FaqView extends GetView<FaqController> {
           icon: Icon(Icons.arrow_back),
           onPressed: () => Get.back(),
         ),
-        title: Text(
+        title: const Text(
           "FAQ",
-          style: TextStyle(fontWeight: FontWeight.bold),
+          style: boldBlack14,
         ),
       ),
       body: Center(
@@ -61,38 +63,28 @@ class FaqView extends GetView<FaqController> {
                       children: [
                         Container(
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30),
+                            borderRadius: borderXxxxlCircular,
                             border: Border.all(
-                              color: Color.fromRGBO(88, 129, 87, 1),
+                              color: backgroundColor,
                               width: 1,
                             ),
                           ),
                           child: ExpansionTile(
-                            title: Text(
-                              faq["question"]!,
-                              style: TextStyle(
-                                fontWeight: FontWeight.normal,
-                                fontSize: 15,
-                              ),
-                            ),
+                            title: Text(faq["question"]!, style: boldBlack16),
                             childrenPadding: EdgeInsets.all(16),
-                            collapsedIconColor: Color.fromRGBO(88, 129, 87, 1),
-                            collapsedTextColor: Color.fromRGBO(88, 129, 87, 1),
-                            iconColor: Color.fromRGBO(88, 129, 87, 1),
-                            textColor: Color.fromRGBO(88, 129, 87, 1),
+                            collapsedIconColor: backgroundColor,
+                            collapsedTextColor: backgroundColor,
+                            iconColor: backgroundColor,
+                            textColor: backgroundColor,
                             collapsedShape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30),
+                              borderRadius: borderXxxxlCircular,
                             ),
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30),
+                              borderRadius: borderXxxxlCircular,
                             ),
                             children: [
-                              Text(
-                                faq["answer"]!,
-                                style: TextStyle(
-                                  color: Color.fromRGBO(88, 129, 87, 1),
-                                ),
-                              ),
+                              Text(faq["answer"]!,
+                                  style: regularBackgroundColor14),
                             ],
                           ),
                         ),

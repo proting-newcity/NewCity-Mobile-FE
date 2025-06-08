@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:newcity/widgets/berita_tile.dart';
-
+import 'package:newcity/themes/text_theme.dart';
 import '../controllers/topik_berita_controller.dart';
 
 class TopikBeritaView extends GetView<TopikBeritaController> {
@@ -11,10 +11,7 @@ class TopikBeritaView extends GetView<TopikBeritaController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          Get.arguments.name,
-          style: TextStyle(fontWeight: FontWeight.bold),
-        ),
+        title: Text(Get.arguments.name, style: boldBlack14),
       ),
       body: Obx(
         () {

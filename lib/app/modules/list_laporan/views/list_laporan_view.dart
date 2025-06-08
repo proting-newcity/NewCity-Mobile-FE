@@ -3,6 +3,9 @@ import 'package:get/get.dart';
 import 'package:newcity/widgets/topic_chip.dart';
 import '../controllers/list_laporan_controller.dart';
 import 'package:newcity/widgets/report_tile.dart';
+import 'package:newcity/themes/colors.dart';
+import 'package:newcity/themes/text_theme.dart';
+import 'package:newcity/themes/radius.dart';
 
 class ListLaporanView extends GetView<ListLaporanController> {
   const ListLaporanView({super.key});
@@ -20,24 +23,16 @@ class ListLaporanView extends GetView<ListLaporanController> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: whiteColor,
         elevation: 0,
-        title: const Text(
-          'Laporan',
-          style: TextStyle(
-              color: Colors.black, fontSize: 22, fontWeight: FontWeight.bold),
-        ),
+        title: const Text('Laporan', style: boldBlack22),
         centerTitle: false,
         actions: [
           GestureDetector(
             child: Padding(
               padding: EdgeInsets.all(16.0),
               child: Center(
-                child: Text(
-                  'Laporan Saya',
-                  style: TextStyle(
-                      color: Color(0xFF588157), fontWeight: FontWeight.bold),
-                ),
+                child: const Text('Laporan Saya', style: boldPrimaryColor14),
               ),
             ),
             onTap: () {
@@ -61,17 +56,8 @@ class ListLaporanView extends GetView<ListLaporanController> {
                 Get.toNamed('/list-pencarian-laporan', arguments: keyword);
               },
               decoration: const InputDecoration(
-                prefixIcon: Icon(Icons.search, color: Color(0xFF588157)),
+                prefixIcon: Icon(Icons.search, color: primaryColor),
                 hintText: 'Cari laporan',
-                focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                    borderSide: BorderSide(color: Color(0xFF588157))),
-                enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                    borderSide: BorderSide(color: Color(0xFF588157))),
-                border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                    borderSide: BorderSide(color: Color(0xFF588157))),
                 contentPadding: EdgeInsets.symmetric(vertical: 14),
               ),
             ),
@@ -120,13 +106,10 @@ class ListLaporanView extends GetView<ListLaporanController> {
       floatingActionButton: FloatingActionButton.extended(
         icon: Icon(
           Icons.add,
-          color: Colors.white,
+          color: whiteColor,
         ),
-        label: Text(
-          "Tambah Laporan",
-          style: TextStyle(color: Colors.white),
-        ),
-        backgroundColor: Color(0xFF588157),
+        label: const Text("Tambah Laporan", style: normalWhite14),
+        backgroundColor: primaryColor,
         onPressed: () {
           Get.toNamed('/create-laporan');
         },

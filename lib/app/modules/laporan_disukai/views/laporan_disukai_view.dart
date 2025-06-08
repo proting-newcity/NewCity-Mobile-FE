@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-
+import 'package:newcity/themes/colors.dart';
 import 'package:get/get.dart';
 import 'package:newcity/widgets/report_tile.dart';
-
+import 'package:newcity/themes/text_theme.dart';
 import '../controllers/laporan_disukai_controller.dart';
+import 'package:newcity/themes/radius.dart';
 
 class LaporanDisukaiView extends GetView<LaporanDisukaiController> {
   const LaporanDisukaiView({super.key});
@@ -23,10 +24,7 @@ class LaporanDisukaiView extends GetView<LaporanDisukaiController> {
           icon: Icon(Icons.arrow_back),
           onPressed: () => Get.back(),
         ),
-        title: Text(
-          "Laporan Disukai",
-          style: TextStyle(fontWeight: FontWeight.bold),
-        ),
+        title: const Text("Laporan Disukai", style: boldBlack14),
       ),
       body: Container(
         margin: EdgeInsets.only(left: 30, right: 30),
@@ -38,17 +36,8 @@ class LaporanDisukaiView extends GetView<LaporanDisukaiController> {
                 Get.toNamed('/list-pencarian-laporan', arguments: keyword);
               },
               decoration: const InputDecoration(
-                prefixIcon: Icon(Icons.search, color: Color(0xFF588157)),
+                prefixIcon: Icon(Icons.search, color: primaryColor),
                 hintText: 'Cari laporan',
-                focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                    borderSide: BorderSide(color: Color(0xFF588157))),
-                enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                    borderSide: BorderSide(color: Color(0xFF588157))),
-                border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                    borderSide: BorderSide(color: Color(0xFF588157))),
                 contentPadding: EdgeInsets.symmetric(vertical: 14),
               ),
             ),

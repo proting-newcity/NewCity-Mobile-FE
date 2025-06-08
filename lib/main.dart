@@ -9,9 +9,9 @@ import 'package:intl/date_symbol_data_local.dart';
 
 import 'app/routes/app_pages.dart';
 
-import 'camera.dart';
+import 'themes/app_theme.dart';
 
-import 'theme.dart';
+import 'camera.dart';
 
 void main() async {
   await GetStorage.init();
@@ -36,7 +36,7 @@ void main() async {
   runApp(
     GetMaterialApp(
       title: "Application",
-      theme: CustomTheme.lightTheme,
+      theme: AppTheme.lightTheme,
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
       debugShowCheckedModeBanner: false,

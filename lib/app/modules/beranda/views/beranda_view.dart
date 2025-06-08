@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:motion_tab_bar/MotionTabBar.dart';
+import 'package:newcity/themes/radius.dart';
 import 'package:newcity/widgets/report_tile.dart';
 import 'package:newcity/widgets/icon_button.dart';
 import '../controllers/beranda_controller.dart';
+import 'package:newcity/themes/colors.dart';
+import 'package:newcity/themes/text_theme.dart';
 
 class BerandaView extends GetView<BerandaController> {
   const BerandaView({super.key});
@@ -21,13 +24,14 @@ class BerandaView extends GetView<BerandaController> {
     });
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 100.0,
         automaticallyImplyLeading: false,
+        toolbarHeight: kToolbarHeight + 20,
         title: Column(
           children: [
             SizedBox(height: 16.0),
             Row(
               children: [
+                SizedBox(width: 10.0),
                 Image.asset(
                   'assets/images/logo_NewCity_Original.png',
                   width: 40,
@@ -36,15 +40,11 @@ class BerandaView extends GetView<BerandaController> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text('Selamat datang!',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Color(0xFF588157))),
+                    const Text('Selamat datang!', style: boldPrimaryColor14),
                     Text(
-                      DateFormat('EEEE dd MMMM yyyy', 'id_ID')
-                          .format(DateTime.now()),
-                      style: const TextStyle(fontSize: 12.0),
-                    ),
+                        DateFormat('EEEE dd MMMM yyyy', 'id_ID')
+                            .format(DateTime.now()),
+                        style: normalgrey12)
                   ],
                 ),
               ],
@@ -59,17 +59,13 @@ class BerandaView extends GetView<BerandaController> {
         icons: const [Icons.home_outlined, Icons.add, Icons.person_outline],
         tabSize: 50,
         tabBarHeight: 55,
-        textStyle: const TextStyle(
-          fontSize: 12,
-          color: Colors.black,
-          fontWeight: FontWeight.w500,
-        ),
+        textStyle: boldBlack14,
         tabIconColor: Colors.black87,
         tabIconSize: 28.0,
         tabIconSelectedSize: 26.0,
-        tabSelectedColor: Color(0xFF588157),
-        tabIconSelectedColor: Colors.white,
-        tabBarColor: Colors.white,
+        tabSelectedColor: primaryColor,
+        tabIconSelectedColor: whiteColor,
+        tabBarColor: whiteColor,
         onTabItemSelected: (int value) {
           controller.changeTab(value);
         },
@@ -96,17 +92,17 @@ class BerandaView extends GetView<BerandaController> {
               Get.toNamed('/list-pencarian-laporan', arguments: keyword);
             },
             decoration: const InputDecoration(
-              prefixIcon: Icon(Icons.search, color: Color(0xFF588157)),
+              prefixIcon: Icon(Icons.search, color: primaryColor),
               hintText: 'Cari laporan',
               focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(25.0)),
-                  borderSide: BorderSide(color: Color(0xFF588157))),
+                  borderRadius: borderXxxl,
+                  borderSide: BorderSide(color: primaryColor, width: 2)),
               enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(25.0)),
-                  borderSide: BorderSide(color: Color(0xFF588157))),
+                  borderRadius: borderXxxl,
+                  borderSide: BorderSide(color: primaryColor, width: 1)),
               border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(25.0)),
-                  borderSide: BorderSide(color: Color(0xFF588157))),
+                  borderRadius: borderXxxl,
+                  borderSide: BorderSide(color: primaryColor, width: 2)),
               contentPadding: EdgeInsets.symmetric(vertical: 15),
             ),
           ),
@@ -137,7 +133,6 @@ class BerandaView extends GetView<BerandaController> {
               if (controller.isLoading.isTrue) {
                 return const Center(child: CircularProgressIndicator());
               }
-
               return ListView.builder(
                 controller: _scrollController,
                 itemCount: controller.filteredReports.length + 1,

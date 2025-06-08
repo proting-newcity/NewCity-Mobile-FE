@@ -15,7 +15,7 @@ Widget ShowComment(
     builder: (context, snapshot) {
       // error handling
       if (snapshot.hasError) {
-        return Center(child: Text('Error loading comments'));
+        return Center(child: const Text('Error loading comments'));
       }
 
       return SingleChildScrollView(
@@ -48,7 +48,7 @@ Widget ShowComment(
               if (snapshot.data == null || snapshot.data!.isEmpty)
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 16.0),
-                  child: Text(
+                  child: const Text(
                     'No comments available.',
                     style: TextStyle(fontSize: 16, color: Colors.grey),
                   ),
@@ -72,10 +72,6 @@ Widget ShowComment(
                       controller: contentController,
                       decoration: InputDecoration(
                         hintText: "Tulis diskusimu..",
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20),
-                          borderSide: BorderSide(color: Colors.green),
-                        ),
                       ),
                     ),
                   ),

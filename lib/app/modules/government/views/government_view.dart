@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-
+import 'package:newcity/themes/colors.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:newcity/widgets/report_tile.dart';
-
+import 'package:newcity/themes/text_theme.dart';
 import '../controllers/government_controller.dart';
+import 'package:newcity/themes/radius.dart';
 
 class GovernmentView extends GetView<GovernmentController> {
   const GovernmentView({super.key});
@@ -36,24 +37,13 @@ class GovernmentView extends GetView<GovernmentController> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    const Text('Selamat datang!',
+                        textAlign: TextAlign.center,
+                        style: boldSecondaryColor26),
                     Text(
-                      'Selamat datang!',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          color: Color.fromRGBO(58, 90, 64, 1),
-                          fontFamily: 'Poppins',
-                          fontSize: 26,
-                          fontWeight: FontWeight.w700),
-                    ),
-                    Text(
-                      DateFormat('EEEE dd MMMM yyyy', 'id_ID')
-                          .format(DateTime.now()),
-                      style: TextStyle(
-                          color: Color.fromRGBO(129, 125, 125, 1),
-                          fontFamily: 'Poppins',
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500),
-                    )
+                        DateFormat('EEEE dd MMMM yyyy', 'id_ID')
+                            .format(DateTime.now()),
+                        style: boldBlack14Light14),
                   ],
                 )
               ],
@@ -64,17 +54,8 @@ class GovernmentView extends GetView<GovernmentController> {
                 Get.toNamed('/list-pencarian-laporan', arguments: keyword);
               },
               decoration: const InputDecoration(
-                prefixIcon: Icon(Icons.search, color: Color(0xFF588157)),
+                prefixIcon: Icon(Icons.search, color: primaryColor),
                 hintText: 'Cari laporan',
-                focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                    borderSide: BorderSide(color: Color(0xFF588157))),
-                enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                    borderSide: BorderSide(color: Color(0xFF588157))),
-                border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                    borderSide: BorderSide(color: Color(0xFF588157))),
                 contentPadding: EdgeInsets.symmetric(vertical: 14),
               ),
             ),
@@ -95,18 +76,13 @@ class GovernmentView extends GetView<GovernmentController> {
                         children: [
                           CircleAvatar(
                             radius: 32,
-                            backgroundColor: Color.fromRGBO(88, 129, 87, 1),
+                            backgroundColor: backgroundColor,
                             child: Icon(
                               Icons.check,
-                              color: Colors.white,
+                              color: whiteColor,
                             ),
                           ),
-                          Text(
-                            'Status',
-                            style: TextStyle(
-                              color: Color.fromRGBO(88, 129, 87, 1),
-                            ),
-                          ),
+                          const Text('Status', style: regularBackgroundColor14),
                         ],
                       ),
                     ),
@@ -120,18 +96,13 @@ class GovernmentView extends GetView<GovernmentController> {
                         children: [
                           CircleAvatar(
                             radius: 32,
-                            backgroundColor: Color.fromRGBO(88, 129, 87, 1),
+                            backgroundColor: backgroundColor,
                             child: Icon(
                               Icons.person_outlined,
-                              color: Colors.white,
+                              color: whiteColor,
                             ),
                           ),
-                          Text(
-                            'Profil',
-                            style: TextStyle(
-                              color: Color.fromRGBO(88, 129, 87, 1),
-                            ),
-                          ),
+                          const Text('Profil', style: regularBackgroundColor14),
                         ],
                       ),
                     ),
@@ -142,7 +113,7 @@ class GovernmentView extends GetView<GovernmentController> {
             SizedBox(height: 20),
             Text(
               'Rekomendasi Untukmu',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
+              style: boldBlack18,
             ),
             SizedBox(height: 20),
             Expanded(

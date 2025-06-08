@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-
+import 'package:newcity/themes/colors.dart';
 import '../controllers/lupa_password_controller.dart';
-
-// import 'package:google_fonts/google_fonts.dart';
+import 'package:newcity/themes/text_theme.dart';
+import 'package:newcity/themes/radius.dart';
 
 class LupaPasswordView extends GetView<LupaPasswordController> {
   const LupaPasswordView({super.key});
@@ -26,7 +26,7 @@ class LupaPasswordView extends GetView<LupaPasswordController> {
                     child: IconButton(
                       icon: Icon(
                         Icons.arrow_back,
-                        color: Colors.white,
+                        color: whiteColor,
                       ),
                       onPressed: () {
                         Get.toNamed('/biodata-page');
@@ -36,30 +36,19 @@ class LupaPasswordView extends GetView<LupaPasswordController> {
                   Positioned(
                     top: 135,
                     left: 23,
-                    child: Text(
-                      "Buat Kata Sandi Baru",
-                      // style: GoogleFonts.poppins(
-                      //   color: Colors.white,
-                      //   fontSize: 24,
-                      //   fontWeight: FontWeight.bold,
-                      // ),
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+                    child: const Text("Buat Kata Sandi Baru",
+                        // style: GoogleFonts.poppins(
+                        //   color: whiteColor,
+                        //   fontSize: 24,
+                        //   fontWeight: FontWeight.bold,
+                        // ),
+                        style: boldWhite24),
                   ),
                   Positioned(
                     top: 182,
                     left: 23,
-                    child: Text(
-                      "Masukkan kata sandi baru Anda.",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 14,
-                      ),
-                    ),
+                    child: const Text("Masukkan kata sandi baru Anda.",
+                        style: normalWhite14),
                   ),
                 ],
               ),
@@ -75,7 +64,6 @@ class LupaPasswordView extends GetView<LupaPasswordController> {
                           decoration: InputDecoration(
                             hintText: 'Kata Sandi',
                             prefixIcon: Icon(Icons.lock),
-                            border: OutlineInputBorder(),
                           ),
                           controller: controller.notelpcontroller,
                         ),
@@ -84,7 +72,6 @@ class LupaPasswordView extends GetView<LupaPasswordController> {
                           decoration: InputDecoration(
                             hintText: 'Konfirmasi Kata Sandi',
                             prefixIcon: Icon(Icons.lock),
-                            border: OutlineInputBorder(),
                           ),
                           controller: controller.passwordcontroller,
                         ),
@@ -93,22 +80,8 @@ class LupaPasswordView extends GetView<LupaPasswordController> {
                           onPressed: () {
                             controller.sendOtp();
                           },
-                          child: Text(
-                            'Ubah Kata Sandi',
-                            style: TextStyle(
-                              fontSize: 14,
-                              color: Colors.white,
-                            ),
-                          ),
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Color(0xFF588157),
-                            minimumSize: const Size(double.infinity, 50),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                            
-                          ),
-                          
+                          child: const Text('Ubah Kata Sandi',
+                              style: normalWhite14),
                         ),
                       ],
                     ),
