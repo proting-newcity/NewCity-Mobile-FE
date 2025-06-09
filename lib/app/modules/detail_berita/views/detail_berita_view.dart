@@ -6,6 +6,7 @@ import 'package:newcity/themes/colors.dart';
 import 'package:newcity/themes/text_theme.dart';
 import 'package:newcity/themes/radius.dart';
 import '../controllers/detail_berita_controller.dart';
+import 'package:newcity/themes/size_box.dart';
 
 class DetailBeritaView extends GetView<DetailBeritaController> {
   const DetailBeritaView({super.key});
@@ -84,7 +85,7 @@ class DetailBeritaView extends GetView<DetailBeritaController> {
                             ),
                           ],
                         ),
-                        const SizedBox(height: 8),
+                        sBoxh8,
                         Padding(
                           padding: const EdgeInsets.only(left: 48.0),
                           child: Column(
@@ -94,7 +95,7 @@ class DetailBeritaView extends GetView<DetailBeritaController> {
                                   DateFormat('yyyy-MM-dd – kk:mm')
                                       .format(Get.arguments.tanggal),
                                   style: boldWhite14),
-                              const SizedBox(height: 16),
+                              sBoxh16,
                               Row(
                                 children: [
                                   const Icon(Icons.person, color: whiteColor),
@@ -103,7 +104,7 @@ class DetailBeritaView extends GetView<DetailBeritaController> {
                                       style: normalWhite14),
                                 ],
                               ),
-                              const SizedBox(height: 16),
+                              sBoxh16,
                               Row(
                                 children: [
                                   ElevatedButton(
@@ -137,7 +138,7 @@ class DetailBeritaView extends GetView<DetailBeritaController> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const SizedBox(height: 16),
+                    sBoxh16,
                     Text(
                       Get.arguments.content,
                       textAlign: TextAlign.justify,

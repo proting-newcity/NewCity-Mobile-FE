@@ -8,6 +8,7 @@ import 'package:newcity/themes/colors.dart';
 import '../controllers/detail_laporan_controller.dart';
 import 'package:newcity/themes/text_theme.dart';
 import 'package:newcity/themes/radius.dart';
+import 'package:newcity/themes/size_box.dart';
 
 class DetailLaporanView extends GetView<DetailLaporanController> {
   DetailLaporanView({super.key});
@@ -120,7 +121,7 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                             ),
                           ],
                         ),
-                        const SizedBox(height: 8),
+                        sBoxh8,
                         Padding(
                           padding: const EdgeInsets.only(left: 48.0),
                           child: Column(
@@ -135,7 +136,7 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                                         : 'Loading...',
                                     style: normalWhite14);
                               }),
-                              const SizedBox(height: 16),
+                              sBoxh16,
                               Row(
                                 children: [
                                   const Icon(Icons.person, color: whiteColor),
@@ -149,7 +150,7 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                                   }),
                                 ],
                               ),
-                              const SizedBox(height: 16),
+                              sBoxh16,
                               Row(
                                 children: [
                                   Expanded(
@@ -372,7 +373,7 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                             : 'Loading...',
                       );
                     }),
-                    SizedBox(height: 16),
+                    sBoxh16,
                     const Text('Lokasi', style: boldBlack16),
                     SizedBox(height: 4),
                     Obx(() {
@@ -382,12 +383,12 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                             : 'Loading...',
                       );
                     }),
-                    SizedBox(height: 16),
+                    sBoxh16,
                     Text(
                       'Detail Laporan',
                       style: boldBlack16,
                     ),
-                    SizedBox(height: 8),
+                    sBoxh8,
                     Obx(() {
                       return Text(
                         controller.report.value?.report.deskripsi ??
@@ -395,7 +396,7 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                         textAlign: TextAlign.justify,
                       );
                     }),
-                    SizedBox(height: 16),
+                    sBoxh16,
                     Row(
                       children: [
                         Obx(

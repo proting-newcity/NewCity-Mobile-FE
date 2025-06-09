@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:newcity/models/berita.dart';
 import 'package:newcity/services/image_service.dart';
+import 'package:newcity/themes/size_box.dart';
 
 Widget BeritaTile(Berita beritaData, int index) {
   return GestureDetector(
@@ -69,7 +70,7 @@ Widget BeritaTile(Berita beritaData, int index) {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(height: 8),
+                  sBoxh8,
                   Text(
                     DateFormat('yyyy-MM-dd – kk:mm').format(beritaData.tanggal),
                     style: TextStyle(

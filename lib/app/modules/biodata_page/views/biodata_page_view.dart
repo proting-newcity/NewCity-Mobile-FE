@@ -5,6 +5,7 @@ import 'package:motion_tab_bar/MotionTabBar.dart';
 import '../controllers/biodata_page_controller.dart';
 import 'package:newcity/themes/colors.dart';
 import 'package:newcity/themes/text_theme.dart';
+import 'package:newcity/themes/size_box.dart';
 
 // ignore: must_be_immutable
 class BiodataPageView extends GetView<BiodataPageController> {
@@ -62,12 +63,12 @@ class BiodataPageView extends GetView<BiodataPageController> {
                   radius: 88,
                   child: Icon(Icons.person, size: 50),
                 ),
-                SizedBox(height: 16),
+                sBoxh16,
                 Obx(() {
                   return Text('${controller.user.value?.name}',
                       style: boldTextLight14);
                 }),
-                SizedBox(height: 8),
+                sBoxh8,
                 Obx(() {
                   return Text(
                     '${controller.user.value?.username}',
@@ -116,7 +117,7 @@ class BiodataPageView extends GetView<BiodataPageController> {
                     _showLogoutDialog(context);
                   },
                 ),
-                SizedBox(height: 16),
+                sBoxh16,
               ],
             ),
           ),

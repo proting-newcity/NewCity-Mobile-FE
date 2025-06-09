@@ -5,6 +5,7 @@ import 'package:newcity/models/report.dart';
 import 'package:newcity/services/image_service.dart';
 import 'package:newcity/services/report_service.dart';
 import 'package:newcity/utils/date.dart';
+import 'package:newcity/themes/size_box.dart';
 
 Widget ShowComment(
     BuildContext context, int? id, TextEditingController contentController) {
@@ -42,7 +43,7 @@ Widget ShowComment(
                   ),
                 ],
               ),
-              SizedBox(height: 16),
+              sBoxh16,
 
               // comment empty
               if (snapshot.data == null || snapshot.data!.isEmpty)
@@ -64,7 +65,7 @@ Widget ShowComment(
                     foto: comment.foto,
                   );
                 }).toList(),
-              SizedBox(height: 16),
+              sBoxh16,
               Row(
                 children: [
                   Expanded(
