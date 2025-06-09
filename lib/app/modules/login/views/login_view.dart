@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:newcity/themes/radius.dart';
 import 'package:get/get.dart';
 import 'package:newcity/themes/colors.dart';
 import '../controllers/login_controller.dart';
 import 'package:newcity/themes/text_theme.dart';
+import 'package:newcity/themes/size_box.dart';
 
 class LoginView extends GetView<LoginController> {
   const LoginView({super.key});
@@ -22,13 +22,7 @@ class LoginView extends GetView<LoginController> {
                   Positioned(
                     top: 110,
                     left: 23,
-                    child: const Text("Selamat Datang",
-                        // style: GoogleFonts.poppins(
-                        //   color: whiteColor,
-                        //   fontSize: 24,
-                        //   fontWeight: FontWeight.bold,
-                        // ),
-                        style: boldWhite24),
+                    child: const Text("Selamat Datang", style: boldWhite24),
                   ),
                   Positioned(
                     top: 150,
@@ -38,7 +32,7 @@ class LoginView extends GetView<LoginController> {
                   ),
                 ],
               ),
-              SizedBox(height: 30),
+              sBoxh30,
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -54,7 +48,7 @@ class LoginView extends GetView<LoginController> {
                                 color: primaryColor),
                           ),
                         ),
-                        SizedBox(height: 20),
+                        sBoxh20,
                         TextField(
                           obscureText: true,
                           controller: controller.passwordController,
@@ -64,7 +58,7 @@ class LoginView extends GetView<LoginController> {
                                 Icon(Icons.lock_outline, color: primaryColor),
                           ),
                         ),
-                        SizedBox(height: 10),
+                        sBoxh10,
                         Container(
                           alignment: Alignment.centerRight,
                           child: TextButton(
@@ -74,7 +68,7 @@ class LoginView extends GetView<LoginController> {
                               child: const Text("Lupa kata sandi?",
                                   style: boldPrimaryColor14)),
                         ),
-                        SizedBox(height: 10),
+                        sBoxh10,
                         ElevatedButton(
                           onPressed: () {
                             controller.login();

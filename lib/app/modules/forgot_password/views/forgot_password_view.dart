@@ -3,7 +3,7 @@ import 'package:newcity/themes/colors.dart';
 import 'package:get/get.dart';
 import 'package:newcity/themes/text_theme.dart';
 import '../controllers/forgot_password_controller.dart';
-import 'package:newcity/themes/radius.dart';
+import 'package:newcity/themes/size_box.dart';
 
 class ForgotPasswordView extends GetView<ForgotPasswordController> {
   const ForgotPasswordView({super.key});
@@ -47,7 +47,7 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
                   ),
                 ],
               ),
-              SizedBox(height: 30),
+              sBoxh30,
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -63,7 +63,7 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
                                 color: primaryColor),
                           ),
                         ),
-                        SizedBox(height: 30),
+                        sBoxh30,
                         ElevatedButton(
                           onPressed: () {
                             controller.searchnotelp();

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:newcity/models/report.dart';
+import 'package:newcity/themes/size_box.dart';
 
 Widget DetailStatus(Status status) {
   return Row(
@@ -32,7 +33,7 @@ Widget DetailStatus(Status status) {
           ),
         ],
       ),
-      SizedBox(width: 10),
+      sBoxw10,
       Expanded(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -44,7 +45,7 @@ Widget DetailStatus(Status status) {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 4),
+            sBoxh4,
             Text(
               status.deskripsi,
               style: TextStyle(
@@ -52,7 +53,7 @@ Widget DetailStatus(Status status) {
                 color: Colors.grey[700],
               ),
             ),
-            SizedBox(height: 4),
+            sBoxh4,
             Text(
               DateFormat('yyyy-MM-dd – kk:mm').format(status.tanggal),
               style: TextStyle(

@@ -1,51 +1,36 @@
 import 'package:get/get.dart';
-import 'package:newcity/services/report_service.dart';
 import 'package:newcity/models/report.dart';
-import 'package:motion_tab_bar/MotionTabBarController.dart';
+import 'package:newcity/services/report_service.dart';
 
-class BerandaController extends GetxController
-    with GetTickerProviderStateMixin {
+class SimpanLaporanController extends GetxController {
   var reports = <Report>[].obs;
   var isLoading = true.obs;
   var isLoadingMore = false.obs;
   var currentPage = 1;
   var isLastPage = false;
-  var selectedTabIndex = 1.obs;
-  late MotionTabBarController motionTabBarController;
 
   final count = 0.obs;
-
   @override
   void onInit() {
     super.onInit();
     fetchReports();
-    motionTabBarController =
-        MotionTabBarController(initialIndex: 1, length: 3, vsync: this);
+  }
+
+  @override
+  void onReady() {
+    super.onReady();
   }
 
   @override
   void onClose() {
-    motionTabBarController.dispose();
     super.onClose();
   }
 
-  void changeTab(int index) {
-    // selectedTabIndex.value = index;
-    // motionTabBarController.index = index;
-    switch (index) {
-      case 0:
-        Get.toNamed('/beranda', preventDuplicates: false);
-        break;
-      case 1:
-        Get.toNamed('/create-laporan', preventDuplicates: false);
-        break;
-      case 2:
-        Get.toNamed('/biodata-page', preventDuplicates: false);
-        break;
-    }
+  void resetReports() {
+    reports.clear();
+    currentPage = 1;
+    isLastPage = false;
   }
-
-  void increment() => count.value++;
 
   void fetchReports() async {
     if (isLastPage) return;
@@ -56,7 +41,8 @@ class BerandaController extends GetxController
       } else {
         isLoadingMore(true);
       }
-      final response = await ReportService.getReport(currentPage);
+
+      final response = await ReportService.getBookmarkedReport(currentPage);
       if (response != null) {
         if (response.report.isNotEmpty) {
           reports.addAll(response.report);

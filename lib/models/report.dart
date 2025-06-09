@@ -24,6 +24,7 @@ class ReportResponse {
   int like;
   int comment;
   bool hasLiked;
+  bool hasBookmark;
 
   ReportResponse(
       {required this.report,
@@ -32,7 +33,8 @@ class ReportResponse {
       required this.kategoriName,
       required this.like,
       required this.comment,
-      required this.hasLiked});
+      required this.hasLiked,
+      required this.hasBookmark});
 
   factory ReportResponse.fromJson(Map<String, dynamic> json) {
     return ReportResponse(
@@ -42,7 +44,8 @@ class ReportResponse {
         kategoriName: json['kategori']['name'],
         like: json['like'],
         comment: json['comment'],
-        hasLiked: json['hasLiked']);
+        hasLiked: json['hasLiked'],
+        hasBookmark: json['hasBookmark']);
   }
 }
 

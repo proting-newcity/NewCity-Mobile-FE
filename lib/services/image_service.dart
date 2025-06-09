@@ -32,7 +32,6 @@ class ImageService {
     parts.insert(2, 'thumbnail');
 
     final thumbnailPath = parts.join('/');
-    print(thumbnailPath);
     return await loadImage(thumbnailPath);
   }
 }

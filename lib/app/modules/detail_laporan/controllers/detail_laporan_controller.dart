@@ -42,6 +42,7 @@ class DetailLaporanController extends GetxController {
       likes.value = response?.like ?? 0;
       commentsCount.value = response?.comment ?? 0;
       isLiked.value = response?.hasLiked ?? false;
+      isBookmarked.value = response?.hasBookmark ?? false;
     } catch (e) {
       print('Error fetching berita: $e');
     }
@@ -106,6 +107,7 @@ class DetailLaporanController extends GetxController {
   }
 
   void toggleBookmark() {
+    ReportService.toggleBookmark(report.value!.report.id!);
     isBookmarked.value = !isBookmarked.value;
   }
 

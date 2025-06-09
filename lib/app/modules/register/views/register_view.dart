@@ -3,7 +3,7 @@ import 'package:newcity/themes/colors.dart';
 import 'package:get/get.dart';
 import 'package:newcity/themes/text_theme.dart';
 import '../controllers/register_controller.dart';
-import 'package:newcity/themes/radius.dart';
+import 'package:newcity/themes/size_box.dart';
 
 class RegisterView extends GetView<RegisterController> {
   const RegisterView({super.key});
@@ -23,13 +23,7 @@ class RegisterView extends GetView<RegisterController> {
                   Positioned(
                     top: 110,
                     left: 23,
-                    child: const Text("Registrasi",
-                        // style: GoogleFonts.poppins(
-                        //   color: whiteColor,
-                        //   fontSize: 24,
-                        //   fontWeight: FontWeight.bold,
-                        // ),
-                        style: boldWhite24),
+                    child: const Text("Registrasi", style: boldWhite24),
                   ),
                   Positioned(
                     top: 150,
@@ -38,7 +32,7 @@ class RegisterView extends GetView<RegisterController> {
                   ),
                 ],
               ),
-              SizedBox(height: 30),
+              sBoxh30,
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -54,7 +48,7 @@ class RegisterView extends GetView<RegisterController> {
                           ),
                           controller: controller.namacontroller,
                         ),
-                        SizedBox(height: 20),
+                        sBoxh20,
                         TextField(
                           decoration: InputDecoration(
                             hintText: 'Nomor Telepon',
@@ -63,7 +57,7 @@ class RegisterView extends GetView<RegisterController> {
                           ),
                           controller: controller.notelpcontroller,
                         ),
-                        SizedBox(height: 20),
+                        sBoxh20,
                         TextField(
                           obscureText: true,
                           decoration: InputDecoration(
@@ -73,7 +67,7 @@ class RegisterView extends GetView<RegisterController> {
                           ),
                           controller: controller.passwordcontroller,
                         ),
-                        SizedBox(height: 30),
+                        sBoxh30,
                         ElevatedButton(
                           onPressed: () {
                             controller.sendOtp();
@@ -103,7 +97,7 @@ class RegisterView extends GetView<RegisterController> {
           Container(
             padding: EdgeInsets.only(bottom: 20),
             child: const Text(
-                "dengan in isaya menyetujui\nsyarat dan ketentuan yang berlaku untuk aplikasi ini ",
+                "dengan ini saya menyetujui\nsyarat dan ketentuan yang berlaku untuk aplikasi ini ",
                 textAlign: TextAlign.center,
                 style: normalBlack12),
           ),

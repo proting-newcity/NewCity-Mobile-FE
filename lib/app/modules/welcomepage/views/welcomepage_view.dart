@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import '../controllers/welcomepage_controller.dart';
 import 'package:newcity/themes/text_theme.dart';
 import 'package:newcity/themes/radius.dart';
+import 'package:newcity/themes/size_box.dart';
 
 class WelcomepageView extends GetView<WelcomepageController> {
   final WelcomepageController controller = Get.put(WelcomepageController());
@@ -23,7 +24,7 @@ class WelcomepageView extends GetView<WelcomepageController> {
                 children: [
                   Image.asset("assets/images/logo_NewCity_horizontal.png",
                       width: 200),
-                  SizedBox(height: 100),
+                  sBoxh100,
 
                   // Obx untuk merespon perubahan pada currentIndex
                   Obx(() {
@@ -33,7 +34,7 @@ class WelcomepageView extends GetView<WelcomepageController> {
                     );
                   }),
 
-                  SizedBox(height: 60),
+                  sBoxh60,
                   Column(
                     children: [
                       ElevatedButtonTheme(
@@ -53,7 +54,7 @@ class WelcomepageView extends GetView<WelcomepageController> {
                           child: const Text("Lanjut", style: normalWhite14),
                         ),
                       ),
-                      SizedBox(height: 10),
+                      sBoxh10,
                       ElevatedButtonTheme(
                         data: ElevatedButtonThemeData(
                           style: ElevatedButton.styleFrom(
