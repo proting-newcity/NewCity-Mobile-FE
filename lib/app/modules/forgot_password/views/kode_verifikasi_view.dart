@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:pinput/pinput.dart';
 import '../controllers/forgot_password_controller.dart';
 import 'package:newcity/themes/text_theme.dart';
+import 'package:newcity/themes/size_box.dart';
 
 class KodeVerifikasiView extends GetView<ForgotPasswordController> {
   const KodeVerifikasiView({super.key});
@@ -44,7 +45,7 @@ class KodeVerifikasiView extends GetView<ForgotPasswordController> {
               ),
             ],
           ),
-          SizedBox(height: 30),
+          sBoxh30,
           Padding(
             padding: const EdgeInsets.all(15.0),
             child: Column(
@@ -55,7 +56,7 @@ class KodeVerifikasiView extends GetView<ForgotPasswordController> {
                   onSubmitted: (pin) => controller.nextRoute(pin),
                   length: 4,
                 ),
-                SizedBox(height: 20),
+                sBoxh20,
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -69,7 +70,7 @@ class KodeVerifikasiView extends GetView<ForgotPasswordController> {
                     ),
                   ],
                 ),
-                SizedBox(height: 20),
+                sBoxh20,
                 ElevatedButton(
                   onPressed: () {
                     controller.sendOtp();

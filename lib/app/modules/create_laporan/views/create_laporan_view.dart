@@ -6,6 +6,7 @@ import '../controllers/create_laporan_controller.dart';
 import 'package:newcity/widgets/topic_chip.dart';
 import 'package:newcity/themes/text_theme.dart';
 import 'package:newcity/themes/radius.dart';
+import 'package:newcity/themes/size_box.dart';
 
 class CreateLaporanView extends GetView<CreateLaporanController> {
   const CreateLaporanView({super.key});
@@ -31,7 +32,7 @@ class CreateLaporanView extends GetView<CreateLaporanController> {
         child: ListView(
           children: [
             const Text("Laporan", style: boldBlack14),
-            SizedBox(height: 18),
+            sBoxh18,
             Text("Judul"),
             TextField(
               controller: controller.judulController,
@@ -39,7 +40,7 @@ class CreateLaporanView extends GetView<CreateLaporanController> {
                 hintText: "Masukkan judul laporan",
               ),
             ),
-            SizedBox(height: 18),
+            sBoxh18,
             Container(
               height: 150,
               decoration: BoxDecoration(
@@ -70,13 +71,13 @@ class CreateLaporanView extends GetView<CreateLaporanController> {
                 }
               })),
             ),
-            SizedBox(height: 20),
+            sBoxh20,
             Text("Lokasi"),
             TextField(
               controller: controller.lokasiController,
               decoration: InputDecoration(hintText: "Masukkan lokasi"),
             ),
-            SizedBox(height: 18),
+            sBoxh18,
             Text("Deskripsi"),
             TextField(
               controller: controller.deskripsiController,
@@ -84,9 +85,9 @@ class CreateLaporanView extends GetView<CreateLaporanController> {
               decoration: InputDecoration(
                   hintText: "Masukkan detail dari laporan mu disini"),
             ),
-            SizedBox(height: 20),
+            sBoxh20,
             const Text("Pilih Topik", style: boldBlack14),
-            SizedBox(height: 10),
+            sBoxh10,
             Obx(() {
               return Wrap(
                 spacing: 8.0,
@@ -100,7 +101,7 @@ class CreateLaporanView extends GetView<CreateLaporanController> {
                 }),
               );
             }),
-            SizedBox(height: 20),
+            sBoxh20,
             ElevatedButton(
               onPressed: () async {
                 if (!controller.isUploading.value) {

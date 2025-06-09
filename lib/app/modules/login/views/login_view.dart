@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:newcity/themes/colors.dart';
 import '../controllers/login_controller.dart';
 import 'package:newcity/themes/text_theme.dart';
+import 'package:newcity/themes/size_box.dart';
 
 class LoginView extends GetView<LoginController> {
   const LoginView({super.key});
@@ -31,7 +32,7 @@ class LoginView extends GetView<LoginController> {
                   ),
                 ],
               ),
-              SizedBox(height: 30),
+              sBoxh30,
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -47,7 +48,7 @@ class LoginView extends GetView<LoginController> {
                                 color: primaryColor),
                           ),
                         ),
-                        SizedBox(height: 20),
+                        sBoxh20,
                         TextField(
                           obscureText: true,
                           controller: controller.passwordController,
@@ -57,7 +58,7 @@ class LoginView extends GetView<LoginController> {
                                 Icon(Icons.lock_outline, color: primaryColor),
                           ),
                         ),
-                        SizedBox(height: 10),
+                        sBoxh10,
                         Container(
                           alignment: Alignment.centerRight,
                           child: TextButton(
@@ -67,7 +68,7 @@ class LoginView extends GetView<LoginController> {
                               child: const Text("Lupa kata sandi?",
                                   style: boldPrimaryColor14)),
                         ),
-                        SizedBox(height: 10),
+                        sBoxh10,
                         ElevatedButton(
                           onPressed: () {
                             controller.login();

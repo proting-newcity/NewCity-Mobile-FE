@@ -5,6 +5,7 @@ import 'package:intl/intl.dart';
 import 'package:newcity/widgets/report_tile.dart';
 import 'package:newcity/themes/text_theme.dart';
 import '../controllers/government_controller.dart';
+import 'package:newcity/themes/size_box.dart';
 
 class GovernmentView extends GetView<GovernmentController> {
   const GovernmentView({super.key});
@@ -47,7 +48,7 @@ class GovernmentView extends GetView<GovernmentController> {
                 )
               ],
             ),
-            SizedBox(height: 20),
+            sBoxh20,
             TextField(
               onSubmitted: (keyword) {
                 Get.toNamed('/list-pencarian-laporan', arguments: keyword);
@@ -58,7 +59,7 @@ class GovernmentView extends GetView<GovernmentController> {
                 contentPadding: EdgeInsets.symmetric(vertical: 14),
               ),
             ),
-            SizedBox(height: 20),
+            sBoxh20,
             Center(
               child: SizedBox(
                 width: 280,
@@ -109,12 +110,12 @@ class GovernmentView extends GetView<GovernmentController> {
                 ),
               ),
             ),
-            SizedBox(height: 20),
+            sBoxh20,
             Text(
               'Rekomendasi Untukmu',
               style: boldBlack18,
             ),
-            SizedBox(height: 20),
+            sBoxh20,
             Expanded(
               child: Obx(() {
                 if (controller.isLoading.isTrue) {

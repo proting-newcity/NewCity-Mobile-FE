@@ -8,6 +8,7 @@ import 'package:newcity/widgets/icon_button.dart';
 import '../controllers/beranda_controller.dart';
 import 'package:newcity/themes/colors.dart';
 import 'package:newcity/themes/text_theme.dart';
+import 'package:newcity/themes/size_box.dart';
 
 class BerandaView extends GetView<BerandaController> {
   const BerandaView({super.key});
@@ -28,15 +29,15 @@ class BerandaView extends GetView<BerandaController> {
         toolbarHeight: kToolbarHeight + 20,
         title: Column(
           children: [
-            SizedBox(height: 16.0),
+            sBoxh16,
             Row(
               children: [
-                SizedBox(width: 10.0),
+                sBoxw10,
                 Image.asset(
                   'assets/images/logo_NewCity_Original.png',
                   width: 40,
                 ),
-                SizedBox(width: 10.0),
+                sBoxw10,
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -106,7 +107,7 @@ class BerandaView extends GetView<BerandaController> {
               contentPadding: EdgeInsets.symmetric(vertical: 15),
             ),
           ),
-          SizedBox(height: 16.0),
+          sBoxh16,
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
@@ -119,7 +120,7 @@ class BerandaView extends GetView<BerandaController> {
                   '/notifikasi'),
             ],
           ),
-          SizedBox(height: 23.0),
+          sBoxh23,
           Text(
             'Rekomendasi Untukmu',
             style: TextStyle(
@@ -127,7 +128,7 @@ class BerandaView extends GetView<BerandaController> {
               fontWeight: FontWeight.bold,
             ),
           ),
-          SizedBox(height: 20.0),
+          sBoxh20,
           Expanded(
             child: Obx(() {
               if (controller.isLoading.isTrue) {

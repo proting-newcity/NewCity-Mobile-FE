@@ -8,6 +8,7 @@ import 'package:newcity/themes/colors.dart';
 import '../controllers/detail_laporan_controller.dart';
 import 'package:newcity/themes/text_theme.dart';
 import 'package:newcity/themes/radius.dart';
+import 'package:newcity/themes/size_box.dart';
 
 class DetailLaporanView extends GetView<DetailLaporanController> {
   DetailLaporanView({super.key});
@@ -120,7 +121,7 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                             ),
                           ],
                         ),
-                        const SizedBox(height: 8),
+                        sBoxh8,
                         Padding(
                           padding: const EdgeInsets.only(left: 48.0),
                           child: Column(
@@ -135,11 +136,11 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                                         : 'Loading...',
                                     style: normalWhite14);
                               }),
-                              const SizedBox(height: 16),
+                              sBoxh16,
                               Row(
                                 children: [
                                   const Icon(Icons.person, color: whiteColor),
-                                  const SizedBox(width: 4),
+                                  sBoxw4,
                                   Obx(() {
                                     return Text(
                                         controller
@@ -149,7 +150,7 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                                   }),
                                 ],
                               ),
-                              const SizedBox(height: 16),
+                              sBoxh16,
                               Row(
                                 children: [
                                   Expanded(
@@ -342,7 +343,7 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                                                   fontWeight: FontWeight.bold),
                                             );
                                           }),
-                                          SizedBox(width: 5),
+                                          sBoxw5,
                                           Icon(Icons.arrow_forward)
                                         ],
                                       ),
@@ -364,7 +365,7 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text('Kategori', style: boldBlack16),
-                    SizedBox(height: 4),
+                    sBoxh4,
                     Obx(() {
                       return Text(
                         controller.report.value != null
@@ -372,9 +373,9 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                             : 'Loading...',
                       );
                     }),
-                    SizedBox(height: 16),
+                    sBoxh16,
                     const Text('Lokasi', style: boldBlack16),
-                    SizedBox(height: 4),
+                    sBoxh4,
                     Obx(() {
                       return Text(
                         controller.report.value != null
@@ -382,12 +383,12 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                             : 'Loading...',
                       );
                     }),
-                    SizedBox(height: 16),
+                    sBoxh16,
                     Text(
                       'Detail Laporan',
                       style: boldBlack16,
                     ),
-                    SizedBox(height: 8),
+                    sBoxh8,
                     Obx(() {
                       return Text(
                         controller.report.value?.report.deskripsi ??
@@ -395,7 +396,7 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                         textAlign: TextAlign.justify,
                       );
                     }),
-                    SizedBox(height: 16),
+                    sBoxh16,
                     Row(
                       children: [
                         Obx(
@@ -416,7 +417,7 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                         Obx(() {
                           return Text(controller.likes.value.toString());
                         }),
-                        SizedBox(width: 16),
+                        sBoxw16,
                         IconButton(
                           icon: const Icon(Icons.comment, color: grey2Color),
                           onPressed: () {
@@ -430,7 +431,7 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                           return Text(
                               controller.commentsCount.value.toString());
                         }),
-                        SizedBox(width: 16),
+                        sBoxw16,
                         IconButton(
                           icon: const Icon(Icons.share, color: grey2Color),
                           onPressed: () {},
