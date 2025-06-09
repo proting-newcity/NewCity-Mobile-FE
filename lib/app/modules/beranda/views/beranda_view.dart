@@ -114,7 +114,8 @@ class BerandaView extends GetView<BerandaController> {
                   "assets/images/icon_laporan.png", 'Laporan', '/list-laporan'),
               BuildIconButton(
                   "assets/images/icon_berita.png", 'Berita', '/list-berita'),
-              BuildIconButton("assets/images/icon_simpan.png", 'Simpan', ''),
+              BuildIconButton(
+                  "assets/images/icon_simpan.png", 'Simpan', '/simpan-laporan'),
               BuildIconButton("assets/images/icon_notifikasi.png", 'Notifikasi',
                   '/notifikasi'),
             ],
@@ -135,10 +136,10 @@ class BerandaView extends GetView<BerandaController> {
               }
               return ListView.builder(
                 controller: _scrollController,
-                itemCount: controller.filteredReports.length + 1,
+                itemCount: controller.reports.length + 1,
                 itemBuilder: (context, index) {
-                  if (index < controller.filteredReports.length) {
-                    return ReportTile(controller.filteredReports[index]);
+                  if (index < controller.reports.length) {
+                    return ReportTile(controller.reports[index]);
                   } else {
                     return controller.isLoadingMore.isTrue
                         ? const Center(child: CircularProgressIndicator())

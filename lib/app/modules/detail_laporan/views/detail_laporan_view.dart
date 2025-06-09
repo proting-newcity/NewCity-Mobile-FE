@@ -436,20 +436,22 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                           onPressed: () {},
                         ),
                         Spacer(),
-                        IconButton(
-                          icon: Icon(
-                            controller.isBookmarked.value
-                                ? Icons.bookmark
-                                : Icons.bookmark_border,
-                            color: controller.isBookmarked.value
-                                ? blueColor
-                                : grey2Color,
+                        Obx(
+                          () => IconButton(
+                            icon: Icon(
+                              controller.isBookmarked.value
+                                  ? Icons.bookmark
+                                  : Icons.bookmark_border,
+                              color: controller.isBookmarked.value
+                                  ? blueColor
+                                  : grey2Color,
+                            ),
+                            onPressed: () {
+                              controller.toggleBookmark();
+                              (context as Element).markNeedsBuild();
+                            },
                           ),
-                          onPressed: () {
-                            controller.toggleBookmark();
-                            (context as Element).markNeedsBuild();
-                          },
-                        ),
+                        )
                       ],
                     ),
                   ],

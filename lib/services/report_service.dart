@@ -53,6 +53,19 @@ class ReportService {
     }
   }
 
+  static Future<ReportResponsePagination?> getBookmarkedReport(int page) async {
+    try {
+      final response =
+          await dio.get('api/report/bookmark', queryParameters: {'page': page});
+      return response.statusCode == 200
+          ? ReportResponsePagination.fromJson(response.data)
+          : null;
+    } catch (e) {
+      print("Error: $e");
+      return null;
+    }
+  }
+
   static Future<ReportResponsePagination?> getReportByStatus(
       int page, status) async {
     try {
@@ -89,7 +102,6 @@ class ReportService {
         data: {"status": status},
       );
       if (response.statusCode == 200) {
-        print('Status added successfully');
         Get.snackbar('Success', 'Status berhasil ditambahkan',
             snackPosition: SnackPosition.BOTTOM);
       } else {
@@ -108,6 +120,21 @@ class ReportService {
         return Comment.fromJsonList(response.data);
       } else {
         throw Exception('Failed to like');
+      }
+    } catch (e) {
+      print("Error: $e");
+      return null;
+    }
+  }
+
+  static Future<dynamic> toggleBookmark(int id) async {
+    try {
+      final response = await dio
+          .post('api/report/bookmark', data: {'id': id, "loaded": false});
+      if (response.statusCode == 200) {
+        return response.data;
+      } else {
+        throw Exception('Failed to bookmark');
       }
     } catch (e) {
       print("Error: $e");

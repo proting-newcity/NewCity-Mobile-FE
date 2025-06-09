@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import "package:newcity/models/user.dart";
 import 'package:dio/dio.dart' as dio;
 import 'package:image_picker_platform_interface/image_picker_platform_interface.dart';
 import 'package:newcity/app/modules/biodata_page/controllers/biodata_page_controller.dart';
@@ -9,7 +8,6 @@ import 'package:http_parser/http_parser.dart';
 import 'package:newcity/services/user_service.dart';
 
 class EditAkunController extends GetxController {
-  var user = Rx<User?>(null);
   Rx<XFile?> photo = Rx<XFile?>(null);
 
   final TextEditingController nameController = TextEditingController();
