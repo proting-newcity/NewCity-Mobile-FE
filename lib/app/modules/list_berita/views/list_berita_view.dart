@@ -76,9 +76,7 @@ class ListBeritaView extends GetView<ListBeritaController> {
                   },
                   child: ListView.builder(
                     itemCount: controller.allBerita.value.berita.length +
-                        (controller.hasReachedEnd.value
-                            ? 0
-                            : 1), // Add extra item for loading indicator
+                        (controller.hasReachedEnd.value ? 0 : 1),
                     itemBuilder: (context, index) {
                       if (index < controller.allBerita.value.berita.length) {
                         return BeritaTile(
@@ -145,7 +143,7 @@ class ListBeritaView extends GetView<ListBeritaController> {
         decoration: BoxDecoration(
           image: DecorationImage(
             image: image,
-            fit: BoxFit.contain,
+            fit: BoxFit.fitHeight,
           ),
           borderRadius: borderXlAltCircular,
         ),
@@ -154,8 +152,8 @@ class ListBeritaView extends GetView<ListBeritaController> {
           padding: EdgeInsets.all(8),
           decoration: BoxDecoration(
             borderRadius: borderXlAltCircular,
-            gradient: const LinearGradient(
-              colors: [transparentColor],
+            gradient: LinearGradient(
+              colors: [blackColor.withValues(alpha: 0.6), transparentColor],
               begin: Alignment.bottomCenter,
               end: Alignment.topCenter,
             ),

@@ -1,26 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import "package:newcity/models/user.dart";
 import 'package:motion_tab_bar/MotionTabBar.dart';
+import 'package:newcity/services/image_service.dart';
 import '../controllers/biodata_page_controller.dart';
 import 'package:newcity/themes/colors.dart';
 import 'package:newcity/themes/text_theme.dart';
 import 'package:newcity/themes/size_box.dart';
 
-// ignore: must_be_immutable
 class BiodataPageView extends GetView<BiodataPageController> {
-  // const BiodataPageView({super.key});
-  var user = Rx<User?>(null);
-
-  final BiodataPageController biodataController =
-      Get.find<BiodataPageController>();
-
-  BiodataPageView({super.key});
+  const BiodataPageView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // controller.fetchUserData();
-
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -58,11 +49,47 @@ class BiodataPageView extends GetView<BiodataPageController> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 sBoxh5,
-                //TODO update biar load gambar dari API (malas)
-                CircleAvatar(
-                  radius: 88,
-                  child: Icon(Icons.person, size: 50),
-                ),
+                Obx(() {
+                  if (controller.user.value == null) {
+                    return CircleAvatar(
+                      radius: 88,
+                      backgroundColor: Colors.grey[200],
+                      child: CircularProgressIndicator(
+                        strokeWidth: 2,
+                        valueColor: AlwaysStoppedAnimation<Color>(primaryColor),
+                      ),
+                    );
+                  } else {
+                    return FutureBuilder<ImageProvider>(
+                      future: ImageService.loadImage(
+                          controller.user.value!.foto ?? ''),
+                      builder: (ctx, snap) {
+                        if (snap.connectionState == ConnectionState.waiting) {
+                          return CircleAvatar(
+                            radius: 88,
+                            backgroundColor: Colors.grey[200],
+                            child: CircularProgressIndicator(
+                              strokeWidth: 2,
+                              valueColor:
+                                  AlwaysStoppedAnimation<Color>(primaryColor),
+                            ),
+                          );
+                        }
+                        if (snap.hasError || snap.data == null) {
+                          return CircleAvatar(
+                            radius: 88,
+                            backgroundImage:
+                                AssetImage('assets/placeholder.png'),
+                          );
+                        }
+                        return CircleAvatar(
+                          radius: 88,
+                          backgroundImage: snap.data,
+                        );
+                      },
+                    );
+                  }
+                }),
                 sBoxh16,
                 Obx(() {
                   return Text('${controller.user.value?.name}',
@@ -76,18 +103,18 @@ class BiodataPageView extends GetView<BiodataPageController> {
                     textAlign: TextAlign.center,
                   );
                 }),
+                // ListTile(
+                //   leading: Icon(Icons.lock),
+                //   title: const Text(
+                //     'Ubah Kata Sandi',
+                //     style: normalBlack20,
+                //   ),
+                //   onTap: () {
+                //     Get.toNamed('/lupa-password');
+                //   },
+                // ),
+                // Divider(),
                 sBoxh55,
-                ListTile(
-                  leading: Icon(Icons.lock),
-                  title: const Text(
-                    'Ubah Kata Sandi',
-                    style: normalBlack20,
-                  ),
-                  onTap: () {
-                    Get.toNamed('/lupa-password');
-                  },
-                ),
-                Divider(),
                 ListTile(
                   leading: Icon(Icons.account_circle),
                   title: const Text(
@@ -106,7 +133,7 @@ class BiodataPageView extends GetView<BiodataPageController> {
                     style: normalBlack20,
                   ),
                   onTap: () {
-                    // Navigate to help page
+                    Get.toNamed('/faq');
                   },
                 ),
                 Divider(),

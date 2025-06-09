@@ -14,6 +14,12 @@ class BiodataPageController extends GetxController {
   }
 
   @override
+  void onReady() {
+    super.onReady();
+    fetchUser();
+  }
+
+  @override
   void onClose() {
     super.onClose();
   }
@@ -22,6 +28,7 @@ class BiodataPageController extends GetxController {
     try {
       var response = await UserService.getMasyarakat();
       user.value = response;
+      print(user.value!.id);
     } catch (e) {
       print('Error fetching user: $e');
     }
