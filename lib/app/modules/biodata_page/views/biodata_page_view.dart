@@ -57,7 +57,7 @@ class BiodataPageView extends GetView<BiodataPageController> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SizedBox(height: 5),
+                sBoxh5,
                 //TODO update biar load gambar dari API (malas)
                 CircleAvatar(
                   radius: 88,
@@ -76,7 +76,7 @@ class BiodataPageView extends GetView<BiodataPageController> {
                     textAlign: TextAlign.center,
                   );
                 }),
-                SizedBox(height: 55),
+                sBoxh55,
                 ListTile(
                   leading: Icon(Icons.lock),
                   title: const Text(

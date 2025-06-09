@@ -140,7 +140,7 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                               Row(
                                 children: [
                                   const Icon(Icons.person, color: whiteColor),
-                                  const SizedBox(width: 4),
+                                  sBoxw4,
                                   Obx(() {
                                     return Text(
                                         controller
@@ -343,7 +343,7 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                                                   fontWeight: FontWeight.bold),
                                             );
                                           }),
-                                          SizedBox(width: 5),
+                                          sBoxw5,
                                           Icon(Icons.arrow_forward)
                                         ],
                                       ),
@@ -365,7 +365,7 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text('Kategori', style: boldBlack16),
-                    SizedBox(height: 4),
+                    sBoxh4,
                     Obx(() {
                       return Text(
                         controller.report.value != null
@@ -375,7 +375,7 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                     }),
                     sBoxh16,
                     const Text('Lokasi', style: boldBlack16),
-                    SizedBox(height: 4),
+                    sBoxh4,
                     Obx(() {
                       return Text(
                         controller.report.value != null
@@ -417,7 +417,7 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                         Obx(() {
                           return Text(controller.likes.value.toString());
                         }),
-                        SizedBox(width: 16),
+                        sBoxw16,
                         IconButton(
                           icon: const Icon(Icons.comment, color: grey2Color),
                           onPressed: () {
@@ -431,7 +431,7 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                           return Text(
                               controller.commentsCount.value.toString());
                         }),
-                        SizedBox(width: 16),
+                        sBoxw16,
                         IconButton(
                           icon: const Icon(Icons.share, color: grey2Color),
                           onPressed: () {},

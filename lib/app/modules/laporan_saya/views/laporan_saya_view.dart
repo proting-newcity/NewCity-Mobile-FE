@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:newcity/widgets/report_tile.dart';
 import 'package:newcity/themes/text_theme.dart';
 import '../controllers/laporan_saya_controller.dart';
+import 'package:newcity/themes/size_box.dart';
 
 class LaporanSayaView extends GetView<LaporanSayaController> {
   const LaporanSayaView({super.key});
@@ -40,7 +41,7 @@ class LaporanSayaView extends GetView<LaporanSayaController> {
                 contentPadding: EdgeInsets.symmetric(vertical: 14),
               ),
             ),
-            SizedBox(height: 20),
+            sBoxh20,
             Expanded(
               child: Obx(() {
                 if (controller.isLoading.isTrue) {

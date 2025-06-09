@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import '../controllers/faq_controller.dart';
 import 'package:newcity/themes/text_theme.dart';
 import 'package:newcity/themes/radius.dart';
+import 'package:newcity/themes/size_box.dart';
 
 class FaqView extends GetView<FaqController> {
   FaqView({super.key});
@@ -50,12 +51,12 @@ class FaqView extends GetView<FaqController> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Image.asset("assets/images/faq.png", width: 260),
-              SizedBox(height: 20),
+              sBoxh20,
               Text(
                 'Ada masalah? Berikut jawaban atas pertanyaan umum yang mungkin membantu!',
                 textAlign: TextAlign.center,
               ),
-              SizedBox(height: 20),
+              sBoxh20,
               Expanded(
                 child: ListView(
                   children: faqs.map((faq) {
@@ -88,7 +89,7 @@ class FaqView extends GetView<FaqController> {
                             ],
                           ),
                         ),
-                        SizedBox(height: 10),
+                        sBoxh10,
                       ],
                     );
                   }).toList(),

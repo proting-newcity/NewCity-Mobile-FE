@@ -3,6 +3,7 @@ import 'package:newcity/themes/colors.dart';
 import 'package:get/get.dart';
 import 'package:newcity/themes/text_theme.dart';
 import '../controllers/register_controller.dart';
+import 'package:newcity/themes/size_box.dart';
 
 class RegisterView extends GetView<RegisterController> {
   const RegisterView({super.key});
@@ -31,7 +32,7 @@ class RegisterView extends GetView<RegisterController> {
                   ),
                 ],
               ),
-              SizedBox(height: 30),
+              sBoxh30,
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -47,7 +48,7 @@ class RegisterView extends GetView<RegisterController> {
                           ),
                           controller: controller.namacontroller,
                         ),
-                        SizedBox(height: 20),
+                        sBoxh20,
                         TextField(
                           decoration: InputDecoration(
                             hintText: 'Nomor Telepon',
@@ -56,7 +57,7 @@ class RegisterView extends GetView<RegisterController> {
                           ),
                           controller: controller.notelpcontroller,
                         ),
-                        SizedBox(height: 20),
+                        sBoxh20,
                         TextField(
                           obscureText: true,
                           decoration: InputDecoration(
@@ -66,7 +67,7 @@ class RegisterView extends GetView<RegisterController> {
                           ),
                           controller: controller.passwordcontroller,
                         ),
-                        SizedBox(height: 30),
+                        sBoxh30,
                         ElevatedButton(
                           onPressed: () {
                             controller.sendOtp();

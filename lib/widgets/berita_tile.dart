@@ -58,7 +58,7 @@ Widget BeritaTile(Berita beritaData, int index) {
                 }
               },
             ),
-            SizedBox(width: 16),
+            sBoxw16,
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

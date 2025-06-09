@@ -6,6 +6,7 @@ import '../controllers/edit_akun_controller.dart';
 import 'package:newcity/themes/colors.dart';
 import 'package:newcity/themes/text_theme.dart';
 import 'package:newcity/themes/radius.dart';
+import 'package:newcity/themes/size_box.dart';
 
 // ignore: must_be_immutable
 class EditAkunView extends GetView<EditAkunController> {
@@ -24,7 +25,7 @@ class EditAkunView extends GetView<EditAkunController> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(height: 5),
+            sBoxh5,
             //Obx((){
             //return
             CircleAvatar(
@@ -59,12 +60,12 @@ class EditAkunView extends GetView<EditAkunController> {
             ),
             //}),
 
-            SizedBox(height: 15),
+            sBoxh15,
             Text(
               'Ubah foto',
               style: regularPrimaryColor14,
             ),
-            SizedBox(height: 45),
+            sBoxh45,
             Text("Nama"),
             TextField(
               controller: controller.nameController,
@@ -78,7 +79,7 @@ class EditAkunView extends GetView<EditAkunController> {
                     borderRadius: borderLgCircular),
               ),
             ),
-            SizedBox(height: 20),
+            sBoxh20,
             Text("Nomor Telepon"),
             TextField(
               controller: controller.usernameController,
@@ -92,7 +93,7 @@ class EditAkunView extends GetView<EditAkunController> {
                     borderRadius: borderLgCircular),
               ),
             ),
-            SizedBox(height: 20),
+            sBoxh20,
             ElevatedButton(
               onPressed: () {
                 controller.saveChanges();

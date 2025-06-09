@@ -99,7 +99,7 @@ class DetailBeritaView extends GetView<DetailBeritaController> {
                               Row(
                                 children: [
                                   const Icon(Icons.person, color: whiteColor),
-                                  const SizedBox(width: 4),
+                                  sBoxw4,
                                   Text(Get.arguments.user.name,
                                       style: normalWhite14),
                                 ],
@@ -117,10 +117,10 @@ class DetailBeritaView extends GetView<DetailBeritaController> {
                                   const Spacer(),
                                   const Icon(Icons.thumb_up_alt_outlined,
                                       color: whiteColor),
-                                  const SizedBox(width: 16),
+                                  sBoxw16,
                                   const Icon(Icons.bookmark_outline,
                                       color: whiteColor),
-                                  const SizedBox(width: 16),
+                                  sBoxw16,
                                   const Icon(Icons.share_outlined,
                                       color: whiteColor),
                                 ],

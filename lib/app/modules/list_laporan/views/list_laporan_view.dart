@@ -5,6 +5,7 @@ import '../controllers/list_laporan_controller.dart';
 import 'package:newcity/widgets/report_tile.dart';
 import 'package:newcity/themes/colors.dart';
 import 'package:newcity/themes/text_theme.dart';
+import 'package:newcity/themes/size_box.dart';
 
 class ListLaporanView extends GetView<ListLaporanController> {
   const ListLaporanView({super.key});
@@ -60,7 +61,7 @@ class ListLaporanView extends GetView<ListLaporanController> {
                 contentPadding: EdgeInsets.symmetric(vertical: 14),
               ),
             ),
-            const SizedBox(height: 20),
+            sBoxh20,
             Obx(() {
               return Wrap(
                 spacing: 8.0,
@@ -74,7 +75,7 @@ class ListLaporanView extends GetView<ListLaporanController> {
                 }),
               );
             }),
-            const SizedBox(height: 20),
+            sBoxh20,
             Expanded(
               child: Obx(() {
                 if (controller.isLoading.isTrue) {

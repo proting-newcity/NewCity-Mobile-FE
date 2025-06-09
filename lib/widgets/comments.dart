@@ -76,7 +76,7 @@ Widget ShowComment(
                       ),
                     ),
                   ),
-                  SizedBox(width: 8),
+                  sBoxw8,
                   IconButton(
                     icon: Icon(Icons.send, color: Colors.green),
                     onPressed: () {
@@ -132,7 +132,7 @@ Widget CommentTile({
                 }
               },
             ),
-            SizedBox(width: 8),
+            sBoxw8,
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -140,7 +140,7 @@ Widget CommentTile({
                   username,
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
-                SizedBox(width: 10),
+                sBoxw10,
                 Text(
                   convertToAgo(time),
                   style: TextStyle(fontSize: 12, color: Colors.grey),

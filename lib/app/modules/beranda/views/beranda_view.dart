@@ -128,7 +128,7 @@ class BerandaView extends GetView<BerandaController> {
               fontWeight: FontWeight.bold,
             ),
           ),
-          SizedBox(height: 20.0),
+          sBoxh20,
           Expanded(
             child: Obx(() {
               if (controller.isLoading.isTrue) {

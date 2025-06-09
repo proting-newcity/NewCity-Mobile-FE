@@ -5,6 +5,7 @@ import 'package:newcity/widgets/report_tile.dart';
 import 'package:newcity/themes/text_theme.dart';
 import '../controllers/status_laporan_controller.dart';
 import 'package:newcity/themes/radius.dart';
+import 'package:newcity/themes/size_box.dart';
 
 class StatusLaporanView extends GetView<StatusLaporanController> {
   const StatusLaporanView({super.key});
@@ -40,7 +41,7 @@ class StatusLaporanView extends GetView<StatusLaporanController> {
                 contentPadding: EdgeInsets.symmetric(vertical: 14),
               ),
             ),
-            SizedBox(height: 20),
+            sBoxh20,
             Center(
               child: Column(
                 children: [
@@ -67,9 +68,7 @@ class StatusLaporanView extends GetView<StatusLaporanController> {
                           ),
                         ),
                       ),
-                      SizedBox(
-                        width: 10,
-                      ),
+                      sBoxw10,
                       Expanded(
                         child: GestureDetector(
                           onTap: () {
@@ -93,9 +92,7 @@ class StatusLaporanView extends GetView<StatusLaporanController> {
                       ),
                     ],
                   ),
-                  SizedBox(
-                    height: 10,
-                  ),
+                  sBoxh10,
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -120,9 +117,7 @@ class StatusLaporanView extends GetView<StatusLaporanController> {
                           ),
                         ),
                       ),
-                      SizedBox(
-                        width: 10,
-                      ),
+                      sBoxw10,
                       Expanded(
                         child: GestureDetector(
                           onTap: () {
@@ -148,9 +143,9 @@ class StatusLaporanView extends GetView<StatusLaporanController> {
                 ],
               ),
             ),
-            SizedBox(height: 20),
+            sBoxh20,
             const Text('Laporan Terkini', style: boldBlack18),
-            SizedBox(height: 20),
+            sBoxh20,
             Expanded(
               child: Obx(() {
                 if (controller.isLoading.isTrue) {
