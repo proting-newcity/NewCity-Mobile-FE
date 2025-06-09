@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:newcity/widgets/report_tile.dart';
 import 'package:newcity/themes/text_theme.dart';
 import '../controllers/laporan_disukai_controller.dart';
-import 'package:newcity/themes/radius.dart';
 
 class LaporanDisukaiView extends GetView<LaporanDisukaiController> {
   const LaporanDisukaiView({super.key});

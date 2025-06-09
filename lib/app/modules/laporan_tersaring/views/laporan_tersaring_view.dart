@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:newcity/widgets/report_tile.dart';
 import 'package:newcity/themes/text_theme.dart';
 import '../controllers/laporan_tersaring_controller.dart';
-import 'package:newcity/themes/radius.dart';
 
 class LaporanTersaringView extends GetView<LaporanTersaringController> {
   const LaporanTersaringView({super.key});

@@ -3,7 +3,6 @@ import 'package:newcity/themes/colors.dart';
 import 'package:newcity/themes/text_theme.dart';
 import 'package:get/get.dart';
 import '../controllers/forgot_password_controller.dart';
-import 'package:newcity/themes/radius.dart';
 
 class NewPasswordView extends GetView<ForgotPasswordController> {
   const NewPasswordView({super.key});

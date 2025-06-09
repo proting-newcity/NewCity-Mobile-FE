@@ -32,7 +32,7 @@ class BerandaController extends GetxController
 
   @override
   void onClose() {
-    motionTabBarController!.dispose();
+    motionTabBarController.dispose();
     super.onClose();
   }
 

@@ -3,7 +3,6 @@ import 'package:newcity/themes/colors.dart';
 import 'package:get/get.dart';
 import 'package:newcity/widgets/report_tile.dart';
 import 'package:newcity/themes/text_theme.dart';
-import 'package:newcity/themes/radius.dart';
 import '../controllers/laporan_saya_controller.dart';
 
 class LaporanSayaView extends GetView<LaporanSayaController> {
