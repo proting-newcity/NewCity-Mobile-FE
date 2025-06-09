@@ -1,7 +1,7 @@
 class User {
   int id;
   String name;
-  String username;
+  String? username;
   String? foto;
 
   User({
