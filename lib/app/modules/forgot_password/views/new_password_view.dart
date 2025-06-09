@@ -3,6 +3,7 @@ import 'package:newcity/themes/colors.dart';
 import 'package:newcity/themes/text_theme.dart';
 import 'package:get/get.dart';
 import '../controllers/forgot_password_controller.dart';
+import 'package:newcity/themes/size_box.dart';
 
 class NewPasswordView extends GetView<ForgotPasswordController> {
   const NewPasswordView({super.key});
@@ -51,7 +52,7 @@ class NewPasswordView extends GetView<ForgotPasswordController> {
                   ),
                 ],
               ),
-              SizedBox(height: 30),
+              sBoxh30,
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -67,7 +68,7 @@ class NewPasswordView extends GetView<ForgotPasswordController> {
                                 color: primaryColor),
                           ),
                         ),
-                        SizedBox(height: 20),
+                        sBoxh20,
                         TextField(
                           controller: controller.passwordConfirmationController,
                           decoration: InputDecoration(
@@ -76,7 +77,7 @@ class NewPasswordView extends GetView<ForgotPasswordController> {
                                 Icon(Icons.lock_outline, color: primaryColor),
                           ),
                         ),
-                        SizedBox(height: 20),
+                        sBoxh20,
                         ElevatedButton(
                           onPressed: () {
                             controller.changePassword();
@@ -84,7 +85,7 @@ class NewPasswordView extends GetView<ForgotPasswordController> {
                           child: const Text('Buat Kata Sandi Baru',
                               style: normalWhite14),
                         ),
-                        SizedBox(height: 20),
+                        sBoxh20,
                       ],
                     ),
                   ),

@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:newcity/models/report.dart';
 import 'package:newcity/services/image_service.dart';
+import 'package:newcity/themes/size_box.dart';
 
 Widget ReportTile(Report report) {
   return Padding(
@@ -24,18 +25,18 @@ Widget ReportTile(Report report) {
               report.judul,
               style: TextStyle(fontSize: 14, fontWeight: FontWeight.w800),
             ),
-            SizedBox(height: 5),
+            sBoxh5,
             Text(
               DateFormat('EEEE, d MMMM y - kk:mm').format(report.updatedAt),
               style: TextStyle(
                   color: Color.fromRGBO(102, 102, 102, 1), fontSize: 11),
             ),
-            SizedBox(height: 5),
+            sBoxh5,
             Divider(
               height: 0.5,
               color: Colors.black,
             ),
-            SizedBox(height: 5),
+            sBoxh5,
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -49,7 +50,7 @@ Widget ReportTile(Report report) {
                         maxLines: 3,
                         overflow: TextOverflow.ellipsis,
                       ),
-                      SizedBox(height: 5),
+                      sBoxh5,
                       Row(
                         children: [
                           Icon(Icons.person_pin_circle_outlined,
@@ -62,7 +63,7 @@ Widget ReportTile(Report report) {
                           ),
                         ],
                       ),
-                      SizedBox(height: 5),
+                      sBoxh5,
                       Row(
                         children: [
                           Icon(Icons.location_on_outlined,
@@ -80,9 +81,7 @@ Widget ReportTile(Report report) {
                     ],
                   ),
                 ),
-                SizedBox(
-                  width: 5,
-                ),
+                sBoxw5,
                 Flexible(
                   child: Container(
                     height: 120,

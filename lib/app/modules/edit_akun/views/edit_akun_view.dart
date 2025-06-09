@@ -6,6 +6,7 @@ import '../controllers/edit_akun_controller.dart';
 import 'package:newcity/themes/colors.dart';
 import 'package:newcity/themes/text_theme.dart';
 import 'package:newcity/themes/radius.dart';
+import 'package:newcity/themes/size_box.dart';
 
 class EditAkunView extends GetView<EditAkunController> {
   EditAkunView({super.key});
@@ -18,7 +19,7 @@ class EditAkunView extends GetView<EditAkunController> {
         padding: const EdgeInsets.all(16),
         child: Column(
           children: [
-            SizedBox(height: 5),
+            sBoxh5,
             Obx(() {
               if (controller.photo.value != null) {
                 return GestureDetector(
@@ -64,9 +65,9 @@ class EditAkunView extends GetView<EditAkunController> {
                 },
               );
             }),
-            const SizedBox(height: 15),
+            sBoxh15,
             Text('Ubah foto', style: regularPrimaryColor14),
-            const SizedBox(height: 45),
+            sBoxh45,
             Text("Nama"),
             TextField(
               controller: controller.nameController,
@@ -82,7 +83,7 @@ class EditAkunView extends GetView<EditAkunController> {
                 ),
               ),
             ),
-            const SizedBox(height: 20),
+            sBoxh20,
             Text("Nomor Telepon"),
             TextField(
               controller: controller.usernameController,
@@ -98,7 +99,7 @@ class EditAkunView extends GetView<EditAkunController> {
                 ),
               ),
             ),
-            const SizedBox(height: 20),
+            sBoxh20,
             ElevatedButton(
               onPressed: controller.saveChanges,
               child: const Text('Simpan Perubahan', style: normalWhite14),

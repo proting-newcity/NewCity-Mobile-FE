@@ -5,6 +5,7 @@ import 'package:newcity/services/image_service.dart';
 import '../controllers/biodata_page_controller.dart';
 import 'package:newcity/themes/colors.dart';
 import 'package:newcity/themes/text_theme.dart';
+import 'package:newcity/themes/size_box.dart';
 
 class BiodataPageView extends GetView<BiodataPageController> {
   const BiodataPageView({super.key});
@@ -47,7 +48,7 @@ class BiodataPageView extends GetView<BiodataPageController> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SizedBox(height: 5),
+                sBoxh5,
                 Obx(() {
                   if (controller.user.value == null) {
                     return CircleAvatar(
@@ -89,12 +90,12 @@ class BiodataPageView extends GetView<BiodataPageController> {
                     );
                   }
                 }),
-                SizedBox(height: 16),
+                sBoxh16,
                 Obx(() {
                   return Text('${controller.user.value?.name}',
                       style: boldTextLight14);
                 }),
-                SizedBox(height: 8),
+                sBoxh8,
                 Obx(() {
                   return Text(
                     '${controller.user.value?.username}',
@@ -102,7 +103,6 @@ class BiodataPageView extends GetView<BiodataPageController> {
                     textAlign: TextAlign.center,
                   );
                 }),
-                SizedBox(height: 55),
                 // ListTile(
                 //   leading: Icon(Icons.lock),
                 //   title: const Text(
@@ -114,6 +114,7 @@ class BiodataPageView extends GetView<BiodataPageController> {
                 //   },
                 // ),
                 // Divider(),
+                sBoxh55,
                 ListTile(
                   leading: Icon(Icons.account_circle),
                   title: const Text(
@@ -143,7 +144,7 @@ class BiodataPageView extends GetView<BiodataPageController> {
                     _showLogoutDialog(context);
                   },
                 ),
-                SizedBox(height: 16),
+                sBoxh16,
               ],
             ),
           ),

@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:newcity/themes/colors.dart';
 import '../controllers/lupa_password_controller.dart';
 import 'package:newcity/themes/text_theme.dart';
+import 'package:newcity/themes/size_box.dart';
 
 class LupaPasswordView extends GetView<LupaPasswordController> {
   const LupaPasswordView({super.key});
@@ -51,7 +52,7 @@ class LupaPasswordView extends GetView<LupaPasswordController> {
                   ),
                 ],
               ),
-              SizedBox(height: 30),
+              sBoxh30,
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -66,7 +67,7 @@ class LupaPasswordView extends GetView<LupaPasswordController> {
                           ),
                           controller: controller.notelpcontroller,
                         ),
-                        SizedBox(height: 20),
+                        sBoxh20,
                         TextField(
                           decoration: InputDecoration(
                             hintText: 'Konfirmasi Kata Sandi',
@@ -74,7 +75,7 @@ class LupaPasswordView extends GetView<LupaPasswordController> {
                           ),
                           controller: controller.passwordcontroller,
                         ),
-                        SizedBox(height: 30),
+                        sBoxh30,
                         ElevatedButton(
                           onPressed: () {
                             controller.sendOtp();

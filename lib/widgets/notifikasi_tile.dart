@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:newcity/models/user.dart';
 import 'package:newcity/services/image_service.dart';
 import 'package:newcity/utils/date.dart';
+import 'package:newcity/themes/size_box.dart';
 
 Widget NotifikasiTile(Notifikasi notif) {
   return GestureDetector(
@@ -39,7 +40,7 @@ Widget NotifikasiTile(Notifikasi notif) {
               }
             },
           ),
-          const SizedBox(width: 10),
+          sBoxw10,
           Expanded(
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -66,7 +67,7 @@ Widget NotifikasiTile(Notifikasi notif) {
                           ],
                         ),
                       ),
-                      const SizedBox(height: 5),
+                      sBoxh5,
                       Text(
                         formatTimeAgo(notif.tanggal),
                         style: TextStyle(color: Colors.grey[600], fontSize: 14),
@@ -74,7 +75,7 @@ Widget NotifikasiTile(Notifikasi notif) {
                     ],
                   ),
                 ),
-                const SizedBox(width: 10),
+                sBoxw10,
                 if (notif.foto.isNotEmpty)
                   FutureBuilder<ImageProvider>(
                     future: ImageService.loadThumbnail(notif.foto),
