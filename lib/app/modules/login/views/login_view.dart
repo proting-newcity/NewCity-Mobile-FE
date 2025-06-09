@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:newcity/themes/radius.dart';
 import 'package:get/get.dart';
 import 'package:newcity/themes/colors.dart';
 import '../controllers/login_controller.dart';
@@ -22,13 +21,7 @@ class LoginView extends GetView<LoginController> {
                   Positioned(
                     top: 110,
                     left: 23,
-                    child: const Text("Selamat Datang",
-                        // style: GoogleFonts.poppins(
-                        //   color: whiteColor,
-                        //   fontSize: 24,
-                        //   fontWeight: FontWeight.bold,
-                        // ),
-                        style: boldWhite24),
+                    child: const Text("Selamat Datang", style: boldWhite24),
                   ),
                   Positioned(
                     top: 150,

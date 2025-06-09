@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'package:newcity/themes/colors.dart';
 import 'package:get/get.dart';
 import 'package:pinput/pinput.dart';
 import '../controllers/register_controller.dart';
 import 'package:newcity/themes/text_theme.dart';
-import 'package:newcity/themes/radius.dart';
 
 class OtpView extends GetView<RegisterController> {
   const OtpView({super.key});

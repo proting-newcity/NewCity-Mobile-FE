@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:pinput/pinput.dart';
 import '../controllers/forgot_password_controller.dart';
 import 'package:newcity/themes/text_theme.dart';
-import 'package:newcity/themes/radius.dart';
 
 class KodeVerifikasiView extends GetView<ForgotPasswordController> {
   const KodeVerifikasiView({super.key});
