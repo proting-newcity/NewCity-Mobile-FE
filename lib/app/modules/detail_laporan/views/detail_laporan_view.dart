@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:newcity/services/image_service.dart';
-import 'package:newcity/app/modules/login/controllers/login_controller.dart';
 import 'package:newcity/widgets/detail_status.dart';
 import 'package:newcity/themes/colors.dart';
 import '../controllers/detail_laporan_controller.dart';
@@ -12,7 +11,6 @@ import 'package:newcity/themes/size_box.dart';
 
 class DetailLaporanView extends GetView<DetailLaporanController> {
   DetailLaporanView({super.key});
-  final LoginController loginController = Get.find<LoginController>();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -234,9 +232,9 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                                             ),
                                           ),
                                           confirm: Obx(() {
-                                            bool isGovernment = loginController
-                                                    .userRole.value ==
-                                                'pemerintah';
+                                            bool isGovernment =
+                                                controller.userRole.value ==
+                                                    'pemerintah';
                                             bool isMaxStatusReached = controller
                                                     .report
                                                     .value!

@@ -46,30 +46,32 @@ class CreateLaporanView extends GetView<CreateLaporanController> {
               decoration: BoxDecoration(
                   border: Border.all(color: primaryColor, width: 1),
                   borderRadius: borderLgCircular),
-              child: GestureDetector(onTap: () async {
-                // buka kamera
-                await controller.openCamera();
-              }, child: Obx(() {
-                if (controller.photo.value != null) {
-                  return ClipRRect(
-                    borderRadius: borderLgCircular,
-                    child: Image.file(
-                      File(controller.photo.value!.path),
-                      fit: BoxFit.contain, // atur gambar di container
-                      width: double.infinity,
-                      height: double.infinity,
-                    ),
-                  );
-                } else {
-                  return Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Icon(Icons.camera_alt, color: greenColor),
-                      Text("Unggah gambar/video"),
-                    ],
-                  );
-                }
-              })),
+              child: GestureDetector(
+                onTap: () {
+                  controller.showImageSourceOptions(context);
+                },
+                child: Obx(() {
+                  if (controller.photo.value != null) {
+                    return ClipRRect(
+                      borderRadius: borderLgCircular,
+                      child: Image.file(
+                        File(controller.photo.value!.path),
+                        fit: BoxFit.cover,
+                        width: double.infinity,
+                        height: double.infinity,
+                      ),
+                    );
+                  } else {
+                    return Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Icon(Icons.camera_alt, color: greenColor),
+                        Text("Unggah gambar/video"),
+                      ],
+                    );
+                  }
+                }),
+              ),
             ),
             sBoxh20,
             Text("Lokasi"),
@@ -89,6 +91,9 @@ class CreateLaporanView extends GetView<CreateLaporanController> {
             const Text("Pilih Topik", style: boldBlack14),
             sBoxh10,
             Obx(() {
+              if (controller.allKategori.value.kategori.isEmpty) {
+                return Center(child: CircularProgressIndicator());
+              }
               return Wrap(
                 spacing: 8.0,
                 runSpacing: 4.0,
@@ -102,15 +107,16 @@ class CreateLaporanView extends GetView<CreateLaporanController> {
               );
             }),
             sBoxh20,
-            ElevatedButton(
-              onPressed: () async {
-                if (!controller.isUploading.value) {
-                  controller.isUploading.value = true;
-                  await controller.postReport();
-                }
-              },
-              child: const Text("Berikutnya", style: boldWhite14),
-            ),
+            Obx(() => ElevatedButton(
+                  onPressed: controller.isUploading.value
+                      ? null // Disable button while uploading
+                      : () async {
+                          await controller.postReport();
+                        },
+                  child: controller.isUploading.value
+                      ? CircularProgressIndicator(color: Colors.white)
+                      : const Text("Berikutnya", style: boldWhite14),
+                )),
           ],
         ),
       ),

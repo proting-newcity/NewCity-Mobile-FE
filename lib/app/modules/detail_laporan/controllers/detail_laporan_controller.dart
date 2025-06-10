@@ -15,6 +15,7 @@ class DetailLaporanController extends GetxController {
   var isLoadingComments = false.obs;
   var commentError = ''.obs;
   final TextEditingController contentController = TextEditingController();
+  var userRole = ''.obs;
 
   final count = 0.obs;
   @override
@@ -33,6 +34,15 @@ class DetailLaporanController extends GetxController {
   @override
   void onClose() {
     super.onClose();
+  }
+
+  Future<void> loadUserRole() async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      userRole.value = prefs.getString('userRole') ?? '';
+    } catch (e) {
+      print("Error loading role: $e");
+    }
   }
 
   void fetchReport(int id) async {

@@ -28,7 +28,6 @@ class BiodataPageController extends GetxController {
     try {
       var response = await UserService.getMasyarakat();
       user.value = response;
-      print(user.value!.id);
     } catch (e) {
       print('Error fetching user: $e');
     }
