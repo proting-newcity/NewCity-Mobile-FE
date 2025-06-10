@@ -85,7 +85,6 @@ class ReportService {
   static Future<ReportResponse?> getReportDetail(int id) async {
     try {
       final response = await dio.get('api/report/$id');
-      print(response.data);
       return response.statusCode == 200
           ? ReportResponse.fromJson(response.data)
           : null;
