@@ -74,7 +74,10 @@ class EditAkunView extends GetView<EditAkunController> {
             sBoxh15,
             Text('Ubah foto', style: regularPrimaryColor14),
             sBoxh45,
-            Text("Nama"),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Text("Nama"),
+            ),
             TextField(
               controller: controller.nameController,
               decoration: InputDecoration(
@@ -90,7 +93,10 @@ class EditAkunView extends GetView<EditAkunController> {
               ),
             ),
             sBoxh20,
-            Text("Nomor Telepon"),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Text("Nomor Telepon"),
+            ),
             TextField(
               controller: controller.usernameController,
               decoration: InputDecoration(
@@ -105,9 +111,12 @@ class EditAkunView extends GetView<EditAkunController> {
                 ),
               ),
             ),
-            sBoxh20,
+            sBoxh30,
             ElevatedButton(
               onPressed: controller.saveChanges,
+              style: ElevatedButton.styleFrom(
+                minimumSize: const Size(double.infinity, 50),
+              ),
               child: const Text('Simpan Perubahan', style: normalWhite14),
             ),
           ],

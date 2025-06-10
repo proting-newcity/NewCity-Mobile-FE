@@ -6,6 +6,8 @@ import '../modules/biodata_page/bindings/biodata_page_binding.dart';
 import '../modules/biodata_page/views/biodata_page_view.dart';
 import '../modules/create_laporan/bindings/create_laporan_binding.dart';
 import '../modules/create_laporan/views/create_laporan_view.dart';
+import '../modules/dashboard/bindings/dashboard_binding.dart';
+import '../modules/dashboard/views/dashboard_view.dart';
 import '../modules/detail_berita/bindings/detail_berita_binding.dart';
 import '../modules/detail_berita/views/detail_berita_view.dart';
 import '../modules/detail_laporan/bindings/detail_laporan_binding.dart';
@@ -201,6 +203,11 @@ class AppPages {
       name: _Paths.SIMPAN_LAPORAN,
       page: () => const SimpanLaporanView(),
       binding: SimpanLaporanBinding(),
+    ),
+    GetPage(
+      name: _Paths.DASHBOARD,
+      page: () => const DashboardView(),
+      binding: DashboardBinding(),
     ),
   ];
 }

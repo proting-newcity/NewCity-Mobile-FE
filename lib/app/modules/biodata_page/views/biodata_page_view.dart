@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:motion_tab_bar/MotionTabBar.dart';
 import 'package:newcity/services/image_service.dart';
 import '../controllers/biodata_page_controller.dart';
 import 'package:newcity/themes/colors.dart';
@@ -14,13 +13,7 @@ class BiodataPageView extends GetView<BiodataPageController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          color: whiteColor,
-          onPressed: () {
-            Get.toNamed('/beranda');
-          },
-        ),
+        automaticallyImplyLeading: false,
         title: const Text('Akun', style: normalWhite22),
         backgroundColor: primaryColor,
       ),
@@ -103,23 +96,12 @@ class BiodataPageView extends GetView<BiodataPageController> {
                     textAlign: TextAlign.center,
                   );
                 }),
-                // ListTile(
-                //   leading: Icon(Icons.lock),
-                //   title: const Text(
-                //     'Ubah Kata Sandi',
-                //     style: normalBlack20,
-                //   ),
-                //   onTap: () {
-                //     Get.toNamed('/lupa-password');
-                //   },
-                // ),
-                // Divider(),
                 sBoxh55,
                 ListTile(
                   leading: Icon(Icons.account_circle),
                   title: const Text(
                     'Edit Akun',
-                    style: normalBlack20,
+                    style: normalBlack18,
                   ),
                   onTap: () {
                     Get.toNamed('/edit-akun', arguments: controller.user.value);
@@ -130,7 +112,7 @@ class BiodataPageView extends GetView<BiodataPageController> {
                   leading: Icon(Icons.question_mark),
                   title: const Text(
                     'Bantuan',
-                    style: normalBlack20,
+                    style: normalBlack18,
                   ),
                   onTap: () {
                     Get.toNamed('/faq');
@@ -149,24 +131,6 @@ class BiodataPageView extends GetView<BiodataPageController> {
             ),
           ),
         ],
-      ),
-      bottomNavigationBar: MotionTabBar(
-        //controller: controller.motionTabBarController,
-        initialSelectedTab: "Akun",
-        labels: const ["Beranda", "Lapor", "Akun"],
-        icons: const [Icons.home_outlined, Icons.add, Icons.person_outline],
-        tabSize: 50,
-        tabBarHeight: 55,
-        textStyle: boldBlack14,
-        tabIconColor: blackColor,
-        tabIconSize: 28.0,
-        tabIconSelectedSize: 26.0,
-        tabSelectedColor: primaryColor,
-        tabIconSelectedColor: whiteColor,
-        tabBarColor: whiteColor,
-        onTabItemSelected: (int value) {
-          controller.changeTab(value);
-        },
       ),
     );
   }

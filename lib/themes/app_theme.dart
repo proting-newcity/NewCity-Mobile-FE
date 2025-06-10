@@ -20,10 +20,11 @@ class AppTheme {
         ),
       ),
       appBarTheme: AppBarTheme(
-        surfaceTintColor: whiteColor,
-        color: whiteColor,
-        iconTheme: const IconThemeData(color: blackColor),
-      ),
+          surfaceTintColor: whiteColor,
+          color: whiteColor,
+          iconTheme: const IconThemeData(color: blackColor),
+          titleTextStyle: boldPrimaryColor1424,
+          centerTitle: true),
       textSelectionTheme: TextSelectionThemeData(
         cursorColor: primaryColor,
         selectionColor: primaryColor.withOpacity(0.5),

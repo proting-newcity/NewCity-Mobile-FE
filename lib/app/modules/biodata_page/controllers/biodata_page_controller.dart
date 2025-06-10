@@ -33,20 +33,6 @@ class BiodataPageController extends GetxController {
     }
   }
 
-  void changeTab(int index) {
-    switch (index) {
-      case 0:
-        Get.toNamed('/beranda', preventDuplicates: false);
-        break;
-      case 1:
-        Get.toNamed('/create-laporan', preventDuplicates: false);
-        break;
-      case 2:
-        Get.toNamed('/biodata-page', preventDuplicates: false);
-        break;
-    }
-  }
-
   void updateProfileImage() {
     this.photo = photo;
   }
