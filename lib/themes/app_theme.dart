@@ -14,15 +14,15 @@ class AppTheme {
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           backgroundColor: primaryColor,
-          minimumSize: const Size(double.infinity, 50),
           shape: RoundedRectangleBorder(
             borderRadius: borderXlCircular,
           ),
         ),
       ),
       appBarTheme: AppBarTheme(
-        backgroundColor: whiteColor,
-        iconTheme: const IconThemeData(color: Colors.white),
+        surfaceTintColor: whiteColor,
+        color: whiteColor,
+        iconTheme: const IconThemeData(color: blackColor),
       ),
       textSelectionTheme: TextSelectionThemeData(
         cursorColor: primaryColor,
@@ -47,9 +47,9 @@ class AppTheme {
       ),
       outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(
-          foregroundColor: Colors.blue, // Default text/icon color
+          foregroundColor: blueColor, // Default text/icon color
           side: const BorderSide(
-              color: Colors.blue, width: 2), // Border color and width
+              color: blueColor, width: 2), // Border color and width
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
           textStyle: const TextStyle(
             fontSize: 16,

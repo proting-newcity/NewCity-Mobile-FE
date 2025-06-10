@@ -69,6 +69,9 @@ class RegisterView extends GetView<RegisterController> {
                         ),
                         sBoxh30,
                         ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            minimumSize: const Size(double.infinity, 50),
+                          ),
                           onPressed: () {
                             controller.sendOtp();
                           },

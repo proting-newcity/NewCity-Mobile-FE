@@ -2,6 +2,11 @@ name: newcity
 description: "A new Flutter project."
 publish_to: 'none'
 
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/logo_NewCity_Original.png"  
+
 version: 1.0.0+1
 
 environment:
@@ -34,6 +39,7 @@ dependencies:
   shared_preferences: ^2.5.2
 
 dev_dependencies:
+  flutter_launcher_icons: ^0.13.1
   flutter_test:
     sdk: flutter
   flutter_lints: ^6.0.0
