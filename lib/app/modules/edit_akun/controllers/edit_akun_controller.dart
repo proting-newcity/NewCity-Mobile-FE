@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:dio/dio.dart' as dio;
-import 'package:image_picker_platform_interface/image_picker_platform_interface.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:newcity/app/modules/biodata_page/controllers/biodata_page_controller.dart';
-import 'package:newcity/camera.dart';
 import 'package:http_parser/http_parser.dart';
 import 'package:newcity/services/user_service.dart';
+import 'package:newcity/widgets/image_picker.dart';
 
 class EditAkunController extends GetxController {
   Rx<XFile?> photo = Rx<XFile?>(null);
+  final ImagePicker _picker = ImagePicker();
 
   final TextEditingController nameController = TextEditingController();
   final TextEditingController usernameController = TextEditingController();
@@ -26,6 +27,21 @@ class EditAkunController extends GetxController {
   @override
   void onClose() {
     super.onClose();
+  }
+
+  void showImageSourceOptions(BuildContext context) {
+    showImagePickerModal(context, pickImage);
+  }
+
+  Future<void> pickImage(ImageSource source) async {
+    try {
+      final XFile? pickedFile = await _picker.pickImage(source: source);
+      if (pickedFile != null) {
+        photo.value = pickedFile;
+      }
+    } catch (e) {
+      Get.snackbar("Error", "Failed to pick image: $e");
+    }
   }
 
   Future<void> saveChanges() async {
@@ -62,12 +78,5 @@ class EditAkunController extends GetxController {
       Get.snackbar("Error", "Something went wrong. Please try again.",
           snackPosition: SnackPosition.BOTTOM);
     }
-  }
-
-  Future<void> openCamera() async {
-    setUpCameraDelegate();
-
-    final cameraDelegate = MyCameraDelegate();
-    photo.value = await cameraDelegate.takePhoto();
   }
 }

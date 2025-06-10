@@ -11,11 +11,8 @@ import 'app/routes/app_pages.dart';
 
 import 'themes/app_theme.dart';
 
-import 'camera.dart';
-
 void main() async {
   await GetStorage.init();
-  setUpCameraDelegate();
   WidgetsFlutterBinding.ensureInitialized();
   await initializeDateFormatting('id_ID', null);
   AwesomeNotifications().initialize(

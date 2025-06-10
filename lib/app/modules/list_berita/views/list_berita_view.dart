@@ -53,7 +53,7 @@ class ListBeritaView extends GetView<ListBeritaController> {
               ],
             ),
           ),
-          _appBarTopik(), // Only listens to topik observables
+          _appBarTopik(),
           Padding(
             padding: const EdgeInsets.all(18.0),
             child: const Text("Berita Untukmu", style: boldBlack20),

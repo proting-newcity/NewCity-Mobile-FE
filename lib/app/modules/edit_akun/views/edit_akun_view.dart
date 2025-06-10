@@ -23,7 +23,9 @@ class EditAkunView extends GetView<EditAkunController> {
             Obx(() {
               if (controller.photo.value != null) {
                 return GestureDetector(
-                  onTap: controller.openCamera,
+                  onTap: () {
+                    controller.showImageSourceOptions(context);
+                  },
                   child: CircleAvatar(
                     radius: 88,
                     backgroundImage:
@@ -47,7 +49,9 @@ class EditAkunView extends GetView<EditAkunController> {
                   }
                   if (snap.hasError || snap.data == null) {
                     return GestureDetector(
-                      onTap: controller.openCamera,
+                      onTap: () {
+                        controller.showImageSourceOptions(context);
+                      },
                       child: CircleAvatar(
                         radius: 88,
                         backgroundImage:
@@ -56,7 +60,9 @@ class EditAkunView extends GetView<EditAkunController> {
                     );
                   }
                   return GestureDetector(
-                    onTap: controller.openCamera,
+                    onTap: () {
+                      controller.showImageSourceOptions(context);
+                    },
                     child: CircleAvatar(
                       radius: 88,
                       backgroundImage: snap.data,
