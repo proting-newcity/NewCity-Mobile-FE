@@ -70,6 +70,9 @@ class LoginView extends GetView<LoginController> {
                         ),
                         sBoxh10,
                         ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            minimumSize: const Size(double.infinity, 50),
+                          ),
                           onPressed: () {
                             controller.login();
                           },

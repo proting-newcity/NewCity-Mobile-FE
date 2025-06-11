@@ -18,20 +18,29 @@ class CreateLaporanView extends GetView<CreateLaporanController> {
 
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () => Get.back(),
-        ),
-        title: const Text(
-          "Buat Laporan",
-          style: boldBlack14,
+        automaticallyImplyLeading: false,
+
+        // title: const Text(
+        //   "Buat Laporan",
+        //   style: boldPrimaryColor14,
+        // ),
+
+        title: Row(
+          children: [
+            Image.asset(
+              'assets/images/logo_NewCity_Original.png',
+              width: 30,
+            ),
+            const SizedBox(width: 20),
+            const Text("Buat Laporan", style: boldPrimaryColor14),
+            // Placeholder for alignment
+          ],
         ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: ListView(
           children: [
-            const Text("Laporan", style: boldBlack14),
             sBoxh18,
             Text("Judul"),
             TextField(

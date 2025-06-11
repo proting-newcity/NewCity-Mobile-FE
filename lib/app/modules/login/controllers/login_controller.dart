@@ -33,7 +33,7 @@ class LoginController extends GetxController {
         Get.snackbar("Success", "Login success!",
             snackPosition: SnackPosition.BOTTOM);
         if (response.data['role'] == 'masyarakat') {
-          Get.toNamed("/beranda");
+          Get.toNamed("/dashboard");
         } else {
           Get.toNamed("/government");
         }

@@ -65,6 +65,9 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
                         ),
                         sBoxh30,
                         ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            minimumSize: const Size(double.infinity, 50),
+                          ),
                           onPressed: () {
                             controller.searchnotelp();
                           },
