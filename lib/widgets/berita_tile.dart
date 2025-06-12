@@ -29,7 +29,7 @@ Widget BeritaTile(Berita beritaData, int index) {
                     height: 80,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(8),
-                      color: Colors.grey[300],
+                      color: Colors.grey[100],
                     ),
                     child: Center(child: CircularProgressIndicator()),
                   );
@@ -72,7 +72,8 @@ Widget BeritaTile(Berita beritaData, int index) {
                   ),
                   sBoxh8,
                   Text(
-                    DateFormat('yyyy-MM-dd – kk:mm').format(beritaData.tanggal),
+                    DateFormat('EEEE, d MMMM y - kk:mm', 'id_ID')
+                        .format(beritaData.tanggal),
                     style: TextStyle(
                       fontSize: 12,
                       color: Colors.grey[600],

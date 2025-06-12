@@ -29,24 +29,6 @@ class BerandaController extends GetxController
     super.onClose();
   }
 
-  void changeTab(int index) {
-    // selectedTabIndex.value = index;
-    // motionTabBarController.index = index;
-    switch (index) {
-      case 0:
-        Get.toNamed('/beranda', preventDuplicates: false);
-        break;
-      case 1:
-        Get.toNamed('/create-laporan', preventDuplicates: false);
-        break;
-      case 2:
-        Get.toNamed('/biodata-page', preventDuplicates: false);
-        break;
-    }
-  }
-
-  void increment() => count.value++;
-
   void fetchReports() async {
     if (isLastPage) return;
 

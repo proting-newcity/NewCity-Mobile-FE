@@ -106,7 +106,7 @@ class CreateLaporanController extends GetxController {
           (response.statusCode == 200 || response.statusCode == 201)) {
         Get.snackbar("Success", "Report submitted successfully!",
             snackPosition: SnackPosition.BOTTOM);
-        Get.offAllNamed('/beranda');
+        Get.offAllNamed('/dashboard');
         clearForm();
       } else {
         Get.snackbar("Error", "Failed to submit report.",

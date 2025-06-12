@@ -68,7 +68,7 @@ class EditAkunController extends GetxController {
         print(response.data);
         Get.snackbar("Success", "Report submitted successfully!",
             snackPosition: SnackPosition.BOTTOM);
-        Get.toNamed('/beranda');
+        Get.toNamed('/dashboard');
       } else {
         Get.snackbar("Error", "Failed to submit report.",
             snackPosition: SnackPosition.BOTTOM);

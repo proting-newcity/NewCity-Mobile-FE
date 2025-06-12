@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:motion_tab_bar/MotionTabBar.dart';
 import 'package:newcity/themes/radius.dart';
 import 'package:newcity/widgets/report_tile.dart';
 import 'package:newcity/widgets/icon_button.dart';
@@ -52,24 +51,6 @@ class BerandaView extends GetView<BerandaController> {
             ),
           ],
         ),
-      ),
-      bottomNavigationBar: MotionTabBar(
-        controller: controller.motionTabBarController,
-        initialSelectedTab: "Beranda",
-        labels: const ["Beranda", "Lapor", "Akun"],
-        icons: const [Icons.home_outlined, Icons.add, Icons.person_outline],
-        tabSize: 50,
-        tabBarHeight: 55,
-        textStyle: boldBlack14,
-        tabIconColor: Colors.black87,
-        tabIconSize: 28.0,
-        tabIconSelectedSize: 26.0,
-        tabSelectedColor: primaryColor,
-        tabIconSelectedColor: whiteColor,
-        tabBarColor: whiteColor,
-        onTabItemSelected: (int value) {
-          controller.changeTab(value);
-        },
       ),
       body: _buildBerandaScreen(),
     );
