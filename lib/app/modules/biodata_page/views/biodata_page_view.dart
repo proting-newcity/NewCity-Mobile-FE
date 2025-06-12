@@ -59,7 +59,7 @@ class BiodataPageView extends GetView<BiodataPageController> {
                       builder: (ctx, snap) {
                         if (snap.connectionState == ConnectionState.waiting) {
                           return CircleAvatar(
-                            radius: 88,
+                            radius: 65,
                             backgroundColor: Colors.grey[200],
                             child: CircularProgressIndicator(
                               strokeWidth: 2,
@@ -70,13 +70,13 @@ class BiodataPageView extends GetView<BiodataPageController> {
                         }
                         if (snap.hasError || snap.data == null) {
                           return CircleAvatar(
-                            radius: 88,
+                            radius: 65,
                             backgroundImage:
                                 AssetImage('assets/placeholder.png'),
                           );
                         }
                         return CircleAvatar(
-                          radius: 88,
+                          radius: 65,
                           backgroundImage: snap.data,
                         );
                       },
