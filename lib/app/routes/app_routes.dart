@@ -29,6 +29,7 @@ abstract class Routes {
   static const NOTIFIKASI = _Paths.NOTIFIKASI;
   static const SIMPAN_LAPORAN = _Paths.SIMPAN_LAPORAN;
   static const DASHBOARD = _Paths.DASHBOARD;
+  static const KODE_VERIVIKASI = _Paths.KODE_VERIFIKASI;
 }
 
 abstract class _Paths {

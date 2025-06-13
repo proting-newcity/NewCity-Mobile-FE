@@ -92,7 +92,7 @@ class DetailBeritaView extends GetView<DetailBeritaController> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                  DateFormat('yyyy-MM-dd – kk:mm')
+                                  DateFormat('EEEE, d MMMM y - kk:mm', 'id_ID')
                                       .format(Get.arguments.tanggal),
                                   style: boldWhite14),
                               sBoxh16,

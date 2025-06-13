@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:newcity/models/report.dart';
 import 'package:newcity/services/image_service.dart';
+import 'package:newcity/themes/colors.dart';
 import 'package:newcity/themes/size_box.dart';
 
 Widget ReportTile(Report report) {
@@ -16,7 +17,15 @@ Widget ReportTile(Report report) {
         padding: EdgeInsets.all(20),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          color: Color.fromRGBO(236, 235, 230, 1),
+          color: Colors.grey[100],
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.2),
+              spreadRadius: 0.5,
+              blurRadius: 8,
+              offset: Offset(0, 1), // changes position of shadow
+            ),
+          ],
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -27,7 +36,8 @@ Widget ReportTile(Report report) {
             ),
             sBoxh5,
             Text(
-              DateFormat('EEEE, d MMMM y - kk:mm').format(report.updatedAt),
+              DateFormat('EEEE, d MMMM y - kk:mm', 'id_ID')
+                  .format(report.updatedAt),
               style: TextStyle(
                   color: Color.fromRGBO(102, 102, 102, 1), fontSize: 11),
             ),

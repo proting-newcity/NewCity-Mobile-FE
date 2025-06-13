@@ -37,7 +37,7 @@ class BiodataPageView extends GetView<BiodataPageController> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(20.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -96,37 +96,104 @@ class BiodataPageView extends GetView<BiodataPageController> {
                     textAlign: TextAlign.center,
                   );
                 }),
-                sBoxh55,
-                ListTile(
-                  leading: Icon(Icons.account_circle),
-                  title: const Text(
-                    'Edit Akun',
-                    style: normalBlack18,
+                sBoxh23,
+                Container(
+                  padding: EdgeInsets.all(20),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: whiteColor,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.2),
+                        spreadRadius: 0.5,
+                        blurRadius: 8,
+                        offset: Offset(0, 1), // changes position of shadow
+                      ),
+                    ],
                   ),
-                  onTap: () {
-                    Get.toNamed('/edit-akun', arguments: controller.user.value);
-                  },
-                ),
-                Divider(),
-                ListTile(
-                  leading: Icon(Icons.question_mark),
-                  title: const Text(
-                    'Bantuan',
-                    style: normalBlack18,
+                  child: Column(
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          Get.toNamed('/edit-akun',
+                              arguments: controller.user.value);
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              children: [
+                                Icon(Icons.account_circle),
+                                sBoxw8,
+                                Text(
+                                  'Edit Akun',
+                                  style: normalBlack14,
+                                ),
+                              ],
+                            ),
+                            Icon(Icons.arrow_forward_ios, size: 16)
+                          ],
+                        ),
+                      ),
+                      sBoxh23,
+                      GestureDetector(
+                        onTap: () {
+                          Get.toNamed('/faq');
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              children: [
+                                Icon(Icons.question_mark),
+                                sBoxw8,
+                                Text(
+                                  'Bantuan',
+                                  style: normalBlack14,
+                                ),
+                              ],
+                            ),
+                            Icon(Icons.arrow_forward_ios, size: 16)
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
-                  onTap: () {
-                    Get.toNamed('/faq');
-                  },
                 ),
-                Divider(),
-                ListTile(
-                  leading: const Icon(Icons.exit_to_app, color: redColor),
-                  title: const Text('Keluar', style: normalRed20),
-                  onTap: () {
-                    _showLogoutDialog(context);
-                  },
+                sBoxh30,
+                Container(
+                  padding: EdgeInsets.all(20),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: whiteColor,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.2),
+                        spreadRadius: 0.5,
+                        blurRadius: 8,
+                        offset: Offset(0, 1), // changes position of shadow
+                      ),
+                    ],
+                  ),
+                  child: GestureDetector(
+                    onTap: () {
+                      _showLogoutDialog(context);
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Icon(Icons.exit_to_app, color: redColor),
+                            sBoxw8,
+                            const Text('Keluar', style: normalRed14),
+                          ],
+                        ),
+                        Icon(Icons.arrow_forward_ios, size: 16)
+                      ],
+                    ),
+                  ),
                 ),
-                sBoxh16,
               ],
             ),
           ),

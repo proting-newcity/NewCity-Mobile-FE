@@ -164,8 +164,8 @@ const TextStyle normalWhite22 = TextStyle(
   color: whiteColor,
 );
 
-const TextStyle normalRed20 = TextStyle(
+const TextStyle normalRed14 = TextStyle(
   fontFamily: 'Poppins',
-  fontSize: 20,
+  fontSize: 14,
   color: redColor,
 );
