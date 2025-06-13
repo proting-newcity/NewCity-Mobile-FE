@@ -21,7 +21,18 @@ NewCity adalah aplikasi mobile berbasis Flutter yang dirancang untuk pelaporan w
 
 ## Screenshots
 
-Coming Soon
+<p>
+<img src="https://github.com/user-attachments/assets/bcf3c17a-6b05-47e7-a637-1423a3cdab19" alt="Splash View" width="200">
+<img src="https://github.com/user-attachments/assets/99632c04-08e1-48d2-9267-831d3be823f5" alt="Login" width="200">
+<img src="https://github.com/user-attachments/assets/9335e260-84dc-4990-bd40-b052299f1861" alt="Dashboard" width="200">
+<img src="https://github.com/user-attachments/assets/3ac960e8-103b-4efe-9cda-b635d277640f" alt="List Laporan" width="200">
+<img src="https://github.com/user-attachments/assets/443d461b-9209-4246-9599-a1b3412abf9d" alt="Cari Laporan" width="200">
+<img src="https://github.com/user-attachments/assets/181ad781-c9f1-4cc2-96f9-58c0d78b5614" alt="Buat Laporan" width="200">
+<img src="https://github.com/user-attachments/assets/9c4acb0d-be96-4221-8b80-ea39fd4a6a28" alt="Bookmark Laporan" width="200">
+<img src="https://github.com/user-attachments/assets/43d01823-e3cc-4e17-aae4-da3aa8c1c971" alt="List Berita" width="200">
+<img src="https://github.com/user-attachments/assets/4b2b2211-23b2-4d8a-aa01-4cd68d3ca7ad" alt="Biodata" width="200">
+<img src="https://github.com/user-attachments/assets/832e0567-31aa-4e64-95c6-62f87827d802" alt="FAQ" width="200">
+</p>
 
 ## Getting Started
 
