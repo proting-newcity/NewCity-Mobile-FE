@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:newcity/services/auth_service.dart';
 import 'package:newcity/services/image_service.dart';
 import '../controllers/biodata_page_controller.dart';
 import 'package:newcity/themes/colors.dart';
@@ -219,6 +220,7 @@ class BiodataPageView extends GetView<BiodataPageController> {
             TextButton(
               child: const Text("Lanjut"),
               onPressed: () {
+                AuthService.logout();
                 Navigator.of(context).pop();
                 Get.toNamed('/login');
               },
