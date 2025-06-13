@@ -1,11 +1,11 @@
 name: newcity
 description: "A new Flutter project."
-publish_to: 'none'
+publish_to: "none"
 
 flutter_launcher_icons:
   android: true
   ios: true
-  image_path: "assets/images/logo_NewCity_Original.png"  
+  image_path: "assets/images/logo_NewCity_Original.png"
 
 version: 1.0.3
 
@@ -16,7 +16,7 @@ dependencies:
   google_fonts: ^6.2.1
   flutter:
     sdk: flutter
-    
+
   cupertino_icons: ^1.0.8
   get: ^4.6.6
   get_cli: ^1.8.1
@@ -50,7 +50,7 @@ flutter:
     - assets/
     - assets/images/
     - assets/placeholder.png
-    
+
   fonts:
     - family: Poppins
       fonts:

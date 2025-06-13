@@ -71,7 +71,9 @@ class FaqView extends GetView<FaqController> {
                             ),
                           ),
                           child: ExpansionTile(
-                            title: Text(faq["question"]!, style: boldBlack16),
+                            title: Text(faq["question"]!,
+                                style: TextStyle(
+                                    color: Color.fromRGBO(88, 129, 87, 1))),
                             childrenPadding: EdgeInsets.all(16),
                             collapsedIconColor: backgroundColor,
                             collapsedTextColor: backgroundColor,
