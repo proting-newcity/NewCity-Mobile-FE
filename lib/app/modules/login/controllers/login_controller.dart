@@ -28,6 +28,7 @@ class LoginController extends GetxController {
       if (response.statusCode == 200 || response.statusCode == 201) {
         final prefs = await SharedPreferences.getInstance();
         final String role = response.data['role'];
+        print("asjlddasadsasdsaddsasad:   " + role);
         await prefs.setString('userRole', role);
 
         Get.snackbar("Success", "Login success!",

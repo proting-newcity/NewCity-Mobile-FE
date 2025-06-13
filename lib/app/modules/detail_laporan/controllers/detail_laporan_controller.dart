@@ -27,7 +27,9 @@ class DetailLaporanController extends GetxController {
   }
 
   @override
-  void onReady() {
+  Future<void> onReady() async {
+    await loadUserRole();
+    print(userRole.value);
     super.onReady();
   }
 
@@ -39,7 +41,7 @@ class DetailLaporanController extends GetxController {
   Future<void> loadUserRole() async {
     try {
       final prefs = await SharedPreferences.getInstance();
-      userRole.value = prefs.getString('userRole') ?? '';
+      userRole.value = prefs.getString('userRole') ?? 'pemerintah';
     } catch (e) {
       print("Error loading role: $e");
     }
