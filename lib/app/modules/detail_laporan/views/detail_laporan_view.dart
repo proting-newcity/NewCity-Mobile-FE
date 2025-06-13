@@ -128,7 +128,8 @@ class DetailLaporanView extends GetView<DetailLaporanController> {
                               Obx(() {
                                 return Text(
                                     controller.report.value != null
-                                        ? DateFormat('yyyy-MM-dd – kk:mm')
+                                        ? DateFormat('EEEE, d MMMM y - kk:mm',
+                                                'id_ID')
                                             .format(controller
                                                 .report.value!.report.updatedAt)
                                         : 'Loading...',
